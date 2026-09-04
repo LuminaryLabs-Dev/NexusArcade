@@ -4,7 +4,7 @@ import { DEFAULT_ALLOWED_GAME_REPOSITORIES, DEFAULT_LATEST_URL } from "../core/s
 
 export class ArcadeLibrary {
   constructor({ latestUrl = DEFAULT_LATEST_URL, registryRef = null, registryVersion = null, fetchImpl = null, allowedRepositories = DEFAULT_ALLOWED_GAME_REPOSITORIES } = {}) {
-    fetchImpl ||= globalThis.fetch?.bind(globalThis);
+    fetchImpl ||= (input, init) => globalThis.fetch(input, init);
     this.catalogClient = new CatalogClient({ latestUrl, registryRef, registryVersion, fetchImpl });
     this.manifestClient = new ManifestClient({ fetchImpl, allowedRepositories });
     this.games = [];

@@ -4,7 +4,7 @@ import { createProgress } from "./progress.mjs";
 
 export async function installGame({ manifest, storage, fetchImpl = null, onProgress = () => {}, allowedRepositories = DEFAULT_ALLOWED_GAME_REPOSITORIES, signal } = {}) {
   if (!manifest || !storage) throw new TypeError("manifest and storage are required");
-  fetchImpl ||= globalThis.fetch?.bind(globalThis);
+  fetchImpl ||= (input, init) => globalThis.fetch(input, init);
   if (typeof fetchImpl !== "function") throw new TypeError("A fetch implementation is required");
   const progress = createProgress(manifest);
   await storage.begin(manifest);

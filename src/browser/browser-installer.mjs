@@ -6,7 +6,7 @@ import { requestPersistentStorage } from "./persistent-storage.mjs";
 export class BrowserInstaller {
   constructor({ storage, fetchImpl = null, allowedRepositories = DEFAULT_ALLOWED_GAME_REPOSITORIES, requestPersistence = true } = {}) {
     this.storage = storage || new CacheStorageAdapter();
-    this.fetchImpl = fetchImpl || globalThis.fetch?.bind(globalThis);
+    this.fetchImpl = fetchImpl || ((input, init) => globalThis.fetch(input, init));
     this.allowedRepositories = [...allowedRepositories];
     this.requestPersistence = requestPersistence;
   }

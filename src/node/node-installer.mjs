@@ -5,7 +5,7 @@ import { FileSystemStorageAdapter } from "./filesystem-storage.mjs";
 
 export class NodeInstaller {
   constructor({ destination, fetchImpl = null, allowedRepositories = DEFAULT_ALLOWED_GAME_REPOSITORIES, latestUrl, registryRef, registryVersion } = {}) {
-    fetchImpl ||= globalThis.fetch?.bind(globalThis);
+    fetchImpl ||= (input, init) => globalThis.fetch(input, init);
     this.fetchImpl = fetchImpl;
     this.allowedRepositories = [...allowedRepositories];
     this.library = new ArcadeLibrary({ latestUrl, registryRef, registryVersion, fetchImpl, allowedRepositories });
