@@ -15,12 +15,30 @@ import { ArcadeLibrary, BrowserInstaller, ArcadePlayer } from "@luminarylabs/nex
 const library = new ArcadeLibrary();
 const games = await library.load();
 const manifest = await library.getManifest(games[0]);
-const installer = new BrowserInstaller();
+const sessionId = crypto.randomUUID();
+const installer = new BrowserInstaller({ sessionId });
 await installer.install(manifest, console.log);
 
 const player = new ArcadePlayer(document.querySelector("iframe"));
 player.play(manifest);
 ```
+
+Browser installs are temporary by default. The adapter stores executable files only in validated `nexus-arcade-game-*` Cache Storage entries. `remove()`, `removeStaleSessions()` and session-release messages delete only those assets and `nexus-arcade-installed` metadata; game saves in other localStorage keys or IndexedDB are preserved.
+
+On page exit, a client may release its validated session through the service worker:
+
+```js
+const games = installer.storage.releaseSessionMetadata(sessionId);
+navigator.serviceWorker.controller?.postMessage({
+  type: "NEXUS_ARCADE_RELEASE_SESSION",
+  sessionId,
+  games,
+});
+```
+
+The service worker derives every cache name from a validated game ID and semantic version. It never accepts a caller-supplied cache name. Run `removeStaleSessions(sessionId)` during startup to recover from crashes and interrupted exits.
+
+The future save bridge uses validated messages shaped as `{ type: "nexus-arcade:save", gameId, slot, schemaVersion, payload }` and `{ type: "nexus-arcade:load", gameId, slot }`. Until a game adopts that bridge, its existing same-origin localStorage or IndexedDB data remains untouched by asset cleanup.
 
 Register the service-worker module from a same-origin service worker file. See the Website repository's `/nexus-arcade/sw.js` integration.
 

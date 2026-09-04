@@ -15,3 +15,5 @@
 - Add shared catalog, manifest, integrity and install core.
 - Add Cache Storage browser installer and service-worker route handler.
 - Add filesystem Node installer, CLI and local game server.
+- Make browser game assets session-temporary while preserving save storage.
+- Add validated game/session cache release and stale-session recovery.

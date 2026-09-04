@@ -4,8 +4,8 @@ import { CacheStorageAdapter } from "./cache-storage.mjs";
 import { requestPersistentStorage } from "./persistent-storage.mjs";
 
 export class BrowserInstaller {
-  constructor({ storage, fetchImpl = null, allowedRepositories = DEFAULT_ALLOWED_GAME_REPOSITORIES, requestPersistence = true } = {}) {
-    this.storage = storage || new CacheStorageAdapter();
+  constructor({ storage, fetchImpl = null, allowedRepositories = DEFAULT_ALLOWED_GAME_REPOSITORIES, requestPersistence = false, sessionId = null } = {}) {
+    this.storage = storage || new CacheStorageAdapter({ sessionId });
     this.fetchImpl = fetchImpl || ((input, init) => globalThis.fetch(input, init));
     this.allowedRepositories = [...allowedRepositories];
     this.requestPersistence = requestPersistence;
@@ -25,5 +25,13 @@ export class BrowserInstaller {
 
   isInstalled(manifest) {
     return this.storage.isInstalled(manifest);
+  }
+
+  async remove(manifest) {
+    return this.storage.remove(manifest);
+  }
+
+  async removeStaleSessions(sessionId) {
+    return this.storage.removeStaleSessions(sessionId);
   }
 }
