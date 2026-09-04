@@ -1,0 +1,23 @@
+{
+  "name": "@luminarylabs/nexus-arcade",
+  "version": "0.1.0",
+  "description": "Integrity-checked installers for the public Nexus Arcade registry.",
+  "type": "module",
+  "license": "MIT",
+  "engines": { "node": ">=20" },
+  "files": ["dist", "src", "schemas", "README.md", "CHANGELOG.md", "LICENSE"],
+  "exports": {
+    ".": "./dist/node/nexus-arcade.mjs",
+    "./browser": "./dist/browser/nexus-arcade.mjs",
+    "./service-worker": "./dist/browser/service-worker.mjs",
+    "./schemas/*": "./dist/schemas/*"
+  },
+  "bin": { "nexus-arcade": "./src/cli/nexus-arcade.mjs" },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "prepack": "npm run build",
+    "test": "node --test && npm run build && npm run test:browser-boundary",
+    "test:browser-boundary": "node scripts/check-browser-boundary.mjs"
+  },
+  "keywords": ["arcade", "installer", "offline", "service-worker"]
+}

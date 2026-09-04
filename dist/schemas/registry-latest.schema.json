@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://luminarylabs.dev/schemas/nexus-arcade/registry-latest.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "registryVersion", "ref", "indexPath"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "registryVersion": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "ref": { "type": "string", "pattern": "^(?:registry-v[0-9]+\\.[0-9]+\\.[0-9]+|[a-f0-9]{40})$" },
+    "indexPath": { "const": "registry/index.json" }
+  }
+}
