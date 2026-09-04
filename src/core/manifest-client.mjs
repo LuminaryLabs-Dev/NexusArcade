@@ -33,7 +33,8 @@ export function validateManifest(manifest, expectedGame, allowedRepositories = D
 }
 
 export class ManifestClient {
-  constructor({ fetchImpl = globalThis.fetch, allowedRepositories = DEFAULT_ALLOWED_GAME_REPOSITORIES } = {}) {
+  constructor({ fetchImpl = null, allowedRepositories = DEFAULT_ALLOWED_GAME_REPOSITORIES } = {}) {
+    fetchImpl ||= globalThis.fetch?.bind(globalThis);
     if (typeof fetchImpl !== "function") throw new TypeError("A fetch implementation is required");
     this.fetchImpl = fetchImpl;
     this.allowedRepositories = [...allowedRepositories];

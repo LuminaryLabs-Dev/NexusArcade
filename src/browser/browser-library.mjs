@@ -3,7 +3,8 @@ import { ManifestClient } from "../core/manifest-client.mjs";
 import { DEFAULT_ALLOWED_GAME_REPOSITORIES, DEFAULT_LATEST_URL } from "../core/source-policy.mjs";
 
 export class ArcadeLibrary {
-  constructor({ latestUrl = DEFAULT_LATEST_URL, registryRef = null, registryVersion = null, fetchImpl = globalThis.fetch, allowedRepositories = DEFAULT_ALLOWED_GAME_REPOSITORIES } = {}) {
+  constructor({ latestUrl = DEFAULT_LATEST_URL, registryRef = null, registryVersion = null, fetchImpl = null, allowedRepositories = DEFAULT_ALLOWED_GAME_REPOSITORIES } = {}) {
+    fetchImpl ||= globalThis.fetch?.bind(globalThis);
     this.catalogClient = new CatalogClient({ latestUrl, registryRef, registryVersion, fetchImpl });
     this.manifestClient = new ManifestClient({ fetchImpl, allowedRepositories });
     this.games = [];

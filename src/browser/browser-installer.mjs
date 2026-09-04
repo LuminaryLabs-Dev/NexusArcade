@@ -4,9 +4,9 @@ import { CacheStorageAdapter } from "./cache-storage.mjs";
 import { requestPersistentStorage } from "./persistent-storage.mjs";
 
 export class BrowserInstaller {
-  constructor({ storage, fetchImpl = globalThis.fetch, allowedRepositories = DEFAULT_ALLOWED_GAME_REPOSITORIES, requestPersistence = true } = {}) {
+  constructor({ storage, fetchImpl = null, allowedRepositories = DEFAULT_ALLOWED_GAME_REPOSITORIES, requestPersistence = true } = {}) {
     this.storage = storage || new CacheStorageAdapter();
-    this.fetchImpl = fetchImpl;
+    this.fetchImpl = fetchImpl || globalThis.fetch?.bind(globalThis);
     this.allowedRepositories = [...allowedRepositories];
     this.requestPersistence = requestPersistence;
   }

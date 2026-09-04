@@ -38,7 +38,8 @@ export function validateCatalog(catalog, expectedVersion) {
 }
 
 export class CatalogClient {
-  constructor({ latestUrl = DEFAULT_LATEST_URL, registryRef = null, registryVersion = null, fetchImpl = globalThis.fetch } = {}) {
+  constructor({ latestUrl = DEFAULT_LATEST_URL, registryRef = null, registryVersion = null, fetchImpl = null } = {}) {
+    fetchImpl ||= globalThis.fetch?.bind(globalThis);
     if (typeof fetchImpl !== "function") throw new TypeError("A fetch implementation is required");
     this.latestUrl = assertLatestUrl(latestUrl);
     if (registryRef !== null && !/^(?:registry-v\d+\.\d+\.\d+|[a-f0-9]{40})$/i.test(registryRef)) throw new TypeError("Invalid pinned registry ref");
