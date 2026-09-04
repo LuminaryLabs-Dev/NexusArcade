@@ -7,9 +7,8 @@ function cacheName(manifest) {
 }
 
 function contentType(path, declared) {
-  if (declared && declared !== "application/octet-stream") return declared;
   const extension = path.split(".").pop()?.toLowerCase();
-  return ({
+  const known = ({
     html: "text/html; charset=utf-8",
     css: "text/css; charset=utf-8",
     js: "text/javascript; charset=utf-8",
@@ -23,7 +22,8 @@ function contentType(path, declared) {
     wav: "audio/wav",
     mp3: "audio/mpeg",
     wasm: "application/wasm",
-  })[extension] || "application/octet-stream";
+  })[extension];
+  return known || (declared && declared !== "application/octet-stream" ? declared : "application/octet-stream");
 }
 
 export class CacheStorageAdapter {

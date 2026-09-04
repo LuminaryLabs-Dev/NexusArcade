@@ -28,12 +28,15 @@ test("browser storage stages files before activating an immutable version cache"
   const storage = new CacheStorageAdapter({ cacheStorage: caches, metadataStorage: metadata, origin: "https://luminarylabs.dev" });
   await storage.begin(manifest);
   const stage = storage.stagingName;
-  await storage.write(manifest, { path: "index.html", sha256: "a".repeat(64) }, new TextEncoder().encode("<h1>Game</h1>"), "text/html");
+  await storage.write(manifest, { path: "index.html", sha256: "a".repeat(64) }, new TextEncoder().encode("<h1>Game</h1>"), "text/plain");
   assert(await caches.has(stage));
   assert(!(await caches.has(gameCacheName(manifest.id, manifest.version))));
   const result = await storage.commit(manifest);
   assert(!(await caches.has(stage)));
   assert(await caches.has(gameCacheName(manifest.id, manifest.version)));
+  const installed = await caches.open(gameCacheName(manifest.id, manifest.version));
+  const cached = await installed.match("https://luminarylabs.dev/nexus-arcade/runtime/NXA-000001/1.0.0/index.html");
+  assert.equal(cached.headers.get("content-type"), "text/html; charset=utf-8");
   assert.equal(result.launchPath, "/nexus-arcade/runtime/NXA-000001/1.0.0/index.html");
   assert.equal(storage.isInstalled(manifest), true);
 });
