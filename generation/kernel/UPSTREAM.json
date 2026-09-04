@@ -1,0 +1,82 @@
+{
+  "repository": "LuminaryLabs-Dev/NexusAgent",
+  "commit": "1458aead98aab5714a72f89e41deb62d91a593e3",
+  "subtree": "LiquidUniversal-Harness",
+  "authorization": "Owner explicitly authorized adapting and publishing this selected kernel in NexusArcade.",
+  "files": [
+    {
+      "path": "chains/chain-harness.mjs",
+      "sha256": "7f9b9a74cecb117b557f757421204233fd54fc4fa49dcb46165cf218d58d527b"
+    },
+    {
+      "path": "chains/chain-memory.mjs",
+      "sha256": "aa694fea17e15da06fb3ff12511e68efa749a3f9d21fd0942b7f747caae0dbac"
+    },
+    {
+      "path": "chains/chain-runner.mjs",
+      "sha256": "ed79c764d42f4df4b9504bbcb8595573d678575ba9b8c2d660b252e78a090878"
+    },
+    {
+      "path": "contracts/chain-contract.mjs",
+      "sha256": "9db486925b98c472440d2959aed378588f2ad6921048857ba2a25da9a08ce397"
+    },
+    {
+      "path": "contracts/orchestrator-contract.mjs",
+      "sha256": "77dde1a3ba7b80ce71ff026228f4af2b08ae0c624c6bc9935f812d34dde7e55f"
+    },
+    {
+      "path": "contracts/request-contract.mjs",
+      "sha256": "30213079da415548c2731c81b6815285ff0fccc28bd3390aa20194a3b4936814"
+    },
+    {
+      "path": "contracts/result-contract.mjs",
+      "sha256": "d607eee43f13f92f8d289e9eff3b07c749820904380094c205ab0d42b3d41d47"
+    },
+    {
+      "path": "core/answer-parser.mjs",
+      "sha256": "c07ce94dc459ebf40442d4fe9029e7e37d79c81bea15b9c2cb98b2ad2aeb82fd"
+    },
+    {
+      "path": "core/call-ledger.mjs",
+      "sha256": "bcfe132e7dddaf7123e01fefe58c24d6c72490c784ff9263088334173d9eaad9"
+    },
+    {
+      "path": "core/core-harness.mjs",
+      "sha256": "5fafa9cdfb1d9ec3659a81730f73f935c1f5191d971fdf5b5453458189769213"
+    },
+    {
+      "path": "core/decision-gates.mjs",
+      "sha256": "39d5069a584d2b03d6726c1b442365914d8e50f7692e909073ca37769e397726"
+    },
+    {
+      "path": "core/execution-context.mjs",
+      "sha256": "736793fccb669a267599f0b2f139ebeb3faf0fa49e6edd432fab99a8c42b581e"
+    },
+    {
+      "path": "core/fallback-service.mjs",
+      "sha256": "6a2a9db85045e70f3fa7796ade3743b7759d61a968521c541331e6ec092dcd05"
+    },
+    {
+      "path": "orchestrator/decision-router.mjs",
+      "sha256": "94a6135708e037ee6e5ab55b7082cb9864db7f8b75f8539592d7fdd9c273d8bc"
+    },
+    {
+      "path": "orchestrator/execution-tree.mjs",
+      "sha256": "7ff1dcf070d44b7c9d6b51039666ae65e1066c5765454254fce54c5c74d309c1"
+    },
+    {
+      "path": "orchestrator/orchestrator-harness.mjs",
+      "sha256": "675f6febc096c9726ff4147b35c092fb035cca0db835c2b7fc78466c5655b546"
+    },
+    {
+      "path": "runtime/openai-compatible-runtime.mjs",
+      "sha256": "3e04e2b34d258e3d77efae720356106cd999d8213d721ca122c4bcb6e4999cd6"
+    }
+  ],
+  "localChanges": [
+    "strict schema validation",
+    "response schema forwarding",
+    "global cancellation and budget propagation",
+    "formatting for Arcade style"
+  ]
+}

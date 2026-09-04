@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "settings": ["greenhouse", "harbor", "observatory"],
+  "modes": ["hold", "deliver", "sequence"],
+  "palettes": ["jade", "amber", "indigo"],
+  "materials": ["glazed ceramic", "aged brass", "sea glass", "white stone"],
+  "pressures": ["crossing patrols", "moving storms", "unstable conduits"],
+  "objectives": [
+    "restore damaged stations",
+    "deliver supplies to stations",
+    "activate stations in order"
+  ]
+}

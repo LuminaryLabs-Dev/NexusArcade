@@ -1,23 +1,52 @@
 {
   "name": "@luminarylabs/nexus-arcade",
   "version": "0.1.0",
-  "description": "Integrity-checked installers for the public Nexus Arcade registry.",
+  "description": "Verified arcade installers and a local LFM game-generation factory.",
   "type": "module",
   "license": "MIT",
-  "engines": { "node": ">=20" },
-  "files": ["dist", "src", "schemas", "README.md", "CHANGELOG.md", "LICENSE"],
+  "engines": {
+    "node": ">=20"
+  },
+  "files": [
+    "dist",
+    "src",
+    "schemas",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "generation"
+  ],
   "exports": {
     ".": "./dist/node/nexus-arcade.mjs",
     "./browser": "./dist/browser/nexus-arcade.mjs",
     "./service-worker": "./dist/browser/service-worker.mjs",
-    "./schemas/*": "./dist/schemas/*"
+    "./schemas/*": "./dist/schemas/*",
+    "./generation": "./generation/index.mjs"
   },
-  "bin": { "nexus-arcade": "./src/cli/nexus-arcade.mjs" },
+  "bin": {
+    "nexus-arcade": "./src/cli/nexus-arcade.mjs",
+    "nexus-arcade-generate": "./generation/cli.mjs"
+  },
   "scripts": {
     "build": "node scripts/build.mjs",
     "prepack": "npm run build",
     "test": "node --test && npm run build && npm run test:browser-boundary",
-    "test:browser-boundary": "node scripts/check-browser-boundary.mjs"
+    "test:browser-boundary": "node scripts/check-browser-boundary.mjs",
+    "test:generation": "node --test tests/generation/*.test.mjs",
+    "generation:doctor": "node generation/cli.mjs doctor",
+    "generation:batch": "node generation/cli.mjs batch",
+    "generation:benchmark": "node generation/cli.mjs benchmark"
   },
-  "keywords": ["arcade", "installer", "offline", "service-worker"]
+  "keywords": [
+    "arcade",
+    "installer",
+    "offline",
+    "service-worker"
+  ],
+  "dependencies": {
+    "three": "0.184.0"
+  },
+  "optionalDependencies": {
+    "playwright": "1.58.2"
+  }
 }

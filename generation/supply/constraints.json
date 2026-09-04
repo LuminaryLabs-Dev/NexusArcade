@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "supportedModes": ["hold", "deliver", "sequence"],
+  "modeDescriptions": {
+    "hold": "Hold interact near a station to restore it.",
+    "deliver": "Collect a supply at the central depot then carry it to a station.",
+    "sequence": "Activate the numbered stations in ascending order."
+  }
+}

@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Arcade</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        overflow: hidden;
+        background: #101f2a;
+        color: #eff8ed;
+        font:
+          14px system-ui,
+          sans-serif;
+      }
+      canvas {
+        display: block;
+        width: 100vw;
+        height: 100vh;
+      }
+      header {
+        position: absolute;
+        top: 30px;
+        left: 36px;
+        pointer-events: none;
+      }
+      .eyebrow {
+        letter-spacing: 4px;
+        font-size: 10px;
+        color: #afd5c5;
+      }
+      h1 {
+        font:
+          600 32px Georgia,
+          serif;
+        margin: 10px 0 6px;
+        max-width: 600px;
+      }
+      #mission {
+        color: #bcd0c9;
+        max-width: 520px;
+        font-size: 13px;
+      }
+      aside {
+        position: absolute;
+        right: 28px;
+        top: 28px;
+        width: 210px;
+        background: #0c1a24dc;
+        border: 1px solid #739e8f55;
+        border-radius: 15px;
+        padding: 18px;
+        backdrop-filter: blur(14px);
+      }
+      .label {
+        font-size: 10px;
+        letter-spacing: 2px;
+        color: #b2c5bd;
+        margin-bottom: 7px;
+      }
+      .value {
+        font-size: 25px;
+        font-weight: 600;
+      }
+      .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+      progress {
+        width: 100%;
+        height: 6px;
+        accent-color: #b9e3a1;
+      }
+      #hint {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #0a1824d9;
+        border: 1px solid #94a99d55;
+        padding: 12px 22px;
+        border-radius: 40px;
+        white-space: nowrap;
+        color: #e3eadf;
+        font-size: 12px;
+      }
+      #overlay {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        background: #09141b88;
+      }
+      .card {
+        width: 440px;
+        text-align: center;
+        background: #0d202cef;
+        border: 1px solid #aac4b96a;
+        border-radius: 24px;
+        padding: 32px;
+        box-shadow: 0 30px 100px #0008;
+      }
+      .card h2 {
+        font:
+          38px Georgia,
+          serif;
+        margin: 10px 0 20px;
+      }
+      .card p {
+        color: #c5d7cc;
+        line-height: 1.6;
+      }
+      .card button {
+        border: 0;
+        border-radius: 24px;
+        background: #d4edb8;
+        color: #19342b;
+        font-weight: 700;
+        padding: 14px 28px;
+        margin-top: 12px;
+        cursor: pointer;
+      }
+      #overlay[hidden] {
+        display: none;
+      }
+      #phase {
+        position: absolute;
+        bottom: 86px;
+        left: 50%;
+        transform: translateX(-50%);
+        font:
+          23px Georgia,
+          serif;
+        color: #edfae4;
+        text-shadow: 0 2px 5px #000;
+      }
+      body[data-palette="amber"] progress {
+        accent-color: #edba64;
+      }
+      body[data-palette="indigo"] progress {
+        accent-color: #c3b2ef;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="view"></canvas>
+    <header>
+      <div class="eyebrow">NEXUS ARCADE / FIELD OPERATIONS</div>
+      <h1 id="title"></h1>
+      <div id="mission"></div>
+    </header>
+    <aside>
+      <div class="label">SHIFT PROGRESS</div>
+      <div class="row">
+        <span id="stage" class="value">01 / 03</span><span id="time"></span>
+      </div>
+      <div class="label" id="target-label">STATIONS</div>
+      <div class="row">
+        <span id="score" class="value">0 / 4</span><span id="cargo"></span>
+      </div>
+      <div class="label">INTEGRITY</div>
+      <progress id="health" max="100" value="100"></progress>
+      <div class="label" style="margin-top: 15px">PRESSURE</div>
+      <progress id="pressure" max="100" value="0"></progress>
+    </aside>
+    <div id="phase"></div>
+    <div id="hint"></div>
+    <div id="overlay">
+      <div class="card">
+        <div class="eyebrow">A THREE-STAGE EXPEDITION</div>
+        <h2 id="overlay-title">Ready for your shift?</h2>
+        <p id="instructions"></p>
+        <button id="start">Begin expedition</button>
+      </div>
+    </div>
+    <script type="module" src="./game.js"></script>
+  </body>
+</html>

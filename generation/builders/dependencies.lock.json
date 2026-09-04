@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "three": {
+    "version": "0.184.0",
+    "files": [
+      {
+        "path": "three.module.js",
+        "sha256": "61134198639a10885daf893fb29669ca26386e2a4cde76e8399f51e329f741f2"
+      },
+      {
+        "path": "three.core.js",
+        "sha256": "368dc78835287709a48939e8eb9a7a61d0732098bdf916e56840d458aae9ccf3"
+      }
+    ]
+  },
+  "nexusengine": {
+    "repository": "LuminaryLabs-Dev/NexusEngine",
+    "commit": "bacc8fc0073bf92910e26776a6695d2b8ec45858",
+    "files": [
+      {
+        "source": "src/foundation/seeded-random.js",
+        "file": "seeded-random.js",
+        "sha256": "4c0e769d37057ace649823f6dee187d9b7b4d0f8f7c78c21bab646c3f9412421"
+      },
+      {
+        "source": "src/core-domains/simulation/kits/simulation-kit/resources.js",
+        "file": "resources.js",
+        "sha256": "3495ccfbe08933a47ff30519cfb9ff6bf6474340314c21d78ffbf86a673b1bcd"
+      },
+      {
+        "source": "src/core-domains/simulation/kits/simulation-kit/pressure.js",
+        "file": "pressure.js",
+        "sha256": "0bca4fc9c41db9e1c70d4034ee862a6d6c35be1f0ea07513def423b38e3542f0"
+      },
+      {
+        "source": "LICENSE",
+        "file": "LICENSE",
+        "sha256": "4a0ae6ed06f277f289a4b0c20b6949640aa02bc491f0cb46b2be24d843256ca7"
+      }
+    ]
+  }
+}

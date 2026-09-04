@@ -37,7 +37,7 @@ const server = await createLocalGameServer({ root: "/var/lib/nexus-arcade" });
 console.log(server.url);
 ```
 
-Node 20 or newer is required. The package intentionally has no runtime dependencies.
+Node 20 or newer is required. The installer implementation has no runtime dependencies. The optional generation entry point uses Three.js and, for browser validation, Playwright.
 
 ## Security model
 
@@ -54,3 +54,26 @@ npm test
 npm run build
 npm pack --dry-run
 ```
+
+## Local game generation (experimental)
+
+`@luminarylabs/nexus-arcade/generation` is a separate Node-only factory. It uses
+an existing local LFM 350M service, strict decision schemas, seeded creative
+inputs, resumable batches, and one deterministic Three.js arena builder.
+The browser installer does not import the generation system.
+
+```sh
+npm install
+npx playwright install chromium
+node generation/cli.mjs doctor --server-url http://127.0.0.1:18081
+node generation/cli.mjs batch --workspace ./arcade-work --id first-batch --seed 73019 --count 3
+```
+
+The initial sandbox implementation passed the unit/integration suite and live
+model design/assembly checks. Chromium was blocked by the execution environment's
+process-socket permissions: gameplay, screenshots, and video remain unverified.
+Generated candidates are not certified arcade releases.
+
+See [the complete generation guide](generation/README.md),
+[architecture](generation/ARCHITECTURE.md), and
+[validation record](generation/VALIDATION.md).

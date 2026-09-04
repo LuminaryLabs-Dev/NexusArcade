@@ -1,0 +1,8 @@
+{
+  "duration": 90,
+  "speed": 5,
+  "targetCount": 4,
+  "hazardCount": 2,
+  "stages": 3,
+  "interactionSeconds": 0.7
+}

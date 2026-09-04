@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "family": "objective-arena",
+  "modes": ["hold", "deliver", "sequence"],
+  "engineBindings": {
+    "resource": "createResourceMeter",
+    "pressure": "createPressureChannel",
+    "random": "createSeededRandom"
+  },
+  "features": [
+    "movement",
+    "interaction",
+    "hazards",
+    "three-stage progression",
+    "win",
+    "failure",
+    "restart",
+    "keyboard",
+    "gamepad",
+    "procedural audio"
+  ],
+  "unsupported": [
+    "arbitrary generated JavaScript",
+    "new engine kits",
+    "multiplayer",
+    "cabinet deployment"
+  ]
+}

@@ -2,3 +2,10 @@ node_modules/
 *.tgz
 .DS_Store
 coverage/
+
+.arcade-generation/
+lfm-local/
+*.gguf
+*.gguf.bin
+playwright-report/
+test-results/

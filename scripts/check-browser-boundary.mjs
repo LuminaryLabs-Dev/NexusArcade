@@ -1,22 +1,32 @@
 import assert from "node:assert/strict";
 import { readFile, readdir } from "node:fs/promises";
 import path from "node:path";
-
-async function files(directory) {
-  const output = [];
-  for (const entry of await readdir(directory, { withFileTypes: true })) {
-    const file = path.join(directory, entry.name);
-    if (entry.isDirectory()) output.push(...await files(file));
-    else if (entry.isFile() && entry.name.endsWith(".mjs")) output.push(file);
+const root = process.cwd(),
+  seen = new Set();
+async function walk(file) {
+  file = path.resolve(file);
+  if (seen.has(file)) return;
+  seen.add(file);
+  assert(
+    !file.includes(path.sep + "generation" + path.sep),
+    "Browser reaches generation: " + file,
+  );
+  const s = await readFile(file, "utf8");
+  const imports = [
+    ...s.matchAll(
+      /(?:\bfrom\s*|\bimport\s*\(\s*|\bimport\s*|\brequire\s*\(\s*)["']([^"']+)["']/g,
+    ),
+  ].map((x) => x[1]);
+  for (const id of imports) {
+    assert(!id.startsWith("node:"), "Browser imports Node: " + id);
+    assert(id.startsWith("."), "Unexpected external browser dependency: " + id);
+    await walk(path.resolve(path.dirname(file), id));
   }
-  return output;
 }
-
-const roots = ["src/core", "src/browser", "dist/browser"];
-for (const root of roots) {
-  for (const file of await files(root)) {
-    const source = await readFile(file, "utf8");
-    assert.doesNotMatch(source, /(?:from\s+|import\s*)["']node:/, `${file} imports a Node-only module`);
-  }
-}
-console.log("browser boundary contains no Node-only imports");
+for (const dir of ["src/core", "src/browser", "dist/browser"])
+  for (const e of await readdir(dir, { withFileTypes: true }))
+    if (e.isFile() && e.name.endsWith(".mjs"))
+      await walk(path.join(root, dir, e.name));
+console.log(
+  `Browser boundary: ${seen.size} transitive modules, no Node/generation imports`,
+);
