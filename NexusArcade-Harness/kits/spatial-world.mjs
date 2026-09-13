@@ -9,7 +9,7 @@ export function validateWorld(w,graph){
 export const solidOpen=(b,states)=>!!b.openWhen&&states[b.openWhen.instance]?.[b.openWhen.port]===true;
 export function worldSupports(w,p,states={},margin=0){
  const r=w.actorRadius+margin;if(!Number.isFinite(p.x)||!Number.isFinite(p.z)||Math.abs(p.x)+r>w.halfExtent||Math.abs(p.z)+r>w.halfExtent)return false;
- return w.solids.every(b=>solidOpen(b,states)||Math.hypot(Math.max(0,Math.abs(p.x-b.x)-b.width/2),Math.max(0,Math.abs(p.z-b.z)-b.depth/2))>=r);
+ return w.solids.every(b=>solidOpen(b,states)||Math.hypot(Math.max(0,Math.abs(p.x-b.x)-b.width/2),Math.max(0,Math.abs(p.z-b.z)-b.depth/2))>=r-1e-9);
 }
 export function routeInWorld(w,start,goal,states={}){
  const unit=.5,min=-Math.floor((w.halfExtent-w.actorRadius-.2)/unit),max=-min,key=(x,z)=>x+','+z;

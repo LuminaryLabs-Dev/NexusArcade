@@ -33,7 +33,7 @@ export function createPilotEngine(c,{bestSeconds=null}={}){
  rotation=c.nodes.map(n=>domainState[n.id]?.rotation??0);
  completed=domainState.delivery?.completed??domainState.gates?.completed??(composed.complete?c.nodes.map(n=>n.id):[]);
  for(const e of composed.events)emit(e.type,e.id);
- if(composed.complete){mode='won';lastResult={seconds:elapsed,previousBest:best,improvement:best===null?null:best-elapsed,personalBest:best===null||elapsed<best};best=best===null?elapsed:Math.min(best,elapsed);emit('won','session');}else if(elapsed>=c.deadlineSeconds){mode='lost';emit('lost','session');}
+ if(composed.complete){mode='won';lastResult={seconds:elapsed,previousBest:best,improvement:best===null?null:best-elapsed,personalBest:best===null||elapsed<best};best=best===null?elapsed:Math.min(best,elapsed);emit('won','session');}else if(domainState['resource-goal']?.failed||elapsed>=c.deadlineSeconds){mode='lost';emit('lost',domainState['resource-goal']?.failed?'waste-capacity':'session');}
  }};
  }});
  return createEngine({kits:[createSimulationKit(),createMotionKit(),createActionLocomotionKit({speed:c.kind==='rally'?handling.maxSpeed:6,groundDrag:0,groundAcceleration:100,start:c.playerStart}),createDomainGraphKit(c.domainGraph),kit]});

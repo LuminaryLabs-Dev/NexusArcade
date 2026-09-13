@@ -123,8 +123,9 @@ contradictory passing checks with unresolved findings. G01 completion checks the
 full frozen plan rather than accepting phase labels alone.
 
 G02 now has an executable typed behavior graph in `kits/domain-graph.mjs`.
-Eight trusted domain definitions cover controls, delivery, membership conditions,
-valves, combined conditions, reservoirs, checkpoints and objectives. Closed settings, port types,
+Thirteen trusted domain definitions cover controls, delivery, membership conditions,
+valves, combined conditions, reservoirs, checkpoints, objectives and conservative
+flow sources, routers, links, storage and resource goals. Closed settings, port types,
 required connections, unique writers, objective contribution and cycle ordering
 are checked before assembly; explicit delayed values use the previous tick.
 The three development pilots persist these graphs and execute them through a
@@ -156,3 +157,19 @@ historical titles using it are hidden and their playable endpoints are unavailab
 Historical artifacts remain intact. Automatic rolls choose flow or racing, and
 the CLI defaults to racing. Transfer interactions remain explicitly selectable;
 renaming a template does not establish new gameplay or novelty.
+
+Flow generation combines two station layouts with two bounded process presets.
+The selector routes fluid through a short lossy branch, a longer efficient branch,
+both branches, or neither. Each branch has its own valve; target and waste tanks
+accumulate actual volume. Reaching the waste limit fails immediately. The shared
+graph uses rates in litres/second and stored volumes in litres; duplicating a rate
+output is rejected unless an explicit router divides it. Every tested tick accounts
+for pumped fluid as stored target volume, waste or overflow.
+
+`kits/flow-layout.mjs` supplies station footprints and presentation paths. Recessed
+pipe visuals and moving pulses display graph state; they do not implement gameplay.
+Personal-best review compares both routes under identical process rules and checks
+their waste, timing, conservation, capacity failure and reset. World-label size is
+checked separately from model image review. Model approval cannot override an
+independent image rejection. These are development capability checks, not finished
+concept interpretation, collection novelty or target-device qualification.

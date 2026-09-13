@@ -83,3 +83,42 @@ browser boundary, live library and historical-endpoint checks. Receipts are
 G02/editorial-policy-checks.json, editorial-ui-checks.json and
 editorial-compatibility-checks.json. No new game admitted in this policy increment.
 G02 and the remaining foundation gates stay incomplete.
+
+G02 flow increment: replaced the fixed all-valves-aligned puzzle with source,
+router, lossy-link, storage and resource-goal domains. Two station layouts and two
+process presets support SHORT, LONG, BOTH and OFF configurations. Per-route valves
+control actual target/waste volumes; waste capacity ends the game immediately.
+Rate outputs cannot be duplicated without an explicit conservative router.
+Sixteen full input-driven runs cover all four combinations, including blocked
+routes; each tick checks conservation and footprint support. Three malformed-flow
+cases reject. A numerical boundary tolerance and2.3m approach targets corrected
+navigation endpoints without reducing the required path clearance.
+
+Harness previews flow-routes-001b and flow-routes-002b pass64 browser checks. Their
+short/efficient runs take39.05→24.30s and43.75→25.50s; waste falls146.74→14.56L and
+135→16.79L. Local Thinking1.2B/VL3B used; original idea clocks retained across
+revisions (264.98s and226.18s). The first candidate was independently rejected for
+an oversized world label despite model PASS; its launch was cleaned by the harness.
+No generated game code was edited. Earlier revisions remain development evidence.
+
+Actual initial/consequence frames and supplied-client captures inspected. The final
+client uses real inputs to open a route and observe target accumulation. One probe
+stopped outside interaction range; its approach was corrected. Another observation
+hit a known server restart and was rerun against the same immutable game. Six world
+labels stay220x55 pixels at three desktop viewport sizes. Wall geometry now matches
+the room bounds; the camera remains at the player position. Live Play/Back releases
+the device reservation correctly. Existing41 tests/build/browser boundary pass;
+package inspection excludes experiments and models. Artifact/runtime hashes match.
+
+Evidence: G02/flow-domain-checks.json, flow-pilot-evidence.json,
+flow-layout-checks.json, flow-client-checks.json and flow-ui-checks.json. Server4318
+is refreshed. Next: implement the frozen Rally shortcut tradeoff, then connect the
+master catalog/concept interpretation to these reusable domains and finish all
+fourteen gates, integrated repair, qualification/review split and scoped migration.
+G01 complete; G02 running; G03–G33 planned; factory accepted0/1000. These capability
+previews do not prove full presentation, audio, novelty or hardware qualification.
+
+Open design finding: the efficient flow route currently wins on both time and
+waste in each preset. Its capability and replay improvement are verified, but
+non-dominated strategic choices and meaningful preset diversity remain unproven.
+Calibrate setup distance/process lists before treating this as a finished tradeoff.

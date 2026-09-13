@@ -43,3 +43,10 @@ raising an output allowance that cannot fit. Development preview PASS still does
 not establish factory novelty, concept coverage, presentation or device readiness.
 
 User editorial rule: the excluded occupation term in text-policy.mjs must never appear in assistant replies, model inputs/outputs, or player-facing copy. Reject it locally without repeating it in repair prompts. Do not recycle the same delivery template under a new name; automatic generation excludes the transfer family. Preserve historical artifacts, but hide disallowed titles and block their playable endpoints. Expand variety through reusable interactions and compatible concept lists.
+
+Flow composition uses explicit source, router, lossy-link, storage and resource-goal
+domains. Rates are litres/second; volumes are litres. A rate port has one consumer;
+splitting requires an explicit router. Verify per-tick conservation, alternate
+routes, waste-capacity failure and reset through inputs. Renderer paths and station
+footprints come from shared layout data. World labels must have bounded pixel size;
+model approval alone cannot establish readability or override image-based rejection.

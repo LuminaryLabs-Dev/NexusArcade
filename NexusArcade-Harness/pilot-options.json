@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "scope": "Seeded development-pilot combinations; not factory eligibility or novelty proof",
   "rally": {
     "tracks": [
@@ -209,6 +209,82 @@
         "layout": "staggered-exchange",
         "cargo": "relay-crossing",
         "reason": "Efficient full run did not use doors or change when door opening was disabled."
+      }
+    ]
+  },
+  "conduit": {
+    "layouts": [
+      {
+        "id": "split-bay",
+        "selector": {
+          "x": 0,
+          "z": 3
+        },
+        "direct": {
+          "x": -6,
+          "z": 0
+        },
+        "efficient": {
+          "x": 6,
+          "z": -4
+        },
+        "source": {
+          "x": -10,
+          "z": 7
+        },
+        "target": {
+          "x": -8,
+          "z": -9
+        },
+        "waste": {
+          "x": 8,
+          "z": -9
+        }
+      },
+      {
+        "id": "offset-bay",
+        "selector": {
+          "x": 0,
+          "z": 3
+        },
+        "direct": {
+          "x": -6,
+          "z": -1
+        },
+        "efficient": {
+          "x": 6,
+          "z": -5
+        },
+        "source": {
+          "x": -10,
+          "z": 7
+        },
+        "target": {
+          "x": -8,
+          "z": -10
+        },
+        "waste": {
+          "x": 8,
+          "z": -10
+        }
+      }
+    ],
+    "processes": [
+      {
+        "id": "steady-stream",
+        "rate": 6,
+        "targetCapacity": 90,
+        "wasteCapacity": 180,
+        "directEfficiency": 0.4,
+        "efficientEfficiency": 0.85
+      },
+      {
+        "id": "strong-stream",
+        "rate": 8,
+        "targetCapacity": 120,
+        "wasteCapacity": 230,
+        "directEfficiency": 0.45,
+        "efficientEfficiency": 0.9
       }
     ]
   }
