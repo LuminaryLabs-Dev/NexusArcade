@@ -56,3 +56,14 @@ short setup saves time but sacrifices waste headroom; the same input-driven valv
 mistake fails the short route and permits recovery on the longer route. Calibrate
 existing layout/process lists before extending behavior. Do not equate process
 preset counts with meaningful collection diversity.
+
+Rally route composition uses a wide circuit plus a narrower curved infield road
+between shared ordered checkpoints. Track data supplies both rendered geometry
+and swept oriented vehicle support (including tires and lamps). Keep normal-route
+clearance and paired mistake/recovery witnesses; a shorter mesh alone is not a
+proven tradeoff. Reverse uses the existing brake input and is capped below forward
+speed. Visual reviewers must know that both roads are valid and the shortcut is
+optional; do not let an invented route requirement become an acceptance rule.
+Validate steering against the actual camera-right vector, not just world heading.
+Reuse bounded world labels for route signs. Model image verdicts require grounded
+evidence; a PASS with invented rules or progress is not factory qualification.

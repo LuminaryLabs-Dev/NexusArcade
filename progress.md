@@ -153,3 +153,39 @@ The earlier flow-route-balance finding is resolved for these data combinations.
 They do not prove collection novelty. Next is Rally safe/shortcut routes with
 render-matching footprint checks, then catalog/concept compilation and the
 remaining frozen gates. G02 remains running; G03–G33 planned; accepted0/1000.
+
+Rally foundation increment: shared circuit/shortcut lists now drive rendered roads
+and swept oriented car support. All36 retained route/handling/width combinations
+pass144 normal and matched steering-error/recovery runs. Normal runs preserve
+0.15m clearance; removing the shortcut blocks its former route while the circuit
+remains finishable. D/A steering is verified against the actual chase camera;
+braking can reverse for recovery. Shortcut labels reuse bounded world labels.
+
+The harness rejected earlier previews for inverted camera-relative steering and
+oversized signs, retaining diagnostics and removing their launch files. Revised
+rally-route-001d passed32 software-WebGL browser checks in23m56s on its original
+clock. Independent image and supplied-client audits confirm visible road/car,
+bounded signs and accelerate/steer/brake/reverse behavior with no client errors.
+These later audits do not extend the idea deadline or grant qualification.
+
+rally-route-002c expired during browser testing; its launch was cleaned by the
+harness. rally-route-003 is an explicit replacement using seed10: different
+circuit, shortcut span, handling and road width. It passed32 browser checks and
+image review in7m16s; the shortcut saved1.90s. Actual frames inspected. No generated
+games edited. Both previews remain NEEDS_REVIEW, outside the accepted total.
+
+Existing41 tests, build, browser boundary and package inspection pass. The image
+model still invents route rules/progress despite PASS verdicts: ground visual
+findings before using them for factory acceptance. Next: map existing catalog
+options and concept intent to executable typed graphs with causal witnesses;
+then complete the remaining frozen validation, repair and qualification gates.
+G02 remains running; G03–G33 planned; accepted0/1000.
+
+Timeout diagnosis: guard ordering previously serialized screenshot byte arrays
+into the failed SPINE. Image extraction/persistence now precedes the deadline
+guard; timely and expired direct fault injections preserve image files and keep
+the report compact. Existing41 tests/build/browser boundary pass after this fix.
+The old rally-route-002c record is already hash-referenced by replacement lineage;
+retain it until a harness migration updates those references while preserving all
+diagnostic bytes. Do not edit the generated record manually or silently stale its
+evidence. No new admissions are needed before catalog/domain integration work.

@@ -180,3 +180,25 @@ retains enough capacity to recover from a 1.5-second closed-valve mistake that
 fails the short route. Browser review repeats that same mistake through keyboard
 inputs on both routes. A route that wins both time and waste is not evidence of a
 tradeoff; numeric presets alone do not establish distinct collection games.
+
+Rally combines three circuits, two curved infield shortcuts, three handling
+settings and two main-road widths. Checkpoints before and after the alternate
+road are shared by both routes. Shortcut joins, rendered road strips, curbs and
+collision support use `kits/track-layout.mjs`; car collision covers its tires,
+lamps and body, including intermediate movement/rotation poses. Hold the brake
+key to reverse when recovering from a road-edge collision.
+
+The route matrix checks every retained combination: complete wide/shortcut laps,
+at least 0.25 seconds and 1% improvement, 0.15m normal-route clearance, and a
+matched steering error followed by input-driven recovery. Removing the shortcut
+must block its former route while leaving the wide road playable. Browser checks
+measure actual car dimensions, repeat both normal and mistake laps, and verify
+records, pause, restart and reverse. These prove a reusable route choice, not
+distinct collection games or full foundation acceptance.
+
+Steering checks use the actual camera-right vector: D turns toward the right of
+the chase view and A toward the left. World-space heading alone cannot prove
+correct controls. Shortcut signs reuse bounded 220-by-55-pixel world labels and
+hide outside the HUD-safe region. Independent image inspection remains necessary:
+the local image model can invent route rules or misread progress even when its
+verdict is PASS. Its observations do not establish gameplay correctness.

@@ -1,5 +1,5 @@
 {
-  "version": 4,
+  "version": 5,
   "scope": "Seeded development-pilot combinations; not factory eligibility or novelty proof",
   "rally": {
     "tracks": [
@@ -49,7 +49,7 @@
         "maxSpeed": 15,
         "acceleration": 7,
         "braking": 16,
-        "turnRate": 1.5
+        "turnRate": 1.7
       }
     ],
     "presentation": [
@@ -73,6 +73,32 @@
         "ground": 5330790,
         "rock": 3818324,
         "accent": 5690879
+      }
+    ],
+    "shortcuts": [
+      {
+        "id": "south-cut",
+        "from": 0,
+        "to": 0.5,
+        "width": 3.4,
+        "allowedTracks": [
+          "long-oval",
+          "flowing-triangle",
+          "technical-clover"
+        ],
+        "curve": 0.25
+      },
+      {
+        "id": "north-cut",
+        "from": 0.5,
+        "to": 1,
+        "width": 3.4,
+        "allowedTracks": [
+          "long-oval",
+          "flowing-triangle",
+          "technical-clover"
+        ],
+        "curve": 0.25
       }
     ]
   },
