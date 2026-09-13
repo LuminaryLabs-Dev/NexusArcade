@@ -35,3 +35,34 @@ G02 running; G03-G33 planned; accepted0/1000. Next: use the graph layer for actu
 catalog-selected, causally different compositions; finish configurable movement,
 world/presenter bindings, routed/branching interactions, frozen full validation,
 qualification-versus-review and dependency-scoped catalog/evidence migration.
+
+G02 Courier increment: added typed membership conditions and shared spatial-world
+geometry for rendering, body-footprint collision and routing. Four door layouts
+combine with two cargo layouts through explicit compatibility. Calibration rejected
+one pairing whose efficient route ignored the doors; seven useful pairings remain.
+36 input-driven full runs across12 seeds compare delivery orders and disabled-door
+controls. Two door collision fixtures and three malformed-input checks also pass.
+
+Harness-built doors-courier-001b and doors-courier-007 pass92 browser assertions.
+Their two-run times are23→18s and23.6→17.2s. Local Thinking1.2B/VL3B used; final
+initial/consequence/detail frames and supplied web-game client capture inspected.
+The first attempt filled the VL4K context with three images and failed. Shared
+review now sends one image per call and rejects exhausted-context retry growth.
+The successful revision retained that idea's original25-minute deadline (326.8s
+total); the second idea completed in87.7s. Failed launch cleanup retained diagnostics.
+These are development previews, not qualifying or factory-accepted games.
+
+Existing41 tests/build/browser boundary pass; dry-run package103 files contains no
+experiment outputs/models/captures. Runtime/artifact/image hashes verified. Updated
+server on4318 loaded new source; six live library/Play/Back/lease/image checks pass.
+An initial UI probe used absent#hud; corrected to inspected#progress and actual game
+state, with its own reservation released. No generated game code edited.
+
+Evidence: G02/causal-door-checks.json, door-collision-checks.json,
+context-headroom-check.json, door-pilot-evidence.json, door-ui-checks.json and
+doors-client/. Remaining: VL prose sometimes repeats instructions or invents
+relationships, the static detail crop misses the central interaction, and the
+player tag is small. These checks do not establish full presentation/comprehension.
+Improve targeted review framing, then build frozen Conduit route/process choices;
+finish catalog/concept wiring, shared repair, qualification/review split and all
+fourteen frozen gates. G01 complete; G02 running; G03–G33 planned; accepted0/1000.

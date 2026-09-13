@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "scope": "Seeded development-pilot combinations; not factory eligibility or novelty proof",
   "rally": {
     "tracks": [
@@ -73,6 +73,142 @@
         "ground": 5330790,
         "rock": 3818324,
         "accent": 5690879
+      }
+    ]
+  },
+  "courier": {
+    "layouts": [
+      {
+        "id": "staggered-exchange",
+        "gateZ": [
+          -1.0,
+          1.0
+        ],
+        "unlocks": [
+          "c0",
+          "c1"
+        ],
+        "allowedCargo": [
+          "return-crossing"
+        ]
+      },
+      {
+        "id": "crossed-exchange",
+        "gateZ": [
+          1.0,
+          -1.0
+        ],
+        "unlocks": [
+          "c1",
+          "c0"
+        ],
+        "allowedCargo": [
+          "return-crossing",
+          "relay-crossing"
+        ]
+      },
+      {
+        "id": "north-links",
+        "gateZ": [
+          -1.0,
+          -1.0
+        ],
+        "unlocks": [
+          "c1",
+          "c0"
+        ],
+        "allowedCargo": [
+          "relay-crossing",
+          "return-crossing"
+        ]
+      },
+      {
+        "id": "south-links",
+        "gateZ": [
+          1.0,
+          1.0
+        ],
+        "unlocks": [
+          "c0",
+          "c1"
+        ],
+        "allowedCargo": [
+          "return-crossing",
+          "relay-crossing"
+        ]
+      }
+    ],
+    "cargoLayouts": [
+      {
+        "id": "relay-crossing",
+        "nodes": [
+          {
+            "id": "c0",
+            "x": -10,
+            "z": -2,
+            "receiver": {
+              "x": 0,
+              "z": 3
+            }
+          },
+          {
+            "id": "c1",
+            "x": 10,
+            "z": -2,
+            "receiver": {
+              "x": 0,
+              "z": -3
+            }
+          },
+          {
+            "id": "c2",
+            "x": -10,
+            "z": 2,
+            "receiver": {
+              "x": 10,
+              "z": 2
+            }
+          }
+        ]
+      },
+      {
+        "id": "return-crossing",
+        "nodes": [
+          {
+            "id": "c0",
+            "x": -10,
+            "z": 2,
+            "receiver": {
+              "x": 0,
+              "z": -3
+            }
+          },
+          {
+            "id": "c1",
+            "x": 10,
+            "z": 2,
+            "receiver": {
+              "x": 0,
+              "z": 3
+            }
+          },
+          {
+            "id": "c2",
+            "x": 10,
+            "z": -2,
+            "receiver": {
+              "x": -10,
+              "z": -2
+            }
+          }
+        ]
+      }
+    ],
+    "excludedCombinations": [
+      {
+        "layout": "staggered-exchange",
+        "cargo": "relay-crossing",
+        "reason": "Efficient full run did not use doors or change when door opening was disabled."
       }
     ]
   }

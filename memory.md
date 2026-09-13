@@ -33,3 +33,11 @@ executes it. Family-specific movement/rendering still require further compositio
 The arcade uses this pilot path, with honest challenge choices instead of unused
 complexity controls. Renewable player reservations expire after 60 seconds; late
 renewals never reopen a closed session, and expired views require explicit reload.
+
+Courier world geometry is shared by rendering, body-footprint collision and route
+planning. Seeded door/cargo lists carry explicit compatibility; full input-driven
+door ablations must show a gameplay consequence before a pairing is retained.
+Predicted path length alone is insufficient evidence. Visual review sends one
+image per local VL call; context exhaustion requires splitting input rather than
+raising an output allowance that cannot fit. Development preview PASS still does
+not establish factory novelty, concept coverage, presentation or device readiness.

@@ -4,9 +4,11 @@ import path from 'node:path';
 import {experiments,root,safeId} from './harness.mjs';
 import {generatePilot} from './pilot-run.mjs';
 import {pilotKinds} from './pilot-spec.mjs';
+import {fingerprint} from './assembly.mjs';
 import {cleanupFailed} from './cleanup.mjs';
 import {library} from './library.mjs';
 import {queueSnapshot,writerLease} from './factory.mjs';
+const generationSource=await fingerprint();
 let active=null,controller=null,playerSession=null,releasePlayer=null;const port=Number(process.env.PORT??4318);
 let playerActivity=0,renewablePlayer=false,playerOperation=Promise.resolve();
 const withPlayer=fn=>{const next=playerOperation.then(fn);playerOperation=next.catch(()=>{});return next;};
@@ -45,13 +47,14 @@ const server=createServer(async(req,res)=>{try{
   const {kind='auto',seed=Math.floor(Math.random()*4294967296)}=data;
   if(!['auto',...pilotKinds].includes(kind)||!Number.isInteger(seed)||seed<0||seed>4294967295)throw Error('Invalid challenge or seed');
   const selectedKind=kind==='auto'?pilotKinds[seed%pilotKinds.length]:kind;
+  if(await fingerprint()!==generationSource){res.writeHead(503);return res.end('The generator source was updated. Restart the harness before creating another game.');}
   const id='game-'+Date.now();controller=new AbortController();active={id,status:'QUEUED'};
   generatePilot({id,seed,kind:selectedKind,signal:controller.signal,onProgress:p=>active=p}).then(async s=>{const final={id,status:s.status,error:s.error,elapsedMs:s.elapsedMs};if(s.status==='FAIL'){active={id,status:'CLEANING',elapsedMs:s.elapsedMs};try{final.cleanup=await cleanupFailed(id,{apply:true});}catch(e){final.cleanup={status:'RETAINED',reason:e.message};}}if(active?.id===id)active=final;}).catch(e=>{if(active?.id===id)active={id,status:'FAIL',error:e.message};});
   res.setHeader('Content-Type','application/json');return res.end(JSON.stringify({id}));
  }
  if(req.method==='POST'&&url.pathname==='/api/cancel'){controller?.abort();return res.end('Cancellation requested');}
  if(url.pathname.startsWith('/.runtime/')){const relative=decodeURIComponent(url.pathname);if(!/^\/\.runtime\/[a-f0-9]{64}\/[a-zA-Z0-9_./-]+$/.test(relative)||relative.split('/').includes('..'))throw Error('Invalid runtime path');res.setHeader('Content-Type',/\.(mjs|js)$/.test(relative)?'text/javascript':'application/json');return res.end(await readFile(path.join(experiments,relative)));}
- if(url.pathname.startsWith('/games/')){const parts=url.pathname.split('/');const id=safeId(parts[2]);if(parts.length!==4||!['index.html','review.png','spine.json','composition.json','overview.png'].includes(parts[3]))throw Error('Unknown artifact');res.setHeader('Content-Type',parts[3].endsWith('.png')?'image/png':parts[3].endsWith('.json')?'application/json':'text/html; charset=utf-8');let artifactId=id;if(parts[3]!=='spine.json'){try{const s=JSON.parse(await readFile(path.join(experiments,id,'spine.json')));artifactId=safeId(s.candidateId??id);}catch(e){if(e.code!=='ENOENT')throw e;}}return res.end(await readFile(path.join(experiments,artifactId,parts[3])));}
+ if(url.pathname.startsWith('/games/')){const parts=url.pathname.split('/');const id=safeId(parts[2]);if(parts.length!==4||!['index.html','review.png','spine.json','composition.json','overview.png','before-doors.png','detail.png'].includes(parts[3]))throw Error('Unknown artifact');res.setHeader('Content-Type',parts[3].endsWith('.png')?'image/png':parts[3].endsWith('.json')?'application/json':'text/html; charset=utf-8');let artifactId=id;if(parts[3]!=='spine.json'){try{const s=JSON.parse(await readFile(path.join(experiments,id,'spine.json')));artifactId=safeId(s.candidateId??id);}catch(e){if(e.code!=='ENOENT')throw e;}}return res.end(await readFile(path.join(experiments,artifactId,parts[3])));}
  if(url.pathname==='/'){res.setHeader('Content-Type','text/html; charset=utf-8');return res.end(await readFile(path.join(root,'ui.html')));}
  res.writeHead(404);res.end('Not found');
  }catch(e){res.writeHead(400);res.end(e.message);}});

@@ -12,6 +12,7 @@ export class Models {
       const key=hash(JSON.stringify({reason,limit}));if(tried.has(key))throw Error('Repeated ineffective model correction: '+reason);tried.add(key);
       try{return await this.ask(role,stage,prompt+(reason?' Correct this validation error: '+reason:''),schema,limit,image);}
       catch(e){if(this.signal?.aborted)throw e;const message=e.message;
+        if(message.startsWith('Truncated ')&&Number.isFinite(this.spine.models?.[role]?.context)&&this.spine.models[role].context-(this.spine.calls.at(-1)?.inputTokens??0)<256)throw Error('Model context exhausted; split input for '+stage);
         if(message.startsWith('Truncated ')&&limit<2000){limit=Math.min(2000,limit*2);reason='Return the complete compact JSON object. Keep all text fields short.';}
         else if(e instanceof SyntaxError||/invalid|unknown|expected|missing|pattern|length/i.test(message)&&!/^LM Studio HTTP/.test(message)){reason=message.slice(0,180);}
         else throw e;

@@ -14,7 +14,7 @@ node NexusArcade-Harness/cli.mjs queue
 
 The arcade at http://127.0.0.1:4318 opens with searchable games, 24 per page.
 Play opens an embedded player; Back restores the search, focus and scroll.
-Complexity, seed and diagnostics are under Generation options. Keyboard input is
+Challenge, seed and diagnostics are under Generation options. Keyboard input is
 required. New players pause on focus loss and require explicit resume.
 Historical immutable players retain their original behavior.
 
@@ -32,7 +32,9 @@ Both currently use 4K contexts. The harness verifies metadata before inference.
 Each admitted idea gets 25 minutes including loading, inference, repair and
 validation. There is no cumulative token or improvement-pass quota. Per-request
 output/context limits still apply. Invalid responses get bounded schema feedback;
-truncation can increase the individual output allowance. Repeated ineffective
+truncation can increase the individual output allowance when context space remains.
+Image review uses one frame per call; a full context stops for input splitting
+instead of repeatedly increasing an output allowance that cannot fit. Repeated ineffective
 corrections stop. Cancellation, wall-clock rollback and expiry fail the attempt.
 
 ```sh
@@ -111,10 +113,9 @@ protected. New failed CLI pilot runs invoke this cleanup automatically. Independ
 review may reject a passing development preview through `rejectPreview` with
 hashed evidence; this removes its card without pretending it passed factory review.
 
-The new seeded Rally list path is available through `cli.mjs pilot --kind rally`.
-The arcade library displays passing results automatically. The main Generate action
-still uses the earlier platform development path; generic catalog integration and
-its UI admission path remain foundation work.
+The seeded pilot paths are available through `cli.mjs pilot` and the arcade Generate
+action. The library displays passing development previews automatically. Generic
+master-catalog integration remains foundation work.
 
 Improvement rejects equal-score revisions and regressions, restores the best
 configuration and its findings before proposing another change, and rejects
@@ -122,8 +123,8 @@ contradictory passing checks with unresolved findings. G01 completion checks the
 full frozen plan rather than accepting phase labels alone.
 
 G02 now has an executable typed behavior graph in `kits/domain-graph.mjs`.
-Seven trusted domain definitions cover controls, delivery, valves, combined
-conditions, reservoirs, checkpoints and objectives. Closed settings, port types,
+Eight trusted domain definitions cover controls, delivery, membership conditions,
+valves, combined conditions, reservoirs, checkpoints and objectives. Closed settings, port types,
 required connections, unique writers, objective contribution and cycle ordering
 are checked before assembly; explicit delayed values use the previous tick.
 The three development pilots persist these graphs and execute them through a
@@ -137,3 +138,13 @@ New player sessions renew from the arcade, expire after 60 seconds without renew
 and cannot be resurrected by late renewal requests. Expired views pause and require
 explicit reload. Older clients without leaseVersion 1 keep their original explicit
 Back behavior until refreshed. Failed server-generated pilots use protected cleanup.
+
+Courier selects compatible room-door and cargo layouts from `pilot-options.json`.
+Delivery membership opens bound shortcut doors. `kits/spatial-world.mjs` supplies
+the same solids to rendering, body-footprint collision and route planning. Full
+input-driven checks compare delivery orders and disable door opening to verify
+that shortcuts actually contribute. Combinations without a measurable contribution
+are excluded in the source list, not rescued by lowering the acceptance bar.
+These checks demonstrate route/replay behavior; they do not establish collection
+novelty, concept coverage or finished presentation. After shared generation source
+changes, restart the server: new admission rejects a stale loaded generator.
