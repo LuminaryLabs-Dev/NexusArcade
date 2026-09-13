@@ -1,0 +1,3 @@
+import { domainNode } from "../../manifest-input.js";
+
+export default domainNode({ id: "simulation-pursuit-pressure-domain", domainPath: "n:simulation:pursuit-pressure", parentDomainPath: "n:simulation", label: "Pursuit Pressure", responsibility: "Own coherent pursuit distance, warning bands, caught state, recovery, and transition history.", owns: ["pursuit distance", "pressure bands", "caught state", "transition history"], forbiddenResponsibilities: ["pursuer movement", "game fail state", "presentation alerts"], requires: ["n:simulation"], provides: ["n:simulation:pursuit-pressure", "simulation:pursuit-pressure"], proofReferences: ["src/core-domains/simulation/tests/restored-progression-pressure.mjs"] });

@@ -1,0 +1,3 @@
+import { domainNode } from "../../../manifest-input.js";
+
+export default domainNode({ id: "simulation-physics-world-contact-domain", domainPath: "n:simulation:physics:world-contact", parentDomainPath: "n:simulation:physics", label: "World Contact", responsibility: "Own portable world-contact resolution and correction records.", owns: ["world contact", "slope response", "impact record", "contact correction"], forbiddenResponsibilities: ["physics backend", "locomotion intent", "soft respawn", "terrain rendering"], requires: ["n:simulation:physics"], provides: ["n:simulation:physics:world-contact", "physics:world-contact"], proofReferences: ["src/core-domains/simulation/tests/restored-motion-behaviors.mjs"] });

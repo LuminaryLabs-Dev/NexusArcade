@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../manifest-input.js";
+
+export default atomicKit({ id: "lifecycle-facility-adapter-kit", kind: "adapter-kit", responsibility: "Translate accepted Lifecycle facility effects into exact-once Facility Operations commands.", domainPath: "n:simulation:progression:lifecycle", apiName: "lifecycleFacility", requires: ["progression:lifecycle", "operations:facility"], provides: ["progression:lifecycle-facility-adapter"], module: "./src/core-domains/simulation/adapters/lifecycle-facility-adapter-kit/index.js", exportName: "createLifecycleFacilityAdapterKit", publicSubpath: "./domains/simulation/adapters/lifecycle-facility", proofReferences: ["src/core-domains/simulation/tests/restored-integration-adapters.mjs"] });

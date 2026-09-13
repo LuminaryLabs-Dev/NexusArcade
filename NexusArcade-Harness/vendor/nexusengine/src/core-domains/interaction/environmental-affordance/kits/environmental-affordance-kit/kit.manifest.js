@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../manifest-input.js";
+
+export default atomicKit({ id: "environmental-affordance-kit", responsibility: "Own read-only affordance proximity queries and exact-once activation progress.", domainPath: "n:interaction:environmental-affordance", apiName: "environmentalAffordances", requires: ["n:interaction"], provides: ["n:interaction:environmental-affordance", "interaction:environmental-affordance"], module: "./src/core-domains/interaction/environmental-affordance/kits/environmental-affordance-kit/index.js", exportName: "createEnvironmentalAffordanceKit", publicSubpath: "./domains/interaction/environmental-affordance", proofReferences: ["src/core-domains/interaction/tests/restored-interaction-behaviors.mjs"] });

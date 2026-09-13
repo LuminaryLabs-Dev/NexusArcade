@@ -1,0 +1,3 @@
+import { domainNode } from "../../../manifest-input.js";
+
+export default domainNode({ id: "runtime-sequence-schedule-domain", domainPath: "n:runtime:sequence:schedule", parentDomainPath: "n:runtime:sequence", label: "Runtime Schedule", responsibility: "Own deterministic elapsed-time schedules and occurrence records.", owns: ["schedule elapsed time", "cycle state", "occurrence records"], forbiddenResponsibilities: ["authored story", "facility output", "wall-clock access"], requires: ["n:runtime:sequence"], provides: ["n:runtime:sequence:schedule", "sequence:schedule"], proofReferences: ["src/core-domains/simulation/tests/restored-economy-operations.mjs"] });

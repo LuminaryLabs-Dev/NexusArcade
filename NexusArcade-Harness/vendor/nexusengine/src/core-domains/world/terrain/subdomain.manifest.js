@@ -1,0 +1,3 @@
+import { domainNode } from "../../manifest-input.js";
+
+export default domainNode({ id: "world-terrain-domain", domainPath: "n:world:terrain", parentDomainPath: "n:world", label: "World Terrain", responsibility: "Own deterministic terrain layer evaluation, sampling, cell preparation, streaming state, and portable cell evidence.", owns: ["terrain layers", "terrain samples", "terrain cells", "terrain streaming state"], forbiddenResponsibilities: ["terrain rendering", "authored presets", "camera volumes", "game routes"], requires: ["n:world"], provides: ["n:world:terrain", "world:terrain-sampling", "world:terrain-provider"], proofReferences: ["src/core-domains/world/tests/restored-world-behaviors.mjs"] });

@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../manifest-input.js";
+
+export default atomicKit({ id: "hazard-field-kit", responsibility: "Own deterministic bounded hazards, verified spawn identities, motion, and read-only collision queries.", domainPath: "n:simulation:hazard-field", apiName: "hazardField", requires: ["n:simulation"], provides: ["n:simulation:hazard-field", "simulation:hazard-field"], module: "./src/core-domains/simulation/hazard-field/kits/hazard-field-kit/index.js", exportName: "createHazardFieldKit", publicSubpath: "./domains/simulation/hazard-field", proofReferences: ["src/core-domains/simulation/tests/restored-progression-pressure.mjs"] });

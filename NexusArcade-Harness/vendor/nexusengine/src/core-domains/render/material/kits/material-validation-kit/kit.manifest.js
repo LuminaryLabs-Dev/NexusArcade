@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../manifest-input.js";
+
+export default atomicKit({ id: "material-validation-kit", responsibility: "Prove one Material target against exact completed Shader compile and reflection records.", domainPath: "n:render:material", apiName: "renderMaterialValidation", requires: ["n:render:material", "render:material-instance", "render:material-variant", "render:shader-compile", "render:shader-reflection"], provides: ["render:material-validation"], module: "./src/core-domains/render/material/kits/material-validation-kit/index.js", exportName: "createMaterialValidationKit", publicSubpath: "./domains/render/material/validation", proofReferences: ["tests/core-domains/core-graphics-domain-smoke.mjs"] });

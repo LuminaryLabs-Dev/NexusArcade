@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../../manifest-input.js";
+
+export default atomicKit({ id: "request-fulfillment-kit", responsibility: "Own spatial request destinations, deadlines, completion, expiry, and reward totals.", domainPath: "n:interaction:request:fulfillment", apiName: "requestFulfillment", requires: ["n:interaction"], provides: ["n:interaction:request:fulfillment", "interaction:request-fulfillment"], module: "./src/core-domains/interaction/request/fulfillment/kits/request-fulfillment-kit/index.js", exportName: "createRequestFulfillmentKit", publicSubpath: "./domains/interaction/request/fulfillment", proofReferences: ["src/core-domains/interaction/tests/restored-interaction-behaviors.mjs"] });

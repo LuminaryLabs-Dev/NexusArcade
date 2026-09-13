@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../../manifest-input.js";
+
+export default atomicKit({ id: "world-contact-kit", responsibility: "Resolve portable world contact, slope, impact, stability, and correction records without implementing a physics backend.", domainPath: "n:simulation:physics:world-contact", apiName: "worldContact", requires: ["n:simulation:physics"], provides: ["n:simulation:physics:world-contact", "physics:world-contact"], module: "./src/core-domains/simulation/physics/world-contact/kits/world-contact-kit/index.js", exportName: "createWorldContactKit", publicSubpath: "./domains/simulation/physics/world-contact", proofReferences: ["src/core-domains/simulation/tests/restored-motion-behaviors.mjs"] });

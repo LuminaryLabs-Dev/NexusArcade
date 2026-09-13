@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../manifest-input.js";
+
+export default atomicKit({ id: "pursuit-pressure-kit", responsibility: "Own coherent pursuit distance, warning bands, caught state, recovery, and transition history.", domainPath: "n:simulation:pursuit-pressure", apiName: "pursuitPressure", requires: ["n:simulation"], provides: ["n:simulation:pursuit-pressure", "simulation:pursuit-pressure"], module: "./src/core-domains/simulation/pursuit-pressure/kits/pursuit-pressure-kit/index.js", exportName: "createPursuitPressureKit", publicSubpath: "./domains/simulation/pursuit-pressure", proofReferences: ["src/core-domains/simulation/tests/restored-progression-pressure.mjs"] });

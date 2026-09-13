@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../manifest-input.js";
+
+export default atomicKit({ id: "transfer-zone-kit", responsibility: "Own accepted types, dwell, capacity, occupancy, and exact-once transfer completions.", domainPath: "n:interaction:transfer-zone", apiName: "transferZones", requires: ["n:interaction"], provides: ["n:interaction:transfer-zone", "interaction:transfer-zone"], module: "./src/core-domains/interaction/transfer-zone/kits/transfer-zone-kit/index.js", exportName: "createTransferZoneKit", publicSubpath: "./domains/interaction/transfer-zone", proofReferences: ["src/core-domains/interaction/tests/restored-interaction-behaviors.mjs"] });

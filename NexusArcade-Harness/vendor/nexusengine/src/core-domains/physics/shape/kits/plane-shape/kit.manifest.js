@@ -1,0 +1,2 @@
+import { atomicKit } from "../../../../manifest-input.js";
+export default atomicKit({ id: "plane-shape-kit", responsibility: "Normalize portable infinite-plane collision geometry.", domainPath: "n:physics:shape", apiName: "planeShape", requires: ["n:physics"], provides: ["n:physics:shape", "physics:plane-shape"], module: "./src/core-domains/physics/shape/kits/plane-shape/index.js", exportName: "createPlaneShapeKit", publicSubpath: "./domains/physics/shape/plane", proofReferences: ["tests/core-domains/core-physics-canonical-domain-contract-smoke.mjs"] });

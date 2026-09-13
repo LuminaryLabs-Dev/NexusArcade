@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../manifest-input.js";
+
+export default atomicKit({ id: "shader-permutation-kit", responsibility: "Own bounded deterministic Shader permutation axes and read-only expansion.", domainPath: "n:render:shader", apiName: "renderShaderPermutations", requires: ["n:render:shader", "render:shader-program", "render:shader-variant"], provides: ["render:shader-permutation"], module: "./src/core-domains/render/shader/kits/shader-permutation-kit/index.js", exportName: "createShaderPermutationKit", publicSubpath: "./domains/render/shader/permutation", proofReferences: ["tests/core-domains/core-graphics-domain-smoke.mjs"] });

@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../../manifest-input.js";
+
+export default atomicKit({ id: "action-locomotion-kit", responsibility: "Convert action commands into deterministic renderer-neutral Motion intents and locomotion frames.", domainPath: "n:simulation:motion:locomotion", apiName: "actionLocomotion", requires: ["n:simulation:motion"], provides: ["n:simulation:motion:locomotion", "motion:locomotion-intent"], module: "./src/core-domains/simulation/motion/locomotion/kits/action-locomotion-kit/index.js", exportName: "createActionLocomotionKit", publicSubpath: "./domains/simulation/motion/locomotion", proofReferences: ["src/core-domains/simulation/tests/restored-motion-behaviors.mjs"] });

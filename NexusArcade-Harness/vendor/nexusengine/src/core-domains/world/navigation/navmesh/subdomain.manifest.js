@@ -1,0 +1,3 @@
+import { domainNode } from "../../../manifest-input.js";
+
+export default domainNode({ id: "world-navigation-navmesh-domain", domainPath: "n:world:navigation:navmesh", parentDomainPath: "n:world:navigation", label: "Navigation NavMesh", responsibility: "Own deterministic 2D navigation cells, portals, and 3D waypoint graphs derived from walkability.", owns: ["navigation cells", "portals", "waypoint graphs"], forbiddenResponsibilities: ["path search", "agent motion", "authored maps"], requires: ["navigation:walkability-source"], provides: ["n:world:navigation:navmesh", "navigation:navmesh", "navigation:graph"], proofReferences: ["src/core-domains/world/tests/restored-world-behaviors.mjs"] });

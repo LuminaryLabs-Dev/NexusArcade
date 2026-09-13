@@ -1,0 +1,6 @@
+[
+  {"stage":"plan","rule":"Integrate every rolled domain. Give a real gameplay role per domain, never a schema description or placeholder. A resource meter is not a collectible unless the refill component or collection/delivery exists. Do not promise unsupported interactions."},
+  {"stage":"write","rule":"Use short plain sentences. Never put markdown or closing JSON braces inside prose. No delivery or destinations without delivery domain. No collecting without collection, delivery or refill. No combat, shooting or new levels. Five-minute score run with the rolled mechanics only."},
+  {"stage":"solve","rule":"Browser exceptions and capture failures require a harness correction, not changing the game's theme. Preserve the original domain roll."},
+  {"stage":"visual-review","rule":"Judge the actual screenshot; a blank arena must fail even when state-based interaction checks passed."}
+]

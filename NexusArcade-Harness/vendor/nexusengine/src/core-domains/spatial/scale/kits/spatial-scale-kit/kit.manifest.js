@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../manifest-input.js";
+
+export default atomicKit({ id: "spatial-scale-kit", responsibility: "Manage deterministic subject scale, scale anchors, proximity bands, and scale transitions.", domainPath: "n:spatial:scale", apiName: "spatialScale", requires: ["n:spatial"], provides: ["n:spatial:scale", "spatial:scale-anchor", "spatial:scale-band"], module: "./src/core-domains/spatial/scale/kits/spatial-scale-kit/index.js", exportName: "createSpatialScaleKit", publicSubpath: "./domains/spatial/scale", proofReferences: ["src/core-domains/spatial/tests/spatial-scale-restoration.mjs"] });

@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../manifest-input.js";
+
+export default atomicKit({ id: "shader-language-kit", responsibility: "Own portable Shader language capabilities, source kinds, stages, and feature requirements.", domainPath: "n:render:shader", apiName: "renderShaderLanguages", requires: ["n:render:shader", "render:shader-contract"], provides: ["render:shader-language"], module: "./src/core-domains/render/shader/kits/shader-language-kit/index.js", exportName: "createShaderLanguageKit", publicSubpath: "./domains/render/shader/language", proofReferences: ["tests/core-domains/core-graphics-domain-smoke.mjs"] });

@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../../manifest-input.js";
+
+export default atomicKit({ id: "facility-operations-kit", responsibility: "Own deterministic facility capacity, condition, status, cycle, and portable output receipts.", domainPath: "n:simulation:operations:facility", apiName: "facilityOperations", requires: ["n:simulation"], provides: ["n:simulation:operations:facility", "operations:facility"], module: "./src/core-domains/simulation/operations/facility/kits/facility-operations-kit/index.js", exportName: "createFacilityOperationsKit", publicSubpath: "./domains/simulation/operations/facility", proofReferences: ["src/core-domains/simulation/tests/restored-economy-operations.mjs"] });

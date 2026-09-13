@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../manifest-input.js";
+
+export default atomicKit({ id: "shader-contract-kit", responsibility: "Define the canonical provider-neutral Shader execution boundary and stage topology.", domainPath: "n:render:shader", apiName: "renderShaderContract", requires: ["n:render"], provides: ["render:shader-contract", "n:render:shader"], module: "./src/core-domains/render/shader/kits/shader-contract-kit/index.js", exportName: "createShaderContractKit", publicSubpath: "./domains/render/shader/contract", proofReferences: ["tests/core-domains/core-graphics-domain-smoke.mjs"] });

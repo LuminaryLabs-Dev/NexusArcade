@@ -1,0 +1,3 @@
+import { domainNode } from "../../manifest-input.js";
+
+export default domainNode({ id: "world-generation-domain", domainPath: "n:world:generation", parentDomainPath: "n:world", label: "World Generation", responsibility: "Own deterministic generic region, connector, point, graph, and walkability generation.", owns: ["generation configuration", "generated regions", "generated connectors", "walkability output"], forbiddenResponsibilities: ["authored levels", "game objectives", "render descriptors"], requires: ["n:world"], provides: ["n:world:generation", "world:procedural-generation", "navigation:walkability-source"], proofReferences: ["src/core-domains/world/tests/restored-world-behaviors.mjs"] });

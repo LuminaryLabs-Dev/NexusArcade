@@ -1,0 +1,9 @@
+{
+  "name": "@luminarylabs/arcade-spine-harness",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {"start":"node server.mjs", "batch":"node cli.mjs batch", "verify":"node cli.mjs verify"},
+  "engines": {"node": ">=22"},
+  "dependencies": {"playwright":"1.58.2"}
+}

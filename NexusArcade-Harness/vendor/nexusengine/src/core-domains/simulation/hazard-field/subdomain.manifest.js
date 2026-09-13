@@ -1,0 +1,3 @@
+import { domainNode } from "../../manifest-input.js";
+
+export default domainNode({ id: "simulation-hazard-field-domain", domainPath: "n:simulation:hazard-field", parentDomainPath: "n:simulation", label: "Hazard Field", responsibility: "Own deterministic bounded hazard state, spawning, motion, and collision queries.", owns: ["hazard records", "spawn cadence", "bounded hazard motion", "collision queries"], forbiddenResponsibilities: ["game damage outcomes", "renderer effects", "physics backend"], requires: ["n:simulation"], provides: ["n:simulation:hazard-field", "simulation:hazard-field"], proofReferences: ["src/core-domains/simulation/tests/restored-progression-pressure.mjs"] });

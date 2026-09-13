@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../manifest-input.js";
+
+export default atomicKit({ id: "shader-include-kit", responsibility: "Own immutable Shader include records and a deterministic acyclic dependency graph.", domainPath: "n:render:shader", apiName: "renderShaderIncludes", requires: ["n:render:shader", "render:shader-source", "render:shader-language"], provides: ["render:shader-include"], module: "./src/core-domains/render/shader/kits/shader-include-kit/index.js", exportName: "createShaderIncludeKit", publicSubpath: "./domains/render/shader/include", proofReferences: ["tests/core-domains/core-graphics-domain-smoke.mjs"] });

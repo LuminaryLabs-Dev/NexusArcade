@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../manifest-input.js";
+
+export default atomicKit({ id: "transport-request-adapter-kit", kind: "adapter-kit", responsibility: "Translate Transport Route arrivals into exact-once Request Queue fulfillment commands.", domainPath: "n:interaction:request:queue", apiName: "transportRequest", requires: ["operations:transport-route", "interaction:request-queue"], provides: ["interaction:transport-request-adapter"], module: "./src/core-domains/interaction/adapters/transport-request-adapter-kit/index.js", exportName: "createTransportRequestAdapterKit", publicSubpath: "./domains/interaction/adapters/transport-request", proofReferences: ["src/core-domains/simulation/tests/restored-integration-adapters.mjs"] });

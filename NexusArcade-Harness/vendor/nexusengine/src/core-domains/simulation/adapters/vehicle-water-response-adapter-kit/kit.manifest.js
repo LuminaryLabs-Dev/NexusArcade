@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../manifest-input.js";
+
+export default atomicKit({ id: "vehicle-water-response-adapter-kit", kind: "adapter-kit", responsibility: "Translate Vehicle state and Water Surface queries into portable drag, current, and buoyancy responses.", domainPath: "n:simulation:motion:vehicle", apiName: "vehicleWaterResponse", requires: ["motion:vehicle-dynamics", "world:water-query"], provides: ["motion:vehicle-water-response"], module: "./src/core-domains/simulation/adapters/vehicle-water-response-adapter-kit/index.js", exportName: "createVehicleWaterResponseAdapterKit", publicSubpath: "./domains/simulation/adapters/vehicle-water-response", proofReferences: ["src/core-domains/simulation/tests/restored-integration-adapters.mjs"] });

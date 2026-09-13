@@ -1,0 +1,3 @@
+import { domainNode } from "../../manifest-input.js";
+
+export default domainNode({ id: "interaction-transfer-zone-domain", domainPath: "n:interaction:transfer-zone", parentDomainPath: "n:interaction", label: "Transfer Zone", responsibility: "Own portable transfer-zone acceptance, dwell, capacity, occupancy, and completion state.", owns: ["transfer zones", "acceptance policy", "dwell state", "capacity", "completion records"], forbiddenResponsibilities: ["cargo mutation", "game extraction rules", "renderer volumes"], requires: ["n:interaction"], provides: ["n:interaction:transfer-zone", "interaction:transfer-zone"], proofReferences: ["src/core-domains/interaction/tests/restored-interaction-behaviors.mjs"] });

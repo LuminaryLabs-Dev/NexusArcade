@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../manifest-input.js";
+
+export default atomicKit({ id: "occupant-request-adapter-kit", kind: "adapter-kit", responsibility: "Translate Occupant Flow need records into exact-once Request Queue entries.", domainPath: "n:interaction:request:queue", apiName: "occupantRequest", requires: ["operations:occupant-flow", "interaction:request-queue"], provides: ["interaction:occupant-request-adapter"], module: "./src/core-domains/interaction/adapters/occupant-request-adapter-kit/index.js", exportName: "createOccupantRequestAdapterKit", publicSubpath: "./domains/interaction/adapters/occupant-request", proofReferences: ["src/core-domains/simulation/tests/restored-integration-adapters.mjs"] });

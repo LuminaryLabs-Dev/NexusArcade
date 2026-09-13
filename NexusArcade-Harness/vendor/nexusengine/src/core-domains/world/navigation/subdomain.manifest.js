@@ -1,0 +1,3 @@
+import { domainNode } from "../../manifest-input.js";
+
+export default domainNode({ id: "world-navigation-domain", domainPath: "n:world:navigation", parentDomainPath: "n:world", label: "World Navigation", responsibility: "Own renderer-neutral navigation graphs, path queries, route fields, and landmark guidance.", owns: ["navigation graph contracts", "path queries", "route fields", "landmark guidance"], forbiddenResponsibilities: ["agent locomotion", "physics resolution", "authored routes", "navigation rendering"], requires: ["n:world"], provides: ["n:world:navigation", "navigation:graph-contract"], proofReferences: ["src/core-domains/world/tests/restored-world-behaviors.mjs"] });

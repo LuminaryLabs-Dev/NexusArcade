@@ -1,0 +1,3 @@
+import { domainNode } from "../../manifest-input.js";
+
+export default domainNode({ id: "interaction-assistance-target-domain", domainPath: "n:interaction:assistance-target", parentDomainPath: "n:interaction", label: "Assistance Target", responsibility: "Own assistance target urgency, attachment, completion, loss, and deterministic selection.", owns: ["assistance target state", "urgency", "attachment", "terminal outcomes"], forbiddenResponsibilities: ["vehicle movement", "economy rewards", "game rescue rules"], requires: ["n:interaction"], provides: ["n:interaction:assistance-target", "interaction:assistance-target"], proofReferences: ["src/core-domains/interaction/tests/restored-interaction-behaviors.mjs"] });

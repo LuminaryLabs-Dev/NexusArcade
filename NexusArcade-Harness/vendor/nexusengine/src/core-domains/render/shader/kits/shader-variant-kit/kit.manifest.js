@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../manifest-input.js";
+
+export default atomicKit({ id: "shader-variant-kit", responsibility: "Own exact Shader define and specialization selections with deterministic identity.", domainPath: "n:render:shader", apiName: "renderShaderVariants", requires: ["n:render:shader", "render:shader-program"], provides: ["render:shader-variant"], module: "./src/core-domains/render/shader/kits/shader-variant-kit/index.js", exportName: "createShaderVariantKit", publicSubpath: "./domains/render/shader/variant", proofReferences: ["tests/core-domains/core-graphics-domain-smoke.mjs"] });

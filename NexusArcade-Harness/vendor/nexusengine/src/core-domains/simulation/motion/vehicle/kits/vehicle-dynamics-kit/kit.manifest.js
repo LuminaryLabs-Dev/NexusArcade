@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../../manifest-input.js";
+
+export default atomicKit({ id: "vehicle-dynamics-kit", responsibility: "Advance deterministic vehicle motion, boost, bounds, and impact state without owning surface policy.", domainPath: "n:simulation:motion:vehicle", apiName: "vehicleDynamics", requires: ["n:simulation:motion"], provides: ["n:simulation:motion:vehicle", "motion:vehicle-dynamics"], module: "./src/core-domains/simulation/motion/vehicle/kits/vehicle-dynamics-kit/index.js", exportName: "createVehicleDynamicsKit", publicSubpath: "./domains/simulation/motion/vehicle", proofReferences: ["src/core-domains/simulation/tests/restored-motion-behaviors.mjs"] });

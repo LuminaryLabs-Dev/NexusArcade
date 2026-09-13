@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../manifest-input.js";
+
+export default atomicKit({ id: "shader-reflection-kit", responsibility: "Validate normalized provider reflection against the completed compile and program interface.", domainPath: "n:render:shader", apiName: "renderShaderReflections", requires: ["n:render:shader", "render:shader-program", "render:shader-variant", "render:shader-compile", "render:device-capability"], provides: ["render:shader-reflection"], module: "./src/core-domains/render/shader/kits/shader-reflection-kit/index.js", exportName: "createShaderReflectionKit", publicSubpath: "./domains/render/shader/reflection", proofReferences: ["tests/core-domains/core-graphics-domain-smoke.mjs"] });

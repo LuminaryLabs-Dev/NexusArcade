@@ -1,0 +1,3 @@
+import { domainNode } from "../../manifest-input.js";
+
+export default domainNode({ id: "simulation-progression-domain", domainPath: "n:simulation:progression", parentDomainPath: "n:simulation", label: "Simulation Progression", responsibility: "Own portable progression capability and lifecycle ownership boundaries.", owns: ["progression capability contracts", "lifecycle ownership boundary"], forbiddenResponsibilities: ["authored progression content", "economy effects", "facility effects"], requires: ["n:simulation"], provides: ["n:simulation:progression"], proofReferences: ["src/core-domains/simulation/tests/restored-progression-pressure.mjs"] });

@@ -1,0 +1,2 @@
+import { atomicKit } from "../../../../manifest-input.js";
+export default atomicKit({ id: "sphere-shape-kit", responsibility: "Normalize portable sphere collision geometry.", domainPath: "n:physics:shape", apiName: "sphereShape", requires: ["n:physics"], provides: ["n:physics:shape", "physics:sphere-shape"], module: "./src/core-domains/physics/shape/kits/sphere-shape/index.js", exportName: "createSphereShapeKit", publicSubpath: "./domains/physics/shape/sphere", proofReferences: ["tests/core-domains/core-physics-canonical-domain-contract-smoke.mjs"] });

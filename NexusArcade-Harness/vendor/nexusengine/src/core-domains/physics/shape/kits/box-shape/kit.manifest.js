@@ -1,0 +1,2 @@
+import { atomicKit } from "../../../../manifest-input.js";
+export default atomicKit({ id: "box-shape-kit", responsibility: "Normalize portable box collision geometry.", domainPath: "n:physics:shape", apiName: "boxShape", requires: ["n:physics"], provides: ["n:physics:shape", "physics:box-shape"], module: "./src/core-domains/physics/shape/kits/box-shape/index.js", exportName: "createBoxShapeKit", publicSubpath: "./domains/physics/shape/box", proofReferences: ["tests/core-domains/core-physics-canonical-domain-contract-smoke.mjs"] });

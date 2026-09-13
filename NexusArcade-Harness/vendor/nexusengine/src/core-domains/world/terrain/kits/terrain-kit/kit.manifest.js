@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../manifest-input.js";
+
+export default atomicKit({ id: "terrain-kit", responsibility: "Evaluate deterministic terrain layers and manage portable sampled terrain cells without rendering ownership.", domainPath: "n:world:terrain", apiName: "terrain", requires: ["n:world"], provides: ["n:world:terrain", "world:terrain-sampling", "world:terrain-provider"], module: "./src/core-domains/world/terrain/kits/terrain-kit/index.js", exportName: "createTerrainKit", publicSubpath: "./domains/world/terrain", proofReferences: ["src/core-domains/world/tests/restored-world-behaviors.mjs"] });

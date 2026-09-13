@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../../manifest-input.js";
+
+export default atomicKit({ id: "schedule-kit", responsibility: "Advance deterministic repeatable and one-shot elapsed-time schedules without losing residual time.", domainPath: "n:runtime:sequence:schedule", apiName: "schedule", requires: ["n:runtime:sequence"], provides: ["n:runtime:sequence:schedule", "sequence:schedule"], module: "./src/core-domains/runtime/sequence/schedule/kits/schedule-kit/index.js", exportName: "createScheduleKit", publicSubpath: "./domains/runtime/sequence/schedule", proofReferences: ["src/core-domains/simulation/tests/restored-economy-operations.mjs"] });

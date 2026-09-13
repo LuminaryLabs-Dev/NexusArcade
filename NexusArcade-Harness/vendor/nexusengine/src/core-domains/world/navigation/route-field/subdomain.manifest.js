@@ -1,0 +1,3 @@
+import { domainNode } from "../../../manifest-input.js";
+
+export default domainNode({ id: "world-navigation-route-field-domain", domainPath: "n:world:navigation:route-field", parentDomainPath: "n:world:navigation", label: "Navigation Route Field", responsibility: "Own generic route marker and corridor descriptors plus deterministic proximity queries.", owns: ["route markers", "route corridors", "route proximity queries"], forbiddenResponsibilities: ["authored routes", "agent movement", "path search"], requires: ["n:world"], provides: ["n:world:navigation:route-field", "navigation:route-field"], proofReferences: ["src/core-domains/world/tests/restored-world-behaviors.mjs"] });

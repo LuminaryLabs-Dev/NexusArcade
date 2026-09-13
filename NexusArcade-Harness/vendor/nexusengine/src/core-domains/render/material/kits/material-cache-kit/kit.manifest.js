@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../manifest-input.js";
+
+export default atomicKit({ id: "material-cache-kit", responsibility: "Link current Material validation to an exact resident material Render Resource.", domainPath: "n:render:material", apiName: "renderMaterialCache", requires: ["n:render:material", "render:material-validation", "render:resource-identity", "render:resource-lifecycle"], provides: ["render:material-cache"], module: "./src/core-domains/render/material/kits/material-cache-kit/index.js", exportName: "createMaterialCacheKit", publicSubpath: "./domains/render/material/cache", proofReferences: ["tests/core-domains/core-graphics-domain-smoke.mjs"] });

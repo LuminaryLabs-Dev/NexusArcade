@@ -1,0 +1,3 @@
+import { domainNode } from "../../manifest-input.js";
+
+export default domainNode({ id: "spatial-scale-domain", domainPath: "n:spatial:scale", parentDomainPath: "n:spatial", label: "Spatial Scale", responsibility: "Own subject scale, scale anchors, proximity bands, and deterministic scale queries.", owns: ["subject scale", "scale anchors", "scale bands"], forbiddenResponsibilities: ["render scaling", "camera policy", "authored world progression"], requires: ["n:spatial"], provides: ["n:spatial:scale", "spatial:scale-anchor", "spatial:scale-band"], proofReferences: ["src/core-domains/spatial/tests/spatial-scale-restoration.mjs"] });

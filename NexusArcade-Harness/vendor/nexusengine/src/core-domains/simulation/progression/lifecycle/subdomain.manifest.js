@@ -1,0 +1,3 @@
+import { domainNode } from "../../../manifest-input.js";
+
+export default domainNode({ id: "simulation-progression-lifecycle-domain", domainPath: "n:simulation:progression:lifecycle", parentDomainPath: "n:simulation:progression", label: "Lifecycle Progression", responsibility: "Own prerequisite-gated lifecycle timing, completion, and portable effect descriptors.", owns: ["lifecycle items", "prerequisite state", "timed progression", "effect descriptors"], forbiddenResponsibilities: ["economy mutation", "facility mutation", "authored progression tree"], requires: ["n:simulation"], provides: ["n:simulation:progression:lifecycle", "progression:lifecycle"], proofReferences: ["src/core-domains/simulation/tests/restored-progression-pressure.mjs"] });

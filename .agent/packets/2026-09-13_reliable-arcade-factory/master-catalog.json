@@ -1,0 +1,3765 @@
+{
+  "schemaVersion": "contract-5",
+  "status": "SPECIFIED_PENDING_CAPABILITY_AUDIT",
+  "policy": {
+    "ideaTimeLimitSeconds": 1500,
+    "totalTokenBudget": null,
+    "improvementPassLimit": null,
+    "modelParameterCeilingB": 3,
+    "renderer": "Three.js",
+    "gameplay": "Implemented NexusEngine domains and explicitly local reusable adapters",
+    "gameEdits": "Harness only",
+    "deadlineOutcome": "FAILED_IDEA"
+  },
+  "optionContract": {
+    "requiredFields": [
+      "id",
+      "status",
+      "provides",
+      "requires",
+      "conflicts",
+      "children",
+      "parameters",
+      "profileFragment",
+      "implementationRefs",
+      "validationRefs"
+    ],
+    "statusValues": [
+      "planned",
+      "implemented_unverified",
+      "eligible",
+      "disabled"
+    ],
+    "eligibility": "Only source/version/evidence-audited options with resolved requirements and compiled contracts are eligible. This edit does not mark any option eligible."
+  },
+  "decisionPoints": [
+    {
+      "id": "genre",
+      "layer": "context",
+      "required": true,
+      "selection": {
+        "mode": "constraint_filtered",
+        "min": 1,
+        "max": 1
+      },
+      "options": [
+        {
+          "id": "genre.spatial-puzzle",
+          "status": "implemented_unverified",
+          "provides": [
+            "choice.genre.spatial-puzzle"
+          ],
+          "requires": [
+            "cap.puzzle_loop"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.puzzle_loop"
+            }
+          ],
+          "parameters": {
+            "orientation": {
+              "type": "string",
+              "default": "objective",
+              "enum": [
+                "objective",
+                "time_trial"
+              ]
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/genre",
+            "value": {
+              "optionId": "genre.spatial-puzzle",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [
+            {
+              "path": "NexusArcade-Harness/kits/scene-kit.mjs",
+              "symbol": "createCompositionEngine",
+              "sha256": "8c063e11189abbf62b49431efc471a5fae8fb77f149cdbf5bb0073893f379ab2",
+              "evidence": "source_inspected_not_new_runtime_validation"
+            }
+          ],
+          "validationRefs": [
+            "loop",
+            "concept"
+          ],
+          "gapRef": "cap.puzzle_loop",
+          "behavior": "Establish loop obligations: puzzle requires a state-changing obstacle; race requires ordered checkpoints and finish timing.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        },
+        {
+          "id": "genre.racing",
+          "status": "planned",
+          "provides": [
+            "choice.genre.racing"
+          ],
+          "requires": [
+            "cap.race_loop"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.race_loop"
+            }
+          ],
+          "parameters": {
+            "orientation": {
+              "type": "string",
+              "default": "objective",
+              "enum": [
+                "objective",
+                "time_trial"
+              ]
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/genre",
+            "value": {
+              "optionId": "genre.racing",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [],
+          "validationRefs": [
+            "loop",
+            "concept"
+          ],
+          "gapRef": "cap.race_loop",
+          "behavior": "Establish loop obligations: puzzle requires a state-changing obstacle; race requires ordered checkpoints and finish timing.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        }
+      ],
+      "purpose": "Establish loop obligations: puzzle requires a state-changing obstacle; race requires ordered checkpoints and finish timing.",
+      "parameterPolicy": "Proposed bounds, not universal engine support. Capability audit and frozen profile may narrow; compilation rejects unsupported values.",
+      "mergeRule": "set_once_equal_or_conflict",
+      "category": "Generation"
+    },
+    {
+      "id": "genre_blend",
+      "layer": "context",
+      "required": true,
+      "selection": {
+        "mode": "constraint_filtered",
+        "min": 1,
+        "max": 1
+      },
+      "options": [
+        {
+          "id": "genre_blend.none",
+          "status": "implemented_unverified",
+          "provides": [
+            "choice.genre_blend.none"
+          ],
+          "requires": [
+            "cap.single_loop"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.single_loop"
+            }
+          ],
+          "parameters": {
+            "optionalBranches": {
+              "type": "integer",
+              "default": 0,
+              "minimum": 0,
+              "maximum": 4,
+              "unit": "routes"
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/genre_blend",
+            "value": {
+              "optionId": "genre_blend.none",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [
+            {
+              "path": "NexusArcade-Harness/composition.mjs",
+              "symbol": "rollConcepts / expand / validateComposition",
+              "sha256": "a35c4c4e6e5aa4aff51f302b7bd8b83c62690ef7930f91c311504f11ddb5045a",
+              "evidence": "source_inspected_not_new_runtime_validation"
+            }
+          ],
+          "validationRefs": [
+            "loop",
+            "novelty"
+          ],
+          "gapRef": "cap.single_loop",
+          "behavior": "Blend adds discoverable optional routes to the same primary objective; reject incompatible ending/control requirements.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        },
+        {
+          "id": "genre_blend.exploration",
+          "status": "planned",
+          "provides": [
+            "choice.genre_blend.exploration"
+          ],
+          "requires": [
+            "cap.exploration_loop"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.exploration_loop"
+            }
+          ],
+          "parameters": {
+            "optionalBranches": {
+              "type": "integer",
+              "default": 0,
+              "minimum": 0,
+              "maximum": 4,
+              "unit": "routes"
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/genre_blend",
+            "value": {
+              "optionId": "genre_blend.exploration",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [],
+          "validationRefs": [
+            "loop",
+            "novelty"
+          ],
+          "gapRef": "cap.exploration_loop",
+          "behavior": "Blend adds discoverable optional routes to the same primary objective; reject incompatible ending/control requirements.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        }
+      ],
+      "purpose": "Blend adds discoverable optional routes to the same primary objective; reject incompatible ending/control requirements.",
+      "parameterPolicy": "Proposed bounds, not universal engine support. Capability audit and frozen profile may narrow; compilation rejects unsupported values.",
+      "mergeRule": "set_once_equal_or_conflict",
+      "category": "Generation"
+    },
+    {
+      "id": "concepts",
+      "layer": "independent-roll",
+      "required": true,
+      "selection": {
+        "mode": "independent",
+        "min": 1,
+        "max": 2
+      },
+      "options": [
+        {
+          "id": "concepts.growth",
+          "status": "planned",
+          "provides": [
+            "choice.concepts.growth"
+          ],
+          "requires": [
+            "cap.concept_growth"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "interpretation_choice",
+              "id": "concepts.growth.interpretation",
+              "select": 1,
+              "options": [
+                {
+                  "id": "concepts.growth.reach",
+                  "meaning": "Opening a supported route expands reachable space.",
+                  "requires": [
+                    "cap.open_route"
+                  ],
+                  "requiredEvidence": "Observable before/after state effect and meaningful role in objective."
+                },
+                {
+                  "id": "concepts.growth.accumulation",
+                  "meaning": "An implemented process increases a measured quantity.",
+                  "requires": [
+                    "cap.continuous_flow"
+                  ],
+                  "requiredEvidence": "Observable before/after state effect and meaningful role in objective."
+                }
+              ]
+            }
+          ],
+          "parameters": {
+            "branchDepth": {
+              "type": "integer",
+              "default": 2,
+              "minimum": 1,
+              "maximum": 3,
+              "unit": "levels"
+            }
+          },
+          "profileFragment": {
+            "op": "append_unique_by_option_id",
+            "path": "/decisionsByPoint/concepts",
+            "value": {
+              "optionId": "concepts.growth",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [],
+          "validationRefs": [
+            "concept"
+          ],
+          "gapRef": "cap.concept_growth",
+          "behavior": "Select an interpretation branch with an observable effect; growth may extend reach, exchange transfers ownership or resources.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        },
+        {
+          "id": "concepts.exchange",
+          "status": "planned",
+          "provides": [
+            "choice.concepts.exchange"
+          ],
+          "requires": [
+            "cap.concept_exchange"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "interpretation_choice",
+              "id": "concepts.exchange.interpretation",
+              "select": 1,
+              "options": [
+                {
+                  "id": "concepts.exchange.transfer",
+                  "meaning": "Carry and transfer a core to its receiver.",
+                  "requires": [
+                    "cap.carry"
+                  ],
+                  "requiredEvidence": "Observable before/after state effect and meaningful role in objective."
+                },
+                {
+                  "id": "concepts.exchange.trade",
+                  "meaning": "A typed exchange consumes one resource and grants another.",
+                  "requires": [
+                    "cap.continuous_flow"
+                  ],
+                  "requiredEvidence": "Observable before/after state effect and meaningful role in objective."
+                }
+              ]
+            }
+          ],
+          "parameters": {
+            "branchDepth": {
+              "type": "integer",
+              "default": 2,
+              "minimum": 1,
+              "maximum": 3,
+              "unit": "levels"
+            }
+          },
+          "profileFragment": {
+            "op": "append_unique_by_option_id",
+            "path": "/decisionsByPoint/concepts",
+            "value": {
+              "optionId": "concepts.exchange",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [],
+          "validationRefs": [
+            "concept"
+          ],
+          "gapRef": "cap.concept_exchange",
+          "behavior": "Select an interpretation branch with an observable effect; growth may extend reach, exchange transfers ownership or resources.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        }
+      ],
+      "purpose": "Select an interpretation branch with an observable effect; growth may extend reach, exchange transfers ownership or resources.",
+      "parameterPolicy": "Proposed bounds, not universal engine support. Capability audit and frozen profile may narrow; compilation rejects unsupported values.",
+      "mergeRule": "append_unique_by_option_id",
+      "category": "Generation"
+    },
+    {
+      "id": "player_role",
+      "layer": "interpretation",
+      "required": true,
+      "selection": {
+        "mode": "constraint_filtered",
+        "min": 1,
+        "max": 1
+      },
+      "options": [
+        {
+          "id": "player_role.restorer",
+          "status": "implemented_unverified",
+          "provides": [
+            "choice.player_role.restorer"
+          ],
+          "requires": [
+            "cap.restorer_role"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.restorer_role"
+            }
+          ],
+          "parameters": {
+            "controlledEntities": {
+              "type": "integer",
+              "default": 1,
+              "minimum": 1,
+              "maximum": 1,
+              "unit": "entities"
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/player_role",
+            "value": {
+              "optionId": "player_role.restorer",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [
+            {
+              "path": "NexusArcade-Harness/kits/scene-kit.mjs",
+              "symbol": "createCompositionEngine",
+              "sha256": "8c063e11189abbf62b49431efc471a5fae8fb77f149cdbf5bb0073893f379ab2",
+              "evidence": "source_inspected_not_new_runtime_validation"
+            }
+          ],
+          "validationRefs": [
+            "controls",
+            "concept"
+          ],
+          "gapRef": "cap.restorer_role",
+          "behavior": "Role defines owned actor, available actions and perceptual limits; cannot claim unavailable abilities.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        },
+        {
+          "id": "player_role.pilot",
+          "status": "planned",
+          "provides": [
+            "choice.player_role.pilot"
+          ],
+          "requires": [
+            "cap.pilot_role"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.pilot_role"
+            }
+          ],
+          "parameters": {
+            "controlledEntities": {
+              "type": "integer",
+              "default": 1,
+              "minimum": 1,
+              "maximum": 1,
+              "unit": "entities"
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/player_role",
+            "value": {
+              "optionId": "player_role.pilot",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [],
+          "validationRefs": [
+            "controls",
+            "concept"
+          ],
+          "gapRef": "cap.pilot_role",
+          "behavior": "Role defines owned actor, available actions and perceptual limits; cannot claim unavailable abilities.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        }
+      ],
+      "purpose": "Role defines owned actor, available actions and perceptual limits; cannot claim unavailable abilities.",
+      "parameterPolicy": "Proposed bounds, not universal engine support. Capability audit and frozen profile may narrow; compilation rejects unsupported values.",
+      "mergeRule": "set_once_equal_or_conflict",
+      "category": "Generation"
+    },
+    {
+      "id": "intention",
+      "layer": "interpretation",
+      "required": true,
+      "selection": {
+        "mode": "constraint_filtered",
+        "min": 1,
+        "max": 1
+      },
+      "options": [
+        {
+          "id": "intention.restore-network",
+          "status": "implemented_unverified",
+          "provides": [
+            "choice.intention.restore-network"
+          ],
+          "requires": [
+            "cap.restore_objective"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.restore_objective"
+            }
+          ],
+          "parameters": {
+            "requiredTargets": {
+              "type": "integer",
+              "default": 3,
+              "minimum": 1,
+              "maximum": 6,
+              "unit": "targets"
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/intention",
+            "value": {
+              "optionId": "intention.restore-network",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [
+            {
+              "path": "NexusArcade-Harness/kits/scene-kit.mjs",
+              "symbol": "createCompositionEngine",
+              "sha256": "8c063e11189abbf62b49431efc471a5fae8fb77f149cdbf5bb0073893f379ab2",
+              "evidence": "source_inspected_not_new_runtime_validation"
+            }
+          ],
+          "validationRefs": [
+            "loop",
+            "concept"
+          ],
+          "gapRef": "cap.restore_objective",
+          "behavior": "Resolve target IDs and ending predicate; restore completes declared targets, redirect routes process to a destination.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        },
+        {
+          "id": "intention.redirect-flow",
+          "status": "planned",
+          "provides": [
+            "choice.intention.redirect-flow"
+          ],
+          "requires": [
+            "cap.redirect_objective"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.redirect_objective"
+            }
+          ],
+          "parameters": {
+            "requiredTargets": {
+              "type": "integer",
+              "default": 3,
+              "minimum": 1,
+              "maximum": 6,
+              "unit": "targets"
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/intention",
+            "value": {
+              "optionId": "intention.redirect-flow",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [],
+          "validationRefs": [
+            "loop",
+            "concept"
+          ],
+          "gapRef": "cap.redirect_objective",
+          "behavior": "Resolve target IDs and ending predicate; restore completes declared targets, redirect routes process to a destination.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        }
+      ],
+      "purpose": "Resolve target IDs and ending predicate; restore completes declared targets, redirect routes process to a destination.",
+      "parameterPolicy": "Proposed bounds, not universal engine support. Capability audit and frozen profile may narrow; compilation rejects unsupported values.",
+      "mergeRule": "set_once_equal_or_conflict",
+      "category": "Generation"
+    },
+    {
+      "id": "view",
+      "layer": "spatial",
+      "required": true,
+      "selection": {
+        "mode": "constraint_filtered",
+        "min": 1,
+        "max": 1
+      },
+      "options": [
+        {
+          "id": "view.follow-overhead",
+          "status": "implemented_unverified",
+          "provides": [
+            "choice.view.follow-overhead"
+          ],
+          "requires": [
+            "cap.overhead_camera"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.overhead_camera"
+            }
+          ],
+          "parameters": {
+            "fieldOfViewDeg": {
+              "type": "number",
+              "default": 43,
+              "minimum": 35,
+              "maximum": 85,
+              "unit": "degrees"
+            },
+            "occlusionMode": {
+              "type": "string",
+              "default": "reject_blocked",
+              "enum": [
+                "reject_blocked",
+                "verified_avoidance"
+              ]
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/view",
+            "value": {
+              "optionId": "view.follow-overhead",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [
+            {
+              "path": "NexusArcade-Harness/player.mjs",
+              "symbol": "Three.js provider",
+              "sha256": "a6a663642313ca89f274618c916ce711160e42a24ac9f23b12834ed2c14c5c3a",
+              "evidence": "source_inspected_not_new_runtime_validation"
+            }
+          ],
+          "validationRefs": [
+            "controls",
+            "readability",
+            "novelty"
+          ],
+          "gapRef": "cap.overhead_camera",
+          "behavior": "Define actor-relative view, aim origin and line-of-sight rules; second provider must implement first-person targeting.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        },
+        {
+          "id": "view.first-person",
+          "status": "planned",
+          "provides": [
+            "choice.view.first-person"
+          ],
+          "requires": [
+            "cap.first_person"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.first_person"
+            }
+          ],
+          "parameters": {
+            "fieldOfViewDeg": {
+              "type": "number",
+              "default": 43,
+              "minimum": 35,
+              "maximum": 85,
+              "unit": "degrees"
+            },
+            "occlusionMode": {
+              "type": "string",
+              "default": "reject_blocked",
+              "enum": [
+                "reject_blocked",
+                "verified_avoidance"
+              ]
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/view",
+            "value": {
+              "optionId": "view.first-person",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [],
+          "validationRefs": [
+            "controls",
+            "readability",
+            "novelty"
+          ],
+          "gapRef": "cap.first_person",
+          "behavior": "Define actor-relative view, aim origin and line-of-sight rules; second provider must implement first-person targeting.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        }
+      ],
+      "purpose": "Define actor-relative view, aim origin and line-of-sight rules; second provider must implement first-person targeting.",
+      "parameterPolicy": "Proposed bounds, not universal engine support. Capability audit and frozen profile may narrow; compilation rejects unsupported values.",
+      "mergeRule": "set_once_equal_or_conflict",
+      "category": "World and presentation"
+    },
+    {
+      "id": "movement",
+      "layer": "spatial",
+      "required": true,
+      "selection": {
+        "mode": "constraint_filtered",
+        "min": 1,
+        "max": 1
+      },
+      "options": [
+        {
+          "id": "movement.grounded-walk",
+          "status": "implemented_unverified",
+          "provides": [
+            "choice.movement.grounded-walk"
+          ],
+          "requires": [
+            "cap.grounded_walk"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.grounded_walk"
+            }
+          ],
+          "parameters": {
+            "speed": {
+              "type": "number",
+              "default": 8,
+              "minimum": 2,
+              "maximum": 12,
+              "unit": "metres/second"
+            },
+            "turnRate": {
+              "type": "number",
+              "default": 180,
+              "minimum": 30,
+              "maximum": 360,
+              "unit": "degrees/second"
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/movement",
+            "value": {
+              "optionId": "movement.grounded-walk",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [
+            {
+              "path": "NexusArcade-Harness/kits/scene-kit.mjs",
+              "symbol": "createCompositionEngine",
+              "sha256": "8c063e11189abbf62b49431efc471a5fae8fb77f149cdbf5bb0073893f379ab2",
+              "evidence": "source_inspected_not_new_runtime_validation"
+            }
+          ],
+          "validationRefs": [
+            "controls",
+            "spatial"
+          ],
+          "gapRef": "cap.grounded_walk",
+          "behavior": "Apply movement through a provider that owns velocity, orientation and collision; steering requires turn dynamics rather than arbitrary position edits.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        },
+        {
+          "id": "movement.steering",
+          "status": "planned",
+          "provides": [
+            "choice.movement.steering"
+          ],
+          "requires": [
+            "cap.steering"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.steering"
+            }
+          ],
+          "parameters": {
+            "speed": {
+              "type": "number",
+              "default": 8,
+              "minimum": 2,
+              "maximum": 12,
+              "unit": "metres/second"
+            },
+            "turnRate": {
+              "type": "number",
+              "default": 180,
+              "minimum": 30,
+              "maximum": 360,
+              "unit": "degrees/second"
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/movement",
+            "value": {
+              "optionId": "movement.steering",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [],
+          "validationRefs": [
+            "controls",
+            "spatial"
+          ],
+          "gapRef": "cap.steering",
+          "behavior": "Apply movement through a provider that owns velocity, orientation and collision; steering requires turn dynamics rather than arbitrary position edits.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        }
+      ],
+      "purpose": "Apply movement through a provider that owns velocity, orientation and collision; steering requires turn dynamics rather than arbitrary position edits.",
+      "parameterPolicy": "Proposed bounds, not universal engine support. Capability audit and frozen profile may narrow; compilation rejects unsupported values.",
+      "mergeRule": "set_once_equal_or_conflict",
+      "category": "World and presentation"
+    },
+    {
+      "id": "world_topology",
+      "layer": "spatial",
+      "required": true,
+      "selection": {
+        "mode": "constraint_filtered",
+        "min": 1,
+        "max": 1
+      },
+      "options": [
+        {
+          "id": "world_topology.platform-tree",
+          "status": "implemented_unverified",
+          "provides": [
+            "choice.world_topology.platform-tree"
+          ],
+          "requires": [
+            "cap.platform_tree"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.platform_tree"
+            }
+          ],
+          "parameters": {
+            "nodeCount": {
+              "type": "integer",
+              "default": 4,
+              "minimum": 3,
+              "maximum": 8,
+              "unit": "regions"
+            },
+            "passageWidth": {
+              "type": "number",
+              "default": 2.8,
+              "minimum": 2,
+              "maximum": 6,
+              "unit": "metres"
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/world_topology",
+            "value": {
+              "optionId": "world_topology.platform-tree",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [
+            {
+              "path": "NexusArcade-Harness/composition.mjs",
+              "symbol": "rollConcepts / expand / validateComposition",
+              "sha256": "a35c4c4e6e5aa4aff51f302b7bd8b83c62690ef7930f91c311504f11ddb5045a",
+              "evidence": "source_inspected_not_new_runtime_validation"
+            }
+          ],
+          "validationRefs": [
+            "spatial",
+            "novelty"
+          ],
+          "gapRef": "cap.platform_tree",
+          "behavior": "Generate render geometry and navigation from one region/connection graph; enclosed rooms also require wall collision and portals.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        },
+        {
+          "id": "world_topology.enclosed-rooms",
+          "status": "planned",
+          "provides": [
+            "choice.world_topology.enclosed-rooms"
+          ],
+          "requires": [
+            "cap.rooms"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.rooms"
+            }
+          ],
+          "parameters": {
+            "nodeCount": {
+              "type": "integer",
+              "default": 4,
+              "minimum": 3,
+              "maximum": 8,
+              "unit": "regions"
+            },
+            "passageWidth": {
+              "type": "number",
+              "default": 2.8,
+              "minimum": 2,
+              "maximum": 6,
+              "unit": "metres"
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/world_topology",
+            "value": {
+              "optionId": "world_topology.enclosed-rooms",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [],
+          "validationRefs": [
+            "spatial",
+            "novelty"
+          ],
+          "gapRef": "cap.rooms",
+          "behavior": "Generate render geometry and navigation from one region/connection graph; enclosed rooms also require wall collision and portals.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        }
+      ],
+      "purpose": "Generate render geometry and navigation from one region/connection graph; enclosed rooms also require wall collision and portals.",
+      "parameterPolicy": "Proposed bounds, not universal engine support. Capability audit and frozen profile may narrow; compilation rejects unsupported values.",
+      "mergeRule": "set_once_equal_or_conflict",
+      "category": "World and presentation"
+    },
+    {
+      "id": "scale",
+      "layer": "spatial",
+      "required": true,
+      "selection": {
+        "mode": "constraint_filtered",
+        "min": 1,
+        "max": 1
+      },
+      "options": [
+        {
+          "id": "scale.human-scale",
+          "status": "implemented_unverified",
+          "provides": [
+            "choice.scale.human-scale"
+          ],
+          "requires": [
+            "cap.metre_scale"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.metre_scale"
+            }
+          ],
+          "parameters": {
+            "metresPerWorldUnit": {
+              "type": "number",
+              "default": 1,
+              "minimum": 0.1,
+              "maximum": 1,
+              "unit": "metres/world-unit"
+            },
+            "actorHeight": {
+              "type": "number",
+              "default": 1.6,
+              "minimum": 0.2,
+              "maximum": 2,
+              "unit": "metres"
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/scale",
+            "value": {
+              "optionId": "scale.human-scale",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [
+            {
+              "path": "NexusArcade-Harness/composition.mjs",
+              "symbol": "rollConcepts / expand / validateComposition",
+              "sha256": "a35c4c4e6e5aa4aff51f302b7bd8b83c62690ef7930f91c311504f11ddb5045a",
+              "evidence": "source_inspected_not_new_runtime_validation"
+            }
+          ],
+          "validationRefs": [
+            "spatial",
+            "readability"
+          ],
+          "gapRef": "cap.metre_scale",
+          "behavior": "Convert clearance, speed, interaction reach and feedback size consistently; visual shrinking alone cannot alter physical units silently.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        },
+        {
+          "id": "scale.miniature",
+          "status": "planned",
+          "provides": [
+            "choice.scale.miniature"
+          ],
+          "requires": [
+            "cap.miniature_scale"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.miniature_scale"
+            }
+          ],
+          "parameters": {
+            "metresPerWorldUnit": {
+              "type": "number",
+              "default": 1,
+              "minimum": 0.1,
+              "maximum": 1,
+              "unit": "metres/world-unit"
+            },
+            "actorHeight": {
+              "type": "number",
+              "default": 1.6,
+              "minimum": 0.2,
+              "maximum": 2,
+              "unit": "metres"
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/scale",
+            "value": {
+              "optionId": "scale.miniature",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [],
+          "validationRefs": [
+            "spatial",
+            "readability"
+          ],
+          "gapRef": "cap.miniature_scale",
+          "behavior": "Convert clearance, speed, interaction reach and feedback size consistently; visual shrinking alone cannot alter physical units silently.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        }
+      ],
+      "purpose": "Convert clearance, speed, interaction reach and feedback size consistently; visual shrinking alone cannot alter physical units silently.",
+      "parameterPolicy": "Proposed bounds, not universal engine support. Capability audit and frozen profile may narrow; compilation rejects unsupported values.",
+      "mergeRule": "set_once_equal_or_conflict",
+      "category": "World and presentation"
+    },
+    {
+      "id": "interaction",
+      "layer": "behavior",
+      "required": true,
+      "selection": {
+        "mode": "constraint_filtered",
+        "min": 1,
+        "max": 3
+      },
+      "options": [
+        {
+          "id": "interaction.activate",
+          "status": "implemented_unverified",
+          "provides": [
+            "choice.interaction.activate"
+          ],
+          "requires": [
+            "cap.activate"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.activate"
+            }
+          ],
+          "parameters": {
+            "reach": {
+              "type": "number",
+              "default": 2.3,
+              "minimum": 0.5,
+              "maximum": 3,
+              "unit": "metres"
+            },
+            "interruptMode": {
+              "type": "string",
+              "default": "release",
+              "enum": [
+                "release",
+                "complete_atomic"
+              ]
+            }
+          },
+          "profileFragment": {
+            "op": "append_unique_by_option_id",
+            "path": "/decisionsByPoint/interaction",
+            "value": {
+              "optionId": "interaction.activate",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [
+            {
+              "path": "NexusArcade-Harness/kits/scene-kit.mjs",
+              "symbol": "createCompositionEngine",
+              "sha256": "8c063e11189abbf62b49431efc471a5fae8fb77f149cdbf5bb0073893f379ab2",
+              "evidence": "source_inspected_not_new_runtime_validation"
+            }
+          ],
+          "validationRefs": [
+            "composition",
+            "resilience",
+            "novelty"
+          ],
+          "gapRef": "cap.activate",
+          "behavior": "Instantiate actions with precondition/effect/interrupt state; activation is atomic, redirect changes a typed process destination.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        },
+        {
+          "id": "interaction.redirect",
+          "status": "planned",
+          "provides": [
+            "choice.interaction.redirect"
+          ],
+          "requires": [
+            "cap.redirect"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.redirect"
+            }
+          ],
+          "parameters": {
+            "reach": {
+              "type": "number",
+              "default": 2.3,
+              "minimum": 0.5,
+              "maximum": 3,
+              "unit": "metres"
+            },
+            "interruptMode": {
+              "type": "string",
+              "default": "release",
+              "enum": [
+                "release",
+                "complete_atomic"
+              ]
+            }
+          },
+          "profileFragment": {
+            "op": "append_unique_by_option_id",
+            "path": "/decisionsByPoint/interaction",
+            "value": {
+              "optionId": "interaction.redirect",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [],
+          "validationRefs": [
+            "composition",
+            "resilience",
+            "novelty"
+          ],
+          "gapRef": "cap.redirect",
+          "behavior": "Instantiate actions with precondition/effect/interrupt state; activation is atomic, redirect changes a typed process destination.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        },
+        {
+          "id": "interaction.carry",
+          "validationRefs": [
+            "composition",
+            "resilience",
+            "novelty"
+          ],
+          "status": "implemented_unverified",
+          "provides": [
+            "choice.interaction.carry"
+          ],
+          "requires": [
+            "cap.carry"
+          ],
+          "conflicts": [],
+          "parameters": {
+            "reach": {
+              "type": "number",
+              "default": 2.3,
+              "minimum": 0.5,
+              "maximum": 3,
+              "unit": "metres"
+            },
+            "interruptMode": {
+              "type": "string",
+              "default": "release",
+              "enum": [
+                "release",
+                "complete_atomic"
+              ]
+            },
+            "maxCarried": {
+              "type": "integer",
+              "default": 1,
+              "minimum": 1,
+              "maximum": 1,
+              "unit": "objects"
+            }
+          },
+          "profileFragment": {
+            "op": "append_unique_by_option_id",
+            "path": "/decisionsByPoint/interaction",
+            "value": {
+              "optionId": "interaction.carry",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [
+            {
+              "path": "NexusArcade-Harness/kits/scene-kit.mjs",
+              "symbol": "createCompositionEngine",
+              "sha256": "8c063e11189abbf62b49431efc471a5fae8fb77f149cdbf5bb0073893f379ab2",
+              "evidence": "source_inspected_not_new_runtime_validation"
+            }
+          ],
+          "gapRef": "cap.carry",
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.carry"
+            }
+          ],
+          "behavior": "Attach one core, transport to typed receiver, transfer once; invalid receivers do not complete objective.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        },
+        {
+          "id": "interaction.hold",
+          "validationRefs": [
+            "composition",
+            "resilience",
+            "novelty"
+          ],
+          "status": "implemented_unverified",
+          "provides": [
+            "choice.interaction.hold"
+          ],
+          "requires": [
+            "cap.hold"
+          ],
+          "conflicts": [],
+          "parameters": {
+            "reach": {
+              "type": "number",
+              "default": 2.3,
+              "minimum": 0.5,
+              "maximum": 3,
+              "unit": "metres"
+            },
+            "interruptMode": {
+              "type": "string",
+              "default": "release",
+              "enum": [
+                "release",
+                "complete_atomic"
+              ]
+            },
+            "holdSeconds": {
+              "type": "number",
+              "default": 3,
+              "minimum": 1,
+              "maximum": 5,
+              "unit": "seconds"
+            }
+          },
+          "profileFragment": {
+            "op": "append_unique_by_option_id",
+            "path": "/decisionsByPoint/interaction",
+            "value": {
+              "optionId": "interaction.hold",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [
+            {
+              "path": "NexusArcade-Harness/kits/scene-kit.mjs",
+              "symbol": "createCompositionEngine",
+              "sha256": "8c063e11189abbf62b49431efc471a5fae8fb77f149cdbf5bb0073893f379ab2",
+              "evidence": "source_inspected_not_new_runtime_validation"
+            }
+          ],
+          "gapRef": "cap.hold",
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.hold"
+            }
+          ],
+          "behavior": "Accumulate progress only while nearby valid input held; release pauses progress, reset clears it.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        }
+      ],
+      "purpose": "Instantiate actions with precondition/effect/interrupt state; activation is atomic, redirect changes a typed process destination.",
+      "parameterPolicy": "Proposed bounds, not universal engine support. Capability audit and frozen profile may narrow; compilation rejects unsupported values.",
+      "mergeRule": "append_unique_by_option_id",
+      "category": "Gameplay domains"
+    },
+    {
+      "id": "connections",
+      "layer": "behavior",
+      "required": true,
+      "selection": {
+        "mode": "constraint_filtered",
+        "min": 1,
+        "max": 2
+      },
+      "options": [
+        {
+          "id": "connections.prerequisite",
+          "status": "implemented_unverified",
+          "provides": [
+            "choice.connections.prerequisite"
+          ],
+          "requires": [
+            "cap.prerequisite"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.prerequisite"
+            }
+          ],
+          "parameters": {
+            "priority": {
+              "type": "integer",
+              "default": 0,
+              "minimum": 0,
+              "maximum": 10,
+              "unit": "order"
+            },
+            "rate": {
+              "type": "number",
+              "default": 1,
+              "minimum": 0.1,
+              "maximum": 10,
+              "unit": "units/second"
+            }
+          },
+          "profileFragment": {
+            "op": "append_unique_by_option_id",
+            "path": "/decisionsByPoint/connections",
+            "value": {
+              "optionId": "connections.prerequisite",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [
+            {
+              "path": "NexusArcade-Harness/kits/scene-kit.mjs",
+              "symbol": "createCompositionEngine",
+              "sha256": "8c063e11189abbf62b49431efc471a5fae8fb77f149cdbf5bb0073893f379ab2",
+              "evidence": "source_inspected_not_new_runtime_validation"
+            }
+          ],
+          "validationRefs": [
+            "composition",
+            "loop"
+          ],
+          "gapRef": "cap.prerequisite",
+          "behavior": "Prerequisites require completed state; flow ports carry declared unit/rate and apply deterministic update order.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        },
+        {
+          "id": "connections.continuous-flow",
+          "status": "planned",
+          "provides": [
+            "choice.connections.continuous-flow"
+          ],
+          "requires": [
+            "cap.continuous_flow"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.continuous_flow"
+            }
+          ],
+          "parameters": {
+            "priority": {
+              "type": "integer",
+              "default": 0,
+              "minimum": 0,
+              "maximum": 10,
+              "unit": "order"
+            },
+            "rate": {
+              "type": "number",
+              "default": 1,
+              "minimum": 0.1,
+              "maximum": 10,
+              "unit": "units/second"
+            }
+          },
+          "profileFragment": {
+            "op": "append_unique_by_option_id",
+            "path": "/decisionsByPoint/connections",
+            "value": {
+              "optionId": "connections.continuous-flow",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [],
+          "validationRefs": [
+            "composition",
+            "loop"
+          ],
+          "gapRef": "cap.continuous_flow",
+          "behavior": "Prerequisites require completed state; flow ports carry declared unit/rate and apply deterministic update order.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        }
+      ],
+      "purpose": "Prerequisites require completed state; flow ports carry declared unit/rate and apply deterministic update order.",
+      "parameterPolicy": "Proposed bounds, not universal engine support. Capability audit and frozen profile may narrow; compilation rejects unsupported values.",
+      "mergeRule": "append_unique_by_option_id",
+      "category": "Gameplay domains"
+    },
+    {
+      "id": "consequences",
+      "layer": "behavior",
+      "required": true,
+      "selection": {
+        "mode": "constraint_filtered",
+        "min": 1,
+        "max": 2
+      },
+      "options": [
+        {
+          "id": "consequences.open-route",
+          "status": "implemented_unverified",
+          "provides": [
+            "choice.consequences.open-route"
+          ],
+          "requires": [
+            "cap.open_route"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.open_route"
+            }
+          ],
+          "parameters": {
+            "feedbackDelayMs": {
+              "type": "number",
+              "default": 0,
+              "minimum": 0,
+              "maximum": 150,
+              "unit": "milliseconds"
+            }
+          },
+          "profileFragment": {
+            "op": "append_unique_by_option_id",
+            "path": "/decisionsByPoint/consequences",
+            "value": {
+              "optionId": "consequences.open-route",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [
+            {
+              "path": "NexusArcade-Harness/kits/scene-kit.mjs",
+              "symbol": "createCompositionEngine",
+              "sha256": "8c063e11189abbf62b49431efc471a5fae8fb77f149cdbf5bb0073893f379ab2",
+              "evidence": "source_inspected_not_new_runtime_validation"
+            }
+          ],
+          "validationRefs": [
+            "loop",
+            "concept"
+          ],
+          "gapRef": "cap.open_route",
+          "behavior": "Bind consequence to authoritative state: enable supported route or apply a declared transformation with consistent interaction/collision state.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        },
+        {
+          "id": "consequences.transform-object",
+          "status": "planned",
+          "provides": [
+            "choice.consequences.transform-object"
+          ],
+          "requires": [
+            "cap.transform_object"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.transform_object"
+            }
+          ],
+          "parameters": {
+            "feedbackDelayMs": {
+              "type": "number",
+              "default": 0,
+              "minimum": 0,
+              "maximum": 150,
+              "unit": "milliseconds"
+            }
+          },
+          "profileFragment": {
+            "op": "append_unique_by_option_id",
+            "path": "/decisionsByPoint/consequences",
+            "value": {
+              "optionId": "consequences.transform-object",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [],
+          "validationRefs": [
+            "loop",
+            "concept"
+          ],
+          "gapRef": "cap.transform_object",
+          "behavior": "Bind consequence to authoritative state: enable supported route or apply a declared transformation with consistent interaction/collision state.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        }
+      ],
+      "purpose": "Bind consequence to authoritative state: enable supported route or apply a declared transformation with consistent interaction/collision state.",
+      "parameterPolicy": "Proposed bounds, not universal engine support. Capability audit and frozen profile may narrow; compilation rejects unsupported values.",
+      "mergeRule": "append_unique_by_option_id",
+      "category": "Gameplay domains"
+    },
+    {
+      "id": "pressure",
+      "layer": "behavior",
+      "required": true,
+      "selection": {
+        "mode": "constraint_filtered",
+        "min": 1,
+        "max": 1
+      },
+      "options": [
+        {
+          "id": "pressure.deadline",
+          "status": "implemented_unverified",
+          "provides": [
+            "choice.pressure.deadline"
+          ],
+          "requires": [
+            "cap.session_deadline"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.session_deadline"
+            }
+          ],
+          "parameters": {
+            "sessionSeconds": {
+              "type": "number",
+              "default": 300,
+              "minimum": 60,
+              "maximum": 600,
+              "unit": "seconds"
+            },
+            "initialResource": {
+              "type": "number",
+              "default": 100,
+              "minimum": 1,
+              "maximum": 1000,
+              "unit": "units"
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/pressure",
+            "value": {
+              "optionId": "pressure.deadline",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [
+            {
+              "path": "NexusArcade-Harness/kits/scene-kit.mjs",
+              "symbol": "createCompositionEngine",
+              "sha256": "8c063e11189abbf62b49431efc471a5fae8fb77f149cdbf5bb0073893f379ab2",
+              "evidence": "source_inspected_not_new_runtime_validation"
+            }
+          ],
+          "validationRefs": [
+            "loop",
+            "resilience"
+          ],
+          "gapRef": "cap.session_deadline",
+          "behavior": "Define playable failure pressure separately from generation deadline; depletion needs finite source/sink rules and observable remaining state.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        },
+        {
+          "id": "pressure.resource-depletion",
+          "status": "planned",
+          "provides": [
+            "choice.pressure.resource-depletion"
+          ],
+          "requires": [
+            "cap.resource_depletion"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.resource_depletion"
+            }
+          ],
+          "parameters": {
+            "sessionSeconds": {
+              "type": "number",
+              "default": 300,
+              "minimum": 60,
+              "maximum": 600,
+              "unit": "seconds"
+            },
+            "initialResource": {
+              "type": "number",
+              "default": 100,
+              "minimum": 1,
+              "maximum": 1000,
+              "unit": "units"
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/pressure",
+            "value": {
+              "optionId": "pressure.resource-depletion",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [],
+          "validationRefs": [
+            "loop",
+            "resilience"
+          ],
+          "gapRef": "cap.resource_depletion",
+          "behavior": "Define playable failure pressure separately from generation deadline; depletion needs finite source/sink rules and observable remaining state.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        }
+      ],
+      "purpose": "Define playable failure pressure separately from generation deadline; depletion needs finite source/sink rules and observable remaining state.",
+      "parameterPolicy": "Proposed bounds, not universal engine support. Capability audit and frozen profile may narrow; compilation rejects unsupported values.",
+      "mergeRule": "set_once_equal_or_conflict",
+      "category": "Gameplay domains"
+    },
+    {
+      "id": "progression",
+      "layer": "behavior",
+      "required": true,
+      "selection": {
+        "mode": "constraint_filtered",
+        "min": 1,
+        "max": 1
+      },
+      "options": [
+        {
+          "id": "progression.dependency-unlocks",
+          "status": "implemented_unverified",
+          "provides": [
+            "choice.progression.dependency-unlocks"
+          ],
+          "requires": [
+            "cap.dependency_unlocks"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.dependency_unlocks"
+            }
+          ],
+          "parameters": {
+            "stages": {
+              "type": "integer",
+              "default": 3,
+              "minimum": 1,
+              "maximum": 6,
+              "unit": "stages"
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/progression",
+            "value": {
+              "optionId": "progression.dependency-unlocks",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [
+            {
+              "path": "NexusArcade-Harness/kits/scene-kit.mjs",
+              "symbol": "createCompositionEngine",
+              "sha256": "8c063e11189abbf62b49431efc471a5fae8fb77f149cdbf5bb0073893f379ab2",
+              "evidence": "source_inspected_not_new_runtime_validation"
+            }
+          ],
+          "validationRefs": [
+            "loop"
+          ],
+          "gapRef": "cap.dependency_unlocks",
+          "behavior": "Bind each transition to explicit predicate and available-action changes; stage names alone are not progression.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        },
+        {
+          "id": "progression.changing-environment",
+          "status": "planned",
+          "provides": [
+            "choice.progression.changing-environment"
+          ],
+          "requires": [
+            "cap.changing_environment"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.changing_environment"
+            }
+          ],
+          "parameters": {
+            "stages": {
+              "type": "integer",
+              "default": 3,
+              "minimum": 1,
+              "maximum": 6,
+              "unit": "stages"
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/progression",
+            "value": {
+              "optionId": "progression.changing-environment",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [],
+          "validationRefs": [
+            "loop"
+          ],
+          "gapRef": "cap.changing_environment",
+          "behavior": "Bind each transition to explicit predicate and available-action changes; stage names alone are not progression.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        }
+      ],
+      "purpose": "Bind each transition to explicit predicate and available-action changes; stage names alone are not progression.",
+      "parameterPolicy": "Proposed bounds, not universal engine support. Capability audit and frozen profile may narrow; compilation rejects unsupported values.",
+      "mergeRule": "set_once_equal_or_conflict",
+      "category": "Gameplay domains"
+    },
+    {
+      "id": "ending",
+      "layer": "behavior",
+      "required": true,
+      "selection": {
+        "mode": "constraint_filtered",
+        "min": 1,
+        "max": 1
+      },
+      "options": [
+        {
+          "id": "ending.complete-and-return",
+          "status": "implemented_unverified",
+          "provides": [
+            "choice.ending.complete-and-return"
+          ],
+          "requires": [
+            "cap.return_exit"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.return_exit"
+            }
+          ],
+          "parameters": {
+            "exitRadius": {
+              "type": "number",
+              "default": 2.5,
+              "minimum": 1,
+              "maximum": 4,
+              "unit": "metres"
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/ending",
+            "value": {
+              "optionId": "ending.complete-and-return",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [
+            {
+              "path": "NexusArcade-Harness/kits/scene-kit.mjs",
+              "symbol": "createCompositionEngine",
+              "sha256": "8c063e11189abbf62b49431efc471a5fae8fb77f149cdbf5bb0073893f379ab2",
+              "evidence": "source_inspected_not_new_runtime_validation"
+            }
+          ],
+          "validationRefs": [
+            "loop"
+          ],
+          "gapRef": "cap.return_exit",
+          "behavior": "Resolve exact required targets and exit ID; success requires both completion and presence. Restore all owned state on restart.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        },
+        {
+          "id": "ending.reach-destination",
+          "status": "implemented_unverified",
+          "provides": [
+            "choice.ending.reach-destination"
+          ],
+          "requires": [
+            "cap.destination_exit"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.destination_exit"
+            }
+          ],
+          "parameters": {
+            "exitRadius": {
+              "type": "number",
+              "default": 2.5,
+              "minimum": 1,
+              "maximum": 4,
+              "unit": "metres"
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/ending",
+            "value": {
+              "optionId": "ending.reach-destination",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [
+            {
+              "path": "NexusArcade-Harness/kits/scene-kit.mjs",
+              "symbol": "createCompositionEngine",
+              "sha256": "8c063e11189abbf62b49431efc471a5fae8fb77f149cdbf5bb0073893f379ab2",
+              "evidence": "source_inspected_not_new_runtime_validation"
+            }
+          ],
+          "validationRefs": [
+            "loop"
+          ],
+          "gapRef": "cap.destination_exit",
+          "behavior": "Resolve exact required targets and exit ID; success requires both completion and presence. Restore all owned state on restart.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        }
+      ],
+      "purpose": "Resolve exact required targets and exit ID; success requires both completion and presence. Restore all owned state on restart.",
+      "parameterPolicy": "Proposed bounds, not universal engine support. Capability audit and frozen profile may narrow; compilation rejects unsupported values.",
+      "mergeRule": "set_once_equal_or_conflict",
+      "category": "Gameplay domains"
+    },
+    {
+      "id": "shape_language",
+      "layer": "presentation",
+      "required": true,
+      "selection": {
+        "mode": "constraint_filtered",
+        "min": 1,
+        "max": 1
+      },
+      "options": [
+        {
+          "id": "shape_language.hexagonal",
+          "status": "implemented_unverified",
+          "provides": [
+            "choice.shape_language.hexagonal"
+          ],
+          "requires": [
+            "cap.hex_geometry"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.hex_geometry"
+            }
+          ],
+          "parameters": {
+            "detailSegments": {
+              "type": "integer",
+              "default": 6,
+              "minimum": 6,
+              "maximum": 24,
+              "unit": "segments"
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/shape_language",
+            "value": {
+              "optionId": "shape_language.hexagonal",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [
+            {
+              "path": "NexusArcade-Harness/player.mjs",
+              "symbol": "Three.js provider",
+              "sha256": "a6a663642313ca89f274618c916ce711160e42a24ac9f23b12834ed2c14c5c3a",
+              "evidence": "source_inspected_not_new_runtime_validation"
+            }
+          ],
+          "validationRefs": [
+            "presentation",
+            "novelty"
+          ],
+          "gapRef": "cap.hex_geometry",
+          "behavior": "Generate coherent region/object silhouettes by role; geometry must preserve validated clearance and readable affordances.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        },
+        {
+          "id": "shape_language.organic",
+          "status": "planned",
+          "provides": [
+            "choice.shape_language.organic"
+          ],
+          "requires": [
+            "cap.organic_geometry"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.organic_geometry"
+            }
+          ],
+          "parameters": {
+            "detailSegments": {
+              "type": "integer",
+              "default": 6,
+              "minimum": 6,
+              "maximum": 24,
+              "unit": "segments"
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/shape_language",
+            "value": {
+              "optionId": "shape_language.organic",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [],
+          "validationRefs": [
+            "presentation",
+            "novelty"
+          ],
+          "gapRef": "cap.organic_geometry",
+          "behavior": "Generate coherent region/object silhouettes by role; geometry must preserve validated clearance and readable affordances.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        }
+      ],
+      "purpose": "Generate coherent region/object silhouettes by role; geometry must preserve validated clearance and readable affordances.",
+      "parameterPolicy": "Proposed bounds, not universal engine support. Capability audit and frozen profile may narrow; compilation rejects unsupported values.",
+      "mergeRule": "set_once_equal_or_conflict",
+      "category": "World and presentation"
+    },
+    {
+      "id": "materials",
+      "layer": "presentation",
+      "required": true,
+      "selection": {
+        "mode": "constraint_filtered",
+        "min": 1,
+        "max": 1
+      },
+      "options": [
+        {
+          "id": "materials.luminous-standard",
+          "status": "implemented_unverified",
+          "provides": [
+            "choice.materials.luminous-standard"
+          ],
+          "requires": [
+            "cap.standard_material"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.standard_material"
+            }
+          ],
+          "parameters": {
+            "roughness": {
+              "type": "number",
+              "default": 0.5,
+              "minimum": 0.15,
+              "maximum": 0.9,
+              "unit": "ratio"
+            },
+            "metalness": {
+              "type": "number",
+              "default": 0.25,
+              "minimum": 0,
+              "maximum": 1,
+              "unit": "ratio"
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/materials",
+            "value": {
+              "optionId": "materials.luminous-standard",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [
+            {
+              "path": "NexusArcade-Harness/player.mjs",
+              "symbol": "Three.js provider",
+              "sha256": "a6a663642313ca89f274618c916ce711160e42a24ac9f23b12834ed2c14c5c3a",
+              "evidence": "source_inspected_not_new_runtime_validation"
+            }
+          ],
+          "validationRefs": [
+            "presentation"
+          ],
+          "gapRef": "cap.standard_material",
+          "behavior": "Map surface roles to implemented materials; layer/shader options require verified implementation and provenance.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        },
+        {
+          "id": "materials.layered-stone",
+          "status": "planned",
+          "provides": [
+            "choice.materials.layered-stone"
+          ],
+          "requires": [
+            "cap.layered_material"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.layered_material"
+            }
+          ],
+          "parameters": {
+            "roughness": {
+              "type": "number",
+              "default": 0.5,
+              "minimum": 0.15,
+              "maximum": 0.9,
+              "unit": "ratio"
+            },
+            "metalness": {
+              "type": "number",
+              "default": 0.25,
+              "minimum": 0,
+              "maximum": 1,
+              "unit": "ratio"
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/materials",
+            "value": {
+              "optionId": "materials.layered-stone",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [],
+          "validationRefs": [
+            "presentation"
+          ],
+          "gapRef": "cap.layered_material",
+          "behavior": "Map surface roles to implemented materials; layer/shader options require verified implementation and provenance.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        }
+      ],
+      "purpose": "Map surface roles to implemented materials; layer/shader options require verified implementation and provenance.",
+      "parameterPolicy": "Proposed bounds, not universal engine support. Capability audit and frozen profile may narrow; compilation rejects unsupported values.",
+      "mergeRule": "set_once_equal_or_conflict",
+      "category": "World and presentation"
+    },
+    {
+      "id": "lighting",
+      "layer": "presentation",
+      "required": true,
+      "selection": {
+        "mode": "constraint_filtered",
+        "min": 1,
+        "max": 1
+      },
+      "options": [
+        {
+          "id": "lighting.directional-fog",
+          "status": "implemented_unverified",
+          "provides": [
+            "choice.lighting.directional-fog"
+          ],
+          "requires": [
+            "cap.directional_fog"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.directional_fog"
+            }
+          ],
+          "parameters": {
+            "exposure": {
+              "type": "number",
+              "default": 1.25,
+              "minimum": 0.7,
+              "maximum": 1.6,
+              "unit": "multiplier"
+            },
+            "fogDensity": {
+              "type": "number",
+              "default": 0.006,
+              "minimum": 0,
+              "maximum": 0.02,
+              "unit": "inverse world-unit"
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/lighting",
+            "value": {
+              "optionId": "lighting.directional-fog",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [
+            {
+              "path": "NexusArcade-Harness/player.mjs",
+              "symbol": "Three.js provider",
+              "sha256": "a6a663642313ca89f274618c916ce711160e42a24ac9f23b12834ed2c14c5c3a",
+              "evidence": "source_inspected_not_new_runtime_validation"
+            }
+          ],
+          "validationRefs": [
+            "presentation",
+            "readability"
+          ],
+          "gapRef": "cap.directional_fog",
+          "behavior": "Place lights by world structure, preserve target/background separation and constrain shadow/render cost.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        },
+        {
+          "id": "lighting.interior-local",
+          "status": "planned",
+          "provides": [
+            "choice.lighting.interior-local"
+          ],
+          "requires": [
+            "cap.interior_lighting"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.interior_lighting"
+            }
+          ],
+          "parameters": {
+            "exposure": {
+              "type": "number",
+              "default": 1.25,
+              "minimum": 0.7,
+              "maximum": 1.6,
+              "unit": "multiplier"
+            },
+            "fogDensity": {
+              "type": "number",
+              "default": 0.006,
+              "minimum": 0,
+              "maximum": 0.02,
+              "unit": "inverse world-unit"
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/lighting",
+            "value": {
+              "optionId": "lighting.interior-local",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [],
+          "validationRefs": [
+            "presentation",
+            "readability"
+          ],
+          "gapRef": "cap.interior_lighting",
+          "behavior": "Place lights by world structure, preserve target/background separation and constrain shadow/render cost.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        }
+      ],
+      "purpose": "Place lights by world structure, preserve target/background separation and constrain shadow/render cost.",
+      "parameterPolicy": "Proposed bounds, not universal engine support. Capability audit and frozen profile may narrow; compilation rejects unsupported values.",
+      "mergeRule": "set_once_equal_or_conflict",
+      "category": "World and presentation"
+    },
+    {
+      "id": "animation_feedback",
+      "layer": "presentation",
+      "required": true,
+      "selection": {
+        "mode": "constraint_filtered",
+        "min": 1,
+        "max": 2
+      },
+      "options": [
+        {
+          "id": "animation_feedback.beacon-response",
+          "status": "implemented_unverified",
+          "provides": [
+            "choice.animation_feedback.beacon-response"
+          ],
+          "requires": [
+            "cap.beacon_feedback"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.beacon_feedback"
+            }
+          ],
+          "parameters": {
+            "responseMs": {
+              "type": "number",
+              "default": 150,
+              "minimum": 50,
+              "maximum": 350,
+              "unit": "milliseconds"
+            },
+            "intensity": {
+              "type": "number",
+              "default": 0.5,
+              "minimum": 0,
+              "maximum": 1,
+              "unit": "ratio"
+            }
+          },
+          "profileFragment": {
+            "op": "append_unique_by_option_id",
+            "path": "/decisionsByPoint/animation_feedback",
+            "value": {
+              "optionId": "animation_feedback.beacon-response",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [
+            {
+              "path": "NexusArcade-Harness/player.mjs",
+              "symbol": "Three.js provider",
+              "sha256": "a6a663642313ca89f274618c916ce711160e42a24ac9f23b12834ed2c14c5c3a",
+              "evidence": "source_inspected_not_new_runtime_validation"
+            }
+          ],
+          "validationRefs": [
+            "presentation",
+            "readability"
+          ],
+          "gapRef": "cap.beacon_feedback",
+          "behavior": "Map authoritative activation/progress/completion events to distinct responses; cancel obsolete effects and cap overlap.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        },
+        {
+          "id": "animation_feedback.elastic-impact",
+          "status": "planned",
+          "provides": [
+            "choice.animation_feedback.elastic-impact"
+          ],
+          "requires": [
+            "cap.elastic_feedback"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.elastic_feedback"
+            }
+          ],
+          "parameters": {
+            "responseMs": {
+              "type": "number",
+              "default": 150,
+              "minimum": 50,
+              "maximum": 350,
+              "unit": "milliseconds"
+            },
+            "intensity": {
+              "type": "number",
+              "default": 0.5,
+              "minimum": 0,
+              "maximum": 1,
+              "unit": "ratio"
+            }
+          },
+          "profileFragment": {
+            "op": "append_unique_by_option_id",
+            "path": "/decisionsByPoint/animation_feedback",
+            "value": {
+              "optionId": "animation_feedback.elastic-impact",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [],
+          "validationRefs": [
+            "presentation",
+            "readability"
+          ],
+          "gapRef": "cap.elastic_feedback",
+          "behavior": "Map authoritative activation/progress/completion events to distinct responses; cancel obsolete effects and cap overlap.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        }
+      ],
+      "purpose": "Map authoritative activation/progress/completion events to distinct responses; cancel obsolete effects and cap overlap.",
+      "parameterPolicy": "Proposed bounds, not universal engine support. Capability audit and frozen profile may narrow; compilation rejects unsupported values.",
+      "mergeRule": "append_unique_by_option_id",
+      "category": "World and presentation"
+    },
+    {
+      "id": "audio",
+      "layer": "presentation",
+      "required": true,
+      "selection": {
+        "mode": "constraint_filtered",
+        "min": 1,
+        "max": 2
+      },
+      "options": [
+        {
+          "id": "audio.synth-confirmation",
+          "status": "implemented_unverified",
+          "provides": [
+            "choice.audio.synth-confirmation"
+          ],
+          "requires": [
+            "cap.synth_audio"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.synth_audio"
+            }
+          ],
+          "parameters": {
+            "masterGain": {
+              "type": "number",
+              "default": 0.25,
+              "minimum": 0,
+              "maximum": 0.7,
+              "unit": "linear gain"
+            },
+            "maxVoices": {
+              "type": "integer",
+              "default": 4,
+              "minimum": 1,
+              "maximum": 8,
+              "unit": "voices"
+            }
+          },
+          "profileFragment": {
+            "op": "append_unique_by_option_id",
+            "path": "/decisionsByPoint/audio",
+            "value": {
+              "optionId": "audio.synth-confirmation",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [
+            {
+              "path": "NexusArcade-Harness/player.mjs",
+              "symbol": "Three.js provider",
+              "sha256": "a6a663642313ca89f274618c916ce711160e42a24ac9f23b12834ed2c14c5c3a",
+              "evidence": "source_inspected_not_new_runtime_validation"
+            }
+          ],
+          "validationRefs": [
+            "presentation",
+            "resilience"
+          ],
+          "gapRef": "cap.synth_audio",
+          "behavior": "Sound opt-in and mute always available; map events to synthesis or licensed sources and release voices on reset.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        },
+        {
+          "id": "audio.spatial-environment",
+          "status": "planned",
+          "provides": [
+            "choice.audio.spatial-environment"
+          ],
+          "requires": [
+            "cap.spatial_audio"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.spatial_audio"
+            }
+          ],
+          "parameters": {
+            "masterGain": {
+              "type": "number",
+              "default": 0.25,
+              "minimum": 0,
+              "maximum": 0.7,
+              "unit": "linear gain"
+            },
+            "maxVoices": {
+              "type": "integer",
+              "default": 4,
+              "minimum": 1,
+              "maximum": 8,
+              "unit": "voices"
+            }
+          },
+          "profileFragment": {
+            "op": "append_unique_by_option_id",
+            "path": "/decisionsByPoint/audio",
+            "value": {
+              "optionId": "audio.spatial-environment",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [],
+          "validationRefs": [
+            "presentation",
+            "resilience"
+          ],
+          "gapRef": "cap.spatial_audio",
+          "behavior": "Sound opt-in and mute always available; map events to synthesis or licensed sources and release voices on reset.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        }
+      ],
+      "purpose": "Sound opt-in and mute always available; map events to synthesis or licensed sources and release voices on reset.",
+      "parameterPolicy": "Proposed bounds, not universal engine support. Capability audit and frozen profile may narrow; compilation rejects unsupported values.",
+      "mergeRule": "append_unique_by_option_id",
+      "category": "World and presentation"
+    },
+    {
+      "id": "interface",
+      "layer": "presentation",
+      "required": true,
+      "selection": {
+        "mode": "constraint_filtered",
+        "min": 1,
+        "max": 1
+      },
+      "options": [
+        {
+          "id": "interface.objective-hud",
+          "status": "implemented_unverified",
+          "provides": [
+            "choice.interface.objective-hud"
+          ],
+          "requires": [
+            "cap.objective_hud"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.objective_hud"
+            }
+          ],
+          "parameters": {
+            "minimumTextPx": {
+              "type": "number",
+              "default": 16,
+              "minimum": 16,
+              "maximum": 28,
+              "unit": "CSS pixels"
+            },
+            "promptMode": {
+              "type": "string",
+              "default": "contextual",
+              "enum": [
+                "contextual",
+                "persistent"
+              ]
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/interface",
+            "value": {
+              "optionId": "interface.objective-hud",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [
+            {
+              "path": "NexusArcade-Harness/player.mjs",
+              "symbol": "Three.js provider",
+              "sha256": "a6a663642313ca89f274618c916ce711160e42a24ac9f23b12834ed2c14c5c3a",
+              "evidence": "source_inspected_not_new_runtime_validation"
+            }
+          ],
+          "validationRefs": [
+            "readability",
+            "controls"
+          ],
+          "gapRef": "cap.objective_hud",
+          "behavior": "Expose objective, control, consequence, pause and ending information from validated state; world UI must remain readable at relevant distances.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        },
+        {
+          "id": "interface.world-embedded",
+          "status": "planned",
+          "provides": [
+            "choice.interface.world-embedded"
+          ],
+          "requires": [
+            "cap.world_ui"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.world_ui"
+            }
+          ],
+          "parameters": {
+            "minimumTextPx": {
+              "type": "number",
+              "default": 16,
+              "minimum": 16,
+              "maximum": 28,
+              "unit": "CSS pixels"
+            },
+            "promptMode": {
+              "type": "string",
+              "default": "contextual",
+              "enum": [
+                "contextual",
+                "persistent"
+              ]
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/interface",
+            "value": {
+              "optionId": "interface.world-embedded",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [],
+          "validationRefs": [
+            "readability",
+            "controls"
+          ],
+          "gapRef": "cap.world_ui",
+          "behavior": "Expose objective, control, consequence, pause and ending information from validated state; world UI must remain readable at relevant distances.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        }
+      ],
+      "purpose": "Expose objective, control, consequence, pause and ending information from validated state; world UI must remain readable at relevant distances.",
+      "parameterPolicy": "Proposed bounds, not universal engine support. Capability audit and frozen profile may narrow; compilation rejects unsupported values.",
+      "mergeRule": "set_once_equal_or_conflict",
+      "category": "Player experience"
+    },
+    {
+      "id": "device_target",
+      "layer": "acceptance",
+      "required": true,
+      "selection": {
+        "mode": "fixed_execution_policy",
+        "min": 1,
+        "max": 1
+      },
+      "options": [
+        {
+          "id": "device_target.explicit-device-profile",
+          "status": "planned",
+          "provides": [
+            "choice.device_target.explicit-device-profile"
+          ],
+          "requires": [
+            "cap.device_profile"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.device_profile"
+            }
+          ],
+          "parameters": {
+            "resolution": {
+              "type": "string",
+              "default": "calibrate",
+              "enum": [
+                "calibrate"
+              ]
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/device_target",
+            "value": {
+              "optionId": "device_target.explicit-device-profile",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [],
+          "validationRefs": [
+            "performance",
+            "controls"
+          ],
+          "gapRef": "cap.device_profile",
+          "behavior": "Resolve concrete hardware/browser/resolution/input and measured budgets in G01; never randomly relax performance target.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        }
+      ],
+      "purpose": "Resolve concrete hardware/browser/resolution/input and measured budgets in G01; never randomly relax performance target.",
+      "parameterPolicy": "Proposed bounds, not universal engine support. Capability audit and frozen profile may narrow; compilation rejects unsupported values.",
+      "mergeRule": "set_once_equal_or_conflict",
+      "category": "Validation and improvement"
+    },
+    {
+      "id": "comparison_policy",
+      "layer": "acceptance",
+      "required": true,
+      "selection": {
+        "mode": "fixed_execution_policy",
+        "min": 1,
+        "max": 1
+      },
+      "options": [
+        {
+          "id": "comparison_policy.calibrated-nearest-neighbors",
+          "status": "planned",
+          "provides": [
+            "choice.comparison_policy.calibrated-nearest-neighbors"
+          ],
+          "requires": [
+            "cap.collection_comparison"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.collection_comparison"
+            }
+          ],
+          "parameters": {
+            "method": {
+              "type": "string",
+              "default": "calibrated_nearest_neighbors",
+              "enum": [
+                "calibrated_nearest_neighbors"
+              ]
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/comparison_policy",
+            "value": {
+              "optionId": "comparison_policy.calibrated-nearest-neighbors",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [],
+          "validationRefs": [
+            "novelty"
+          ],
+          "gapRef": "cap.collection_comparison",
+          "behavior": "Freeze descriptor/rubric version and known duplicate/distinct controls; compare visual identity and action consequences separately.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        }
+      ],
+      "purpose": "Freeze descriptor/rubric version and known duplicate/distinct controls; compare visual identity and action consequences separately.",
+      "parameterPolicy": "Proposed bounds, not universal engine support. Capability audit and frozen profile may narrow; compilation rejects unsupported values.",
+      "mergeRule": "set_once_equal_or_conflict",
+      "category": "Validation and improvement"
+    },
+    {
+      "id": "replay_structure",
+      "layer": "gameplay",
+      "required": true,
+      "selection": {
+        "mode": "compatible_choice",
+        "min": 1,
+        "max": 1
+      },
+      "options": [
+        {
+          "id": "replay_structure.personal-best",
+          "status": "planned",
+          "provides": [
+            "choice.replay_structure.personal-best"
+          ],
+          "requires": [
+            "cap.personal_best"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.personal_best"
+            }
+          ],
+          "parameters": {
+            "targetImprovement": {
+              "type": "number",
+              "default": 0.05,
+              "minimum": 0.01,
+              "maximum": 0.5,
+              "unit": "fraction_of_baseline_time"
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/replay_structure",
+            "value": {
+              "optionId": "replay_structure.personal-best",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [],
+          "validationRefs": [
+            "replay",
+            "loop",
+            "evidence"
+          ],
+          "gapRef": "cap.personal_best",
+          "behavior": "Repeat equivalent challenge with saved performance and visible improvement.",
+          "eligibilityCheck": "Implementation, selected parameter contract and current independent evidence must resolve."
+        },
+        {
+          "id": "replay_structure.alternate-strategy",
+          "status": "planned",
+          "provides": [
+            "choice.replay_structure.alternate-strategy"
+          ],
+          "requires": [
+            "cap.alternate_strategy"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.alternate_strategy"
+            }
+          ],
+          "parameters": {
+            "minimumStrategies": {
+              "type": "integer",
+              "default": 2,
+              "minimum": 2,
+              "maximum": 4,
+              "unit": "strategies"
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/replay_structure",
+            "value": {
+              "optionId": "replay_structure.alternate-strategy",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [],
+          "validationRefs": [
+            "replay",
+            "spatial",
+            "concept"
+          ],
+          "gapRef": "cap.alternate_strategy",
+          "behavior": "Different supported routes or action orders change risk/reward and outcome.",
+          "eligibilityCheck": "Implementation, selected parameter contract and current independent evidence must resolve."
+        },
+        {
+          "id": "replay_structure.changing-challenge",
+          "status": "planned",
+          "provides": [
+            "choice.replay_structure.changing-challenge"
+          ],
+          "requires": [
+            "cap.challenge_variation"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.challenge_variation"
+            }
+          ],
+          "parameters": {
+            "variants": {
+              "type": "integer",
+              "default": 3,
+              "minimum": 2,
+              "maximum": 8,
+              "unit": "challenge_configurations"
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/replay_structure",
+            "value": {
+              "optionId": "replay_structure.changing-challenge",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [],
+          "validationRefs": [
+            "replay",
+            "resilience"
+          ],
+          "gapRef": "cap.challenge_variation",
+          "behavior": "Recorded run seed changes challenge constraints, with comparable per-configuration records.",
+          "eligibilityCheck": "Implementation, selected parameter contract and current independent evidence must resolve."
+        }
+      ],
+      "purpose": "Compose replay structure with observable gameplay consequences.",
+      "parameterPolicy": "Bounds are proposed until implementation and probes establish eligibility.",
+      "mergeRule": "set_once_equal_or_conflict",
+      "category": "Player experience"
+    },
+    {
+      "id": "tradeoff",
+      "layer": "gameplay",
+      "required": true,
+      "selection": {
+        "mode": "compatible_choice",
+        "min": 1,
+        "max": 1
+      },
+      "options": [
+        {
+          "id": "tradeoff.route-risk",
+          "status": "planned",
+          "provides": [
+            "choice.tradeoff.route-risk"
+          ],
+          "requires": [
+            "cap.route_risk"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.route_risk"
+            }
+          ],
+          "parameters": {
+            "shortcutRatio": {
+              "type": "number",
+              "default": 0.7,
+              "minimum": 0.4,
+              "maximum": 0.9,
+              "unit": "fraction_of_safe_route_length"
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/tradeoff",
+            "value": {
+              "optionId": "tradeoff.route-risk",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [],
+          "validationRefs": [
+            "spatial",
+            "replay",
+            "concept"
+          ],
+          "gapRef": "cap.route_risk",
+          "behavior": "Shorter route exposes greater controllable risk than safer route.",
+          "eligibilityCheck": "Implementation, selected parameter contract and current independent evidence must resolve."
+        },
+        {
+          "id": "tradeoff.load-handling",
+          "status": "planned",
+          "provides": [
+            "choice.tradeoff.load-handling"
+          ],
+          "requires": [
+            "cap.load_handling"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.load_handling"
+            }
+          ],
+          "parameters": {
+            "loadedSpeedFactor": {
+              "type": "number",
+              "default": 0.75,
+              "minimum": 0.4,
+              "maximum": 0.95,
+              "unit": "fraction_of_unloaded_speed"
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/tradeoff",
+            "value": {
+              "optionId": "tradeoff.load-handling",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [],
+          "validationRefs": [
+            "controls",
+            "resilience",
+            "replay"
+          ],
+          "gapRef": "cap.load_handling",
+          "behavior": "Cargo value/weight changes handling and delivery strategy.",
+          "eligibilityCheck": "Implementation, selected parameter contract and current independent evidence must resolve."
+        }
+      ],
+      "purpose": "Compose tradeoff with observable gameplay consequences.",
+      "parameterPolicy": "Bounds are proposed until implementation and probes establish eligibility.",
+      "mergeRule": "set_once_equal_or_conflict",
+      "category": "Gameplay domains"
+    },
+    {
+      "id": "session_structure",
+      "layer": "gameplay",
+      "required": true,
+      "selection": {
+        "mode": "compatible_choice",
+        "min": 1,
+        "max": 1
+      },
+      "options": [
+        {
+          "id": "session_structure.introduce-combine-resolve",
+          "status": "planned",
+          "provides": [
+            "choice.session_structure.introduce-combine-resolve"
+          ],
+          "requires": [
+            "cap.session_stages"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.session_stages"
+            }
+          ],
+          "parameters": {
+            "stages": {
+              "type": "integer",
+              "default": 3,
+              "minimum": 3,
+              "maximum": 5,
+              "unit": "stages"
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/session_structure",
+            "value": {
+              "optionId": "session_structure.introduce-combine-resolve",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [],
+          "validationRefs": [
+            "loop",
+            "readability",
+            "replay"
+          ],
+          "gapRef": "cap.session_stages",
+          "behavior": "Introduce actions, combine their consequences, then resolve the objective.",
+          "eligibilityCheck": "Implementation, selected parameter contract and current independent evidence must resolve."
+        },
+        {
+          "id": "session_structure.escalating-pressure",
+          "status": "planned",
+          "provides": [
+            "choice.session_structure.escalating-pressure"
+          ],
+          "requires": [
+            "cap.escalating_pressure"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.escalating_pressure"
+            }
+          ],
+          "parameters": {
+            "pressureMultiplier": {
+              "type": "number",
+              "default": 1.3,
+              "minimum": 1.1,
+              "maximum": 2,
+              "unit": "ratio"
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/session_structure",
+            "value": {
+              "optionId": "session_structure.escalating-pressure",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [],
+          "validationRefs": [
+            "loop",
+            "resilience",
+            "replay"
+          ],
+          "gapRef": "cap.escalating_pressure",
+          "behavior": "Increase decision pressure while keeping the declared objective achievable.",
+          "eligibilityCheck": "Implementation, selected parameter contract and current independent evidence must resolve."
+        }
+      ],
+      "purpose": "Compose session structure with observable gameplay consequences.",
+      "parameterPolicy": "Bounds are proposed until implementation and probes establish eligibility.",
+      "mergeRule": "set_once_equal_or_conflict",
+      "category": "Player experience"
+    },
+    {
+      "id": "environment_behavior",
+      "layer": "gameplay",
+      "required": true,
+      "selection": {
+        "mode": "compatible_choice",
+        "min": 1,
+        "max": 1
+      },
+      "options": [
+        {
+          "id": "environment_behavior.changing-surface",
+          "status": "planned",
+          "provides": [
+            "choice.environment_behavior.changing-surface"
+          ],
+          "requires": [
+            "cap.surface_response"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.surface_response"
+            }
+          ],
+          "parameters": {
+            "gripFactor": {
+              "type": "number",
+              "default": 0.65,
+              "minimum": 0.3,
+              "maximum": 0.9,
+              "unit": "fraction_of_normal_grip"
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/environment_behavior",
+            "value": {
+              "optionId": "environment_behavior.changing-surface",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [],
+          "validationRefs": [
+            "controls",
+            "spatial",
+            "replay"
+          ],
+          "gapRef": "cap.surface_response",
+          "behavior": "Surface properties alter movement decisions in visible regions.",
+          "eligibilityCheck": "Implementation, selected parameter contract and current independent evidence must resolve."
+        },
+        {
+          "id": "environment_behavior.moving-obstacle",
+          "status": "planned",
+          "provides": [
+            "choice.environment_behavior.moving-obstacle"
+          ],
+          "requires": [
+            "cap.moving_obstacle"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "capability_leaf",
+              "ref": "cap.moving_obstacle"
+            }
+          ],
+          "parameters": {
+            "periodSeconds": {
+              "type": "number",
+              "default": 6,
+              "minimum": 3,
+              "maximum": 12,
+              "unit": "seconds"
+            }
+          },
+          "profileFragment": {
+            "op": "set_once_equal_or_conflict",
+            "path": "/decisionsByPoint/environment_behavior",
+            "value": {
+              "optionId": "environment_behavior.moving-obstacle",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [],
+          "validationRefs": [
+            "spatial",
+            "resilience",
+            "replay"
+          ],
+          "gapRef": "cap.moving_obstacle",
+          "behavior": "Predictable bounded obstacle motion creates timing decisions.",
+          "eligibilityCheck": "Implementation, selected parameter contract and current independent evidence must resolve."
+        }
+      ],
+      "purpose": "Compose environment behavior with observable gameplay consequences.",
+      "parameterPolicy": "Bounds are proposed until implementation and probes establish eligibility.",
+      "mergeRule": "set_once_equal_or_conflict",
+      "category": "Gameplay domains"
+    }
+  ],
+  "executionContractRef": "execution-contract.json",
+  "validationRulesRef": "execution-contract.json#/validationRules",
+  "selectionPolicy": {
+    "ordering": "Roll concepts independently first; then contextual genre and remaining constraint-filtered decisions. Resolve nested interpretation branches without changing original concept IDs.",
+    "seed": "Persist seed plus catalog/collection/compiler versions; adaptive collection changes require new snapshot version.",
+    "cardinality": "Selections are unique option IDs; required min must be satisfiable, max is clipped only by an explicitly recorded policy, never silent duplication.",
+    "composition": "Merge typed fragments using declared per-point rule; same scalar with unequal values is a conflict, not last-write-wins.",
+    "pruning": "Resolve capability and cross-option predicates before model inference. Unsupported branch is rejected with reason; all branches exhausted fails idea.",
+    "noveltySampling": "Prefer eligible undercovered combinations measured across view, topology, actions, consequences and visual identity; still enforce independent concept roll.",
+    "recursiveExpansion": "Expand named child choice nodes lazily, memoize path; reject reference cycles. Stop at implemented capability leaves or explicit gaps. Complexity selects bounded branch/depth settings in execution packet, not total repair passes.",
+    "fragmentTarget": "Fragments address an intermediate decisionsByPoint map. After merging, compiler emits the ordered decisions array in game profile; option ID keys retain each option parameters and provenance.",
+    "variationScopes": "Record between-game, between-run and within-run variation separately; each claimed scope needs decision/outcome evidence.",
+    "layerContribution": "Every selected gameplay layer needs a profile contribution and counterfactual assertion; presentation layers use visual/event evidence."
+  },
+  "capabilities": {
+    "cap.puzzle_loop": {
+      "status": "source_present_unverified_contract",
+      "implementationRefs": [
+        {
+          "path": "NexusArcade-Harness/kits/scene-kit.mjs",
+          "symbol": "createCompositionEngine",
+          "sha256": "8c063e11189abbf62b49431efc471a5fae8fb77f149cdbf5bb0073893f379ab2",
+          "evidence": "source_inspected_not_new_runtime_validation"
+        }
+      ],
+      "ownerGoal": "G01",
+      "gapResolution": "Audit exact contract and probe before eligibility."
+    },
+    "cap.race_loop": {
+      "status": "requires_implementation_or_calibration",
+      "implementationRefs": [],
+      "ownerGoal": "G16",
+      "gapResolution": "Specify/implement or calibrate reusable capability; no game admission until evidence resolves this gap."
+    },
+    "cap.single_loop": {
+      "status": "source_present_unverified_contract",
+      "implementationRefs": [
+        {
+          "path": "NexusArcade-Harness/composition.mjs",
+          "symbol": "rollConcepts / expand / validateComposition",
+          "sha256": "a35c4c4e6e5aa4aff51f302b7bd8b83c62690ef7930f91c311504f11ddb5045a",
+          "evidence": "source_inspected_not_new_runtime_validation"
+        }
+      ],
+      "ownerGoal": "G01",
+      "gapResolution": "Audit exact contract and probe before eligibility."
+    },
+    "cap.exploration_loop": {
+      "status": "requires_implementation_or_calibration",
+      "implementationRefs": [],
+      "ownerGoal": "G16",
+      "gapResolution": "Specify/implement or calibrate reusable capability; no game admission until evidence resolves this gap."
+    },
+    "cap.concept_growth": {
+      "status": "requires_implementation_or_calibration",
+      "implementationRefs": [],
+      "ownerGoal": "G16",
+      "gapResolution": "Specify/implement or calibrate reusable capability; no game admission until evidence resolves this gap."
+    },
+    "cap.concept_exchange": {
+      "status": "requires_implementation_or_calibration",
+      "implementationRefs": [],
+      "ownerGoal": "G16",
+      "gapResolution": "Specify/implement or calibrate reusable capability; no game admission until evidence resolves this gap."
+    },
+    "cap.restorer_role": {
+      "status": "source_present_unverified_contract",
+      "implementationRefs": [
+        {
+          "path": "NexusArcade-Harness/kits/scene-kit.mjs",
+          "symbol": "createCompositionEngine",
+          "sha256": "8c063e11189abbf62b49431efc471a5fae8fb77f149cdbf5bb0073893f379ab2",
+          "evidence": "source_inspected_not_new_runtime_validation"
+        }
+      ],
+      "ownerGoal": "G01",
+      "gapResolution": "Audit exact contract and probe before eligibility."
+    },
+    "cap.pilot_role": {
+      "status": "requires_implementation_or_calibration",
+      "implementationRefs": [],
+      "ownerGoal": "G07",
+      "gapResolution": "Specify/implement or calibrate reusable capability; no game admission until evidence resolves this gap."
+    },
+    "cap.restore_objective": {
+      "status": "source_present_unverified_contract",
+      "implementationRefs": [
+        {
+          "path": "NexusArcade-Harness/kits/scene-kit.mjs",
+          "symbol": "createCompositionEngine",
+          "sha256": "8c063e11189abbf62b49431efc471a5fae8fb77f149cdbf5bb0073893f379ab2",
+          "evidence": "source_inspected_not_new_runtime_validation"
+        }
+      ],
+      "ownerGoal": "G01",
+      "gapResolution": "Audit exact contract and probe before eligibility."
+    },
+    "cap.redirect_objective": {
+      "status": "requires_implementation_or_calibration",
+      "implementationRefs": [],
+      "ownerGoal": "G10",
+      "gapResolution": "Specify/implement or calibrate reusable capability; no game admission until evidence resolves this gap."
+    },
+    "cap.overhead_camera": {
+      "status": "source_present_unverified_contract",
+      "implementationRefs": [
+        {
+          "path": "NexusArcade-Harness/player.mjs",
+          "symbol": "Three.js provider",
+          "sha256": "a6a663642313ca89f274618c916ce711160e42a24ac9f23b12834ed2c14c5c3a",
+          "evidence": "source_inspected_not_new_runtime_validation"
+        }
+      ],
+      "ownerGoal": "G01",
+      "gapResolution": "Audit exact contract and probe before eligibility."
+    },
+    "cap.first_person": {
+      "status": "requires_implementation_or_calibration",
+      "implementationRefs": [],
+      "ownerGoal": "G07",
+      "gapResolution": "Specify/implement or calibrate reusable capability; no game admission until evidence resolves this gap."
+    },
+    "cap.grounded_walk": {
+      "status": "source_present_unverified_contract",
+      "implementationRefs": [
+        {
+          "path": "NexusArcade-Harness/kits/scene-kit.mjs",
+          "symbol": "createCompositionEngine",
+          "sha256": "8c063e11189abbf62b49431efc471a5fae8fb77f149cdbf5bb0073893f379ab2",
+          "evidence": "source_inspected_not_new_runtime_validation"
+        }
+      ],
+      "ownerGoal": "G01",
+      "gapResolution": "Audit exact contract and probe before eligibility."
+    },
+    "cap.steering": {
+      "status": "requires_implementation_or_calibration",
+      "implementationRefs": [],
+      "ownerGoal": "G07",
+      "gapResolution": "Specify/implement or calibrate reusable capability; no game admission until evidence resolves this gap."
+    },
+    "cap.platform_tree": {
+      "status": "source_present_unverified_contract",
+      "implementationRefs": [
+        {
+          "path": "NexusArcade-Harness/composition.mjs",
+          "symbol": "rollConcepts / expand / validateComposition",
+          "sha256": "a35c4c4e6e5aa4aff51f302b7bd8b83c62690ef7930f91c311504f11ddb5045a",
+          "evidence": "source_inspected_not_new_runtime_validation"
+        }
+      ],
+      "ownerGoal": "G01",
+      "gapResolution": "Audit exact contract and probe before eligibility."
+    },
+    "cap.rooms": {
+      "status": "requires_implementation_or_calibration",
+      "implementationRefs": [],
+      "ownerGoal": "G04",
+      "gapResolution": "Specify/implement or calibrate reusable capability; no game admission until evidence resolves this gap."
+    },
+    "cap.metre_scale": {
+      "status": "source_present_unverified_contract",
+      "implementationRefs": [
+        {
+          "path": "NexusArcade-Harness/composition.mjs",
+          "symbol": "rollConcepts / expand / validateComposition",
+          "sha256": "a35c4c4e6e5aa4aff51f302b7bd8b83c62690ef7930f91c311504f11ddb5045a",
+          "evidence": "source_inspected_not_new_runtime_validation"
+        }
+      ],
+      "ownerGoal": "G01",
+      "gapResolution": "Audit exact contract and probe before eligibility."
+    },
+    "cap.miniature_scale": {
+      "status": "requires_implementation_or_calibration",
+      "implementationRefs": [],
+      "ownerGoal": "G04",
+      "gapResolution": "Specify/implement or calibrate reusable capability; no game admission until evidence resolves this gap."
+    },
+    "cap.activate": {
+      "status": "source_present_unverified_contract",
+      "implementationRefs": [
+        {
+          "path": "NexusArcade-Harness/kits/scene-kit.mjs",
+          "symbol": "createCompositionEngine",
+          "sha256": "8c063e11189abbf62b49431efc471a5fae8fb77f149cdbf5bb0073893f379ab2",
+          "evidence": "source_inspected_not_new_runtime_validation"
+        }
+      ],
+      "ownerGoal": "G01",
+      "gapResolution": "Audit exact contract and probe before eligibility."
+    },
+    "cap.redirect": {
+      "status": "requires_implementation_or_calibration",
+      "implementationRefs": [],
+      "ownerGoal": "G10",
+      "gapResolution": "Specify/implement or calibrate reusable capability; no game admission until evidence resolves this gap."
+    },
+    "cap.carry": {
+      "status": "source_present_unverified_contract",
+      "implementationRefs": [
+        {
+          "path": "NexusArcade-Harness/kits/scene-kit.mjs",
+          "symbol": "createCompositionEngine",
+          "sha256": "8c063e11189abbf62b49431efc471a5fae8fb77f149cdbf5bb0073893f379ab2",
+          "evidence": "source_inspected_not_new_runtime_validation"
+        }
+      ],
+      "ownerGoal": "G01",
+      "gapResolution": "Audit exact contract and probe before eligibility."
+    },
+    "cap.hold": {
+      "status": "source_present_unverified_contract",
+      "implementationRefs": [
+        {
+          "path": "NexusArcade-Harness/kits/scene-kit.mjs",
+          "symbol": "createCompositionEngine",
+          "sha256": "8c063e11189abbf62b49431efc471a5fae8fb77f149cdbf5bb0073893f379ab2",
+          "evidence": "source_inspected_not_new_runtime_validation"
+        }
+      ],
+      "ownerGoal": "G01",
+      "gapResolution": "Audit exact contract and probe before eligibility."
+    },
+    "cap.prerequisite": {
+      "status": "source_present_unverified_contract",
+      "implementationRefs": [
+        {
+          "path": "NexusArcade-Harness/kits/scene-kit.mjs",
+          "symbol": "createCompositionEngine",
+          "sha256": "8c063e11189abbf62b49431efc471a5fae8fb77f149cdbf5bb0073893f379ab2",
+          "evidence": "source_inspected_not_new_runtime_validation"
+        }
+      ],
+      "ownerGoal": "G01",
+      "gapResolution": "Audit exact contract and probe before eligibility."
+    },
+    "cap.continuous_flow": {
+      "status": "requires_implementation_or_calibration",
+      "implementationRefs": [],
+      "ownerGoal": "G13",
+      "gapResolution": "Specify/implement or calibrate reusable capability; no game admission until evidence resolves this gap."
+    },
+    "cap.open_route": {
+      "status": "source_present_unverified_contract",
+      "implementationRefs": [
+        {
+          "path": "NexusArcade-Harness/kits/scene-kit.mjs",
+          "symbol": "createCompositionEngine",
+          "sha256": "8c063e11189abbf62b49431efc471a5fae8fb77f149cdbf5bb0073893f379ab2",
+          "evidence": "source_inspected_not_new_runtime_validation"
+        }
+      ],
+      "ownerGoal": "G01",
+      "gapResolution": "Audit exact contract and probe before eligibility."
+    },
+    "cap.transform_object": {
+      "status": "requires_implementation_or_calibration",
+      "implementationRefs": [],
+      "ownerGoal": "G13",
+      "gapResolution": "Specify/implement or calibrate reusable capability; no game admission until evidence resolves this gap."
+    },
+    "cap.session_deadline": {
+      "status": "source_present_unverified_contract",
+      "implementationRefs": [
+        {
+          "path": "NexusArcade-Harness/kits/scene-kit.mjs",
+          "symbol": "createCompositionEngine",
+          "sha256": "8c063e11189abbf62b49431efc471a5fae8fb77f149cdbf5bb0073893f379ab2",
+          "evidence": "source_inspected_not_new_runtime_validation"
+        }
+      ],
+      "ownerGoal": "G01",
+      "gapResolution": "Audit exact contract and probe before eligibility."
+    },
+    "cap.resource_depletion": {
+      "status": "requires_implementation_or_calibration",
+      "implementationRefs": [],
+      "ownerGoal": "G13",
+      "gapResolution": "Specify/implement or calibrate reusable capability; no game admission until evidence resolves this gap."
+    },
+    "cap.dependency_unlocks": {
+      "status": "source_present_unverified_contract",
+      "implementationRefs": [
+        {
+          "path": "NexusArcade-Harness/kits/scene-kit.mjs",
+          "symbol": "createCompositionEngine",
+          "sha256": "8c063e11189abbf62b49431efc471a5fae8fb77f149cdbf5bb0073893f379ab2",
+          "evidence": "source_inspected_not_new_runtime_validation"
+        }
+      ],
+      "ownerGoal": "G01",
+      "gapResolution": "Audit exact contract and probe before eligibility."
+    },
+    "cap.changing_environment": {
+      "status": "requires_implementation_or_calibration",
+      "implementationRefs": [],
+      "ownerGoal": "G25",
+      "gapResolution": "Specify/implement or calibrate reusable capability; no game admission until evidence resolves this gap."
+    },
+    "cap.return_exit": {
+      "status": "source_present_unverified_contract",
+      "implementationRefs": [
+        {
+          "path": "NexusArcade-Harness/kits/scene-kit.mjs",
+          "symbol": "createCompositionEngine",
+          "sha256": "8c063e11189abbf62b49431efc471a5fae8fb77f149cdbf5bb0073893f379ab2",
+          "evidence": "source_inspected_not_new_runtime_validation"
+        }
+      ],
+      "ownerGoal": "G01",
+      "gapResolution": "Audit exact contract and probe before eligibility."
+    },
+    "cap.destination_exit": {
+      "status": "source_present_unverified_contract",
+      "implementationRefs": [
+        {
+          "path": "NexusArcade-Harness/kits/scene-kit.mjs",
+          "symbol": "createCompositionEngine",
+          "sha256": "8c063e11189abbf62b49431efc471a5fae8fb77f149cdbf5bb0073893f379ab2",
+          "evidence": "source_inspected_not_new_runtime_validation"
+        }
+      ],
+      "ownerGoal": "G01",
+      "gapResolution": "Audit exact contract and probe before eligibility."
+    },
+    "cap.hex_geometry": {
+      "status": "source_present_unverified_contract",
+      "implementationRefs": [
+        {
+          "path": "NexusArcade-Harness/player.mjs",
+          "symbol": "Three.js provider",
+          "sha256": "a6a663642313ca89f274618c916ce711160e42a24ac9f23b12834ed2c14c5c3a",
+          "evidence": "source_inspected_not_new_runtime_validation"
+        }
+      ],
+      "ownerGoal": "G01",
+      "gapResolution": "Audit exact contract and probe before eligibility."
+    },
+    "cap.organic_geometry": {
+      "status": "requires_implementation_or_calibration",
+      "implementationRefs": [],
+      "ownerGoal": "G19",
+      "gapResolution": "Specify/implement or calibrate reusable capability; no game admission until evidence resolves this gap."
+    },
+    "cap.standard_material": {
+      "status": "source_present_unverified_contract",
+      "implementationRefs": [
+        {
+          "path": "NexusArcade-Harness/player.mjs",
+          "symbol": "Three.js provider",
+          "sha256": "a6a663642313ca89f274618c916ce711160e42a24ac9f23b12834ed2c14c5c3a",
+          "evidence": "source_inspected_not_new_runtime_validation"
+        }
+      ],
+      "ownerGoal": "G01",
+      "gapResolution": "Audit exact contract and probe before eligibility."
+    },
+    "cap.layered_material": {
+      "status": "requires_implementation_or_calibration",
+      "implementationRefs": [],
+      "ownerGoal": "G19",
+      "gapResolution": "Specify/implement or calibrate reusable capability; no game admission until evidence resolves this gap."
+    },
+    "cap.directional_fog": {
+      "status": "source_present_unverified_contract",
+      "implementationRefs": [
+        {
+          "path": "NexusArcade-Harness/player.mjs",
+          "symbol": "Three.js provider",
+          "sha256": "a6a663642313ca89f274618c916ce711160e42a24ac9f23b12834ed2c14c5c3a",
+          "evidence": "source_inspected_not_new_runtime_validation"
+        }
+      ],
+      "ownerGoal": "G01",
+      "gapResolution": "Audit exact contract and probe before eligibility."
+    },
+    "cap.interior_lighting": {
+      "status": "requires_implementation_or_calibration",
+      "implementationRefs": [],
+      "ownerGoal": "G19",
+      "gapResolution": "Specify/implement or calibrate reusable capability; no game admission until evidence resolves this gap."
+    },
+    "cap.beacon_feedback": {
+      "status": "source_present_unverified_contract",
+      "implementationRefs": [
+        {
+          "path": "NexusArcade-Harness/player.mjs",
+          "symbol": "Three.js provider",
+          "sha256": "a6a663642313ca89f274618c916ce711160e42a24ac9f23b12834ed2c14c5c3a",
+          "evidence": "source_inspected_not_new_runtime_validation"
+        }
+      ],
+      "ownerGoal": "G01",
+      "gapResolution": "Audit exact contract and probe before eligibility."
+    },
+    "cap.elastic_feedback": {
+      "status": "requires_implementation_or_calibration",
+      "implementationRefs": [],
+      "ownerGoal": "G22",
+      "gapResolution": "Specify/implement or calibrate reusable capability; no game admission until evidence resolves this gap."
+    },
+    "cap.synth_audio": {
+      "status": "source_present_unverified_contract",
+      "implementationRefs": [
+        {
+          "path": "NexusArcade-Harness/player.mjs",
+          "symbol": "Three.js provider",
+          "sha256": "a6a663642313ca89f274618c916ce711160e42a24ac9f23b12834ed2c14c5c3a",
+          "evidence": "source_inspected_not_new_runtime_validation"
+        }
+      ],
+      "ownerGoal": "G01",
+      "gapResolution": "Audit exact contract and probe before eligibility."
+    },
+    "cap.spatial_audio": {
+      "status": "requires_implementation_or_calibration",
+      "implementationRefs": [],
+      "ownerGoal": "G22",
+      "gapResolution": "Specify/implement or calibrate reusable capability; no game admission until evidence resolves this gap."
+    },
+    "cap.objective_hud": {
+      "status": "source_present_unverified_contract",
+      "implementationRefs": [
+        {
+          "path": "NexusArcade-Harness/player.mjs",
+          "symbol": "Three.js provider",
+          "sha256": "a6a663642313ca89f274618c916ce711160e42a24ac9f23b12834ed2c14c5c3a",
+          "evidence": "source_inspected_not_new_runtime_validation"
+        }
+      ],
+      "ownerGoal": "G01",
+      "gapResolution": "Audit exact contract and probe before eligibility."
+    },
+    "cap.world_ui": {
+      "status": "requires_implementation_or_calibration",
+      "implementationRefs": [],
+      "ownerGoal": "G31",
+      "gapResolution": "Specify/implement or calibrate reusable capability; no game admission until evidence resolves this gap."
+    },
+    "cap.device_profile": {
+      "status": "requires_implementation_or_calibration",
+      "implementationRefs": [],
+      "ownerGoal": "G01",
+      "gapResolution": "Specify/implement or calibrate reusable capability; no game admission until evidence resolves this gap."
+    },
+    "cap.collection_comparison": {
+      "status": "requires_implementation_or_calibration",
+      "implementationRefs": [],
+      "ownerGoal": "G01",
+      "gapResolution": "Specify/implement or calibrate reusable capability; no game admission until evidence resolves this gap."
+    },
+    "cap.personal_best": {
+      "status": "missing",
+      "implementationRefs": [],
+      "ownerGoal": "G02",
+      "gapResolution": "Implement reusable domain contract and independent probes before eligibility; mandatory baseline implementation belongs to G02."
+    },
+    "cap.alternate_strategy": {
+      "status": "missing",
+      "implementationRefs": [],
+      "ownerGoal": "G02",
+      "gapResolution": "Implement reusable domain contract and independent probes before eligibility; mandatory baseline implementation belongs to G02."
+    },
+    "cap.challenge_variation": {
+      "status": "missing",
+      "implementationRefs": [],
+      "ownerGoal": "G26",
+      "gapResolution": "Implement reusable domain contract and independent probes before eligibility; mandatory baseline implementation belongs to G02."
+    },
+    "cap.route_risk": {
+      "status": "missing",
+      "implementationRefs": [],
+      "ownerGoal": "G02",
+      "gapResolution": "Implement reusable domain contract and independent probes before eligibility; mandatory baseline implementation belongs to G02."
+    },
+    "cap.load_handling": {
+      "status": "missing",
+      "implementationRefs": [],
+      "ownerGoal": "G26",
+      "gapResolution": "Implement reusable domain contract and independent probes before eligibility; mandatory baseline implementation belongs to G02."
+    },
+    "cap.session_stages": {
+      "status": "missing",
+      "implementationRefs": [],
+      "ownerGoal": "G02",
+      "gapResolution": "Implement reusable domain contract and independent probes before eligibility; mandatory baseline implementation belongs to G02."
+    },
+    "cap.escalating_pressure": {
+      "status": "missing",
+      "implementationRefs": [],
+      "ownerGoal": "G26",
+      "gapResolution": "Implement reusable domain contract and independent probes before eligibility; mandatory baseline implementation belongs to G02."
+    },
+    "cap.surface_response": {
+      "status": "missing",
+      "implementationRefs": [],
+      "ownerGoal": "G02",
+      "gapResolution": "Implement reusable domain contract and independent probes before eligibility; mandatory baseline implementation belongs to G02."
+    },
+    "cap.moving_obstacle": {
+      "status": "missing",
+      "implementationRefs": [],
+      "ownerGoal": "G05",
+      "gapResolution": "Implement reusable domain contract and independent probes before eligibility; mandatory baseline implementation belongs to G02."
+    }
+  },
+  "compatibilityRules": [
+    {
+      "id": "race-requires-checkpoints",
+      "ifSelected": "genre.racing",
+      "requiresCapability": "cap.race_loop",
+      "otherwise": "reject"
+    },
+    {
+      "id": "pilot-needs-steering",
+      "ifSelected": "player_role.pilot",
+      "requiresSelected": [
+        "movement.steering"
+      ],
+      "otherwise": "reject"
+    },
+    {
+      "id": "redirect-needs-flow",
+      "ifSelected": "interaction.redirect",
+      "requiresSelected": [
+        "connections.continuous-flow"
+      ],
+      "otherwise": "reject"
+    },
+    {
+      "id": "redirect-intent-needs-action",
+      "ifSelected": "intention.redirect-flow",
+      "requiresSelected": [
+        "interaction.redirect"
+      ],
+      "otherwise": "reject"
+    },
+    {
+      "id": "enclosed-requires-collision",
+      "ifSelected": "world_topology.enclosed-rooms",
+      "requiresCapability": "cap.rooms",
+      "otherwise": "reject"
+    },
+    {
+      "id": "world-ui-requires-readability",
+      "ifSelected": "interface.world-embedded",
+      "requiredRule": "readability",
+      "otherwise": "reject"
+    },
+    {
+      "id": "miniature-unit-consistency",
+      "ifSelected": "scale.miniature",
+      "predicate": "Clearance, movement, view, action reach and feedback parameters use the same declared unit conversion.",
+      "otherwise": "reject"
+    }
+  ],
+  "expansionContract": {
+    "allowedNodeKinds": [
+      "interpretation_choice",
+      "capability_leaf"
+    ],
+    "choiceNodeRequired": [
+      "id",
+      "select",
+      "options"
+    ],
+    "leafNodeRequired": [
+      "ref"
+    ],
+    "stop": "A selected capability leaf must resolve to eligible evidence, otherwise reject branch.",
+    "unknownReferences": "reject",
+    "duplicateOrCycle": "reject",
+    "mergeConflict": "Reject candidate with paths and conflicting values; never overwrite silently."
+  },
+  "categoryContractRef": "execution-contract.json#/categories"
+}

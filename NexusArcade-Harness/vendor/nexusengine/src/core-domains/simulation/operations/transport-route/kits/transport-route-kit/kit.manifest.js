@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../../manifest-input.js";
+
+export default atomicKit({ id: "transport-route-kit", responsibility: "Own deterministic stops, carriers, capacity, calls, travel progress, and arrival receipts.", domainPath: "n:simulation:operations:transport-route", apiName: "transportRoutes", requires: ["n:simulation"], provides: ["n:simulation:operations:transport-route", "operations:transport-route"], module: "./src/core-domains/simulation/operations/transport-route/kits/transport-route-kit/index.js", exportName: "createTransportRouteKit", publicSubpath: "./domains/simulation/operations/transport-route", proofReferences: ["src/core-domains/simulation/tests/restored-economy-operations.mjs"] });

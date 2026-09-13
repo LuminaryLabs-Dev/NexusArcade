@@ -1,0 +1,3 @@
+import { domainNode } from "../../../manifest-input.js";
+
+export default domainNode({ id: "world-navigation-pathfinding-domain", domainPath: "n:world:navigation:pathfinding", parentDomainPath: "n:world:navigation", label: "Navigation Pathfinding", responsibility: "Own deterministic path requests, A* resolution, results, and graph adapters.", owns: ["path requests", "A* search", "path results", "graph adapters"], forbiddenResponsibilities: ["agent locomotion", "graph generation", "authored objectives"], requires: ["navigation:navmesh"], provides: ["n:world:navigation:pathfinding", "navigation:pathfinding", "navigation:astar"], proofReferences: ["src/core-domains/world/tests/restored-world-behaviors.mjs"] });

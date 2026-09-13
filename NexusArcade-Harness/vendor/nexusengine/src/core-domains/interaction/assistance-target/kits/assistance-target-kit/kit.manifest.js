@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../manifest-input.js";
+
+export default atomicKit({ id: "assistance-target-kit", responsibility: "Own assistance target urgency, attachment, terminal completion, loss, and deterministic selection.", domainPath: "n:interaction:assistance-target", apiName: "assistanceTargets", requires: ["n:interaction"], provides: ["n:interaction:assistance-target", "interaction:assistance-target"], module: "./src/core-domains/interaction/assistance-target/kits/assistance-target-kit/index.js", exportName: "createAssistanceTargetKit", publicSubpath: "./domains/interaction/assistance-target", proofReferences: ["src/core-domains/interaction/tests/restored-interaction-behaviors.mjs"] });

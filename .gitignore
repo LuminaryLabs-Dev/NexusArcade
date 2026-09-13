@@ -9,3 +9,4 @@ lfm-local/
 *.gguf.bin
 playwright-report/
 test-results/
+NexusArcade-Experiments/

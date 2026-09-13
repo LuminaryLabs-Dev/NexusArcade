@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../../manifest-input.js";
+
+export default atomicKit({ id: "navmesh-kit", responsibility: "Build deterministic 2D navigation meshes and portable 3D waypoint graphs from walkability.", domainPath: "n:world:navigation:navmesh", apiName: "navmesh", requires: ["navigation:walkability-source"], provides: ["n:world:navigation:navmesh", "navigation:navmesh", "navigation:graph"], module: "./src/core-domains/world/navigation/navmesh/kits/navmesh-kit/index.js", exportName: "createNavMeshKit", publicSubpath: "./domains/world/navigation/navmesh", proofReferences: ["src/core-domains/world/tests/restored-world-behaviors.mjs"] });

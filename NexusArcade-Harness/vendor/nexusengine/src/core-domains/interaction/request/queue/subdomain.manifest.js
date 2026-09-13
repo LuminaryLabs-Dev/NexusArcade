@@ -1,0 +1,3 @@
+import { domainNode } from "../../../manifest-input.js";
+
+export default domainNode({ id: "interaction-request-queue-domain", domainPath: "n:interaction:request:queue", parentDomainPath: "n:interaction:request", label: "Request Queue", responsibility: "Own queued request patience, fulfillment, expiry, and effect descriptors.", owns: ["queued requests", "patience state", "request outcomes", "effect descriptors"], forbiddenResponsibilities: ["economy mutation", "occupant mutation", "transport mutation", "engine ticks"], requires: ["n:interaction"], provides: ["n:interaction:request:queue", "interaction:request-queue"], proofReferences: ["src/core-domains/interaction/tests/restored-interaction-behaviors.mjs"] });

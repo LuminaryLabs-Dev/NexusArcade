@@ -1,0 +1,3 @@
+import { domainNode } from "../../../manifest-input.js";
+
+export default domainNode({ id: "simulation-operations-occupant-flow-domain", domainPath: "n:simulation:operations:occupant-flow", parentDomainPath: "n:simulation:operations", label: "Occupant Flow", responsibility: "Own deterministic occupant spawning, patience, service, and abandonment state.", owns: ["occupant state", "spawn rules", "patience state", "service outcomes"], forbiddenResponsibilities: ["request creation", "economy rewards", "navigation"], requires: ["n:simulation"], provides: ["n:simulation:operations:occupant-flow", "operations:occupant-flow"], proofReferences: ["src/core-domains/simulation/tests/restored-economy-operations.mjs"] });

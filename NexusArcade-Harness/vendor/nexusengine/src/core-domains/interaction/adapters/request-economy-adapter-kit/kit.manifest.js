@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../manifest-input.js";
+
+export default atomicKit({ id: "request-economy-adapter-kit", kind: "adapter-kit", responsibility: "Translate fulfilled or expired Request Queue outcomes into exact-once Economy transactions.", domainPath: "n:interaction:request:queue", apiName: "requestEconomy", requires: ["interaction:request-queue", "economy:transaction"], provides: ["interaction:request-economy-adapter"], module: "./src/core-domains/interaction/adapters/request-economy-adapter-kit/index.js", exportName: "createRequestEconomyAdapterKit", publicSubpath: "./domains/interaction/adapters/request-economy", proofReferences: ["src/core-domains/simulation/tests/restored-integration-adapters.mjs"] });

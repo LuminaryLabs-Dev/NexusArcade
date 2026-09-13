@@ -1,0 +1,3 @@
+import { domainNode } from "../../manifest-input.js";
+
+export default domainNode({ id: "interaction-request-domain", domainPath: "n:interaction:request", parentDomainPath: "n:interaction", label: "Interaction Request", responsibility: "Own portable request queue and fulfillment boundaries.", owns: ["request capability contracts", "queue and fulfillment ownership boundaries"], forbiddenResponsibilities: ["economy effects", "occupant effects", "transport effects"], requires: ["n:interaction"], provides: ["n:interaction:request"], proofReferences: ["src/core-domains/interaction/tests/restored-interaction-behaviors.mjs"] });

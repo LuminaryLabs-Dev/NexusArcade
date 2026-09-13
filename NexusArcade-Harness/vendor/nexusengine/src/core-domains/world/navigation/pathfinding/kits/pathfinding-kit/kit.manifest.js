@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../../manifest-input.js";
+
+export default atomicKit({ id: "pathfinding-kit", responsibility: "Resolve deterministic A* path requests over portable grid and navigation graph adapters.", domainPath: "n:world:navigation:pathfinding", apiName: "pathfinding", requires: ["navigation:navmesh"], provides: ["n:world:navigation:pathfinding", "navigation:pathfinding", "navigation:astar"], module: "./src/core-domains/world/navigation/pathfinding/kits/pathfinding-kit/index.js", exportName: "createPathfindingKit", publicSubpath: "./domains/world/navigation/pathfinding", proofReferences: ["src/core-domains/world/tests/restored-world-behaviors.mjs"] });

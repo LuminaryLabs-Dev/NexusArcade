@@ -1,0 +1,3 @@
+import { domainNode } from "../../../manifest-input.js";
+
+export default domainNode({ id: "simulation-economy-accounts-domain", domainPath: "n:simulation:economy:accounts", parentDomainPath: "n:simulation:economy", label: "Economy Accounts", responsibility: "Own finite account balances and economy transaction records.", owns: ["account balances", "economy transaction records", "affordability queries"], forbiddenResponsibilities: ["facility output", "request rewards", "payment processing"], requires: ["n:simulation", "transaction:idempotency"], provides: ["n:simulation:economy:accounts", "economy:accounts", "economy:transaction"], proofReferences: ["src/core-domains/simulation/tests/restored-economy-operations.mjs"] });

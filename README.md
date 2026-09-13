@@ -1,5 +1,9 @@
 # Nexus Arcade
 
+For the local domain-roll experiment UI, see [NexusArcade-Harness](NexusArcade-Harness/README.md).
+Its ignored game outputs and evidence live in `NexusArcade-Experiments/`.
+The installer and legacy generation entry points below remain available.
+
 `@luminarylabs/nexus-arcade` is the shared installer for the public Nexus Arcade catalog. It reads a small, versioned registry and installs integrity-pinned browser games through jsDelivr.
 
 The package has two adapters:

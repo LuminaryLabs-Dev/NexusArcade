@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../manifest-input.js";
+
+export default atomicKit({ id: "water-surface-kit", responsibility: "Manage renderer-neutral water zones, currents, drag, wave phase, hazards, and pure queries.", domainPath: "n:world:water-surface", apiName: "waterSurface", requires: ["n:world"], provides: ["n:world:water-surface", "world:water-surface", "world:water-query"], module: "./src/core-domains/world/water-surface/kits/water-surface-kit/index.js", exportName: "createWaterSurfaceKit", publicSubpath: "./domains/world/water-surface", proofReferences: ["src/core-domains/world/tests/restored-world-behaviors.mjs"] });

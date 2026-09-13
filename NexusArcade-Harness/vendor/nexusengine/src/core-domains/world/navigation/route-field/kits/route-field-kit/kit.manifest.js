@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../../manifest-input.js";
+
+export default atomicKit({ id: "route-field-kit", responsibility: "Manage reusable route marker and corridor descriptors plus pure proximity queries.", domainPath: "n:world:navigation:route-field", apiName: "routeField", requires: ["n:world"], provides: ["n:world:navigation:route-field", "navigation:route-field"], module: "./src/core-domains/world/navigation/route-field/kits/route-field-kit/index.js", exportName: "createRouteFieldKit", publicSubpath: "./domains/world/navigation/route-field", proofReferences: ["src/core-domains/world/tests/restored-world-behaviors.mjs"] });

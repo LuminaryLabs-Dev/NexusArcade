@@ -1,0 +1,50 @@
+import { defineBuildAtomicKitManifest } from "../../../manifest-input.js";
+
+export const kitManifest = defineBuildAtomicKitManifest({
+  id: "build-execution-kit",
+  responsibility: "Execute shared stages once and isolated target stages with project immutability proof.",
+  domainPath: "n:build:orchestration",
+  apiName: "buildExecution",
+  requires: [
+    "build:project-source",
+    "build:source-fingerprint",
+    "build:dependency-source",
+    "build:module-graph",
+    "build:javascript-ast",
+    "build:type-analysis",
+    "build:effect-analysis",
+    "build:dependency-analysis",
+    "build:kit-ir",
+    "build:execution-ir",
+    "build:ir-validation",
+    "build:source-map",
+    "build:portability-classifier",
+    "build:capability-resolution",
+    "build:fallback-selection",
+    "build:build-request",
+    "build:build-plan",
+    "build:build-approval",
+    "build:build-receipt",
+    "build:rust-lowering",
+    "build:toolchain-source",
+    "build:toolchain-discovery",
+    "build:isolated-stage",
+    "build:artifact-cache",
+    "build:artifact-manifest",
+    "build:artifact-integrity",
+    "build:artifact-output",
+    "build:project-immutability",
+    "build:target-validation",
+    "build:web-live-target",
+    "build:web-static-target",
+    "build:android-xr-target",
+    "build:pcvr-target"
+  ],
+  provides: ["build:build-execution"],
+  module: "./src/core-domains/build/orchestration/kits/build-execution-kit/index.js",
+  exportName: "createBuildExecutionKit",
+  publicSubpath: "./domains/build/orchestration/build-execution",
+  proofReferences: ["src/core-domains/build/tests/domain-tree.mjs","src/core-domains/build/tests/full-build-loop.mjs"]
+});
+
+export default kitManifest;

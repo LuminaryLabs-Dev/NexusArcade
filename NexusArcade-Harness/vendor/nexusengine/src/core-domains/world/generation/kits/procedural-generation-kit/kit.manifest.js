@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../manifest-input.js";
+
+export default atomicKit({ id: "procedural-generation-kit", responsibility: "Generate deterministic generic regions, connectors, points, graphs, and walkability from complete normalized configuration.", domainPath: "n:world:generation", apiName: "proceduralGeneration", requires: ["n:world"], provides: ["n:world:generation", "world:procedural-generation", "navigation:walkability-source"], module: "./src/core-domains/world/generation/kits/procedural-generation-kit/index.js", exportName: "createProceduralGenerationKit", publicSubpath: "./domains/world/generation", proofReferences: ["src/core-domains/world/tests/restored-world-behaviors.mjs"] });

@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../manifest-input.js";
+
+export default atomicKit({ id: "sampler-binding-kit", responsibility: "Own portable sampler state for exact Material sampler slots.", domainPath: "n:render:material", apiName: "renderMaterialSamplerBindings", requires: ["n:render:material", "render:material-binding"], provides: ["render:material-sampler-binding"], module: "./src/core-domains/render/material/kits/sampler-binding-kit/index.js", exportName: "createSamplerBindingKit", publicSubpath: "./domains/render/material/sampler-binding", proofReferences: ["tests/core-domains/core-graphics-domain-smoke.mjs"] });

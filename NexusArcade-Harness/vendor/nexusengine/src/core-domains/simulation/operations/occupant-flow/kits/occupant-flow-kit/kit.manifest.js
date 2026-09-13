@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../../manifest-input.js";
+
+export default atomicKit({ id: "occupant-flow-kit", responsibility: "Own deterministic occupant spawning, patience, service, and abandonment state.", domainPath: "n:simulation:operations:occupant-flow", apiName: "occupantFlow", requires: ["n:simulation"], provides: ["n:simulation:operations:occupant-flow", "operations:occupant-flow"], module: "./src/core-domains/simulation/operations/occupant-flow/kits/occupant-flow-kit/index.js", exportName: "createOccupantFlowKit", publicSubpath: "./domains/simulation/operations/occupant-flow", proofReferences: ["src/core-domains/simulation/tests/restored-economy-operations.mjs"] });

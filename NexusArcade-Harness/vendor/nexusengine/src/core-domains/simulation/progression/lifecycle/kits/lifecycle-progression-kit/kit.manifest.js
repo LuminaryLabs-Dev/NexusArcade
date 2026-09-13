@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../../manifest-input.js";
+
+export default atomicKit({ id: "lifecycle-progression-kit", responsibility: "Own prerequisite-gated lifecycle start, timing, completion, and portable effect descriptors.", domainPath: "n:simulation:progression:lifecycle", apiName: "lifecycleProgression", requires: ["n:simulation"], provides: ["n:simulation:progression:lifecycle", "progression:lifecycle"], module: "./src/core-domains/simulation/progression/lifecycle/kits/lifecycle-progression-kit/index.js", exportName: "createLifecycleProgressionKit", publicSubpath: "./domains/simulation/progression/lifecycle", proofReferences: ["src/core-domains/simulation/tests/restored-progression-pressure.mjs"] });

@@ -1,0 +1,3 @@
+import { domainNode } from "../../manifest-input.js";
+
+export default domainNode({ id: "interaction-environmental-affordance-domain", domainPath: "n:interaction:environmental-affordance", parentDomainPath: "n:interaction", label: "Environmental Affordance", responsibility: "Own portable affordance proximity and activation state.", owns: ["affordance descriptors", "activation progress", "completion state"], forbiddenResponsibilities: ["world mutation", "game objective effects", "presentation prompts"], requires: ["n:interaction"], provides: ["n:interaction:environmental-affordance", "interaction:environmental-affordance"], proofReferences: ["src/core-domains/interaction/tests/restored-interaction-behaviors.mjs"] });

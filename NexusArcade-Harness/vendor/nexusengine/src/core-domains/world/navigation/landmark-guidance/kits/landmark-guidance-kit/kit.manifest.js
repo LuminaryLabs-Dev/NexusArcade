@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../../manifest-input.js";
+
+export default atomicKit({ id: "landmark-guidance-kit", responsibility: "Manage deterministic landmark discovery, reach, completion, priority, and proximity state.", domainPath: "n:world:navigation:landmark-guidance", apiName: "landmarkGuidance", requires: ["n:world"], provides: ["n:world:navigation:landmark-guidance", "navigation:landmark-guidance"], module: "./src/core-domains/world/navigation/landmark-guidance/kits/landmark-guidance-kit/index.js", exportName: "createLandmarkGuidanceKit", publicSubpath: "./domains/world/navigation/landmark-guidance", proofReferences: ["src/core-domains/world/tests/restored-world-behaviors.mjs"] });

@@ -1,0 +1,3 @@
+import { domainNode } from "../../../manifest-input.js";
+
+export default domainNode({ id: "simulation-economy-cargo-domain", domainPath: "n:simulation:economy:cargo", parentDomainPath: "n:simulation:economy", label: "Cargo", responsibility: "Own portable cargo inventory, carrying, condition, deposits, and quota state.", owns: ["cargo items", "carrying capacity", "cargo condition", "deposit records"], forbiddenResponsibilities: ["economy account mutation", "vehicle movement", "transfer policy"], requires: ["n:simulation"], provides: ["n:simulation:economy:cargo", "economy:cargo-manifest"], proofReferences: ["src/core-domains/simulation/tests/restored-economy-operations.mjs"] });

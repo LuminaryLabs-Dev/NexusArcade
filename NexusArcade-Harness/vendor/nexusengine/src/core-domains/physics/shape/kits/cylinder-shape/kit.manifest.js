@@ -1,0 +1,2 @@
+import { atomicKit } from "../../../../manifest-input.js";
+export default atomicKit({ id: "cylinder-shape-kit", responsibility: "Normalize portable cylinder collision geometry.", domainPath: "n:physics:shape", apiName: "cylinderShape", requires: ["n:physics"], provides: ["n:physics:shape", "physics:cylinder-shape"], module: "./src/core-domains/physics/shape/kits/cylinder-shape/index.js", exportName: "createCylinderShapeKit", publicSubpath: "./domains/physics/shape/cylinder", proofReferences: ["tests/core-domains/core-physics-canonical-domain-contract-smoke.mjs"] });

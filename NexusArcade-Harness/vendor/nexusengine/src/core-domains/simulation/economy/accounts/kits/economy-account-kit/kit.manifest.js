@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../../manifest-input.js";
+
+export default atomicKit({ id: "economy-account-kit", responsibility: "Own finite account balances and exact-once portable economy transaction records.", domainPath: "n:simulation:economy:accounts", apiName: "economy", requires: ["n:simulation", "transaction:idempotency"], provides: ["n:simulation:economy:accounts", "economy:accounts", "economy:transaction"], module: "./src/core-domains/simulation/economy/accounts/kits/economy-account-kit/index.js", exportName: "createEconomyAccountKit", publicSubpath: "./domains/simulation/economy/accounts", proofReferences: ["src/core-domains/simulation/tests/restored-economy-operations.mjs"] });

@@ -1,0 +1,3 @@
+import { domainNode } from "../../../manifest-input.js";
+
+export default domainNode({ id: "world-navigation-landmark-guidance-domain", domainPath: "n:world:navigation:landmark-guidance", parentDomainPath: "n:world:navigation", label: "Navigation Landmark Guidance", responsibility: "Own reusable landmark discovery, reach, completion, priority, and proximity state.", owns: ["landmark identity", "landmark transitions", "landmark proximity"], forbiddenResponsibilities: ["authored objectives", "UI prompts", "agent movement"], requires: ["n:world"], provides: ["n:world:navigation:landmark-guidance", "navigation:landmark-guidance"], proofReferences: ["src/core-domains/world/tests/restored-world-behaviors.mjs"] });

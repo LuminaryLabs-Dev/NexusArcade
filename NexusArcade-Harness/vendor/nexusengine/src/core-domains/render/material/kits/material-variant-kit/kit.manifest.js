@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../manifest-input.js";
+
+export default atomicKit({ id: "material-variant-kit", responsibility: "Resolve an exact Shader variant and complete Material binding override set.", domainPath: "n:render:material", apiName: "renderMaterialVariants", requires: ["n:render:material", "render:material-instance", "render:shader-variant"], provides: ["render:material-variant"], module: "./src/core-domains/render/material/kits/material-variant-kit/index.js", exportName: "createMaterialVariantKit", publicSubpath: "./domains/render/material/variant", proofReferences: ["tests/core-domains/core-graphics-domain-smoke.mjs"] });

@@ -1,0 +1,3 @@
+import { domainNode } from "../../manifest-input.js";
+
+export default domainNode({ id: "simulation-recovery-domain", domainPath: "n:simulation:recovery", parentDomainPath: "n:simulation", label: "Simulation Recovery", responsibility: "Own portable subject recovery records and deterministic recovery state.", owns: ["recovery points", "recovery receipts", "recovered subject state"], forbiddenResponsibilities: ["world contact", "game checkpoint policy", "teleport rendering"], requires: ["n:simulation"], provides: ["n:simulation:recovery", "simulation:recovery"], proofReferences: ["src/core-domains/simulation/tests/restored-motion-behaviors.mjs"] });

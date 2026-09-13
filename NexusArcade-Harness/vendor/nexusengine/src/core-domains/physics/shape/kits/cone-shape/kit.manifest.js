@@ -1,0 +1,2 @@
+import { atomicKit } from "../../../../manifest-input.js";
+export default atomicKit({ id: "cone-shape-kit", responsibility: "Normalize portable cone collision geometry.", domainPath: "n:physics:shape", apiName: "coneShape", requires: ["n:physics"], provides: ["n:physics:shape", "physics:cone-shape"], module: "./src/core-domains/physics/shape/kits/cone-shape/index.js", exportName: "createConeShapeKit", publicSubpath: "./domains/physics/shape/cone", proofReferences: ["tests/core-domains/core-physics-canonical-domain-contract-smoke.mjs"] });

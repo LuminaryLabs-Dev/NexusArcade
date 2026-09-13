@@ -1,0 +1,3 @@
+import { domainNode } from "../../manifest-input.js";
+
+export default domainNode({ id: "world-water-surface-domain", domainPath: "n:world:water-surface", parentDomainPath: "n:world", label: "World Water Surface", responsibility: "Own renderer-neutral water zones, currents, drag, depth, wave phase, hazards, and spatial queries.", owns: ["water zones", "water query state", "water current descriptors", "wave phase"], forbiddenResponsibilities: ["water rendering", "fluid solver", "authored water presets"], requires: ["n:world"], provides: ["n:world:water-surface", "world:water-surface", "world:water-query"], proofReferences: ["src/core-domains/world/tests/restored-world-behaviors.mjs"] });

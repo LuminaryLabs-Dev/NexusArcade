@@ -1,0 +1,3 @@
+import { domainNode } from "../../../manifest-input.js";
+
+export default domainNode({ id: "simulation-motion-locomotion-domain", domainPath: "n:simulation:motion:locomotion", parentDomainPath: "n:simulation:motion", label: "Action Locomotion", responsibility: "Own deterministic action-to-motion intent and locomotion frame calculation.", owns: ["locomotion intent", "locomotion frame", "movement transition state"], forbiddenResponsibilities: ["physics contact resolution", "camera control", "input binding", "soft respawn"], requires: ["n:simulation:motion"], provides: ["n:simulation:motion:locomotion", "motion:locomotion-intent"], proofReferences: ["src/core-domains/simulation/tests/restored-motion-behaviors.mjs"] });

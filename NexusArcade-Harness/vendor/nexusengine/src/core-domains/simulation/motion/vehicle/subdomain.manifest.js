@@ -1,0 +1,3 @@
+import { domainNode } from "../../../manifest-input.js";
+
+export default domainNode({ id: "simulation-motion-vehicle-domain", domainPath: "n:simulation:motion:vehicle", parentDomainPath: "n:simulation:motion", label: "Vehicle Motion", responsibility: "Own deterministic vehicle movement, boost, bounds, and impact frames.", owns: ["vehicle motion frame", "vehicle boost state", "vehicle bounds response"], forbiddenResponsibilities: ["water simulation", "surface queries", "renderer transforms", "input binding"], requires: ["n:simulation:motion"], provides: ["n:simulation:motion:vehicle", "motion:vehicle-dynamics"], proofReferences: ["src/core-domains/simulation/tests/restored-motion-behaviors.mjs"] });

@@ -1,0 +1,3 @@
+import { domainNode } from "../../../manifest-input.js";
+
+export default domainNode({ id: "interaction-request-fulfillment-domain", domainPath: "n:interaction:request:fulfillment", parentDomainPath: "n:interaction:request", label: "Request Fulfillment", responsibility: "Own spatial request destination, deadline, completion, expiry, and reward state.", owns: ["spatial requests", "deadlines", "completion records", "reward totals"], forbiddenResponsibilities: ["economy mutation", "transport mutation", "request queue policy"], requires: ["n:interaction"], provides: ["n:interaction:request:fulfillment", "interaction:request-fulfillment"], proofReferences: ["src/core-domains/interaction/tests/restored-interaction-behaviors.mjs"] });

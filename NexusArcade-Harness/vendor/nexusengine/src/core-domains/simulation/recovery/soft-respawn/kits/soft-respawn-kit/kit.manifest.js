@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../../manifest-input.js";
+
+export default atomicKit({ id: "soft-respawn-kit", responsibility: "Produce exact-once coherent subject recovery records at configured portable points.", domainPath: "n:simulation:recovery:soft-respawn", apiName: "softRespawn", requires: ["n:simulation"], provides: ["n:simulation:recovery:soft-respawn", "simulation:soft-respawn"], module: "./src/core-domains/simulation/recovery/soft-respawn/kits/soft-respawn-kit/index.js", exportName: "createSoftRespawnKit", publicSubpath: "./domains/simulation/recovery/soft-respawn", proofReferences: ["src/core-domains/simulation/tests/restored-motion-behaviors.mjs"] });

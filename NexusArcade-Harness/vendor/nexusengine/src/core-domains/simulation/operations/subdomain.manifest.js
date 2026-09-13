@@ -1,0 +1,3 @@
+import { domainNode } from "../../manifest-input.js";
+
+export default domainNode({ id: "simulation-operations-domain", domainPath: "n:simulation:operations", parentDomainPath: "n:simulation", label: "Simulation Operations", responsibility: "Own portable facility, occupant, and transport operation primitives.", owns: ["operations capability contracts", "facility, occupant, and transport ownership boundaries"], forbiddenResponsibilities: ["game management rules", "economy effects", "request effects"], requires: ["n:simulation"], provides: ["n:simulation:operations"], proofReferences: ["src/core-domains/simulation/tests/restored-economy-operations.mjs"] });

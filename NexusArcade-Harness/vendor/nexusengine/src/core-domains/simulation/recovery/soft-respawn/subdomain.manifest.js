@@ -1,0 +1,3 @@
+import { domainNode } from "../../../manifest-input.js";
+
+export default domainNode({ id: "simulation-recovery-soft-respawn-domain", domainPath: "n:simulation:recovery:soft-respawn", parentDomainPath: "n:simulation:recovery", label: "Soft Respawn", responsibility: "Own exact-once portable subject recovery records.", owns: ["soft respawn points", "soft respawn receipts", "recovered subject state"], forbiddenResponsibilities: ["world contact", "game checkpoint policy", "teleport rendering"], requires: ["n:simulation"], provides: ["n:simulation:recovery:soft-respawn", "simulation:soft-respawn"], proofReferences: ["src/core-domains/simulation/tests/restored-motion-behaviors.mjs"] });

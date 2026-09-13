@@ -1,0 +1,3 @@
+import { domainNode } from "../../../manifest-input.js";
+
+export default domainNode({ id: "simulation-operations-facility-domain", domainPath: "n:simulation:operations:facility", parentDomainPath: "n:simulation:operations", label: "Facility Operations", responsibility: "Own deterministic facility capacity, condition, status, cycles, and operation receipts.", owns: ["facility state", "facility cycle state", "facility output receipts"], forbiddenResponsibilities: ["economy mutation", "lifecycle progression", "authored facility rules"], requires: ["n:simulation"], provides: ["n:simulation:operations:facility", "operations:facility"], proofReferences: ["src/core-domains/simulation/tests/restored-economy-operations.mjs"] });

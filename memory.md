@@ -1,0 +1,21 @@
+# NexusArcade
+
+The repository owns the existing browser/Node installer and local game-generation experiments. Subprojects live directly at repository root.
+
+NexusArcade-Harness generates Three.js scenes from NexusEngine domain compositions. Abstract concepts are rolled independently and expanded into bounded spatial/interaction choices. The machine composes candidates, resolves dependencies and validates them; the small models complete interpretation and presentation decisions. Complexity controls expansion and relationships, separately from the game deadline and rendering budget.
+
+LFM2.5 Thinking 1.2B is the interpreter/problem solver. LFM2.5 VL 3B writes presentation metadata and reviews actual rendered frames. No models above 3B. Gameplay state lives in installed upstream NexusEngine kits and an explicitly local, reusable optional composition adapter kit; the Three.js provider displays that state. Do not imply local adapters are upstream Core features.
+
+Generated games are written only through the harness. Recurring defects must be fixed in shared kits, composition, assembly or review code; never patch experiment files by hand. Unsupported capabilities are explicit gaps, not descriptive promises.
+
+Keep compact spines with accepted decisions, the original roll, source/model identity, usage and evidence hashes. Shared immutable runtime snapshots avoid dependency copies per game. Do not accumulate raw chats, reasoning, model weights or videos. Compare structural gameplay signatures rather than names/colors. Separate automated runtime, visual model, performance, human and device evidence; AAA fidelity remains a target, not an automatic label.
+
+The historical final50 cohort was cleared under earlier explicit authorization; do not infer permission for further cleanup. Preserve existing generated artifacts and failed-attempt evidence. The arcade uses a paginated library index and labels historical/development previews separately from factory acceptance. Search, focus and scroll survive returning from play. Advanced generation options stay below the player workflow.
+
+Reliable Arcade Factory uses .agent/packets/2026-09-13_reliable-arcade-factory with the original 33 goals in eleven Plan/Build/Review cycles: three foundation pilots, then ten disjoint 100-game batches. Preserve folder names, goal IDs/order and targets. Six categories organize work inside the existing JSON: Player experience; Generation; Gameplay domains; World and presentation; Validation and improvement; Queue and delivery.
+
+The runtime now enforces a 25-minute original idea deadline, no cumulative token budget and no fixed improvement-pass quota. Per-request context/output limits remain necessary for 4K local models. Expiry fails the idea; a pilot retry preserves its predecessor's start/deadline. New players require explicit resume after pause/focus loss. Generation and foreground arcade play share an exclusive lease until contention measurements permit concurrency.
+
+Foundation implementation is partial: guarded leases/queue/evidence/index publication, bounded model-response repair, dependency-aware improvement, catalog validation/intermediate resolution, paginated arcade and shared delivery/flow/steering pilot domains. Catalog-to-executable composition, calibrated concept/novelty/performance acceptance and all 33 goal completions remain outstanding. Historical PASS and new preview PASS do not meet factory acceptance. Never advertise 1,000 accepted games from files, names, palette changes or structural signatures alone.
+
+Contract-5 makes replay mandatory from the foundation and adds explicit replay, tradeoff, session and environment choices. Contract evidence identity covers all four JSON files, including the example profile and its canonical catalog hash. Per-game qualification must finish within the original deadline; paired batch review controls acceptance later and cannot extend repairs. Three consecutive recurring causes trigger shared diagnosis, not a campaign/pass quota. The qualification/review split and recurring-cause recovery are specified and still require runtime integration. User authorized incremental validated commits and ordinary pushes to origin main for this mission.

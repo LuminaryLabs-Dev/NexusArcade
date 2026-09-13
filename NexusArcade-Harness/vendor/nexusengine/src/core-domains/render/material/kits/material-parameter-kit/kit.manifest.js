@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../manifest-input.js";
+
+export default atomicKit({ id: "material-parameter-kit", responsibility: "Own typed portable values for exact Material parameter slots.", domainPath: "n:render:material", apiName: "renderMaterialParameters", requires: ["n:render:material", "render:material-binding"], provides: ["render:material-parameter"], module: "./src/core-domains/render/material/kits/material-parameter-kit/index.js", exportName: "createMaterialParameterKit", publicSubpath: "./domains/render/material/parameter", proofReferences: ["tests/core-domains/core-graphics-domain-smoke.mjs"] });

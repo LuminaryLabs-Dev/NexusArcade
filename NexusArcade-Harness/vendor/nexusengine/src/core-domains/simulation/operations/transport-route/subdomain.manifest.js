@@ -1,0 +1,3 @@
+import { domainNode } from "../../../manifest-input.js";
+
+export default domainNode({ id: "simulation-operations-transport-route-domain", domainPath: "n:simulation:operations:transport-route", parentDomainPath: "n:simulation:operations", label: "Transport Route", responsibility: "Own deterministic transport stops, carriers, capacity, travel, and arrival receipts.", owns: ["transport stops", "carrier state", "travel progress", "arrival receipts"], forbiddenResponsibilities: ["request fulfillment", "navigation pathfinding", "vehicle physics"], requires: ["n:simulation"], provides: ["n:simulation:operations:transport-route", "operations:transport-route"], proofReferences: ["src/core-domains/simulation/tests/restored-economy-operations.mjs"] });

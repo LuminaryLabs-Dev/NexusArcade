@@ -1,0 +1,1118 @@
+{
+  "schemaVersion": "contract-5",
+  "status": "RESOLVED_WORKED_DESIGN_NOT_VALIDATED",
+  "executable": false,
+  "ideaId": "worked-exchange-and-growing-routes",
+  "catalog": {
+    "path": "master-catalog.json",
+    "version": "contract-5",
+    "sha256": "61963dd14aab7ee6128459fd68d4a78a17d29d7de4ddd4bde49999c2dc8c161e",
+    "hashEncoding": "canonical-json"
+  },
+  "executionContractRef": "execution-contract.json",
+  "seed": 94000,
+  "intent": {
+    "player": "A restorer walking between connected regions.",
+    "objective": "Deliver two cores, activate one anchor and restore another to expand reachable routes; return to landing pad before session timeout.",
+    "interpretation": "Exchange is physical core transfer; growth is increasing reachable space through restored connections.",
+    "exclusions": [
+      "combat",
+      "free vertical traversal",
+      "claim of visual novelty",
+      "claim of new engine capability"
+    ]
+  },
+  "decisions": [
+    {
+      "pointId": "genre",
+      "selectedOptionIds": [
+        "genre.spatial-puzzle"
+      ],
+      "resolvedParameters": {
+        "genre.spatial-puzzle": {
+          "orientation": "objective"
+        }
+      },
+      "origin": {
+        "kind": "worked_example_author_selection",
+        "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
+        "catalogVersion": "contract-5"
+      }
+    },
+    {
+      "pointId": "genre_blend",
+      "selectedOptionIds": [
+        "genre_blend.none"
+      ],
+      "resolvedParameters": {
+        "genre_blend.none": {
+          "optionalBranches": 0
+        }
+      },
+      "origin": {
+        "kind": "worked_example_author_selection",
+        "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
+        "catalogVersion": "contract-5"
+      }
+    },
+    {
+      "pointId": "concepts",
+      "selectedOptionIds": [
+        "concepts.growth",
+        "concepts.exchange"
+      ],
+      "resolvedParameters": {
+        "concepts.growth": {
+          "branchDepth": 2
+        },
+        "concepts.exchange": {
+          "branchDepth": 2
+        }
+      },
+      "origin": {
+        "kind": "worked_example_author_selection",
+        "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
+        "catalogVersion": "contract-5"
+      }
+    },
+    {
+      "pointId": "player_role",
+      "selectedOptionIds": [
+        "player_role.restorer"
+      ],
+      "resolvedParameters": {
+        "player_role.restorer": {
+          "controlledEntities": 1
+        }
+      },
+      "origin": {
+        "kind": "worked_example_author_selection",
+        "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
+        "catalogVersion": "contract-5"
+      }
+    },
+    {
+      "pointId": "intention",
+      "selectedOptionIds": [
+        "intention.restore-network"
+      ],
+      "resolvedParameters": {
+        "intention.restore-network": {
+          "requiredTargets": 4
+        }
+      },
+      "origin": {
+        "kind": "worked_example_author_selection",
+        "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
+        "catalogVersion": "contract-5"
+      }
+    },
+    {
+      "pointId": "view",
+      "selectedOptionIds": [
+        "view.follow-overhead"
+      ],
+      "resolvedParameters": {
+        "view.follow-overhead": {
+          "fieldOfViewDeg": 43,
+          "occlusionMode": "reject_blocked"
+        }
+      },
+      "origin": {
+        "kind": "worked_example_author_selection",
+        "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
+        "catalogVersion": "contract-5"
+      }
+    },
+    {
+      "pointId": "movement",
+      "selectedOptionIds": [
+        "movement.grounded-walk"
+      ],
+      "resolvedParameters": {
+        "movement.grounded-walk": {
+          "speed": 8,
+          "turnRate": 180
+        }
+      },
+      "origin": {
+        "kind": "worked_example_author_selection",
+        "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
+        "catalogVersion": "contract-5"
+      }
+    },
+    {
+      "pointId": "world_topology",
+      "selectedOptionIds": [
+        "world_topology.platform-tree"
+      ],
+      "resolvedParameters": {
+        "world_topology.platform-tree": {
+          "nodeCount": 4,
+          "passageWidth": 2.8
+        }
+      },
+      "origin": {
+        "kind": "worked_example_author_selection",
+        "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
+        "catalogVersion": "contract-5"
+      }
+    },
+    {
+      "pointId": "scale",
+      "selectedOptionIds": [
+        "scale.human-scale"
+      ],
+      "resolvedParameters": {
+        "scale.human-scale": {
+          "metresPerWorldUnit": 1,
+          "actorHeight": 1.6
+        }
+      },
+      "origin": {
+        "kind": "worked_example_author_selection",
+        "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
+        "catalogVersion": "contract-5"
+      }
+    },
+    {
+      "pointId": "interaction",
+      "selectedOptionIds": [
+        "interaction.activate",
+        "interaction.carry",
+        "interaction.hold"
+      ],
+      "resolvedParameters": {
+        "interaction.activate": {
+          "reach": 2.3,
+          "interruptMode": "release"
+        },
+        "interaction.carry": {
+          "reach": 2.3,
+          "interruptMode": "release",
+          "maxCarried": 1
+        },
+        "interaction.hold": {
+          "reach": 2.3,
+          "interruptMode": "release",
+          "holdSeconds": 3
+        }
+      },
+      "origin": {
+        "kind": "worked_example_author_selection",
+        "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
+        "catalogVersion": "contract-5"
+      }
+    },
+    {
+      "pointId": "connections",
+      "selectedOptionIds": [
+        "connections.prerequisite"
+      ],
+      "resolvedParameters": {
+        "connections.prerequisite": {
+          "priority": 0,
+          "rate": 1
+        }
+      },
+      "origin": {
+        "kind": "worked_example_author_selection",
+        "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
+        "catalogVersion": "contract-5"
+      }
+    },
+    {
+      "pointId": "consequences",
+      "selectedOptionIds": [
+        "consequences.open-route"
+      ],
+      "resolvedParameters": {
+        "consequences.open-route": {
+          "feedbackDelayMs": 0
+        }
+      },
+      "origin": {
+        "kind": "worked_example_author_selection",
+        "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
+        "catalogVersion": "contract-5"
+      }
+    },
+    {
+      "pointId": "pressure",
+      "selectedOptionIds": [
+        "pressure.deadline"
+      ],
+      "resolvedParameters": {
+        "pressure.deadline": {
+          "sessionSeconds": 300,
+          "initialResource": 100
+        }
+      },
+      "origin": {
+        "kind": "worked_example_author_selection",
+        "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
+        "catalogVersion": "contract-5"
+      }
+    },
+    {
+      "pointId": "progression",
+      "selectedOptionIds": [
+        "progression.dependency-unlocks"
+      ],
+      "resolvedParameters": {
+        "progression.dependency-unlocks": {
+          "stages": 3
+        }
+      },
+      "origin": {
+        "kind": "worked_example_author_selection",
+        "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
+        "catalogVersion": "contract-5"
+      }
+    },
+    {
+      "pointId": "ending",
+      "selectedOptionIds": [
+        "ending.complete-and-return"
+      ],
+      "resolvedParameters": {
+        "ending.complete-and-return": {
+          "exitRadius": 2.5
+        }
+      },
+      "origin": {
+        "kind": "worked_example_author_selection",
+        "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
+        "catalogVersion": "contract-5"
+      }
+    },
+    {
+      "pointId": "shape_language",
+      "selectedOptionIds": [
+        "shape_language.hexagonal"
+      ],
+      "resolvedParameters": {
+        "shape_language.hexagonal": {
+          "detailSegments": 6
+        }
+      },
+      "origin": {
+        "kind": "worked_example_author_selection",
+        "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
+        "catalogVersion": "contract-5"
+      }
+    },
+    {
+      "pointId": "materials",
+      "selectedOptionIds": [
+        "materials.luminous-standard"
+      ],
+      "resolvedParameters": {
+        "materials.luminous-standard": {
+          "roughness": 0.5,
+          "metalness": 0.25
+        }
+      },
+      "origin": {
+        "kind": "worked_example_author_selection",
+        "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
+        "catalogVersion": "contract-5"
+      }
+    },
+    {
+      "pointId": "lighting",
+      "selectedOptionIds": [
+        "lighting.directional-fog"
+      ],
+      "resolvedParameters": {
+        "lighting.directional-fog": {
+          "exposure": 1.25,
+          "fogDensity": 0.006
+        }
+      },
+      "origin": {
+        "kind": "worked_example_author_selection",
+        "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
+        "catalogVersion": "contract-5"
+      }
+    },
+    {
+      "pointId": "animation_feedback",
+      "selectedOptionIds": [
+        "animation_feedback.beacon-response"
+      ],
+      "resolvedParameters": {
+        "animation_feedback.beacon-response": {
+          "responseMs": 150,
+          "intensity": 0.5
+        }
+      },
+      "origin": {
+        "kind": "worked_example_author_selection",
+        "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
+        "catalogVersion": "contract-5"
+      }
+    },
+    {
+      "pointId": "audio",
+      "selectedOptionIds": [
+        "audio.synth-confirmation"
+      ],
+      "resolvedParameters": {
+        "audio.synth-confirmation": {
+          "masterGain": 0.25,
+          "maxVoices": 4
+        }
+      },
+      "origin": {
+        "kind": "worked_example_author_selection",
+        "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
+        "catalogVersion": "contract-5"
+      }
+    },
+    {
+      "pointId": "interface",
+      "selectedOptionIds": [
+        "interface.objective-hud"
+      ],
+      "resolvedParameters": {
+        "interface.objective-hud": {
+          "minimumTextPx": 16,
+          "promptMode": "contextual"
+        }
+      },
+      "origin": {
+        "kind": "worked_example_author_selection",
+        "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
+        "catalogVersion": "contract-5"
+      }
+    },
+    {
+      "pointId": "device_target",
+      "selectedOptionIds": [
+        "device_target.explicit-device-profile"
+      ],
+      "resolvedParameters": {
+        "device_target.explicit-device-profile": {
+          "resolution": "calibrate"
+        }
+      },
+      "origin": {
+        "kind": "worked_example_author_selection",
+        "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
+        "catalogVersion": "contract-5"
+      }
+    },
+    {
+      "pointId": "comparison_policy",
+      "selectedOptionIds": [
+        "comparison_policy.calibrated-nearest-neighbors"
+      ],
+      "resolvedParameters": {
+        "comparison_policy.calibrated-nearest-neighbors": {
+          "method": "calibrated_nearest_neighbors"
+        }
+      },
+      "origin": {
+        "kind": "worked_example_author_selection",
+        "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
+        "catalogVersion": "contract-5"
+      }
+    },
+    {
+      "pointId": "replay_structure",
+      "selectedOptionIds": [
+        "replay_structure.alternate-strategy"
+      ],
+      "resolvedParameters": {
+        "replay_structure.alternate-strategy": {
+          "minimumStrategies": 2
+        }
+      },
+      "origin": {
+        "kind": "worked_example_author_selection",
+        "reason": "Required layer obligation; implementation and evidence remain missing, so this example is not executable.",
+        "catalogVersion": "contract-5"
+      }
+    },
+    {
+      "pointId": "tradeoff",
+      "selectedOptionIds": [
+        "tradeoff.route-risk"
+      ],
+      "resolvedParameters": {
+        "tradeoff.route-risk": {
+          "shortcutRatio": 0.7
+        }
+      },
+      "origin": {
+        "kind": "worked_example_author_selection",
+        "reason": "Required layer obligation; implementation and evidence remain missing, so this example is not executable.",
+        "catalogVersion": "contract-5"
+      }
+    },
+    {
+      "pointId": "session_structure",
+      "selectedOptionIds": [
+        "session_structure.introduce-combine-resolve"
+      ],
+      "resolvedParameters": {
+        "session_structure.introduce-combine-resolve": {
+          "stages": 3
+        }
+      },
+      "origin": {
+        "kind": "worked_example_author_selection",
+        "reason": "Required layer obligation; implementation and evidence remain missing, so this example is not executable.",
+        "catalogVersion": "contract-5"
+      }
+    },
+    {
+      "pointId": "environment_behavior",
+      "selectedOptionIds": [
+        "environment_behavior.changing-surface"
+      ],
+      "resolvedParameters": {
+        "environment_behavior.changing-surface": {
+          "gripFactor": 0.65
+        }
+      },
+      "origin": {
+        "kind": "worked_example_author_selection",
+        "reason": "Required layer obligation; implementation and evidence remain missing, so this example is not executable.",
+        "catalogVersion": "contract-5"
+      }
+    }
+  ],
+  "conceptBranches": [
+    "concepts.exchange.transfer",
+    "concepts.growth.reach"
+  ],
+  "domainInstances": [
+    {
+      "id": "session",
+      "capability": "cap.session_deadline",
+      "settings": {
+        "durationSeconds": 300,
+        "pauseAllowanceSeconds": 120,
+        "fixedStepSeconds": 0.05
+      }
+    },
+    {
+      "id": "player",
+      "capability": "cap.grounded_walk",
+      "settings": {
+        "start": {
+          "x": 0,
+          "y": 0,
+          "z": 23
+        },
+        "speedMetresPerSecond": 8,
+        "input": [
+          "WASD",
+          "arrows"
+        ],
+        "interact": [
+          "E",
+          "Space"
+        ],
+        "restart": "R",
+        "pause": "Escape"
+      }
+    },
+    {
+      "id": "world",
+      "capability": "cap.platform_tree",
+      "settings": {
+        "points": {
+          "home": {
+            "x": 0,
+            "y": 0,
+            "z": 23
+          },
+          "n0": {
+            "x": 0,
+            "y": 0,
+            "z": 16
+          },
+          "n1": {
+            "x": -16,
+            "y": 0,
+            "z": 0
+          },
+          "n2": {
+            "x": 0,
+            "y": 0,
+            "z": -16
+          },
+          "n3": {
+            "x": 16,
+            "y": 0,
+            "z": 0
+          }
+        },
+        "platformRadius": 3.3,
+        "bridgeWidth": 2.8,
+        "supportPlaneY": 0
+      }
+    },
+    {
+      "id": "n0",
+      "capability": "cap.carry",
+      "settings": {
+        "id": "n0",
+        "concept": "exchange",
+        "action": "carry",
+        "requires": [],
+        "receiver": "home",
+        "seconds": 1,
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 16
+        }
+      }
+    },
+    {
+      "id": "n1",
+      "capability": "cap.activate",
+      "settings": {
+        "id": "n1",
+        "concept": "growth",
+        "action": "activate",
+        "requires": [
+          "n0"
+        ],
+        "receiver": "home",
+        "seconds": 1,
+        "position": {
+          "x": -16,
+          "y": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "id": "n2",
+      "capability": "cap.hold",
+      "settings": {
+        "id": "n2",
+        "concept": "growth",
+        "action": "hold",
+        "requires": [
+          "n1"
+        ],
+        "receiver": "home",
+        "seconds": 3,
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": -16
+        }
+      }
+    },
+    {
+      "id": "n3",
+      "capability": "cap.carry",
+      "settings": {
+        "id": "n3",
+        "concept": "exchange",
+        "action": "carry",
+        "requires": [
+          "n2"
+        ],
+        "receiver": "home",
+        "seconds": 1,
+        "position": {
+          "x": 16,
+          "y": 0,
+          "z": 0
+        }
+      }
+    }
+  ],
+  "connections": [
+    {
+      "id": "edge0",
+      "from": "home",
+      "to": "n0",
+      "kind": "walkable_route",
+      "requires": []
+    },
+    {
+      "id": "edge1",
+      "from": "home",
+      "to": "n1",
+      "kind": "walkable_route",
+      "requires": [
+        "n0"
+      ]
+    },
+    {
+      "id": "edge2",
+      "from": "n0",
+      "to": "n2",
+      "kind": "walkable_route",
+      "requires": [
+        "n1"
+      ]
+    },
+    {
+      "id": "edge3",
+      "from": "n0",
+      "to": "n3",
+      "kind": "walkable_route",
+      "requires": [
+        "n2"
+      ]
+    }
+  ],
+  "spatialConstraints": {
+    "units": "metres",
+    "upAxis": "y",
+    "requiredReachable": [
+      "n0",
+      "n1",
+      "n2",
+      "n3",
+      "home"
+    ],
+    "gateBehavior": "Same completion state controls walkability and visible bridge surface.",
+    "collision": "Reject movement outside platform circles or unlocked bridge corridors.",
+    "interactionReachMetres": 2.3
+  },
+  "objective": {
+    "success": {
+      "allComplete": [
+        "n0",
+        "n1",
+        "n2",
+        "n3"
+      ],
+      "within": {
+        "point": "home",
+        "radiusMetres": 2.5
+      }
+    },
+    "failure": {
+      "activeSecondsAtLeast": 300,
+      "successNotReached": true
+    },
+    "restart": {
+      "mode": "title",
+      "completed": [],
+      "carry": "none",
+      "activeSeconds": 0,
+      "pauseAllowanceSeconds": 120,
+      "playerPosition": {
+        "x": 0,
+        "y": 0,
+        "z": 23
+      }
+    }
+  },
+  "presentation": {
+    "renderer": "Three.js",
+    "camera": {
+      "provider": "follow-overhead",
+      "fieldOfViewDeg": 43,
+      "followOffset": {
+        "y": 23,
+        "z": 24
+      },
+      "overviewOffset": {
+        "y": 51,
+        "z": 57
+      }
+    },
+    "geometry": "hexagonal platforms and gated bridges",
+    "materials": {
+      "provider": "MeshStandardMaterial",
+      "roughness": 0.5,
+      "metalness": 0.25
+    },
+    "lighting": {
+      "hemisphereIntensity": 2.5,
+      "directionalIntensity": 3.5,
+      "exposure": 1.25,
+      "fogDensity": 0.006
+    },
+    "feedback": {
+      "activation": "state-driven beacon appearance and route reveal",
+      "hold": "visible progress",
+      "transfer": "carry removed and completion feedback"
+    },
+    "audio": {
+      "enabledByDefault": false,
+      "provider": "event-linked synthesis",
+      "reset": "stop owned voices"
+    },
+    "interface": [
+      "required-target progress",
+      "session time",
+      "contextual interaction prompt",
+      "pause",
+      "ending and restart"
+    ]
+  },
+  "conceptContributions": [
+    {
+      "concept": "exchange",
+      "instances": [
+        "n0",
+        "n3"
+      ],
+      "action": "carry and transfer",
+      "stateChange": "core changes ownership to receiver; target completes",
+      "visibleConsequence": "carried core disappears and next dependency becomes available",
+      "assertionIds": [
+        "EX05",
+        "EX08"
+      ]
+    },
+    {
+      "concept": "growth",
+      "instances": [
+        "n1",
+        "n2"
+      ],
+      "action": "activate and restore",
+      "stateChange": "completion increases supported reachable routes",
+      "visibleConsequence": "bridge surfaces appear and new anchors can be reached",
+      "assertionIds": [
+        "EX03",
+        "EX06"
+      ]
+    }
+  ],
+  "acceptance": {
+    "requiredRuleIds": [
+      "composition",
+      "controls",
+      "spatial",
+      "loop",
+      "resilience",
+      "concept",
+      "readability",
+      "presentation",
+      "novelty",
+      "performance",
+      "regression",
+      "evidence",
+      "deadline",
+      "replay"
+    ],
+    "ruleVersion": "contract-5",
+    "assertions": [
+      {
+        "id": "EX01",
+        "ruleId": "composition",
+        "procedure": "Compile exact selected options, 4 anchors and connections.",
+        "expected": "All references resolve; unknown action, unknown target or forward prerequisite is rejected.",
+        "status": "NOT_RUN"
+      },
+      {
+        "id": "EX02",
+        "ruleId": "controls",
+        "procedure": "Start, hold ArrowUp for 200 ms at fixed step then release.",
+        "expected": "Player z decreases from 23 without leaving supported surface; released input does not remain stuck.",
+        "status": "NOT_RUN"
+      },
+      {
+        "id": "EX03",
+        "ruleId": "spatial",
+        "procedure": "Inspect gated edge home->n1 before and after completing n0.",
+        "expected": "It is not traversable before n0; it becomes supported after n0.",
+        "status": "NOT_RUN"
+      },
+      {
+        "id": "EX04",
+        "ruleId": "resilience",
+        "procedure": "Attempt interaction on n1 while n0 incomplete.",
+        "expected": "n1 remains incomplete; no later prerequisite is unlocked.",
+        "status": "NOT_RUN"
+      },
+      {
+        "id": "EX05",
+        "ruleId": "loop",
+        "procedure": "Take n0 core to home and transfer once; repeat transfer.",
+        "expected": "n0 completes once; player carries nothing; no duplicate completion or core.",
+        "status": "NOT_RUN"
+      },
+      {
+        "id": "EX06",
+        "ruleId": "concept",
+        "procedure": "Activate n1 and hold n2 for a cumulative 3 seconds while in reach.",
+        "expected": "n1 completion enables n2 route; n2 completion enables n3 route. Reachable space expands through growth interpretation.",
+        "status": "NOT_RUN"
+      },
+      {
+        "id": "EX07",
+        "ruleId": "resilience",
+        "procedure": "Release E during n2 hold then resume; restart separately.",
+        "expected": "Released interval adds no hold progress; restart clears all progress.",
+        "status": "NOT_RUN"
+      },
+      {
+        "id": "EX08",
+        "ruleId": "loop",
+        "procedure": "Complete n0,n1,n2,n3 and enter home within 2.5 metres.",
+        "expected": "Won only when all targets complete and exit condition holds.",
+        "status": "NOT_RUN"
+      },
+      {
+        "id": "EX09",
+        "ruleId": "loop",
+        "procedure": "Idle without completing targets for 300 active seconds.",
+        "expected": "Lost; never won. Restart returns title, empty completion/carry and initial position.",
+        "status": "NOT_RUN"
+      },
+      {
+        "id": "EX10",
+        "ruleId": "deadline",
+        "procedure": "Inject candidate completion after original 1500-second generation deadline.",
+        "expected": "Attempt is FAILED_IDEA even if all gameplay assertions passed.",
+        "status": "NOT_RUN"
+      },
+      {
+        "id": "EX11",
+        "ruleId": "novelty",
+        "procedure": "Compare this worked profile with the existing floating-platform collection.",
+        "expected": "It cannot be accepted merely for changed labels; require calibrated visual AND interaction criteria, otherwise reject.",
+        "status": "NOT_RUN"
+      },
+      {
+        "id": "EX12",
+        "ruleId": "evidence",
+        "procedure": "Audit assertions plus baseline required rules.",
+        "expected": "All required rules need exact-artifact evidence; this example currently has none and is not accepted.",
+        "status": "NOT_RUN"
+      },
+      {
+        "id": "EX13",
+        "ruleId": "replay",
+        "procedure": "Complete two runs using distinct supported orders; compare travel/risks and records under equivalent configuration.",
+        "expected": "Meaningful strategy or skill difference must be witnessed; current unsupported example rejects.",
+        "status": "NOT_RUN"
+      }
+    ],
+    "parametersRef": "G01.execution-packet.acceptanceParameters",
+    "targetDeviceRef": "G01.execution-packet.acceptanceParameters.deviceBudgets",
+    "comparisonBaseline": "Current accepted-index snapshot plus original floating-platform cohort as a known-similar control",
+    "verdict": "NOT_EVALUATED",
+    "blockers": [
+      "new profile compiler contract not implemented",
+      "required capability/option audits not complete",
+      "device and review calibrations unresolved",
+      "known narrow template; novelty not established",
+      "replay capabilities and repeated-run evidence are missing"
+    ]
+  },
+  "editPolicy": {
+    "protected": [
+      "original concept IDs and observable obligations",
+      "success/failure/reset semantics",
+      "required baseline checks",
+      "original generation deadline",
+      "NexusEngine gameplay ownership"
+    ],
+    "tunable": [
+      {
+        "path": "/presentation/materials/roughness",
+        "min": 0.15,
+        "max": 0.9,
+        "invalidates": [
+          "presentation",
+          "readability",
+          "novelty"
+        ]
+      },
+      {
+        "path": "/presentation/lighting/exposure",
+        "min": 0.7,
+        "max": 1.6,
+        "invalidates": [
+          "presentation",
+          "readability",
+          "novelty"
+        ]
+      }
+    ],
+    "replaceable": [
+      {
+        "path": "/decisions/5",
+        "allowed": "only compatible audited providers",
+        "invalidates": [
+          "controls",
+          "spatial",
+          "readability",
+          "presentation",
+          "novelty",
+          "performance"
+        ],
+        "identityGuard": {
+          "pointId": "view"
+        }
+      }
+    ],
+    "structuralEdit": "New explicit profile revision; rerun all affected assertions. Never drop concepts or goals to obtain PASS."
+  },
+  "featureDependencies": [
+    {
+      "id": "movement",
+      "dependsOn": [
+        "world"
+      ]
+    },
+    {
+      "id": "interaction",
+      "dependsOn": [
+        "movement",
+        "world"
+      ]
+    },
+    {
+      "id": "objective",
+      "dependsOn": [
+        "interaction"
+      ]
+    },
+    {
+      "id": "presentation",
+      "dependsOn": [
+        "world",
+        "interaction",
+        "objective"
+      ]
+    },
+    {
+      "id": "whole_game",
+      "dependsOn": [
+        "movement",
+        "objective",
+        "presentation"
+      ]
+    }
+  ],
+  "runPolicyRef": "execution-contract.json#/policy",
+  "spineContract": {
+    "fields": [
+      "attemptId",
+      "slotId",
+      "parentAttemptId",
+      "startedAt",
+      "deadlineAt",
+      "currentRevision",
+      "bestVerifiedRevision",
+      "features",
+      "findings",
+      "attemptedFixSignatures",
+      "evidenceRefs",
+      "collectionSnapshotHash",
+      "failureFingerprint",
+      "nextAction",
+      "qualificationState"
+    ],
+    "featureFields": [
+      "id",
+      "dependsOn",
+      "state",
+      "implementationHash",
+      "configurationHash",
+      "dependencyHashes",
+      "ruleVersion",
+      "evidenceRefs"
+    ],
+    "featureStates": [
+      "open",
+      "candidate",
+      "verified_locked",
+      "invalidated"
+    ],
+    "resultContractRef": "execution-contract.json#/resultContract"
+  },
+  "categoryContractRef": "execution-contract.json#/categories",
+  "categorySections": {
+    "Player experience": [
+      "intent",
+      "objective",
+      "replay",
+      "variation"
+    ],
+    "Generation": [
+      "decisions",
+      "conceptBranches",
+      "conceptContributions",
+      "layerContributions"
+    ],
+    "Gameplay domains": [
+      "domainInstances",
+      "connections"
+    ],
+    "World and presentation": [
+      "spatialConstraints",
+      "presentation"
+    ],
+    "Validation and improvement": [
+      "acceptance",
+      "editPolicy",
+      "featureDependencies"
+    ],
+    "Queue and delivery": [
+      "runPolicyRef",
+      "spineContract"
+    ]
+  },
+  "replay": {
+    "reason": "Choose a better delivery/activation order and improve completion time under equivalent rules.",
+    "mechanism": "alternate-strategy",
+    "status": "UNIMPLEMENTED_EXAMPLE",
+    "meaningfulDifference": "At least two feasible orders differ in travel cost or resource/risk exposure.",
+    "recordIdentityFields": [
+      "compositionHash",
+      "runtimeHash",
+      "rulesHash",
+      "challengeConfigurationHash"
+    ],
+    "requiredEvidence": [
+      "two_complete_run_traces",
+      "different_decision_or_skill_outcome",
+      "record_isolation",
+      "restart_state"
+    ],
+    "capabilityRefs": [
+      "cap.alternate_strategy"
+    ],
+    "blocker": "Current platform example does not prove alternate meaningful order; it must not qualify."
+  },
+  "variation": {
+    "betweenGames": [
+      "topology",
+      "action_connections",
+      "view_and_visual_composition"
+    ],
+    "betweenRuns": [
+      "supported_strategy"
+    ],
+    "withinRun": [
+      "prerequisite_consequences"
+    ],
+    "evidenceStatus": "NOT_RUN"
+  },
+  "layerContributions": [
+    {
+      "pointId": "connections",
+      "domainRefs": [
+        "n0",
+        "n1"
+      ],
+      "contribution": "Completion unlocks the next reachable area.",
+      "counterfactual": "Suppress unlock and prove the next objective is unreachable.",
+      "ruleIds": [
+        "spatial",
+        "concept"
+      ],
+      "status": "NOT_RUN"
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../manifest-input.js";
+
+export default atomicKit({ id: "lifecycle-economy-adapter-kit", kind: "adapter-kit", responsibility: "Translate accepted Lifecycle costs and Economy effects into exact-once Economy transactions.", domainPath: "n:simulation:progression:lifecycle", apiName: "lifecycleEconomy", requires: ["progression:lifecycle", "economy:transaction"], provides: ["progression:lifecycle-economy-adapter"], module: "./src/core-domains/simulation/adapters/lifecycle-economy-adapter-kit/index.js", exportName: "createLifecycleEconomyAdapterKit", publicSubpath: "./domains/simulation/adapters/lifecycle-economy", proofReferences: ["src/core-domains/simulation/tests/restored-integration-adapters.mjs"] });

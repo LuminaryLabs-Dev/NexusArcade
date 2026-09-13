@@ -1,0 +1,3 @@
+import { domainNode } from "../../manifest-input.js";
+
+export default domainNode({ id: "simulation-economy-domain", domainPath: "n:simulation:economy", parentDomainPath: "n:simulation", label: "Simulation Economy", responsibility: "Own portable economic account and cargo state primitives.", owns: ["economy capability contracts", "account and cargo ownership boundaries"], forbiddenResponsibilities: ["game balance", "payment processing", "facility policy"], requires: ["n:simulation"], provides: ["n:simulation:economy"], proofReferences: ["src/core-domains/simulation/tests/restored-economy-operations.mjs"] });

@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../../manifest-input.js";
+
+export default atomicKit({ id: "cargo-manifest-kit", responsibility: "Own portable cargo inventory, capacity, condition, pickup, deposit, and quota state.", domainPath: "n:simulation:economy:cargo", apiName: "cargoManifest", requires: ["n:simulation"], provides: ["n:simulation:economy:cargo", "economy:cargo-manifest"], module: "./src/core-domains/simulation/economy/cargo/kits/cargo-manifest-kit/index.js", exportName: "createCargoManifestKit", publicSubpath: "./domains/simulation/economy/cargo", proofReferences: ["src/core-domains/simulation/tests/restored-economy-operations.mjs"] });

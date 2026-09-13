@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../manifest-input.js";
+
+export default atomicKit({ id: "shader-cache-kit", responsibility: "Link completed Shader compiles to resident shader-program Render Resources and select deterministic eviction candidates.", domainPath: "n:render:shader", apiName: "renderShaderCache", requires: ["n:render:shader", "render:shader-compile", "render:shader-reflection", "render:resource-identity", "render:resource-lifecycle"], provides: ["render:shader-cache"], module: "./src/core-domains/render/shader/kits/shader-cache-kit/index.js", exportName: "createShaderCacheKit", publicSubpath: "./domains/render/shader/cache", proofReferences: ["tests/core-domains/core-graphics-domain-smoke.mjs"] });

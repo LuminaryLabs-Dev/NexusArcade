@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../manifest-input.js";
+
+export default atomicKit({ id: "facility-economy-adapter-kit", kind: "adapter-kit", responsibility: "Translate Facility output and upkeep receipts into exact-once Economy transactions.", domainPath: "n:simulation:operations:facility", apiName: "facilityEconomy", requires: ["operations:facility", "economy:transaction"], provides: ["operations:facility-economy-adapter"], module: "./src/core-domains/simulation/adapters/facility-economy-adapter-kit/index.js", exportName: "createFacilityEconomyAdapterKit", publicSubpath: "./domains/simulation/adapters/facility-economy", proofReferences: ["src/core-domains/simulation/tests/restored-integration-adapters.mjs"] });

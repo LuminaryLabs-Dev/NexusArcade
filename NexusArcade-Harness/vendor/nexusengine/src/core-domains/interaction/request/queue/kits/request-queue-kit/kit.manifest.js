@@ -1,0 +1,3 @@
+import { atomicKit } from "../../../../../manifest-input.js";
+
+export default atomicKit({ id: "request-queue-kit", responsibility: "Own deterministic queued requests, patience, fulfillment, expiry, and portable effect descriptors.", domainPath: "n:interaction:request:queue", apiName: "requestQueue", requires: ["n:interaction"], provides: ["n:interaction:request:queue", "interaction:request-queue"], module: "./src/core-domains/interaction/request/queue/kits/request-queue-kit/index.js", exportName: "createRequestQueueKit", publicSubpath: "./domains/interaction/request/queue", proofReferences: ["src/core-domains/interaction/tests/restored-interaction-behaviors.mjs"] });

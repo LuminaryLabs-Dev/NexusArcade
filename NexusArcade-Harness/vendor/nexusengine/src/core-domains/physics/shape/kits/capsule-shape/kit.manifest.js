@@ -1,0 +1,2 @@
+import { atomicKit } from "../../../../manifest-input.js";
+export default atomicKit({ id: "capsule-shape-kit", responsibility: "Normalize portable capsule collision geometry.", domainPath: "n:physics:shape", apiName: "capsuleShape", requires: ["n:physics"], provides: ["n:physics:shape", "physics:capsule-shape"], module: "./src/core-domains/physics/shape/kits/capsule-shape/index.js", exportName: "createCapsuleShapeKit", publicSubpath: "./domains/physics/shape/capsule", proofReferences: ["tests/core-domains/core-physics-canonical-domain-contract-smoke.mjs"] });
