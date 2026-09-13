@@ -120,3 +120,20 @@ Improvement rejects equal-score revisions and regressions, restores the best
 configuration and its findings before proposing another change, and rejects
 contradictory passing checks with unresolved findings. G01 completion checks the
 full frozen plan rather than accepting phase labels alone.
+
+G02 now has an executable typed behavior graph in `kits/domain-graph.mjs`.
+Seven trusted domain definitions cover controls, delivery, valves, combined
+conditions, reservoirs, checkpoints and objectives. Closed settings, port types,
+required connections, unique writers, objective contribution and cycle ordering
+are checked before assembly; explicit delayed values use the previous tick.
+The three development pilots persist these graphs and execute them through a
+local NexusEngine service kit. Movement, world/presenter selection and profile
+mapping remain family-specific; this is not full master-catalog compilation.
+
+The arcade Generate action now uses the typed pilot path. Its advanced Challenge
+selector offers Surprise me, Rally racing, Cargo delivery and Flow puzzle; unused
+complexity settings are no longer shown. New results have a Show new games action.
+New player sessions renew from the arcade, expire after 60 seconds without renewal,
+and cannot be resurrected by late renewal requests. Expired views pause and require
+explicit reload. Older clients without leaseVersion 1 keep their original explicit
+Back behavior until refreshed. Failed server-generated pilots use protected cleanup.

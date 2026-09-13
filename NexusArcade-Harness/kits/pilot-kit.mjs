@@ -1,3 +1,4 @@
+import {createDomainGraphKit} from './domain-graph.mjs';
 import {trackSegments,distanceToTrack} from './track-layout.mjs';
 import {createEngine} from '../vendor/nexusengine/src/engine.js';
 import {defineDomainServiceKit} from '../vendor/nexusengine/src/domain-service-kit.js';
@@ -10,13 +11,12 @@ export function createPilotEngine(c,{bestSeconds=null}={}){
  if(bestSeconds!==null&&(!Number.isFinite(bestSeconds)||bestSeconds<=0||bestSeconds>c.deadlineSeconds))throw Error('Invalid prior record');
  const road=c.track?trackSegments(c.track):null,handling=c.handling??{maxSpeed:13,acceleration:8,braking:18,turnRate:1.7};
  let best=bestSeconds,lastResult=null;
- const kit=defineDomainServiceKit({id:'arcade-pilot-domains',stability:'experimental',version:'0.1.0',domain:'arcade-pilots',domainPath:'n:arcade-pilots',apiName:'arcade',provides:['n:arcade-pilots'],requires:['n:simulation:motion:locomotion'],createApi({engine}){
+ const kit=defineDomainServiceKit({id:'arcade-pilot-domains',stability:'experimental',version:'0.1.0',domain:'arcade-pilots',domainPath:'n:arcade-pilots',apiName:'arcade',provides:['n:arcade-pilots'],requires:['n:simulation:motion:locomotion','n:arcade-composition'],createApi({engine}){
  const N=engine.n;let mode='title',elapsed=0,carry=null,completed=[],rotation=c.nodes.map(n=>n.rotation??0),fill=0,heading=c.headingStart??0,speed=0,sequence=0,pressed=false,events=[];
  const emit=(type,id)=>{events.push({type,id,at:elapsed});events=events.slice(-32);};
  const point=()=>N.actionLocomotion.getState().position;
- const d=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);
- const snapshot=()=>({kind:c.kind,mode,elapsed,player:point(),carry,completed:[...completed],rotation:[...rotation],fill,heading,speed,events:[...events],nodes:c.nodes,objective:c.goal,coordinates:'x right, y up, z south; metres',engine:'NexusEngine with local pilot domains',bestSeconds:best,lastResult,replay:c.replay??null});
- const reset=()=>{N.actionLocomotion.reset();mode='title';elapsed=0;carry=null;completed=[];rotation=c.nodes.map(n=>n.rotation??0);fill=0;heading=c.headingStart??0;speed=0;pressed=false;events=[];lastResult=null;};
+ const snapshot=()=>({kind:c.kind,mode,elapsed,player:point(),carry,completed:[...completed],rotation:[...rotation],fill,heading,speed,events:[...events],nodes:c.nodes,objective:c.goal,coordinates:'x right, y up, z south; metres',engine:'NexusEngine with typed local domain composition',domainState:N.composition.snapshot(),bestSeconds:best,lastResult,replay:c.replay??null});
+ const reset=()=>{N.actionLocomotion.reset();N.composition.reset();mode='title';elapsed=0;carry=null;completed=[];rotation=c.nodes.map(n=>n.rotation??0);fill=0;heading=c.headingStart??0;speed=0;pressed=false;events=[];lastResult=null;};
  return {snapshot,reset,start(){if(mode==='title')mode='play';},pause(){if(mode==='play')mode='pause';else if(mode==='pause')mode='play';pressed=false;},step(dt,input={}){
  if(!Number.isFinite(dt)||dt<0||dt>.051)throw Error('Invalid domain tick');if(mode!=='play')return;engine.tick(dt);elapsed=Math.min(c.deadlineSeconds,elapsed+dt);
  let vx=input.x??0,vz=input.z??0;const before=point();
@@ -26,11 +26,13 @@ export function createPilotEngine(c,{bestSeconds=null}={}){
  if(!supported){N.actionLocomotion.update({position:before,velocity:{x:0,y:0,z:0}});if(c.kind==='rally')speed*=.7;emit('collision','boundary');}
  if(sequence%16===0)N.actionLocomotion.update({operationReceipts:Object.fromEntries(Object.entries(N.actionLocomotion.getState().operationReceipts??{}).slice(-16))});
  const position=point(),edge=!!input.interact&&!pressed;pressed=!!input.interact;
- if(c.kind==='courier'&&edge){if(carry){const n=c.nodes.find(n=>n.id===carry);if(d(position,n.receiver)<2){completed.push(carry);emit('delivered',carry);carry=null;}}else{const n=c.nodes.find(n=>!completed.includes(n.id)&&d(position,n)<2);if(n){carry=n.id;emit('picked-up',n.id);}}}
- if(c.kind==='conduit'){if(edge){const i=c.nodes.findIndex(n=>d(position,n)<2.5);if(i>=0){rotation[i]=(rotation[i]+1)%4;emit('turned',c.nodes[i].id);}}const connected=c.nodes.every((n,i)=>rotation[i]===n.target);fill=Math.max(0,Math.min(1,fill+dt*(connected?1/c.fillSeconds:-.12)));if(fill===1)completed=c.nodes.map(n=>n.id);}
- if(c.kind==='rally'){const next=c.nodes[completed.length];if(next&&d(position,next)<2.7){completed.push(next.id);emit('checkpoint',next.id);}}
- if(completed.length===c.nodes.length){mode='won';lastResult={seconds:elapsed,previousBest:best,improvement:best===null?null:best-elapsed,personalBest:best===null||elapsed<best};best=best===null?elapsed:Math.min(best,elapsed);emit('won','session');}else if(elapsed>=c.deadlineSeconds){mode='lost';emit('lost','session');}
+ const composed=N.composition.step(dt,{position:{x:position.x,z:position.z},action:edge}),domainState=composed.states;
+ carry=domainState.delivery?.carry??null;fill=domainState.reservoir?.fill??0;
+ rotation=c.nodes.map(n=>domainState[n.id]?.rotation??0);
+ completed=domainState.delivery?.completed??domainState.gates?.completed??(composed.complete?c.nodes.map(n=>n.id):[]);
+ for(const e of composed.events)emit(e.type,e.id);
+ if(composed.complete){mode='won';lastResult={seconds:elapsed,previousBest:best,improvement:best===null?null:best-elapsed,personalBest:best===null||elapsed<best};best=best===null?elapsed:Math.min(best,elapsed);emit('won','session');}else if(elapsed>=c.deadlineSeconds){mode='lost';emit('lost','session');}
  }};
  }});
- return createEngine({kits:[createSimulationKit(),createMotionKit(),createActionLocomotionKit({speed:c.kind==='rally'?handling.maxSpeed:6,groundDrag:0,groundAcceleration:100,start:c.playerStart}),kit]});
+ return createEngine({kits:[createSimulationKit(),createMotionKit(),createActionLocomotionKit({speed:c.kind==='rally'?handling.maxSpeed:6,groundDrag:0,groundAcceleration:100,start:c.playerStart}),createDomainGraphKit(c.domainGraph),kit]});
 }

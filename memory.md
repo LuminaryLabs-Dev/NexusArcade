@@ -25,3 +25,11 @@ Contract-6 preserves mandatory replay from the foundation and adds explicit repl
 Development pilots now use seeded reusable Rally track/handling/presentation lists and personal-best records isolated by rules/course/runtime identity. Shared track math owns both rendered roads and collision paths. Independent screenshot rejection can override a preview model PASS; failed launch files are cleaned through the harness, never by manually patching game artifacts. These scoped pilot improvements do not establish generic catalog compilation or factory acceptance.
 
 Foundation acceptance parameters are frozen in execution-contract.json: keyboard desktop play, typed domain ports with explicit next-tick feedback, two-run replay, causal concept witnesses, separate visual/interaction novelty and M2 Pro Metal hardware measurements. Passing stationary hardware probes establish backend availability only. G01 planning completion must not require future G02 build proof, and frozen design never grants capability eligibility. Equal-score repairs revert to the best verified configuration.
+
+Typed behavior graphs now live in kits/domain-graph.mjs with closed settings, typed
+ports, stable ordering, required objective contribution and explicit next-tick
+feedback. Generated pilots store graph data; the trusted NexusEngine adapter
+executes it. Family-specific movement/rendering still require further composition.
+The arcade uses this pilot path, with honest challenge choices instead of unused
+complexity controls. Renewable player reservations expire after 60 seconds; late
+renewals never reopen a closed session, and expired views require explicit reload.
