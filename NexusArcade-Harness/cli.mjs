@@ -7,12 +7,14 @@ import assert from 'node:assert/strict';
 import {generatePilot} from './pilot-run.mjs';
 import {contracts,queueSnapshot,recoverWriter} from './factory.mjs';
 import {inspectCatalog} from './catalog.mjs';
+import {cleanupFailed} from './cleanup.mjs';
 const [command='list',...args]=process.argv.slice(2);const get=(key,fallback)=>{const i=args.indexOf('--'+key);return i<0?fallback:args[i+1];};
 const controller=new AbortController();process.on('SIGINT',()=>controller.abort());process.on('SIGTERM',()=>controller.abort());
 if(command==='factory-check'){const {queue,catalog,policy,profile,hash}=await contracts();const audit=inspectCatalog(catalog,{validationRules:policy.validationRules});console.log(JSON.stringify({contractHash:hash,version:policy.schemaVersion,goals:queue.goals.length,target:queue.goals.reduce((n,g)=>n+g.acceptedGameTarget,0),requiredRules:profile.acceptance.requiredRuleIds,unresolvedCalibrations:policy.calibrationDecisions.filter(c=>c.status==='UNRESOLVED').map(c=>c.id),catalog:audit},null,2));
+}else if(command==='cleanup-failed'){console.log(JSON.stringify(await cleanupFailed(safeId(get('id','')),{apply:args.includes('--apply')}),null,2));
 }else if(command==='queue'){console.log(JSON.stringify(await queueSnapshot(),null,2));
 }else if(command==='recover'){console.log(JSON.stringify(await recoverWriter()));
-}else if(command==='pilot'){const s=await generatePilot({id:safeId(get('id','pilot-'+Date.now())),kind:get('kind','courier'),retryOf:get('retry-of',undefined),seed:Number(get('seed',97000)),signal:controller.signal,onProgress:p=>console.log(JSON.stringify(p))});console.log(JSON.stringify({id:s.id,status:s.status,error:s.error,preview:s.previewVerdict,elapsedMs:s.elapsedMs}));if(s.status==='FAIL')process.exitCode=1;
+}else if(command==='pilot'){const s=await generatePilot({id:safeId(get('id','pilot-'+Date.now())),kind:get('kind','courier'),retryOf:get('retry-of',undefined),seed:Number(get('seed',97000)),signal:controller.signal,onProgress:p=>console.log(JSON.stringify(p))});console.log(JSON.stringify({id:s.id,status:s.status,error:s.error,preview:s.previewVerdict,elapsedMs:s.elapsedMs}));if(s.status==='FAIL'){process.exitCode=1;try{console.log(JSON.stringify({cleanup:await cleanupFailed(s.id,{apply:true})}));}catch(e){console.log(JSON.stringify({cleanup:'RETAINED',reason:e.message}));}}
 }else if(command==='generate'||command==='batch'){
  if(command==='batch')throw Error('Factory batch admission is gated by G01–G03. Use pilot or generate for a development probe.');
  const count=Number(get('count',command==='batch'?50:1)),base=Number(get('seed',93000)),prefix=safeId(get('prefix','run-'+Date.now()));if(!Number.isInteger(count)||count<1||count>50)throw Error('Count must be 1–50');let repeated=0,lastFailure='';

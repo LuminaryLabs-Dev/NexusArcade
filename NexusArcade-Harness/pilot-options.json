@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "scope": "Seeded development-pilot combinations; not factory eligibility or novelty proof",
+  "rally": {
+    "tracks": [
+      {
+        "id": "long-oval",
+        "radiusX": 23,
+        "radiusZ": 15,
+        "wave": 0,
+        "lobes": 2
+      },
+      {
+        "id": "flowing-triangle",
+        "radiusX": 19,
+        "radiusZ": 19,
+        "wave": 0.13,
+        "lobes": 3
+      },
+      {
+        "id": "technical-clover",
+        "radiusX": 19,
+        "radiusZ": 17,
+        "wave": 0.12,
+        "lobes": 4
+      }
+    ],
+    "widths": [
+      6,
+      7.5
+    ],
+    "handling": [
+      {
+        "id": "balanced",
+        "maxSpeed": 13,
+        "acceleration": 8,
+        "braking": 18,
+        "turnRate": 1.7
+      },
+      {
+        "id": "agile",
+        "maxSpeed": 11,
+        "acceleration": 10,
+        "braking": 20,
+        "turnRate": 2.1
+      },
+      {
+        "id": "fast-tourer",
+        "maxSpeed": 15,
+        "acceleration": 7,
+        "braking": 16,
+        "turnRate": 1.5
+      }
+    ],
+    "presentation": [
+      {
+        "id": "sandstone",
+        "sky": 11458779,
+        "ground": 13872240,
+        "rock": 12094814,
+        "accent": 16085571
+      },
+      {
+        "id": "alpine",
+        "sky": 11850730,
+        "ground": 7379327,
+        "rock": 6719109,
+        "accent": 16749082
+      },
+      {
+        "id": "basalt",
+        "sky": 10531543,
+        "ground": 5330790,
+        "rock": 3818324,
+        "accent": 5690879
+      }
+    ]
+  }
+}

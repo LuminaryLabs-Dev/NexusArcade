@@ -91,3 +91,24 @@ the publication runtime still needs that separation before any batch is enabled.
 Three consecutive shared failures or non-improving repairs require diagnosis and
 a verified shared correction; this recovery policy is specified but not yet wired
 into all generation paths.
+
+Rally development generation now resolves `pilot-options.json` with a deterministic
+seed: three track shapes, two widths, three handling configurations and three
+presentation sets. `kits/track-layout.mjs` supplies the same path to collision,
+checkpoint placement and rendering. These combinations are not factory novelty
+approvals. Personal bests compare identical course/rules and immutable runtime;
+the browser review completes two runs with different braking, then checks restart
+and reload persistence.
+
+Failed development outputs can be inspected with `cli.mjs cleanup-failed --id ID`
+and removed with `--apply`. Cleanup removes only the unreferenced failed launch
+artifact, preserves its spine/composition/diagnostic images and never removes
+shared runtimes. Passing previews, library references and accepted history are
+protected. New failed CLI pilot runs invoke this cleanup automatically. Independent
+review may reject a passing development preview through `rejectPreview` with
+hashed evidence; this removes its card without pretending it passed factory review.
+
+The new seeded Rally list path is available through `cli.mjs pilot --kind rally`.
+The arcade library displays passing results automatically. The main Generate action
+still uses the earlier platform development path; generic catalog integration and
+its UI admission path remain foundation work.
