@@ -37,8 +37,11 @@ export class Models {
       if(!r.ok)throw Error('LM Studio HTTP '+r.status+': '+(await r.text()).slice(0,250));
       const reader=r.body.getReader(),chunks=[];let size=0;try{for(;;){const {done,value}=await reader.read();if(done)break;size+=value.length;if(size>100000)throw Error('Oversized response');chunks.push(value);}}finally{await reader.cancel();}
       const response=JSON.parse(Buffer.concat(chunks).toString()),choice=response.choices?.[0];call.outputTokens=response.usage?.completion_tokens??limit;call.inputTokens=response.usage?.prompt_tokens??null;
-      const raw=choice?.message?.content??'';call.responseHash=hash(raw);if(choice?.finish_reason==='length')throw Error('Truncated '+stage+' response');
+      const raw=choice?.message?.content??'';call.responseHash=hash(raw);
+      // Check before parsing: syntax errors can quote rejected response text.
+      assertAllowedText(choice?.message);
+      if(choice?.finish_reason==='length')throw Error('Truncated '+stage+' response');
       return assertAllowedText(validate(JSON.parse(raw.replace(/<think>[\s\S]*?<\/think>/g,'').replace(/^```(?:json)?\s*|\s*```$/g,'').trim()),schema));
-    }catch(e){call.error=e.message;throw e;}finally{call.ms=Date.now()-call.started;await this.save();}
+    }catch(e){if(hasBlockedText(e.message))e=Error('Invalid editorial language in model response. Describe concrete scene actions without assigning a player occupation.');call.error=e.message;throw e;}finally{call.ms=Date.now()-call.started;await this.save();}
   }
 }

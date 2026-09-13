@@ -122,3 +122,13 @@ Open design finding: the efficient flow route currently wins on both time and
 waste in each preset. Its capability and replay improvement are verified, but
 non-dominated strategic choices and meaningful preset diversity remain unproven.
 Calibrate setup distance/process lists before treating this as a finished tradeoff.
+
+Editorial follow-up: reject excluded text in the whole model message before JSON
+parsing, including discarded/separate reasoning. Sanitize model HTTP errors before
+saving diagnostics or requesting repairs. Ten inline boundary checks pass, covering
+malformed text, escaped text, input rejection, clean repair prompts and all63 live
+library entries. No generated artifacts edited. Existing41 tests/build/browser
+boundary pass with the macOS temporary directory resolved to its real path; the
+initial default-path run hit the existing workspace symlink guard. Package dry-run
+inspected. Evidence: G02/editorial-error-boundary-checks.json. The pending shared
+flow-list calibration is separate work; its browser qualification remains pending.
