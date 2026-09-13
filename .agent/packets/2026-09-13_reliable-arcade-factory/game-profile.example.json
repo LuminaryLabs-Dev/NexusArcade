@@ -1,12 +1,12 @@
 {
-  "schemaVersion": "contract-5",
+  "schemaVersion": "contract-6",
   "status": "RESOLVED_WORKED_DESIGN_NOT_VALIDATED",
   "executable": false,
   "ideaId": "worked-exchange-and-growing-routes",
   "catalog": {
     "path": "master-catalog.json",
-    "version": "contract-5",
-    "sha256": "93d0ae0f0494e95fe36c823f95be58c2c9880b4b691782acdcfe5353425f72bb",
+    "version": "contract-6",
+    "sha256": "76479c178160f212cbedc27b0767cb30e69e9dabb5c4769a70e8751e6126a835",
     "hashEncoding": "canonical-json"
   },
   "executionContractRef": "execution-contract.json",
@@ -36,7 +36,7 @@
       "origin": {
         "kind": "worked_example_author_selection",
         "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
-        "catalogVersion": "contract-5"
+        "catalogVersion": "contract-6"
       }
     },
     {
@@ -52,7 +52,7 @@
       "origin": {
         "kind": "worked_example_author_selection",
         "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
-        "catalogVersion": "contract-5"
+        "catalogVersion": "contract-6"
       }
     },
     {
@@ -72,7 +72,7 @@
       "origin": {
         "kind": "worked_example_author_selection",
         "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
-        "catalogVersion": "contract-5"
+        "catalogVersion": "contract-6"
       }
     },
     {
@@ -88,7 +88,7 @@
       "origin": {
         "kind": "worked_example_author_selection",
         "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
-        "catalogVersion": "contract-5"
+        "catalogVersion": "contract-6"
       }
     },
     {
@@ -104,7 +104,7 @@
       "origin": {
         "kind": "worked_example_author_selection",
         "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
-        "catalogVersion": "contract-5"
+        "catalogVersion": "contract-6"
       }
     },
     {
@@ -121,7 +121,7 @@
       "origin": {
         "kind": "worked_example_author_selection",
         "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
-        "catalogVersion": "contract-5"
+        "catalogVersion": "contract-6"
       }
     },
     {
@@ -138,7 +138,7 @@
       "origin": {
         "kind": "worked_example_author_selection",
         "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
-        "catalogVersion": "contract-5"
+        "catalogVersion": "contract-6"
       }
     },
     {
@@ -155,7 +155,7 @@
       "origin": {
         "kind": "worked_example_author_selection",
         "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
-        "catalogVersion": "contract-5"
+        "catalogVersion": "contract-6"
       }
     },
     {
@@ -172,7 +172,7 @@
       "origin": {
         "kind": "worked_example_author_selection",
         "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
-        "catalogVersion": "contract-5"
+        "catalogVersion": "contract-6"
       }
     },
     {
@@ -201,7 +201,7 @@
       "origin": {
         "kind": "worked_example_author_selection",
         "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
-        "catalogVersion": "contract-5"
+        "catalogVersion": "contract-6"
       }
     },
     {
@@ -218,7 +218,7 @@
       "origin": {
         "kind": "worked_example_author_selection",
         "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
-        "catalogVersion": "contract-5"
+        "catalogVersion": "contract-6"
       }
     },
     {
@@ -234,7 +234,7 @@
       "origin": {
         "kind": "worked_example_author_selection",
         "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
-        "catalogVersion": "contract-5"
+        "catalogVersion": "contract-6"
       }
     },
     {
@@ -251,7 +251,7 @@
       "origin": {
         "kind": "worked_example_author_selection",
         "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
-        "catalogVersion": "contract-5"
+        "catalogVersion": "contract-6"
       }
     },
     {
@@ -267,7 +267,7 @@
       "origin": {
         "kind": "worked_example_author_selection",
         "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
-        "catalogVersion": "contract-5"
+        "catalogVersion": "contract-6"
       }
     },
     {
@@ -283,7 +283,7 @@
       "origin": {
         "kind": "worked_example_author_selection",
         "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
-        "catalogVersion": "contract-5"
+        "catalogVersion": "contract-6"
       }
     },
     {
@@ -299,7 +299,7 @@
       "origin": {
         "kind": "worked_example_author_selection",
         "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
-        "catalogVersion": "contract-5"
+        "catalogVersion": "contract-6"
       }
     },
     {
@@ -316,7 +316,7 @@
       "origin": {
         "kind": "worked_example_author_selection",
         "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
-        "catalogVersion": "contract-5"
+        "catalogVersion": "contract-6"
       }
     },
     {
@@ -333,7 +333,7 @@
       "origin": {
         "kind": "worked_example_author_selection",
         "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
-        "catalogVersion": "contract-5"
+        "catalogVersion": "contract-6"
       }
     },
     {
@@ -350,7 +350,7 @@
       "origin": {
         "kind": "worked_example_author_selection",
         "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
-        "catalogVersion": "contract-5"
+        "catalogVersion": "contract-6"
       }
     },
     {
@@ -367,7 +367,7 @@
       "origin": {
         "kind": "worked_example_author_selection",
         "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
-        "catalogVersion": "contract-5"
+        "catalogVersion": "contract-6"
       }
     },
     {
@@ -384,7 +384,7 @@
       "origin": {
         "kind": "worked_example_author_selection",
         "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
-        "catalogVersion": "contract-5"
+        "catalogVersion": "contract-6"
       }
     },
     {
@@ -400,7 +400,7 @@
       "origin": {
         "kind": "worked_example_author_selection",
         "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
-        "catalogVersion": "contract-5"
+        "catalogVersion": "contract-6"
       }
     },
     {
@@ -416,7 +416,7 @@
       "origin": {
         "kind": "worked_example_author_selection",
         "reason": "Demonstrate a complete supported legacy-family behavior chain; not a claim of novelty.",
-        "catalogVersion": "contract-5"
+        "catalogVersion": "contract-6"
       }
     },
     {
@@ -432,7 +432,7 @@
       "origin": {
         "kind": "worked_example_author_selection",
         "reason": "Required layer obligation; implementation and evidence remain missing, so this example is not executable.",
-        "catalogVersion": "contract-5"
+        "catalogVersion": "contract-6"
       }
     },
     {
@@ -448,7 +448,7 @@
       "origin": {
         "kind": "worked_example_author_selection",
         "reason": "Required layer obligation; implementation and evidence remain missing, so this example is not executable.",
-        "catalogVersion": "contract-5"
+        "catalogVersion": "contract-6"
       }
     },
     {
@@ -464,7 +464,7 @@
       "origin": {
         "kind": "worked_example_author_selection",
         "reason": "Required layer obligation; implementation and evidence remain missing, so this example is not executable.",
-        "catalogVersion": "contract-5"
+        "catalogVersion": "contract-6"
       }
     },
     {
@@ -480,7 +480,7 @@
       "origin": {
         "kind": "worked_example_author_selection",
         "reason": "Required layer obligation; implementation and evidence remain missing, so this example is not executable.",
-        "catalogVersion": "contract-5"
+        "catalogVersion": "contract-6"
       }
     }
   ],
@@ -802,7 +802,7 @@
       "deadline",
       "replay"
     ],
-    "ruleVersion": "contract-5",
+    "ruleVersion": "contract-6",
     "assertions": [
       {
         "id": "EX01",

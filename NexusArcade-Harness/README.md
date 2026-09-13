@@ -55,7 +55,7 @@ adapter domains own delivery, valve/flow and steering/checkpoint rules. Three.js
 renders those states. These adapters are not claimed to be upstream Core features.
 
 `factory-check` audits all four contract files, including profile/catalog identity,
-mandatory replay coverage and unresolved calibrations. Contract-5 has 27 decision
+mandatory replay coverage and frozen calibration completeness. Contract-6 has 27 decision
 points and 55 options; these counts do not establish executable capability coverage.
 Replay structure, tradeoffs, session structure and environment behavior are explicit
 choices whose new implementations remain gated.
@@ -80,9 +80,12 @@ and check results in `spine.json`. Immutable runtime snapshots under
 attempts retain their reason. No raw conversations, reasoning or model weights
 are stored. Screenshots and traces prove only the checks actually performed.
 
-Outstanding foundation gates: integrated catalog compilation, concept contribution
-checks, calibrated visual/interaction novelty, measured target-device performance,
-complete lifecycle/recovery review, and human comprehension. AAA presentation and
+G01 planning is complete; G02 implementation is running. Nine concrete acceptance
+parameter records, three contrasting build briefs, typed port/scheduling decisions
+and held-out review cases are frozen in execution-contract.json. Frozen design
+is not capability eligibility. Outstanding build gates include integrated catalog
+compilation, concept contribution, comparative novelty, moving-load hardware
+performance and complete lifecycle/recovery evidence. AAA presentation and
 1,000 unique experiences remain unproven targets.
 
 Campaign admission and acceptance remain disabled pending G01–G03. The contract now
@@ -112,3 +115,8 @@ The new seeded Rally list path is available through `cli.mjs pilot --kind rally`
 The arcade library displays passing results automatically. The main Generate action
 still uses the earlier platform development path; generic catalog integration and
 its UI admission path remain foundation work.
+
+Improvement rejects equal-score revisions and regressions, restores the best
+configuration and its findings before proposing another change, and rejects
+contradictory passing checks with unresolved findings. G01 completion checks the
+full frozen plan rather than accepting phase labels alone.

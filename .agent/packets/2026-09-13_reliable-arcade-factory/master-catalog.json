@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "contract-5",
+  "schemaVersion": "contract-6",
   "status": "SPECIFIED_PENDING_CAPABILITY_AUDIT",
   "policy": {
     "ideaTimeLimitSeconds": 1500,

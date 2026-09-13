@@ -20,9 +20,22 @@ export function validateContractLinks(queue,policy,catalog,profile){
  if(new Set(rules).size!==rules.length||new Set(declared).size!==declared.length||required.some(id=>!declared.includes(id))||declared.some(id=>!rules.includes(id)))throw Error('Profile validation coverage mismatch');
  if(!required.includes('replay'))throw Error('Missing mandatory replay validation');
  const calibrations=new Set(policy.calibrationDecisions.map(d=>d.id));
+ if(calibrations.size!==policy.calibrationDecisions.length)throw Error('Duplicate calibration');
+ for(const decision of policy.calibrationDecisions)if(decision.status==='FROZEN')validateCalibration(decision.id,policy.acceptanceParameters?.[decision.id],version);
  for(const rule of policy.validationRules)if(rule.calibrationRef&&!calibrations.has(rule.calibrationRef))throw Error('Unknown calibration '+rule.calibrationRef);
  for(const point of catalog.decisionPoints)for(const option of point.options)if(option.validationRefs.some(id=>!rules.includes(id)))throw Error('Unknown catalog validation rule');
  for(const assertion of profile.acceptance.assertions)if(!rules.includes(assertion.ruleId))throw Error('Unknown profile assertion rule');
+}
+function validateCalibration(id,value,version){
+ if(!value||value.version!==version||value.status!=='FROZEN'||!Array.isArray(value.criteria)||!value.criteria.length||value.criteria.some(x=>typeof x!=='string'||!x.trim())||!value.positiveCase||!value.negativeCase||!value.rationale||!value.implementationOwner)throw Error('Incomplete frozen calibration '+id);
+}
+export function inspectFoundationPlan(plan,policy,contractHash){
+ if(plan.goalId!=='G01'||plan.contractHash!==contractHash||plan.status!=='READY'||!Array.isArray(plan.unresolved)||plan.unresolved.length)throw Error('Unresolved foundation plan');
+ for(const section of Object.keys(policy.executionPacketContract.requiredSections))if(!Object.hasOwn(plan,section))throw Error('Missing plan section '+section);
+ for(const decision of policy.calibrationDecisions){if(decision.status!=='FROZEN')throw Error('Unresolved calibration '+decision.id);validateCalibration(decision.id,plan.acceptanceParameters[decision.id],policy.schemaVersion);if(digest(plan.acceptanceParameters[decision.id])!==digest(policy.acceptanceParameters[decision.id]))throw Error('Plan calibration differs from policy');}
+ const cases=plan.independentCases;if(!Array.isArray(cases)||!cases.length||cases.some(c=>!c.input||!c.expected||!c.owner||!c.evidence))throw Error('Incomplete independent cases');
+ if(!plan.orderedWork?.length||plan.orderedWork.some(s=>!s.id||!s.scope?.length||!s.operation||!s.output||!s.checks?.length))throw Error('Incomplete ordered work');
+ return {status:'PASS',calibrations:policy.calibrationDecisions.length,cases:cases.length};
 }
 export function validateShape(value,schema,where='$'){
  if(schema.enum&&!schema.enum.includes(value))throw Error(`${where}: unknown value`);
@@ -87,6 +100,7 @@ export async function recordGoal(id,status,{evidence=[],findings=[],checks=[]}={
   const readiness=JSON.parse(await verifyEvidence(evidence[0]));const unresolved=goal.kind==='plan'?readiness.unresolvedInputs:readiness.unresolved;if(readiness.goalId!==id||readiness.contractHash!==hash||readiness.status!=='READY'||!Array.isArray(unresolved)||unresolved.length||!readiness.orderedWork?.length)throw Error('Invalid readiness packet');
  }
  if(status==='complete'){
+  if(id==='G01')inspectFoundationPlan(JSON.parse(await verifyEvidence(evidence[0])),policy,hash);
   for(const requirement of goal.acceptanceChecks){const check=checks.find(c=>c.id===requirement.id);if(!check||check.verdict!=='PASS'||check.contractHash!==hash||!check.evidenceRefs?.length)throw Error('Missing phase check: '+requirement.id);for(const ref of check.evidenceRefs)await verifyEvidence(ref);}
   if(goal.acceptedGameTarget){const active=(await acceptedIndex()).games.filter(g=>!g.revoked&&g.goalId===id);if(active.length!==goal.acceptedGameTarget||new Set(active.map(g=>g.slotId)).size!==active.length)throw Error('Batch slots incomplete');}
  }

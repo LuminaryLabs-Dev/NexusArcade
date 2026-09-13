@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "contract-5",
+  "schemaVersion": "contract-6",
   "status": "FOUNDATION_IMPLEMENTATION_IN_PROGRESS",
   "sourceBaseline": {
     "compiler": {
@@ -41,13 +41,13 @@
     "assembly": {
       "path": "NexusArcade-Harness/assembly.mjs",
       "symbol": "build / fingerprint",
-      "sha256": "174ea2af2b21ae959100fb9a9a4e0f10b31e414bfad24a08d969eb5e120a01fd",
+      "sha256": "54f87dc4f385eeec562d173c3a8ecc865a72c56cd15c589521136341bab70cca",
       "evidence": "current_source_inspected; runtime proof is recorded separately per immutable pilot"
     },
     "cli": {
       "path": "NexusArcade-Harness/cli.mjs",
       "symbol": "batch / check / verify",
-      "sha256": "d7b882c692658cefaecd908af4096c20bfb2ad7f4dc204aef0be3dddce547c4a",
+      "sha256": "08dd7089e1b731ad281d44e552d5b17e5db65ff7984d65e0fa6d80674639739b",
       "evidence": "current_source_inspected; runtime proof is recorded separately per immutable pilot"
     },
     "server": {
@@ -65,31 +65,31 @@
     "factory": {
       "path": "NexusArcade-Harness/factory.mjs",
       "symbol": "deadline / writerLease / recordGoal / publishAccepted",
-      "sha256": "db3d7e2589aafa2dd458a803aed2a99da49671f2cafa8baf0d7f37eb072e43ff",
+      "sha256": "6aa0f20c99a3b766234021d6d08a87c7d61a2bea64eb7bcf3ce6de239159dd6e",
       "evidence": "source present; see separate phase evidence"
     },
     "improvement": {
       "path": "NexusArcade-Harness/improvement.mjs",
       "symbol": "improve",
-      "sha256": "bc2a521e2abad03b68bc1315fd79d90a6e51c4bc1fa1deb9cfd19c2f62faa20f",
+      "sha256": "bf2231bc6d66966621dcab097a94c2ae050940ebcda1abb31ba9ec32de7fb28d",
       "evidence": "source present; see separate phase evidence"
     },
     "catalog": {
       "path": "NexusArcade-Harness/catalog.mjs",
       "symbol": "inspectCatalog / resolveCatalog",
-      "sha256": "b20dcfa4fa596443d78fc8e2c48d0db2329685b99c13fdc0572fa6c59c93a058",
+      "sha256": "76e5f899153df403b9d2c9aee5e4d8cf841f384dd8decaf7406a9a1ae0b310fe",
       "evidence": "source present; see separate phase evidence"
     },
     "pilotDomains": {
       "path": "NexusArcade-Harness/kits/pilot-kit.mjs",
       "symbol": "createPilotEngine",
-      "sha256": "07d4e1b75d5a9d188e207e936593e4b0858c592779df7c744c10c33b73e041ec",
+      "sha256": "6e2e295677c2cbd10845bc4a98b1bae945c1f6f3166ffd0b8c0aaa5662b6f8a2",
       "evidence": "source present; see separate phase evidence"
     },
     "pilotRenderer": {
       "path": "NexusArcade-Harness/pilot-player.mjs",
       "symbol": "Three.js pilot providers",
-      "sha256": "bdd0c44e1eb79616978d9b45fa25df4e6c934375248727baab7992728b0ff764",
+      "sha256": "98d72c73c501dd94cb6ef50b838623d3ad7375f066079f5ee1faa672fb18a11e",
       "evidence": "source present; see separate phase evidence"
     },
     "pilotGeneration": {
@@ -101,13 +101,13 @@
     "pilotReview": {
       "path": "NexusArcade-Harness/pilot-review.mjs",
       "symbol": "reviewPilot",
-      "sha256": "0044b98f332d26a478d7860c05dd18a53990c481b5d371333db5ad3ee2dd3e1c",
+      "sha256": "4bd66bc6413432b167f79e72202da4aa931ed1ce25fe73ef7c1b28ee9ff3b2c7",
       "evidence": "source present; see separate phase evidence"
     },
     "library": {
       "path": "NexusArcade-Harness/library.mjs",
       "symbol": "library / indexPreview",
-      "sha256": "e96d9d22c4e301ae9fcdd3d99790a1c4cb01040e38120d7ed84bcec2d56e3d5b",
+      "sha256": "5d32e287642efc7cbbc4f48b586bafb78af317a50c95e26f3a0f9a2000ef42ae",
       "evidence": "source present; see separate phase evidence"
     }
   },
@@ -124,84 +124,93 @@
   "calibrationDecisions": [
     {
       "id": "inputSupport",
-      "status": "UNRESOLVED",
+      "status": "FROZEN",
       "ownerGoal": "G01",
       "output": "G01.execution-packet.acceptanceParameters.inputSupport",
-      "resolveBy": "Select explicit values/cases from target-device measurements and contrasting positive/negative examples; record rationale and freeze a version.",
+      "resolveBy": "Concrete versioned criteria and contrast cases are frozen in acceptanceParameters; G02 implements their measurements and G03 independently verifies them.",
       "blocks": "game admission when required by selected profile",
-      "changePolicy": "A changed value creates a new rubric version; never silently lowers a running idea requirement."
+      "changePolicy": "A changed value creates a new rubric version; never silently lowers a running idea requirement.",
+      "valueRef": "execution-contract.json#/acceptanceParameters/inputSupport"
     },
     {
       "id": "spatialTolerances",
-      "status": "UNRESOLVED",
+      "status": "FROZEN",
       "ownerGoal": "G01",
       "output": "G01.execution-packet.acceptanceParameters.spatialTolerances",
-      "resolveBy": "Select explicit values/cases from target-device measurements and contrasting positive/negative examples; record rationale and freeze a version.",
+      "resolveBy": "Concrete versioned criteria and contrast cases are frozen in acceptanceParameters; G02 implements their measurements and G03 independently verifies them.",
       "blocks": "game admission when required by selected profile",
-      "changePolicy": "A changed value creates a new rubric version; never silently lowers a running idea requirement."
+      "changePolicy": "A changed value creates a new rubric version; never silently lowers a running idea requirement.",
+      "valueRef": "execution-contract.json#/acceptanceParameters/spatialTolerances"
     },
     {
       "id": "sessionCoverage",
-      "status": "UNRESOLVED",
+      "status": "FROZEN",
       "ownerGoal": "G01",
       "output": "G01.execution-packet.acceptanceParameters.sessionCoverage",
-      "resolveBy": "Select explicit values/cases from target-device measurements and contrasting positive/negative examples; record rationale and freeze a version.",
+      "resolveBy": "Concrete versioned criteria and contrast cases are frozen in acceptanceParameters; G02 implements their measurements and G03 independently verifies them.",
       "blocks": "game admission when required by selected profile",
-      "changePolicy": "A changed value creates a new rubric version; never silently lowers a running idea requirement."
+      "changePolicy": "A changed value creates a new rubric version; never silently lowers a running idea requirement.",
+      "valueRef": "execution-contract.json#/acceptanceParameters/sessionCoverage"
     },
     {
       "id": "conceptRubric",
-      "status": "UNRESOLVED",
+      "status": "FROZEN",
       "ownerGoal": "G01",
       "output": "G01.execution-packet.acceptanceParameters.conceptRubric",
-      "resolveBy": "Select explicit values/cases from target-device measurements and contrasting positive/negative examples; record rationale and freeze a version.",
+      "resolveBy": "Concrete versioned criteria and contrast cases are frozen in acceptanceParameters; G02 implements their measurements and G03 independently verifies them.",
       "blocks": "game admission when required by selected profile",
-      "changePolicy": "A changed value creates a new rubric version; never silently lowers a running idea requirement."
+      "changePolicy": "A changed value creates a new rubric version; never silently lowers a running idea requirement.",
+      "valueRef": "execution-contract.json#/acceptanceParameters/conceptRubric"
     },
     {
       "id": "readabilityRubric",
-      "status": "UNRESOLVED",
+      "status": "FROZEN",
       "ownerGoal": "G01",
       "output": "G01.execution-packet.acceptanceParameters.readabilityRubric",
-      "resolveBy": "Select explicit values/cases from target-device measurements and contrasting positive/negative examples; record rationale and freeze a version.",
+      "resolveBy": "Concrete versioned criteria and contrast cases are frozen in acceptanceParameters; G02 implements their measurements and G03 independently verifies them.",
       "blocks": "game admission when required by selected profile",
-      "changePolicy": "A changed value creates a new rubric version; never silently lowers a running idea requirement."
+      "changePolicy": "A changed value creates a new rubric version; never silently lowers a running idea requirement.",
+      "valueRef": "execution-contract.json#/acceptanceParameters/readabilityRubric"
     },
     {
       "id": "presentationRubric",
-      "status": "UNRESOLVED",
+      "status": "FROZEN",
       "ownerGoal": "G01",
       "output": "G01.execution-packet.acceptanceParameters.presentationRubric",
-      "resolveBy": "Select explicit values/cases from target-device measurements and contrasting positive/negative examples; record rationale and freeze a version.",
+      "resolveBy": "Concrete versioned criteria and contrast cases are frozen in acceptanceParameters; G02 implements their measurements and G03 independently verifies them.",
       "blocks": "game admission when required by selected profile",
-      "changePolicy": "A changed value creates a new rubric version; never silently lowers a running idea requirement."
+      "changePolicy": "A changed value creates a new rubric version; never silently lowers a running idea requirement.",
+      "valueRef": "execution-contract.json#/acceptanceParameters/presentationRubric"
     },
     {
       "id": "noveltyRubric",
-      "status": "UNRESOLVED",
+      "status": "FROZEN",
       "ownerGoal": "G01",
       "output": "G01.execution-packet.acceptanceParameters.noveltyRubric",
-      "resolveBy": "Select explicit values/cases from target-device measurements and contrasting positive/negative examples; record rationale and freeze a version.",
+      "resolveBy": "Concrete versioned criteria and contrast cases are frozen in acceptanceParameters; G02 implements their measurements and G03 independently verifies them.",
       "blocks": "game admission when required by selected profile",
-      "changePolicy": "A changed value creates a new rubric version; never silently lowers a running idea requirement."
+      "changePolicy": "A changed value creates a new rubric version; never silently lowers a running idea requirement.",
+      "valueRef": "execution-contract.json#/acceptanceParameters/noveltyRubric"
     },
     {
       "id": "deviceBudgets",
-      "status": "UNRESOLVED",
+      "status": "FROZEN",
       "ownerGoal": "G01",
       "output": "G01.execution-packet.acceptanceParameters.deviceBudgets",
-      "resolveBy": "Select explicit values/cases from target-device measurements and contrasting positive/negative examples; record rationale and freeze a version.",
+      "resolveBy": "Concrete versioned criteria and contrast cases are frozen in acceptanceParameters; G02 implements their measurements and G03 independently verifies them.",
       "blocks": "game admission when required by selected profile",
-      "changePolicy": "A changed value creates a new rubric version; never silently lowers a running idea requirement."
+      "changePolicy": "A changed value creates a new rubric version; never silently lowers a running idea requirement.",
+      "valueRef": "execution-contract.json#/acceptanceParameters/deviceBudgets"
     },
     {
       "id": "replayRubric",
-      "status": "UNRESOLVED",
+      "status": "FROZEN",
       "ownerGoal": "G01",
       "output": "G01.execution-packet.acceptanceParameters.replayRubric",
-      "resolveBy": "Freeze two-run positive and negative examples and record-comparison identity; expose a meaningful choice/outcome difference or skill improvement without equating automation to human enjoyment.",
+      "resolveBy": "Concrete versioned criteria and contrast cases are frozen in acceptanceParameters; G02 implements their measurements and G03 independently verifies them.",
       "blocks": "game admission for every profile",
-      "changePolicy": "New rubric version; no silent weakening of a running idea."
+      "changePolicy": "New rubric version; no silent weakening of a running idea.",
+      "valueRef": "execution-contract.json#/acceptanceParameters/replayRubric"
     }
   ],
   "admission": {
@@ -792,7 +801,39 @@
       "capabilityGaps": [
         "cap.rooms"
       ],
-      "status": "proposed_requires_G01_feasibility"
+      "status": "design_resolved_build_required",
+      "resolvedDesign": {
+        "id": "pilot-transfer",
+        "view": "overhead",
+        "world": "Three rooms with a central safe corridor and two unlockable door shortcuts",
+        "decision": "Delivery order trades a longer first delivery against access to shorter later paths",
+        "domains": [
+          "movement",
+          "room-boundaries",
+          "cargo-ownership",
+          "matched-receiver",
+          "route-gate",
+          "objective",
+          "record"
+        ],
+        "conceptExamples": [
+          {
+            "concept": "exchange",
+            "effect": "Delivering a cell consumes held cargo and opens its linked route"
+          },
+          {
+            "concept": "connection",
+            "effect": "Open door changes reachable paths"
+          }
+        ],
+        "witness": "Compare two delivery orders with different walking distances; perturb the door unlock and observe route change",
+        "gaps": [
+          "compile per-instance cargo/receiver/gate ports",
+          "room footprint collision",
+          "route-gate renderer"
+        ],
+        "style": "Warm chunky interior bays, overhead silhouettes and local delivery pulse"
+      }
     },
     {
       "id": "pilot-flow",
@@ -807,7 +848,38 @@
         "cap.continuous_flow",
         "cap.interior_lighting"
       ],
-      "status": "proposed_requires_G01_feasibility"
+      "status": "design_resolved_build_required",
+      "resolvedDesign": {
+        "id": "pilot-flow",
+        "view": "first-person",
+        "world": "Compact pipe room with visible source, junctions and two reservoirs",
+        "decision": "Choose a short lossy path or a longer efficient path to fill the required reservoir",
+        "domains": [
+          "movement",
+          "valve-rotation",
+          "directed-flow",
+          "reservoir",
+          "objective",
+          "record"
+        ],
+        "conceptExamples": [
+          {
+            "concept": "growth",
+            "effect": "Connected inflow accumulates visible reservoir volume"
+          },
+          {
+            "concept": "balance",
+            "effect": "Splitting flow trades fill rate against loss"
+          }
+        ],
+        "witness": "Compare two valve configurations and measured fill/cost; disconnect a connection to prove its consequence",
+        "gaps": [
+          "directed process graph beyond current all-valves-aligned switch",
+          "bounded flow/loss domain",
+          "continuous pipe prefab"
+        ],
+        "style": "Dark metallic pipes, bright moving fluid and first-person local lighting"
+      }
     },
     {
       "id": "pilot-steering",
@@ -823,7 +895,37 @@
       "additionalGaps": [
         "chase camera and terrain provider audit required in G01"
       ],
-      "status": "proposed_requires_G01_feasibility"
+      "status": "design_resolved_build_required",
+      "resolvedDesign": {
+        "id": "pilot-steering",
+        "view": "chase",
+        "world": "Open circuit with broad turns and one visible risky shortcut between ordered gates",
+        "decision": "Brake for clean turns or take a narrower shortcut with higher collision risk",
+        "domains": [
+          "steering",
+          "track-surface",
+          "checkpoint-sequence",
+          "objective",
+          "record"
+        ],
+        "conceptExamples": [
+          {
+            "concept": "momentum",
+            "effect": "Acceleration/braking alters entry speed and turning trajectory"
+          },
+          {
+            "concept": "tension",
+            "effect": "Shortcut clearance constrains speed and route choice"
+          }
+        ],
+        "witness": "Compare safe/shortcut routes and braking approaches; close shortcut to observe changed route choice",
+        "gaps": [
+          "branching track data and collision",
+          "footprint collision",
+          "generic typed steering/checkpoint wiring"
+        ],
+        "style": "Open terrain silhouette, readable car, chase camera and speed-linked feedback"
+      }
     }
   ],
   "foundationPilotPolicy": "G01 may choose smaller feasible equivalents but must preserve three independently verifiable contrasts in world organization, player decision and visual composition. Implement prerequisite breadth in G02; later cycles deepen it. Do not silently promise unavailable pilot behavior.",
@@ -1038,5 +1140,434 @@
       "stopping": "Search relevant compatible branches within the idea deadline; do not require exhaustive enumeration of a combinatorial space. Record attempted choices and rejection reasons compactly.",
       "evidence": "Distinguish catalog/list limitations from engine limitations using matched option IDs, rejected combinations, missing required ports/behavior, and resulting player-visible consequence."
     }
+  },
+  "acceptanceParameters": {
+    "inputSupport": {
+      "version": "contract-6",
+      "status": "FROZEN",
+      "criteria": [
+        "Keyboard WASD/arrows, E/Space contextual action, Escape pause, R restart; buttons Play/Resume/Back reachable by keyboard.",
+        "Opposing inputs cancel; key release, blur and hidden page clear held inputs. Resume is explicit.",
+        "Verify 1100x780 gameplay and 390x844 library; touch/gamepad gameplay is not an advertised input mode."
+      ],
+      "positiveCase": "Reviewed pilots pause through 180 seconds of accelerated time and explicitly resume.",
+      "negativeCase": "Held input after blur, automatic resume or inaccessible Play fails.",
+      "rationale": "Freeze the tested desktop input surface before adding new devices.",
+      "implementationOwner": "G02; independent verification G03",
+      "keyboard": true,
+      "touch": false,
+      "gamepad": false
+    },
+    "spatialTolerances": {
+      "version": "contract-6",
+      "status": "FROZEN",
+      "criteria": [
+        "Use metres, fixed 0.05-second ticks, and finite bounded coordinates. Walking actor footprint radius 0.4m; vehicle footprint must match its oriented rendered body.",
+        "Traverse every mandatory route with actual inputs; clearance is footprint plus 0.15m per side. Test corners, speed maxima, closed gates and opened gates.",
+        "Collision penetration <=0.05m; interaction occurs only inside the capability range and correct state. Visibility is checked from the actual camera, not an overhead debug view."
+      ],
+      "positiveCase": "Courier rejects wrong receiver; Rally route traversal follows rendered track geometry.",
+      "negativeCase": "Point-only support that lets vehicle body cross a wall, unreachable target or through-wall action fails.",
+      "rationale": "Current pilots establish routes and point checks; footprint collision and visibility witnesses are explicit G02 work.",
+      "implementationOwner": "G02; independent verification G03"
+    },
+    "sessionCoverage": {
+      "version": "contract-6",
+      "status": "FROZEN",
+      "criteria": [
+        "Complete two successful sessions; cover each declared distinct ending plus a loss and restart.",
+        "Compare reset state to baseline excluding intentional persistent records; no duplicate rewards, cargo or event subscriptions.",
+        "Use accelerated traces for logic and separate real-time tests for timing/performance. Required final checks run on the exact immutable candidate before its original 1500-second deadline."
+      ],
+      "positiveCase": "Five development previews complete twice, lose by timeout and restart.",
+      "negativeCase": "Finishing by directly setting objective state, a frozen timer or a restart retaining cargo fails.",
+      "rationale": "Existing keyboard witnesses provide controls; they do not prove all future compositions.",
+      "implementationOwner": "G02; independent verification G03"
+    },
+    "conceptRubric": {
+      "version": "contract-6",
+      "status": "FROZEN",
+      "criteria": [
+        "Roll independent concepts before genre interpretation; preserve original IDs and expansion choices.",
+        "For every selected concept store a causal chain: property -> domain/parameter/port -> player action -> visible state consequence.",
+        "Disable or perturb the claimed effect in a validation-only probe: a declared reachable state, player decision or outcome must change. Labels and story text are removed for this comparison.",
+        "One unimplemented or purely decorative mandatory concept fails the candidate; no dropping a rolled concept to make it pass."
+      ],
+      "positiveCase": "A transfer unlocks a shorter route: disabling transfer keeps it closed and changes route choice.",
+      "negativeCase": "Growth in the title of an otherwise unchanged racing lap fails.",
+      "rationale": "Existing pilot concepts are naming context only; these are build acceptance cases, not claims they already pass.",
+      "implementationOwner": "G02; independent verification G03"
+    },
+    "readabilityRubric": {
+      "version": "contract-6",
+      "status": "FROZEN",
+      "criteria": [
+        "Capture first view, available action, consequence, peak clutter and ending at 1100x780.",
+        "Required instructions >=16 CSS pixels and 4.5:1 text contrast; distinguish target/state using shape, position or motion as well as color.",
+        "From each capture the reviewer identifies the current objective, actionable target and visible consequence. No mandatory actor/target occluded by labels or HUD.",
+        "Any uncertain required observation is NEEDS_REVIEW. Conditional human review must finish before idea deadline; otherwise fail idea without blocking the campaign."
+      ],
+      "positiveCase": "Fixed Courier marker exposes the body; raised Rally gates expose car and road.",
+      "negativeCase": "Earlier Courier YOU marker hid the body; earlier Rally gate beam and shadows obscured the player.",
+      "rationale": "Actual independent rejection overrode model PASS, so a single image opinion is insufficient.",
+      "implementationOwner": "G02; independent verification G03"
+    },
+    "presentationRubric": {
+      "version": "contract-6",
+      "status": "FROZEN",
+      "criteria": [
+        "Define shape language, material/light response, camera framing and motion/feedback identity as reusable capability settings.",
+        "Inspect first-action-consequence-ending and crowded frames; no z fighting, severe shadow acne, clipped target, floating mandatory object or unreadable silhouettes.",
+        "Player action and success/failure have visible feedback within 100ms; audio confirmation needs actual output/event evidence plus mute behavior, not a screenshot claim.",
+        "Verify reduced-effects mode preserves required information. A palette swap or a generic primitive scene alone does not satisfy a distinct polished presentation."
+      ],
+      "positiveCase": "Raised gate beam and corrected shadow bias remove observed Rally occlusion and surface artifacts.",
+      "negativeCase": "Rally version with shadow acne or HUD contrast loss fails even when the VL model says PASS.",
+      "rationale": "Use demonstrated defects as negatives while retaining high fidelity as an outcome requiring further shared presentation work.",
+      "implementationOwner": "G02; independent verification G03"
+    },
+    "noveltyRubric": {
+      "version": "contract-6",
+      "status": "FROZEN",
+      "criteria": [
+        "Both visual and interaction novelty are mandatory and independently recorded.",
+        "Canonicalize IDs and ignore title, prose and palette. Compare against all accepted signatures; inspect the five nearest behavior neighbors and five nearest visual neighbors, plus within-batch neighbors.",
+        "Interaction proof names a different consequential choice, timing skill or causal relationship and demonstrates it in paired traces; different graph IDs/counts alone fail.",
+        "Visual proof requires two non-color differences among spatial organization, recognizable geometry, player framing, material/light organization and event-linked motion. Compare matched player-view states and grayscale silhouettes.",
+        "Exact duplicates and relabeled duplicates fail. Near-neighbor uncertainty is NEEDS_REVIEW; do not use a distance threshold as sole PASS evidence."
+      ],
+      "positiveCase": "Transport through branching rooms, first-person reconfigured flow and chase steering are held-out contrast briefs, each still needing actual traces/images.",
+      "negativeCase": "Same Rally track/actions with another seed/title/palette fails; changed track curvature alone does not automatically establish interaction novelty.",
+      "rationale": "A conjunctive evidence rubric permits new combinations while rejecting cosmetic variation.",
+      "implementationOwner": "G02; independent verification G03",
+      "nearestNeighborsPerAxis": 5,
+      "minimumNonColorVisualDifferences": 2
+    },
+    "deviceBudgets": {
+      "version": "contract-6",
+      "status": "FROZEN",
+      "criteria": [
+        "Target Apple M2 Pro using headed Chromium ANGLE Metal, WebGL2, 1100x780 CSS pixels, deviceScaleFactor 1. Software rasterization is never hardware proof.",
+        "Measure after 2-second warmup for 60 seconds of actual inputs including declared peak interactions: median frame <=16.7ms, p95 <=20ms, max <=100ms.",
+        "Local cold navigation to ready <=5000ms; measured input-to-visible feedback p95 <=100ms. JS heap peak <=256MiB and post-restart retained growth <=10MiB across three restarts. Record renderer, browser version, settings and workload.",
+        "Generation and player remain mutually exclusive. Device measurement unavailable or incomplete means no qualification; no automatic lowering to software-renderer performance."
+      ],
+      "positiveCase": "Headed Metal stationary probe: median 8.3ms, p95 9.8ms, 601 samples. Supports backend feasibility only.",
+      "negativeCase": "SwiftShader control p95 40.9ms fails the hardware target and is not interchangeable evidence.",
+      "rationale": "Measured backend exists; explicit moving-load, memory and input tests belong to G02.",
+      "implementationOwner": "G02; independent verification G03",
+      "device": "Apple M2 Pro",
+      "backend": "ANGLE Metal",
+      "viewport": [
+        1100,
+        780
+      ],
+      "deviceScaleFactor": 1,
+      "medianFrameMs": 16.7,
+      "p95FrameMs": 20,
+      "maxFrameMs": 100,
+      "warmupSeconds": 2,
+      "sampleSeconds": 60,
+      "readyMs": 5000,
+      "inputP95Ms": 100,
+      "heapMiB": 256,
+      "restartGrowthMiB": 10
+    },
+    "replayRubric": {
+      "version": "contract-6",
+      "status": "FROZEN",
+      "criteria": [
+        "Record why to replay and the supported choice/skill that changes the outcome.",
+        "Two full sessions on equivalent rules/course/runtime; compare a deliberately different approach. For time improvement require >=0.25 seconds and >=1 percent, not timing noise. Non-time strategies require a different declared cost, route or resource outcome.",
+        "Personal best survives restart/reload and compares only matching identity; changed rules or runtime must not reuse it.",
+        "Two identical courier/valve routes with a saved number, cosmetic reseeding or more objects are not replay evidence."
+      ],
+      "positiveCase": "Three Rally controls show different braking approaches improve times well above 0.25s and 1%.",
+      "negativeCase": "Identical valve sequences with identical consequences fail replay even if both runs win.",
+      "rationale": "Keep the verified record system but require a meaningful reason to change play.",
+      "implementationOwner": "G02; independent verification G03",
+      "minimumTimeImprovementSeconds": 0.25,
+      "minimumTimeImprovementFraction": 0.01
+    }
+  },
+  "foundationDesign": {
+    "status": "FROZEN_DESIGN_NOT_BUILD_PROOF",
+    "version": "contract-6",
+    "sourceOfDecisions": "Inspected repository, retained positive/negative pilot evidence, explicit G02 targets; no catalog eligibility granted.",
+    "resolutionPreference": {
+      "order": [
+        "match_existing_eligible_options",
+        "compose_compatible_seeded_layers",
+        "expand_reusable_catalog_data",
+        "classify_remaining_gap"
+      ],
+      "matching": "Use typed requirements, offered capabilities, parameter bounds and compatibility rules to match lists before inference; preserve the independent concept roll.",
+      "seedExpansion": "Use recorded seeds to vary supported selections, child branches, parameter ranges, spatial relationships and progression. Reproduce with catalog/compiler/collection versions; new seeds alone do not establish novelty.",
+      "dataBeforeCode": "Prefer adding or improving reusable option data, mappings, supported parameter ranges and compatible child combinations before implementing another mechanic or template. Eligibility still requires existing behavior and evidence.",
+      "gapRouting": {
+        "catalog": "An existing capability can express the intent: extend catalog mapping and verify the resulting composition.",
+        "capability": "No relevant supported combination can express the required behavior: record evidence and implement the smallest reusable domain extension under its owning goal.",
+        "interpretation": "Supported alternatives remain ambiguous or a bounded composition/presentation detail is unresolved: give the designated local model the matched choices and exact gap."
+      },
+      "modelContext": [
+        "original_concepts",
+        "matched_option_ids",
+        "selected_seeded_relationships",
+        "remaining_gap",
+        "allowed_outputs",
+        "required_checks"
+      ],
+      "modelBoundary": "Models resolve bounded gaps and review actual evidence; they do not replace catalog matching, invent implementations, change protected intent or generate arbitrary scripts.",
+      "stopping": "Search relevant compatible branches within the idea deadline; do not require exhaustive enumeration of a combinatorial space. Record attempted choices and rejection reasons compactly.",
+      "evidence": "Distinguish catalog/list limitations from engine limitations using matched option IDs, rejected combinations, missing required ports/behavior, and resulting player-visible consequence."
+    },
+    "domainContract": {
+      "instance": "id, capabilityId, capabilityVersion, settings, transform, sourceOptionIds",
+      "settings": "Closed JSON schema per trusted capability; finite ranges and defaults; reject unknown fields.",
+      "ports": "Typed state snapshots for position/number/boolean; typed queued events for interactions. No model-authored callbacks.",
+      "connections": "Explicit source instance/port to destination instance/port; exact payload type match; required ports bound once unless declared fan-in.",
+      "schedule": "Fixed 0.05-second tick; topologically ordered zero-delay connections; stateful feedback must declare one-tick delay. Delivery order stable by instance ID.",
+      "composition": "Trusted factory functions instantiate NexusEngine domains; Three.js presenters read domain state; no arbitrary script strings.",
+      "provenance": "Seed, original concepts, chosen properties/options, source/rule hashes, causal contribution map and expected witnesses."
+    },
+    "modelResolution": {
+      "planner": "LFM2.5 Thinking 1.2B; enum-bounded residual interpretation after list resolution.",
+      "writer": "LFM2.5 VL 3B; supported profile/editorial fields and actual-image observations.",
+      "rejected": "The port-design call chose immediate recursion. Harness rejects it against cycle constraints; deterministic next-tick wiring fills the gap."
+    },
+    "reviewPolicy": {
+      "human": "No universal per-game human gate. Apply frozen observable criteria automatically and through actual-image review; unresolved comprehension/novelty cases require review within the original deadline or fail. Initial baseline calibration cannot be inferred from model confidence.",
+      "acceptance": "G02 qualifications are not factory collection acceptance. G03 independent review gates batching; each later review controls its paired batch.",
+      "time": "25 minutes per original admitted idea; campaign has no aggregate time/token/pass cap."
+    },
+    "orderedWork": [
+      {
+        "id": "registry",
+        "scope": [
+          "catalog",
+          "pilotDomains"
+        ],
+        "operation": "Define strict capability settings, typed ports, dependencies and versioned implementation/probe references. Map source-present options first; keep unproven capabilities ineligible.",
+        "output": "compiled capability registry",
+        "checks": [
+          "composition",
+          "evidence"
+        ],
+        "ownerGoal": "G02"
+      },
+      {
+        "id": "compiler",
+        "scope": [
+          "compiler",
+          "catalog"
+        ],
+        "operation": "Expand independent abstract concept properties using seeded lists, resolve compatible layers, then compile explicit domain instances and connections. Models fill only unresolved bounded interpretation. Reject empty contribution, unknown capability, type conflict, unreachable objective and unsupported cycle.",
+        "output": "validated executable composition graph",
+        "checks": [
+          "composition",
+          "concept",
+          "spatial"
+        ],
+        "ownerGoal": "G02"
+      },
+      {
+        "id": "runtime",
+        "scope": [
+          "pilotDomains",
+          "pilotRenderer",
+          "assembly"
+        ],
+        "operation": "Separate delivery/flow/steering into reusable domain adapters. Instantiate graph and prefab presenters through NexusEngine; eliminate gameplay kind switches from production path. Add footprint collision, route gates and process connections required by three pilot briefs.",
+        "output": "Three.js domain assembler",
+        "checks": [
+          "controls",
+          "spatial",
+          "loop",
+          "resilience"
+        ],
+        "ownerGoal": "G02"
+      },
+      {
+        "id": "review",
+        "scope": [
+          "pilotReview",
+          "browser"
+        ],
+        "operation": "Implement nine frozen calibrations with two-run/negative/counterfactual witnesses, multi-state actual images, real-time Metal measurements and nearest-neighbor comparison.",
+        "output": "versioned exact-candidate receipts",
+        "checks": [
+          "replay",
+          "readability",
+          "presentation",
+          "novelty",
+          "performance"
+        ],
+        "ownerGoal": "G02"
+      },
+      {
+        "id": "repair",
+        "scope": [
+          "improvement",
+          "models"
+        ],
+        "operation": "Integrate typed parameter repairs with transitive lock invalidation. Keep only a failed assertion becoming PASS; revert ties/regressions. Enforce original deadline and diagnose three repeated causes before further admissions.",
+        "output": "tested feature improvement controller",
+        "checks": [
+          "regression",
+          "deadline",
+          "evidence"
+        ],
+        "ownerGoal": "G02"
+      },
+      {
+        "id": "delivery",
+        "scope": [
+          "factory",
+          "library",
+          "server",
+          "ui"
+        ],
+        "operation": "Separate timely qualification from later paired review/acceptance and revocation. Wire main Generate to composed path; show only player actions first, status/cancel and preview versus accepted labels. Preserve library position and play/generation exclusion.",
+        "output": "usable arcade and recoverable queue",
+        "checks": [
+          "controls",
+          "evidence",
+          "deadline"
+        ],
+        "ownerGoal": "G02"
+      },
+      {
+        "id": "pilots",
+        "scope": [
+          "cli",
+          "assembly",
+          "pilotReview"
+        ],
+        "operation": "Generate transfer, flow and steering compositions through the harness; independently inspect images and all fourteen rule receipts before G02 completion. Rejected idea outputs use protected cleanup.",
+        "output": "three fully qualified contrasting pilots",
+        "checks": [
+          "composition",
+          "concept",
+          "loop",
+          "replay",
+          "novelty",
+          "performance"
+        ],
+        "ownerGoal": "G02"
+      },
+      {
+        "id": "handoff",
+        "scope": [
+          "factory"
+        ],
+        "operation": "Pin G02 source/runtime/artifact/evidence versions; run existing repository checks and package inspection, then provide held-out cases and exact references to G03. No 100-game batch before G03.",
+        "output": "G03 review packet",
+        "checks": [
+          "regression",
+          "evidence"
+        ],
+        "ownerGoal": "G02"
+      }
+    ],
+    "independentCases": [
+      {
+        "id": "unknown-port",
+        "input": "A wire references an absent input or incompatible payload type.",
+        "expected": "Reject before assembly; no coercion.",
+        "owner": "catalog",
+        "evidence": "compiler negative receipt"
+      },
+      {
+        "id": "feedback",
+        "input": "A continuous-flow wire creates a zero-delay cycle.",
+        "expected": "Reject; only explicit next-tick stateful feedback is permitted.",
+        "owner": "catalog",
+        "evidence": "compiler cycle receipt"
+      },
+      {
+        "id": "expired",
+        "input": "Original idea expires between review completion and qualification.",
+        "expected": "FAIL; no slot admission and no deadline reset.",
+        "owner": "factory",
+        "evidence": "deadline transition trace"
+      },
+      {
+        "id": "lease",
+        "input": "A second writer claims an active owner or reuses a stale operation ID.",
+        "expected": "Reject while owner lives; recover only dead owner without duplicate artifact.",
+        "owner": "factory",
+        "evidence": "lease and deduplication receipt"
+      },
+      {
+        "id": "tie",
+        "input": "Repair changes parameters but the same assertion still fails.",
+        "expected": "Restore best configuration/locks; retain failed patch signature.",
+        "owner": "improvement",
+        "evidence": "candidate/baseline hash comparison"
+      },
+      {
+        "id": "regression",
+        "input": "A repair passes a new gate but breaks an already passing gate.",
+        "expected": "Revert; no regression accepted.",
+        "owner": "improvement",
+        "evidence": "protected-check trace"
+      },
+      {
+        "id": "pause",
+        "input": "Hold movement, blur, advance time, regain focus.",
+        "expected": "No motion/time change until explicit resume; no stuck input.",
+        "owner": "pilotReview",
+        "evidence": "keyboard state trace"
+      },
+      {
+        "id": "concept-label",
+        "input": "Change title and concept prose without changing behavior.",
+        "expected": "Concept contribution FAIL.",
+        "owner": "G03",
+        "evidence": "label-free counterfactual comparison"
+      },
+      {
+        "id": "duplicate",
+        "input": "Relabel graph IDs or change palette/seed on the same game.",
+        "expected": "Novelty FAIL; cannot fill another slot.",
+        "owner": "G03",
+        "evidence": "canonical/visual paired comparison"
+      },
+      {
+        "id": "contrast",
+        "input": "Transport route choice vs process reconfiguration vs precision steering.",
+        "expected": "Distinct potential briefs; require actual action/state/image witnesses before PASS.",
+        "owner": "G03",
+        "evidence": "three-pilot blinded comparison"
+      },
+      {
+        "id": "occluded",
+        "input": "Rally gate beam or Courier marker hides the controllable actor.",
+        "expected": "Readability FAIL despite model PASS.",
+        "owner": "pilotReview",
+        "evidence": "retained rejected review.png controls"
+      },
+      {
+        "id": "replay",
+        "input": "Run identical valve sequence twice with only a different title.",
+        "expected": "Replay FAIL; no consequential alternative.",
+        "owner": "G03",
+        "evidence": "two-run decision/outcome comparison"
+      },
+      {
+        "id": "software",
+        "input": "Submit SwiftShader frames instead of Metal hardware results.",
+        "expected": "Performance evidence rejected for target-device gate.",
+        "owner": "browser",
+        "evidence": "renderer descriptor and timing receipt"
+      },
+      {
+        "id": "revocation",
+        "input": "Batch audit revokes a previously qualified game.",
+        "expected": "Remove accepted slot and block downstream readiness; preserve history; expired idea stays expired.",
+        "owner": "factory",
+        "evidence": "index/queue reconciliation receipt"
+      }
+    ]
   }
 }

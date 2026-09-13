@@ -17,12 +17,13 @@ export async function improve({profile,features=[],guard,save,build,review,propo
   const checkIds=new Set(result.checks.map(x=>x.id));if(checkIds.size!==result.checks.length)throw Error('Duplicate review checks');
   const missing=repairContract.checkIds.filter(id=>!checkIds.has(id));if(missing.length)throw Error('Missing mandatory checks: '+missing.join(','));
   if(result.findings.some(f=>!f.id||!f.checkId||!checkIds.has(f.checkId)))throw Error('Untraceable finding');
+  if(result.findings.some(f=>result.checks.find(c=>c.id===f.checkId).verdict==='PASS'))throw Error('Finding contradicts passing check');
   const failed=result.checks.filter(x=>x.verdict!=='PASS');
   if(failed.some(c=>!result.findings.some(f=>f.checkId===c.id)))throw Error('Failed check has no finding');
   const score=result.checks.filter(x=>x.verdict==='PASS').length;
   const protectedIds=new Set(best?.result.checks.filter(x=>x.verdict==='PASS').map(x=>x.id)??[]);
   const regression=failed.some(x=>protectedIds.has(x.id));
-  const kept=!regression&&(!best||score>=best.score);
+  const kept=!regression&&(!best||score>best.score);
   locks=locks.map(f=>{const ids=repairContract.checksByFeature?.[f.id]??[];const receipts=result.checks.filter(c=>ids.includes(c.id));return ids.length&&receipts.length===ids.length&&receipts.every(c=>c.verdict==='PASS')?{...f,state:'verified_locked',configurationHash:candidateHash,evidenceRefs:receipts.map(c=>c.evidenceHash)}:{...f,state:'needs_review',evidenceRefs:[]};});
   lastFindings=result.findings;
   history.push({revision,profileHash:candidateHash,artifact,result,kept});
@@ -30,9 +31,9 @@ export async function improve({profile,features=[],guard,save,build,review,propo
   if(!failed.length&&!result.findings.length){guard.check();return finish('PASS');}
   lastFindings=result.findings;
   // Revert to the verified baseline before requesting another supported change.
-  if(regression){current=structuredClone(best.profile);locks=structuredClone(best.features);}
+  if(!kept){current=structuredClone(best.profile);locks=structuredClone(best.features);lastFindings=best.result.findings;}
   await save({status:'REPAIRING',candidate,best,history});guard.check();
-  const proposal=await propose({revision:String(revision),profile:current,findings:lastFindings,checks:result.checks,allowedPaths:Object.keys(repairContract.editablePaths)});guard.check();
+  const proposal=await propose({revision:String(revision),profile:current,findings:lastFindings,checks:kept?result.checks:best.result.checks,rejected:kept?null:{profileHash:candidateHash,findings:result.findings},allowedPaths:Object.keys(repairContract.editablePaths)});guard.check();
   if(proposal.decision!=='propose'){applyRepair(current,proposal,{...repairContract,revision:String(revision)});return finish('NEEDS_REVIEW','SUPPORTED_REPAIRS_EXHAUSTED');}
   if(!lastFindings.some(f=>f.id===proposal.findingId))throw Error('Repair targets unknown finding');
   const next=applyRepair(current,proposal,{...repairContract,revision:String(revision)});
