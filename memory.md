@@ -6,6 +6,8 @@ NexusArcade-Harness generates Three.js scenes from NexusEngine domain compositio
 
 LFM2.5 Thinking 1.2B is the interpreter/problem solver. LFM2.5 VL 3B writes presentation metadata and reviews actual rendered frames. No models above 3B. Gameplay state lives in installed upstream NexusEngine kits and an explicitly local, reusable optional composition adapter kit; the Three.js provider displays that state. Do not imply local adapters are upstream Core features.
 
+Prefer seeded list matching and combinations of existing supported capabilities first. Expand reusable option data, mappings, parameter ranges and child combinations before adding mechanics or templates. Classify remaining gaps as catalog, capability or interpretation; the local models fill bounded residual interpretation/presentation gaps. More seeds or options do not themselves prove unique games.
+
 Generated games are written only through the harness. Recurring defects must be fixed in shared kits, composition, assembly or review code; never patch experiment files by hand. Unsupported capabilities are explicit gaps, not descriptive promises.
 
 Keep compact spines with accepted decisions, the original roll, source/model identity, usage and evidence hashes. Shared immutable runtime snapshots avoid dependency copies per game. Do not accumulate raw chats, reasoning, model weights or videos. Compare structural gameplay signatures rather than names/colors. Separate automated runtime, visual model, performance, human and device evidence; AAA fidelity remains a target, not an automatic label.

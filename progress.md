@@ -1,5 +1,7 @@
 Original prompt: Implement Reliable Arcade Factory: preserve folders and all 33 Plan/Build/Review goals; complete and validate the harness and 1000 distinct games through it.
 
+Latest steering: prioritize seeded list matching and compatible combinations; expand reusable catalog data before new mechanics; use models for bounded residual gaps. Applied to the execution contract and all 33 goal interpretations. Six contract consistency checks passed; no capabilities made eligible. Next G01 action: map existing pilot behaviors to catalog options and distinguish mapping gaps from missing engine behavior before planning more implementation.
+
 Current mission activation: implement the complete attached 33-goal Reliable Arcade Factory plan and push validated increments to origin main.
 
 2026-09-13 contract-5 checkpoint: updated all 33 existing JSON goals with layer and replay obligations; added four catalog points (27 total, 55 options/capabilities), mandatory two-run replay evidence, recovery thresholds, and qualification/review policy. New capabilities remain missing; no acceptance granted. Added four-file contract identity and stale version/catalog/reference rejection. G01 readiness was revalidated for continued audit only; G01 remains running, G02-G33 planned, accepted 0/1000.

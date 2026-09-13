@@ -1,6 +1,6 @@
 {
   "schemaVersion": "contract-5",
-  "title": "NexusArcade \u2014 Reliable Arcade Factory",
+  "title": "NexusArcade — Reliable Arcade Factory",
   "status": "SPECIFIED_NOT_EXECUTED",
   "rulesRef": "RULES.md",
   "goalCount": 33,
@@ -131,7 +131,8 @@
           "focus": "Freeze baseline layer/replay schemas, qualification versus review, durable recovery and calibrated pilot contrasts.",
           "replay": "Three pilots each have a two-run replay obligation before batch admission.",
           "contractRef": "execution-contract.json#/layerComposition",
-          "phaseOutcome": "Resolve concrete choices, tests and ownership; do not demand future Build proof."
+          "phaseOutcome": "Resolve concrete choices, tests and ownership; do not demand future Build proof.",
+          "resolutionPreferenceRef": "execution-contract.json#/layerComposition/resolutionPreference"
         }
       },
       "readiness": {
@@ -558,7 +559,8 @@
           "focus": "Freeze baseline layer/replay schemas, qualification versus review, durable recovery and calibrated pilot contrasts.",
           "replay": "Three pilots each have a two-run replay obligation before batch admission.",
           "contractRef": "execution-contract.json#/layerComposition",
-          "phaseOutcome": "Verify shared prerequisites, then generate immutable qualifying candidates within original deadlines."
+          "phaseOutcome": "Verify shared prerequisites, then generate immutable qualifying candidates within original deadlines.",
+          "resolutionPreferenceRef": "execution-contract.json#/layerComposition/resolutionPreference"
         }
       },
       "readiness": {
@@ -1030,7 +1032,8 @@
           "focus": "Freeze baseline layer/replay schemas, qualification versus review, durable recovery and calibrated pilot contrasts.",
           "replay": "Three pilots each have a two-run replay obligation before batch admission.",
           "contractRef": "execution-contract.json#/layerComposition",
-          "phaseOutcome": "Independently audit qualifying evidence, reject regressions/duplicates, accept and reconcile all required slots."
+          "phaseOutcome": "Independently audit qualifying evidence, reject regressions/duplicates, accept and reconcile all required slots.",
+          "resolutionPreferenceRef": "execution-contract.json#/layerComposition/resolutionPreference"
         }
       },
       "readiness": {
@@ -1480,7 +1483,8 @@
           "focus": "Expand topology and route choice with navigation-valid alternate approaches.",
           "replay": "Compare safe/short routes and repeated navigation decisions.",
           "contractRef": "execution-contract.json#/layerComposition",
-          "phaseOutcome": "Resolve concrete choices, tests and ownership; do not demand future Build proof."
+          "phaseOutcome": "Resolve concrete choices, tests and ownership; do not demand future Build proof.",
+          "resolutionPreferenceRef": "execution-contract.json#/layerComposition/resolutionPreference"
         }
       },
       "readiness": {
@@ -1868,7 +1872,8 @@
           "focus": "Expand topology and route choice with navigation-valid alternate approaches.",
           "replay": "Compare safe/short routes and repeated navigation decisions.",
           "contractRef": "execution-contract.json#/layerComposition",
-          "phaseOutcome": "Verify shared prerequisites, then generate immutable qualifying candidates within original deadlines."
+          "phaseOutcome": "Verify shared prerequisites, then generate immutable qualifying candidates within original deadlines.",
+          "resolutionPreferenceRef": "execution-contract.json#/layerComposition/resolutionPreference"
         }
       },
       "readiness": {
@@ -2265,7 +2270,8 @@
           "focus": "Expand topology and route choice with navigation-valid alternate approaches.",
           "replay": "Compare safe/short routes and repeated navigation decisions.",
           "contractRef": "execution-contract.json#/layerComposition",
-          "phaseOutcome": "Independently audit qualifying evidence, reject regressions/duplicates, accept and reconcile all required slots."
+          "phaseOutcome": "Independently audit qualifying evidence, reject regressions/duplicates, accept and reconcile all required slots.",
+          "resolutionPreferenceRef": "execution-contract.json#/layerComposition/resolutionPreference"
         }
       },
       "readiness": {
@@ -2659,7 +2665,8 @@
           "focus": "Connect camera and movement parameters to perception, timing and control mastery.",
           "replay": "Compare legitimate control strategies using equivalent rules.",
           "contractRef": "execution-contract.json#/layerComposition",
-          "phaseOutcome": "Resolve concrete choices, tests and ownership; do not demand future Build proof."
+          "phaseOutcome": "Resolve concrete choices, tests and ownership; do not demand future Build proof.",
+          "resolutionPreferenceRef": "execution-contract.json#/layerComposition/resolutionPreference"
         }
       },
       "readiness": {
@@ -3047,7 +3054,8 @@
           "focus": "Connect camera and movement parameters to perception, timing and control mastery.",
           "replay": "Compare legitimate control strategies using equivalent rules.",
           "contractRef": "execution-contract.json#/layerComposition",
-          "phaseOutcome": "Verify shared prerequisites, then generate immutable qualifying candidates within original deadlines."
+          "phaseOutcome": "Verify shared prerequisites, then generate immutable qualifying candidates within original deadlines.",
+          "resolutionPreferenceRef": "execution-contract.json#/layerComposition/resolutionPreference"
         }
       },
       "readiness": {
@@ -3444,7 +3452,8 @@
           "focus": "Connect camera and movement parameters to perception, timing and control mastery.",
           "replay": "Compare legitimate control strategies using equivalent rules.",
           "contractRef": "execution-contract.json#/layerComposition",
-          "phaseOutcome": "Independently audit qualifying evidence, reject regressions/duplicates, accept and reconcile all required slots."
+          "phaseOutcome": "Independently audit qualifying evidence, reject regressions/duplicates, accept and reconcile all required slots.",
+          "resolutionPreferenceRef": "execution-contract.json#/layerComposition/resolutionPreference"
         }
       },
       "readiness": {
@@ -3838,7 +3847,8 @@
           "focus": "Compose coexisting actions with explicit ownership, interruption and tradeoffs.",
           "replay": "Verify alternate action sequences materially change outcomes.",
           "contractRef": "execution-contract.json#/layerComposition",
-          "phaseOutcome": "Resolve concrete choices, tests and ownership; do not demand future Build proof."
+          "phaseOutcome": "Resolve concrete choices, tests and ownership; do not demand future Build proof.",
+          "resolutionPreferenceRef": "execution-contract.json#/layerComposition/resolutionPreference"
         }
       },
       "readiness": {
@@ -4226,7 +4236,8 @@
           "focus": "Compose coexisting actions with explicit ownership, interruption and tradeoffs.",
           "replay": "Verify alternate action sequences materially change outcomes.",
           "contractRef": "execution-contract.json#/layerComposition",
-          "phaseOutcome": "Verify shared prerequisites, then generate immutable qualifying candidates within original deadlines."
+          "phaseOutcome": "Verify shared prerequisites, then generate immutable qualifying candidates within original deadlines.",
+          "resolutionPreferenceRef": "execution-contract.json#/layerComposition/resolutionPreference"
         }
       },
       "readiness": {
@@ -4623,7 +4634,8 @@
           "focus": "Compose coexisting actions with explicit ownership, interruption and tradeoffs.",
           "replay": "Verify alternate action sequences materially change outcomes.",
           "contractRef": "execution-contract.json#/layerComposition",
-          "phaseOutcome": "Independently audit qualifying evidence, reject regressions/duplicates, accept and reconcile all required slots."
+          "phaseOutcome": "Independently audit qualifying evidence, reject regressions/duplicates, accept and reconcile all required slots.",
+          "resolutionPreferenceRef": "execution-contract.json#/layerComposition/resolutionPreference"
         }
       },
       "readiness": {
@@ -5015,7 +5027,8 @@
           "focus": "Make resource, route and objective consequences typed and bounded.",
           "replay": "Verify feedback/transfer changes affect repeated-session strategy.",
           "contractRef": "execution-contract.json#/layerComposition",
-          "phaseOutcome": "Resolve concrete choices, tests and ownership; do not demand future Build proof."
+          "phaseOutcome": "Resolve concrete choices, tests and ownership; do not demand future Build proof.",
+          "resolutionPreferenceRef": "execution-contract.json#/layerComposition/resolutionPreference"
         }
       },
       "readiness": {
@@ -5368,7 +5381,8 @@
           "focus": "Make resource, route and objective consequences typed and bounded.",
           "replay": "Verify feedback/transfer changes affect repeated-session strategy.",
           "contractRef": "execution-contract.json#/layerComposition",
-          "phaseOutcome": "Verify shared prerequisites, then generate immutable qualifying candidates within original deadlines."
+          "phaseOutcome": "Verify shared prerequisites, then generate immutable qualifying candidates within original deadlines.",
+          "resolutionPreferenceRef": "execution-contract.json#/layerComposition/resolutionPreference"
         }
       },
       "readiness": {
@@ -5728,7 +5742,8 @@
           "focus": "Make resource, route and objective consequences typed and bounded.",
           "replay": "Verify feedback/transfer changes affect repeated-session strategy.",
           "contractRef": "execution-contract.json#/layerComposition",
-          "phaseOutcome": "Independently audit qualifying evidence, reject regressions/duplicates, accept and reconcile all required slots."
+          "phaseOutcome": "Independently audit qualifying evidence, reject regressions/duplicates, accept and reconcile all required slots.",
+          "resolutionPreferenceRef": "execution-contract.json#/layerComposition/resolutionPreference"
         }
       },
       "readiness": {
@@ -6085,7 +6100,8 @@
           "focus": "Preserve unrelated abstract concept rolls and trace interpretation into supported layers.",
           "replay": "Reject replay descriptions with no executable contribution.",
           "contractRef": "execution-contract.json#/layerComposition",
-          "phaseOutcome": "Resolve concrete choices, tests and ownership; do not demand future Build proof."
+          "phaseOutcome": "Resolve concrete choices, tests and ownership; do not demand future Build proof.",
+          "resolutionPreferenceRef": "execution-contract.json#/layerComposition/resolutionPreference"
         }
       },
       "readiness": {
@@ -6438,7 +6454,8 @@
           "focus": "Preserve unrelated abstract concept rolls and trace interpretation into supported layers.",
           "replay": "Reject replay descriptions with no executable contribution.",
           "contractRef": "execution-contract.json#/layerComposition",
-          "phaseOutcome": "Verify shared prerequisites, then generate immutable qualifying candidates within original deadlines."
+          "phaseOutcome": "Verify shared prerequisites, then generate immutable qualifying candidates within original deadlines.",
+          "resolutionPreferenceRef": "execution-contract.json#/layerComposition/resolutionPreference"
         }
       },
       "readiness": {
@@ -6798,7 +6815,8 @@
           "focus": "Preserve unrelated abstract concept rolls and trace interpretation into supported layers.",
           "replay": "Reject replay descriptions with no executable contribution.",
           "contractRef": "execution-contract.json#/layerComposition",
-          "phaseOutcome": "Independently audit qualifying evidence, reject regressions/duplicates, accept and reconcile all required slots."
+          "phaseOutcome": "Independently audit qualifying evidence, reject regressions/duplicates, accept and reconcile all required slots.",
+          "resolutionPreferenceRef": "execution-contract.json#/layerComposition/resolutionPreference"
         }
       },
       "readiness": {
@@ -7157,7 +7175,8 @@
           "focus": "Broaden coherent visual identity independently of gameplay novelty.",
           "replay": "Compare matched repeated-run frames without counting palette variation as replay.",
           "contractRef": "execution-contract.json#/layerComposition",
-          "phaseOutcome": "Resolve concrete choices, tests and ownership; do not demand future Build proof."
+          "phaseOutcome": "Resolve concrete choices, tests and ownership; do not demand future Build proof.",
+          "resolutionPreferenceRef": "execution-contract.json#/layerComposition/resolutionPreference"
         }
       },
       "readiness": {
@@ -7516,7 +7535,8 @@
           "focus": "Broaden coherent visual identity independently of gameplay novelty.",
           "replay": "Compare matched repeated-run frames without counting palette variation as replay.",
           "contractRef": "execution-contract.json#/layerComposition",
-          "phaseOutcome": "Verify shared prerequisites, then generate immutable qualifying candidates within original deadlines."
+          "phaseOutcome": "Verify shared prerequisites, then generate immutable qualifying candidates within original deadlines.",
+          "resolutionPreferenceRef": "execution-contract.json#/layerComposition/resolutionPreference"
         }
       },
       "readiness": {
@@ -7882,7 +7902,8 @@
           "focus": "Broaden coherent visual identity independently of gameplay novelty.",
           "replay": "Compare matched repeated-run frames without counting palette variation as replay.",
           "contractRef": "execution-contract.json#/layerComposition",
-          "phaseOutcome": "Independently audit qualifying evidence, reject regressions/duplicates, accept and reconcile all required slots."
+          "phaseOutcome": "Independently audit qualifying evidence, reject regressions/duplicates, accept and reconcile all required slots.",
+          "resolutionPreferenceRef": "execution-contract.json#/layerComposition/resolutionPreference"
         }
       },
       "readiness": {
@@ -8243,7 +8264,8 @@
           "focus": "Tie expressive feedback to real events and preserve target readability.",
           "replay": "Verify feedback helps perceive repeatable decisions; audio uses audio evidence.",
           "contractRef": "execution-contract.json#/layerComposition",
-          "phaseOutcome": "Resolve concrete choices, tests and ownership; do not demand future Build proof."
+          "phaseOutcome": "Resolve concrete choices, tests and ownership; do not demand future Build proof.",
+          "resolutionPreferenceRef": "execution-contract.json#/layerComposition/resolutionPreference"
         }
       },
       "readiness": {
@@ -8624,7 +8646,8 @@
           "focus": "Tie expressive feedback to real events and preserve target readability.",
           "replay": "Verify feedback helps perceive repeatable decisions; audio uses audio evidence.",
           "contractRef": "execution-contract.json#/layerComposition",
-          "phaseOutcome": "Verify shared prerequisites, then generate immutable qualifying candidates within original deadlines."
+          "phaseOutcome": "Verify shared prerequisites, then generate immutable qualifying candidates within original deadlines.",
+          "resolutionPreferenceRef": "execution-contract.json#/layerComposition/resolutionPreference"
         }
       },
       "readiness": {
@@ -9014,7 +9037,8 @@
           "focus": "Tie expressive feedback to real events and preserve target readability.",
           "replay": "Verify feedback helps perceive repeatable decisions; audio uses audio evidence.",
           "contractRef": "execution-contract.json#/layerComposition",
-          "phaseOutcome": "Independently audit qualifying evidence, reject regressions/duplicates, accept and reconcile all required slots."
+          "phaseOutcome": "Independently audit qualifying evidence, reject regressions/duplicates, accept and reconcile all required slots.",
+          "resolutionPreferenceRef": "execution-contract.json#/layerComposition/resolutionPreference"
         }
       },
       "readiness": {
@@ -9403,7 +9427,8 @@
           "focus": "Expand progression, personal mastery, alternative strategy and challenge variation.",
           "replay": "Two complete run traces, meaningful replay consequence, compatible record identity.",
           "contractRef": "execution-contract.json#/layerComposition",
-          "phaseOutcome": "Resolve concrete choices, tests and ownership; do not demand future Build proof."
+          "phaseOutcome": "Resolve concrete choices, tests and ownership; do not demand future Build proof.",
+          "resolutionPreferenceRef": "execution-contract.json#/layerComposition/resolutionPreference"
         }
       },
       "readiness": {
@@ -9791,7 +9816,8 @@
           "focus": "Expand progression, personal mastery, alternative strategy and challenge variation.",
           "replay": "Two complete run traces, meaningful replay consequence, compatible record identity.",
           "contractRef": "execution-contract.json#/layerComposition",
-          "phaseOutcome": "Verify shared prerequisites, then generate immutable qualifying candidates within original deadlines."
+          "phaseOutcome": "Verify shared prerequisites, then generate immutable qualifying candidates within original deadlines.",
+          "resolutionPreferenceRef": "execution-contract.json#/layerComposition/resolutionPreference"
         }
       },
       "readiness": {
@@ -10188,7 +10214,8 @@
           "focus": "Expand progression, personal mastery, alternative strategy and challenge variation.",
           "replay": "Two complete run traces, meaningful replay consequence, compatible record identity.",
           "contractRef": "execution-contract.json#/layerComposition",
-          "phaseOutcome": "Independently audit qualifying evidence, reject regressions/duplicates, accept and reconcile all required slots."
+          "phaseOutcome": "Independently audit qualifying evidence, reject regressions/duplicates, accept and reconcile all required slots.",
+          "resolutionPreferenceRef": "execution-contract.json#/layerComposition/resolutionPreference"
         }
       },
       "readiness": {
@@ -10582,7 +10609,8 @@
           "focus": "Prioritize undercovered compatible layers with catalog/collection snapshot reproduction.",
           "replay": "Separate between-game novelty, between-run variation and within-run progression.",
           "contractRef": "execution-contract.json#/layerComposition",
-          "phaseOutcome": "Resolve concrete choices, tests and ownership; do not demand future Build proof."
+          "phaseOutcome": "Resolve concrete choices, tests and ownership; do not demand future Build proof.",
+          "resolutionPreferenceRef": "execution-contract.json#/layerComposition/resolutionPreference"
         }
       },
       "readiness": {
@@ -10999,7 +11027,8 @@
           "focus": "Prioritize undercovered compatible layers with catalog/collection snapshot reproduction.",
           "replay": "Separate between-game novelty, between-run variation and within-run progression.",
           "contractRef": "execution-contract.json#/layerComposition",
-          "phaseOutcome": "Verify shared prerequisites, then generate immutable qualifying candidates within original deadlines."
+          "phaseOutcome": "Verify shared prerequisites, then generate immutable qualifying candidates within original deadlines.",
+          "resolutionPreferenceRef": "execution-contract.json#/layerComposition/resolutionPreference"
         }
       },
       "readiness": {
@@ -11427,7 +11456,8 @@
           "focus": "Prioritize undercovered compatible layers with catalog/collection snapshot reproduction.",
           "replay": "Separate between-game novelty, between-run variation and within-run progression.",
           "contractRef": "execution-contract.json#/layerComposition",
-          "phaseOutcome": "Independently audit qualifying evidence, reject regressions/duplicates, accept and reconcile all required slots."
+          "phaseOutcome": "Independently audit qualifying evidence, reject regressions/duplicates, accept and reconcile all required slots.",
+          "resolutionPreferenceRef": "execution-contract.json#/layerComposition/resolutionPreference"
         }
       },
       "readiness": {
@@ -11856,7 +11886,8 @@
           "focus": "Reconcile all accepted slots, player journeys, safe cleanup and complete evidence.",
           "replay": "Audit replay evidence for every accepted identity; revoke missing or stale proof.",
           "contractRef": "execution-contract.json#/layerComposition",
-          "phaseOutcome": "Resolve concrete choices, tests and ownership; do not demand future Build proof."
+          "phaseOutcome": "Resolve concrete choices, tests and ownership; do not demand future Build proof.",
+          "resolutionPreferenceRef": "execution-contract.json#/layerComposition/resolutionPreference"
         }
       },
       "readiness": {
@@ -12289,7 +12320,8 @@
           "focus": "Reconcile all accepted slots, player journeys, safe cleanup and complete evidence.",
           "replay": "Audit replay evidence for every accepted identity; revoke missing or stale proof.",
           "contractRef": "execution-contract.json#/layerComposition",
-          "phaseOutcome": "Verify shared prerequisites, then generate immutable qualifying candidates within original deadlines."
+          "phaseOutcome": "Verify shared prerequisites, then generate immutable qualifying candidates within original deadlines.",
+          "resolutionPreferenceRef": "execution-contract.json#/layerComposition/resolutionPreference"
         }
       },
       "readiness": {
@@ -12734,7 +12766,8 @@
           "focus": "Reconcile all accepted slots, player journeys, safe cleanup and complete evidence.",
           "replay": "Audit replay evidence for every accepted identity; revoke missing or stale proof.",
           "contractRef": "execution-contract.json#/layerComposition",
-          "phaseOutcome": "Independently audit qualifying evidence, reject regressions/duplicates, accept and reconcile all required slots."
+          "phaseOutcome": "Independently audit qualifying evidence, reject regressions/duplicates, accept and reconcile all required slots.",
+          "resolutionPreferenceRef": "execution-contract.json#/layerComposition/resolutionPreference"
         }
       },
       "readiness": {

@@ -3198,7 +3198,8 @@
     "recursiveExpansion": "Expand named child choice nodes lazily, memoize path; reject reference cycles. Stop at implemented capability leaves or explicit gaps. Complexity selects bounded branch/depth settings in execution packet, not total repair passes.",
     "fragmentTarget": "Fragments address an intermediate decisionsByPoint map. After merging, compiler emits the ordered decisions array in game profile; option ID keys retain each option parameters and provenance.",
     "variationScopes": "Record between-game, between-run and within-run variation separately; each claimed scope needs decision/outcome evidence.",
-    "layerContribution": "Every selected gameplay layer needs a profile contribution and counterfactual assertion; presentation layers use visual/event evidence."
+    "layerContribution": "Every selected gameplay layer needs a profile contribution and counterfactual assertion; presentation layers use visual/event evidence.",
+    "resolutionPreferenceRef": "execution-contract.json#/layerComposition/resolutionPreference"
   },
   "capabilities": {
     "cap.puzzle_loop": {

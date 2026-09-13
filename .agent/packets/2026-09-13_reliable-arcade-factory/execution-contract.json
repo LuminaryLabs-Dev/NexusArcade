@@ -1010,6 +1010,33 @@
       "variation"
     ],
     "ablation": "Each claimed gameplay layer names an observable decision/outcome and a suppress-or-perturb probe. Presentation layers use distinct readability/style/event-feedback obligations.",
-    "expansion": "Children expose compatible next choices; cycles and unsupported leaves are explicit rejections. No unrestricted Cartesian-product enumeration."
+    "expansion": "Children expose compatible next choices; cycles and unsupported leaves are explicit rejections. No unrestricted Cartesian-product enumeration.",
+    "resolutionPreference": {
+      "order": [
+        "match_existing_eligible_options",
+        "compose_compatible_seeded_layers",
+        "expand_reusable_catalog_data",
+        "classify_remaining_gap"
+      ],
+      "matching": "Use typed requirements, offered capabilities, parameter bounds and compatibility rules to match lists before inference; preserve the independent concept roll.",
+      "seedExpansion": "Use recorded seeds to vary supported selections, child branches, parameter ranges, spatial relationships and progression. Reproduce with catalog/compiler/collection versions; new seeds alone do not establish novelty.",
+      "dataBeforeCode": "Prefer adding or improving reusable option data, mappings, supported parameter ranges and compatible child combinations before implementing another mechanic or template. Eligibility still requires existing behavior and evidence.",
+      "gapRouting": {
+        "catalog": "An existing capability can express the intent: extend catalog mapping and verify the resulting composition.",
+        "capability": "No relevant supported combination can express the required behavior: record evidence and implement the smallest reusable domain extension under its owning goal.",
+        "interpretation": "Supported alternatives remain ambiguous or a bounded composition/presentation detail is unresolved: give the designated local model the matched choices and exact gap."
+      },
+      "modelContext": [
+        "original_concepts",
+        "matched_option_ids",
+        "selected_seeded_relationships",
+        "remaining_gap",
+        "allowed_outputs",
+        "required_checks"
+      ],
+      "modelBoundary": "Models resolve bounded gaps and review actual evidence; they do not replace catalog matching, invent implementations, change protected intent or generate arbitrary scripts.",
+      "stopping": "Search relevant compatible branches within the idea deadline; do not require exhaustive enumeration of a combinatorial space. Record attempted choices and rejection reasons compactly.",
+      "evidence": "Distinguish catalog/list limitations from engine limitations using matched option IDs, rejected combinations, missing required ports/behavior, and resulting player-visible consequence."
+    }
   }
 }
