@@ -34,10 +34,12 @@ The arcade uses this pilot path, with honest challenge choices instead of unused
 complexity controls. Renewable player reservations expire after 60 seconds; late
 renewals never reopen a closed session, and expired views require explicit reload.
 
-Courier world geometry is shared by rendering, body-footprint collision and route
+Transfer world geometry is shared by rendering, body-footprint collision and route
 planning. Seeded door/cargo lists carry explicit compatibility; full input-driven
 door ablations must show a gameplay consequence before a pairing is retained.
 Predicted path length alone is insufficient evidence. Visual review sends one
 image per local VL call; context exhaustion requires splitting input rather than
 raising an output allowance that cannot fit. Development preview PASS still does
 not establish factory novelty, concept coverage, presentation or device readiness.
+
+User editorial rule: the excluded occupation term in text-policy.mjs must never appear in assistant replies, model inputs/outputs, or player-facing copy. Reject it locally without repeating it in repair prompts. Do not recycle the same delivery template under a new name; automatic generation excludes the transfer family. Preserve historical artifacts, but hide disallowed titles and block their playable endpoints. Expand variety through reusable interactions and compatible concept lists.

@@ -24,7 +24,7 @@ export function createPilotEngine(c,{bestSeconds=null}={}){
  let vx=input.x??0,vz=input.z??0;const before=point();
  if(c.kind==='rally'){const throttle=Math.max(-1,Math.min(1,-vz));speed=Math.max(0,Math.min(handling.maxSpeed,speed+(throttle>0?handling.acceleration:throttle<0?-handling.braking:-3)*dt));heading+=vx*Math.min(handling.turnRate,speed*.25)*dt;vx=Math.sin(heading)*speed/handling.maxSpeed;vz=Math.cos(heading)*speed/handling.maxSpeed;}
  const result=N.actionLocomotion.step({operationId:'pilot-'+(++sequence),delta:dt,input:{x:vx,z:vz},contact:{grounded:true,groundHeight:0}}).result;const p=result.position;
- const supported=c.spatialWorld?worldSupports(c.spatialWorld,p,N.composition.snapshot()):c.kind==='rally'?(road?distanceToTrack(road,p)<c.track.width/2:Math.abs(Math.hypot(p.x,p.z)-18)<4):Math.abs(p.x)<14&&Math.abs(p.z)<14&&!(c.kind==='courier'&&Math.abs(p.x)>3&&Math.abs(p.x)<7&&Math.abs(p.z)<5);
+ const supported=c.spatialWorld?worldSupports(c.spatialWorld,p,N.composition.snapshot()):c.kind==='rally'?(road?distanceToTrack(road,p)<c.track.width/2:Math.abs(Math.hypot(p.x,p.z)-18)<4):Math.abs(p.x)<14&&Math.abs(p.z)<14&&!(c.kind==='transfer'&&Math.abs(p.x)>3&&Math.abs(p.x)<7&&Math.abs(p.z)<5);
  if(!supported){N.actionLocomotion.update({position:before,velocity:{x:0,y:0,z:0}});if(c.kind==='rally')speed*=.7;emit('collision','boundary');}
  if(sequence%16===0)N.actionLocomotion.update({operationReceipts:Object.fromEntries(Object.entries(N.actionLocomotion.getState().operationReceipts??{}).slice(-16))});
  const position=point(),edge=!!input.interact&&!pressed;pressed=!!input.interact;

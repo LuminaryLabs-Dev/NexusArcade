@@ -23,7 +23,7 @@ export function routeInWorld(w,start,goal,states={}){
  }
  throw Error('No traversable route');
 }
-export function courierWorld(layout){
+export function transferWorld(layout){
  const solids=[];for(const [i,x] of [-5,5].entries()){const z=layout.gateZ[i],ends=[[-5,z-1.5],[z+1.5,5]];ends.forEach(([a,b],j)=>solids.push({id:'rack-'+i+'-'+j,x,z:(a+b)/2,width:4,depth:b-a,height:2.2}));solids.push({id:'door-'+i,x,z,width:4,depth:3,height:2.2,openWhen:{instance:'unlock-'+layout.unlocks[i],port:'active'},label:Number(layout.unlocks[i].slice(1))+1});}
  return {version:1,halfExtent:14.2,actorRadius:.4,solids};
 }

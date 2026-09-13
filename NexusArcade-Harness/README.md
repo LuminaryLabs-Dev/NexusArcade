@@ -42,12 +42,12 @@ corrections stop. Cancellation, wall-clock rollback and expiry fail the attempt.
 node NexusArcade-Harness/cli.mjs generate --prefix probe --seed 97000
 
 # Three reusable foundation pilot families.
-node NexusArcade-Harness/cli.mjs pilot --kind courier --id courier-example --seed 97401
+node NexusArcade-Harness/cli.mjs pilot --kind transfer --id transfer-example --seed 97401
 node NexusArcade-Harness/cli.mjs pilot --kind conduit --id conduit-example --seed 97402
 node NexusArcade-Harness/cli.mjs pilot --kind rally --id rally-example --seed 97403
 
 # A shared fix may create a new immutable revision under the original deadline.
-node NexusArcade-Harness/cli.mjs pilot --kind courier --id courier-revised --retry-of courier-example --seed 97401
+node NexusArcade-Harness/cli.mjs pilot --kind transfer --id transfer-revised --retry-of transfer-example --seed 97401
 ```
 
 Games are created only through the harness. Fix shared source, then regenerate;
@@ -139,7 +139,7 @@ and cannot be resurrected by late renewal requests. Expired views pause and requ
 explicit reload. Older clients without leaseVersion 1 keep their original explicit
 Back behavior until refreshed. Failed server-generated pilots use protected cleanup.
 
-Courier selects compatible room-door and cargo layouts from `pilot-options.json`.
+Transfer selects compatible room-door and cargo layouts from `pilot-options.json`.
 Delivery membership opens bound shortcut doors. `kits/spatial-world.mjs` supplies
 the same solids to rendering, body-footprint collision and route planning. Full
 input-driven checks compare delivery orders and disable door opening to verify
@@ -148,3 +148,11 @@ are excluded in the source list, not rescued by lowering the acceptance bar.
 These checks demonstrate route/replay behavior; they do not establish collection
 novelty, concept coverage or finished presentation. After shared generation source
 changes, restart the server: new admission rejects a stale loaded generator.
+
+`text-policy.mjs` enforces the user's excluded vocabulary locally. Model prompts
+and schemas containing it fail before inference; responses containing it receive
+generic correction without echoing the term. New library entries are checked;
+historical titles using it are hidden and their playable endpoints are unavailable.
+Historical artifacts remain intact. Automatic rolls choose flow or racing, and
+the CLI defaults to racing. Transfer interactions remain explicitly selectable;
+renaming a template does not establish new gameplay or novelty.

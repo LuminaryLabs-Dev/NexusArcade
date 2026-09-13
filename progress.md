@@ -66,3 +66,20 @@ player tag is small. These checks do not establish full presentation/comprehensi
 Improve targeted review framing, then build frozen Conduit route/process choices;
 finish catalog/concept wiring, shared repair, qualification/review split and all
 fourteen frozen gates. G01 complete; G02 running; G03–G33 planned; accepted0/1000.
+
+User correction: permanently exclude the occupation term held in text-policy.mjs
+from replies, model input/output and player-facing copy. The active family ID is
+now transfer; automatic selection excludes that overused template and the CLI
+defaults to racing. Reusable interactions remain available explicitly. Local text
+validation rejects disallowed output with generic correction and stops disallowed
+input before inference. Historical disallowed titles are hidden and launch with410;
+immutable artifacts remain untouched. Policy identity changes the library revision.
+Do not count renaming as gameplay diversity or fill the collection with the same
+transport loop. Five historical titles hidden; current library text checked live.
+
+Validation: synthetic model rejection/correction with clean outbound prompts, nine
+seeded profiles,500 old/new input ticks and reset parity, existing41 tests/build/
+browser boundary, live library and historical-endpoint checks. Receipts are
+G02/editorial-policy-checks.json, editorial-ui-checks.json and
+editorial-compatibility-checks.json. No new game admitted in this policy increment.
+G02 and the remaining foundation gates stay incomplete.

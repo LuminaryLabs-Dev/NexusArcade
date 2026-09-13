@@ -76,7 +76,7 @@
       }
     ]
   },
-  "courier": {
+  "transfer": {
     "layouts": [
       {
         "id": "staggered-exchange",

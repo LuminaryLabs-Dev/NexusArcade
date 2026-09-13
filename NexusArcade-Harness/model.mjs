@@ -1,6 +1,7 @@
 import {validate} from './domains.mjs';
 import {createHash} from 'node:crypto';
 import {readFile} from 'node:fs/promises';
+import {assertAllowedText,hasBlockedText} from './text-policy.mjs';
 export const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 export const MODEL_ROLES={planner:{id:'arcade-planner',family:'lfm2.5-1.2b-thinking',parameters:1.2},writer:{id:'arcade-writer',family:'lfm2.5-vl-3b',parameters:3}};
 export class Models {
@@ -28,7 +29,7 @@ export class Models {
       const lessons=JSON.parse(await readFile(new URL('./lessons.json',import.meta.url),'utf8')).filter(x=>x.stage===stage||(stage==='edit'&&x.stage==='write')).map(x=>x.rule);
       // Full type/length schemas in small-model prompts caused literal placeholder roles.
       // Grammar carries the schema; the prompt carries domain meaning and decisions.
-      const instructions=prompt+' Context rules: '+lessons.join(' ');call.promptHash=hash(instructions);
+      const instructions=prompt+' Context rules: '+lessons.join(' ');if(hasBlockedText(instructions)||hasBlockedText(schema))throw Error('Disallowed model input; rebuild context without excluded vocabulary.');call.promptHash=hash(instructions);
       const content=image?[{type:'text',text:instructions},...(Array.isArray(image)?image:[image]).map(buffer=>({type:'image_url',image_url:{url:'data:image/png;base64,'+buffer.toString('base64')}}))]:instructions;
       // LM Studio LFM grammar rejects some regex patterns: enforce those locally.
       const wireSchema=JSON.parse(JSON.stringify(schema,(k,v)=>k==='pattern'?undefined:v));
@@ -37,7 +38,7 @@ export class Models {
       const reader=r.body.getReader(),chunks=[];let size=0;try{for(;;){const {done,value}=await reader.read();if(done)break;size+=value.length;if(size>100000)throw Error('Oversized response');chunks.push(value);}}finally{await reader.cancel();}
       const response=JSON.parse(Buffer.concat(chunks).toString()),choice=response.choices?.[0];call.outputTokens=response.usage?.completion_tokens??limit;call.inputTokens=response.usage?.prompt_tokens??null;
       const raw=choice?.message?.content??'';call.responseHash=hash(raw);if(choice?.finish_reason==='length')throw Error('Truncated '+stage+' response');
-      return validate(JSON.parse(raw.replace(/<think>[\s\S]*?<\/think>/g,'').replace(/^```(?:json)?\s*|\s*```$/g,'').trim()),schema);
+      return assertAllowedText(validate(JSON.parse(raw.replace(/<think>[\s\S]*?<\/think>/g,'').replace(/^```(?:json)?\s*|\s*```$/g,'').trim()),schema));
     }catch(e){call.error=e.message;throw e;}finally{call.ms=Date.now()-call.started;await this.save();}
   }
 }
