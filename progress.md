@@ -132,3 +132,24 @@ boundary pass with the macOS temporary directory resolved to its real path; the
 initial default-path run hit the existing workspace symlink guard. Package dry-run
 inspected. Evidence: G02/editorial-error-boundary-checks.json. The pending shared
 flow-list calibration is separate work; its browser qualification remains pending.
+
+Flow tradeoff calibrated through the existing shared lists: two layouts and two
+process presets make the short route faster while leaving less waste headroom.
+Sixteen full direct runs verify all combinations and conservation; eight adverse
+runs show the same1.5s valve mistake fails the short route but allows long-route
+recovery. Browser review now requires that adverse pair, not just normal wins.
+
+Harness previews flow-tradeoff-001 and flow-tradeoff-002 pass72 browser checks
+in99.52s and82.47s. Long/short times17.65/16.95s and17.50/16.70s; short-route
+waste24.976/19.35L versus long-route5.304/5.91L. Actual initial and consequence
+frames inspected; primitive presentation and fixed north-facing flow view still
+need the broader foundation presentation work. The supplied Playwright client
+opened the short route and showed37.8% target fill; no client errors. Existing41
+tests/build/browser boundary pass. No generated game was edited.
+
+Evidence: G02/flow-tradeoff-checks.json, flow-fault-recovery-checks.json,
+flow-tradeoff-preview-evidence.json and flow-tradeoff-client-checks.json.
+The earlier flow-route-balance finding is resolved for these data combinations.
+They do not prove collection novelty. Next is Rally safe/shortcut routes with
+render-matching footprint checks, then catalog/concept compilation and the
+remaining frozen gates. G02 remains running; G03–G33 planned; accepted0/1000.

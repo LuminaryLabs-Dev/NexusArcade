@@ -50,3 +50,9 @@ splitting requires an explicit router. Verify per-tick conservation, alternate
 routes, waste-capacity failure and reset through inputs. Renderer paths and station
 footprints come from shared layout data. World labels must have bounded pixel size;
 model approval alone cannot establish readability or override image-based rejection.
+
+Retain a claimed route tradeoff only with competing measured outcomes: flow's
+short setup saves time but sacrifices waste headroom; the same input-driven valve
+mistake fails the short route and permits recovery on the longer route. Calibrate
+existing layout/process lists before extending behavior. Do not equate process
+preset counts with meaningful collection diversity.

@@ -173,3 +173,10 @@ their waste, timing, conservation, capacity failure and reset. World-label size 
 checked separately from model image review. Model approval cannot override an
 independent image rejection. These are development capability checks, not finished
 concept interpretation, collection novelty or target-device qualification.
+
+The flow lists calibrate setup distance against process loss: the short route
+finishes faster but leaves less waste capacity for mistakes. The longer route
+retains enough capacity to recover from a 1.5-second closed-valve mistake that
+fails the short route. Browser review repeats that same mistake through keyboard
+inputs on both routes. A route that wins both time and waste is not evidence of a
+tradeoff; numeric presets alone do not establish distinct collection games.
