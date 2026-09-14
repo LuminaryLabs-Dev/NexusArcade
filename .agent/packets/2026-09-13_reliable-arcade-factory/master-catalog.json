@@ -350,6 +350,15 @@
                     "cap.continuous_flow"
                   ],
                   "requiredEvidence": "Observable before/after state effect and meaningful role in objective."
+                },
+                {
+                  "id": "concepts.exchange.routing",
+                  "status": "planned",
+                  "meaning": "Redirecting a conserved stream changes which spatial destination receives it.",
+                  "requires": [
+                    "cap.continuous_flow"
+                  ],
+                  "requiredEvidence": "Drive the selector through player input, measure destination rates and storage changes, and disable the selector connection to show loss of the claimed route choice."
                 }
               ]
             }
@@ -377,6 +386,59 @@
           ],
           "gapRef": "cap.concept_exchange",
           "behavior": "Select an interpretation branch with an observable effect; growth may extend reach, exchange transfers ownership or resources.",
+          "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
+        },
+        {
+          "id": "concepts.dependency",
+          "status": "planned",
+          "provides": [
+            "choice.concepts.dependency"
+          ],
+          "requires": [
+            "cap.concept_dependency"
+          ],
+          "conflicts": [],
+          "children": [
+            {
+              "kind": "interpretation_choice",
+              "id": "concepts.dependency.interpretation",
+              "select": 1,
+              "options": [
+                {
+                  "id": "concepts.dependency.unlocking",
+                  "status": "planned",
+                  "meaning": "An aligned spatial control permits another control to act; losing alignment removes that permission.",
+                  "requires": [
+                    "cap.dependency_unlocks"
+                  ],
+                  "requiredEvidence": "Show a player input blocked before alignment, enabled after alignment, and blocked again after alignment is lost. Bypassing the permission domain must remove the required preparatory action."
+                }
+              ]
+            }
+          ],
+          "parameters": {
+            "branchDepth": {
+              "type": "integer",
+              "default": 2,
+              "minimum": 1,
+              "maximum": 3,
+              "unit": "levels"
+            }
+          },
+          "profileFragment": {
+            "op": "append_unique_by_option_id",
+            "path": "/decisionsByPoint/concepts",
+            "value": {
+              "optionId": "concepts.dependency",
+              "parametersFrom": "validated resolved parameters"
+            }
+          },
+          "implementationRefs": [],
+          "validationRefs": [
+            "concept"
+          ],
+          "gapRef": "cap.concept_dependency",
+          "behavior": "A state elsewhere enables or prevents an action here; the player must establish and maintain the required relationship.",
           "eligibilityCheck": "Capability requirements, selected parameters and checks must resolve with current evidence; source presence alone is not eligible."
         }
       ],
@@ -3692,6 +3754,12 @@
       "implementationRefs": [],
       "ownerGoal": "G05",
       "gapResolution": "Implement reusable domain contract and independent probes before eligibility; mandatory baseline implementation belongs to G02."
+    },
+    "cap.concept_dependency": {
+      "status": "missing",
+      "implementationRefs": [],
+      "ownerGoal": "G02",
+      "gapResolution": "Bind the independent dependency concept to typed boolean permission domains; verify causal player-input ablations before eligibility."
     }
   },
   "compatibilityRules": [

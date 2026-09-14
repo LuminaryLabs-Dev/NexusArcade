@@ -6,7 +6,7 @@
   "catalog": {
     "path": "master-catalog.json",
     "version": "contract-6",
-    "sha256": "76479c178160f212cbedc27b0767cb30e69e9dabb5c4769a70e8751e6126a835",
+    "sha256": "e74221d0c8b385b4cb115a19e77631ca54a556c6f9d9a812c2ddb2f48f06c20f",
     "hashEncoding": "canonical-json"
   },
   "executionContractRef": "execution-contract.json",

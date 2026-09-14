@@ -117,3 +117,14 @@ Recipe fragments may append bounded player guidance alongside their graph parts;
 the assembled player shows those selected rules with the unchanged specific
 intent. Do not rely on model naming to explain a new required interaction. Recipe
 lineage names terminal source ideas; repairs still preserve the original clock.
+
+Foundation catalog additions use catalog-update.mjs with a durable receipt and
+pending journal. Only append planned alternatives and missing capabilities;
+preserve old goal evidence and the 33-goal sequence. Queue access verifies the
+additive receipt chain. Open idea windows, accepted history, changes to existing
+rules/sources or completed foundation Build/Review require other revalidation.
+Never relabel old game or capability evidence with the new catalog hash.
+rollConceptRoots samples abstract roots before interpretation, retains all rolled
+roots and explicit expansion gaps, and does not filter for convenient mechanics.
+Root-pair coverage and development binding probes are not game novelty or
+eligibility. Main Generate integration and later capability migration remain open.

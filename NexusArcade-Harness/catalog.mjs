@@ -1,6 +1,26 @@
 import {digest,validateShape,verifyEvidence} from './factory.mjs';
 import {readFile} from 'node:fs/promises';
 import path from 'node:path';
+import {random} from './domains.mjs';
+import {assertAllowedText} from './text-policy.mjs';
+// Roll abstract roots before considering whether their interpretations combine.
+// Return the available expansion and explicit depth gaps; never replace a rolled
+// concept with an easier supported one or count these possibilities as games.
+export function rollConceptRoots(catalog,{seed,optionIds,count,depth}){
+ inspectCatalog(catalog);assertAllowedText(optionIds);
+ const point=catalog.decisionPoints.find(p=>p.id==='concepts');
+ if(!point||!Number.isInteger(seed)||seed<0||seed>4294967295||!Array.isArray(optionIds)||!optionIds.length||optionIds.length>128||new Set(optionIds).size!==optionIds.length||!Number.isInteger(count)||count<point.selection.min||count>point.selection.max||count>optionIds.length||!Number.isInteger(depth)||depth<1||depth>8)throw Error('Invalid independent concept roll');
+ const candidates=optionIds.map(id=>{const o=point.options.find(x=>x.id===id);if(!o||o.status==='disabled')throw Error('Unknown or disabled concept root');validateShape(depth,o.parameters.branchDepth);return o;});
+ const rng=random(seed),pool=[...candidates],rolled=[];
+ for(let i=0;i<count;i++){const at=Math.floor(rng()*pool.length);rolled.push(pool.splice(at,1)[0]);}
+ const gaps=[];
+ const expand=(nodes,remaining)=>nodes.map(n=>{
+  if(n.kind==='capability_leaf')return structuredClone(n);
+  if(remaining===0){gaps.push({choiceId:n.id,reason:'depth boundary requires interpretation; root retained'});return {kind:n.kind,id:n.id,unresolved:true};}
+  return {...structuredClone(n),options:n.options.map(o=>({...structuredClone(o),children:expand(o.children??[],remaining-1)}))};
+ });
+ return {version:1,eligible:false,seed,catalogHash:digest(catalog),inputHash:digest({optionIds,count,depth}),decisions:rolled.map(o=>({pointId:point.id,optionId:o.id,parameters:{branchDepth:depth}})),expansions:rolled.map(o=>({optionId:o.id,requires:[...o.requires],children:expand(o.children,depth)})),gaps,remaining:'Interpret these independent roots into supported connected behavior; compilation and all acceptance gates still apply.'};
+}
 export function inspectCatalog(catalog,{validationRules}={}){
  const ids=new Set(),pointIds=new Set(),capIds=new Set(Object.keys(catalog.capabilities)),findings=[];
  const ruleIds=validationRules&&new Set(validationRules.map(r=>r.id));
@@ -38,6 +58,7 @@ export async function resolveCatalog(catalog,selections,{branches={},repoRoot,ca
  for(const s of selections){
   validateShape(s,{type:'object',additionalProperties:false,required:['pointId','optionId','parameters'],properties:{pointId:{type:'string'},optionId:{type:'string'},parameters:{type:'object'}}});
   const point=byPoint.get(s.pointId),option=point?.options.find(o=>o.id===s.optionId);if(!option||chosen.has(s.optionId))throw Error('Unknown or duplicate selected option');
+  if(option.status!=='eligible')throw Error('Ineligible catalog option '+option.id);
   const parameters={};for(const key of Object.keys(s.parameters))if(!Object.hasOwn(option.parameters,key))throw Error('Unknown parameter');
   for(const [key,schema] of Object.entries(option.parameters)){parameters[key]=Object.hasOwn(s.parameters,key)?s.parameters[key]:schema.default;validateShape(parameters[key],schema,option.id+'/'+key);}
   for(const cap of option.requires)await ensureCap(cap);
@@ -48,7 +69,7 @@ export async function resolveCatalog(catalog,selections,{branches={},repoRoot,ca
   if(n.kind==='capability_leaf'){await ensureCap(n.ref);continue;}
   if(remaining<=0||ancestors.has(n.id))throw Error('Unresolved recursive branch at depth boundary');
   const selection=branches[n.id];if(!Array.isArray(selection)||selection.length!==n.select||new Set(selection).size!==selection.length)throw Error('Missing or duplicate interpretation selection '+n.id);
-  usedBranches.add(n.id);for(const id of selection){const opt=n.options.find(o=>o.id===id);if(!opt)throw Error('Unknown interpretation '+id);for(const cap of opt.requires??[])await ensureCap(cap);expanded.push({id,meaning:opt.meaning,requires:opt.requires});await expand(opt.children??[],new Set([...ancestors,n.id]),remaining-1);}
+  usedBranches.add(n.id);for(const id of selection){const opt=n.options.find(o=>o.id===id);if(!opt)throw Error('Unknown interpretation '+id);if(opt.status!==undefined&&opt.status!=='eligible')throw Error('Ineligible interpretation '+id);for(const cap of opt.requires??[])await ensureCap(cap);expanded.push({id,meaning:opt.meaning,requires:opt.requires});await expand(opt.children??[],new Set([...ancestors,n.id]),remaining-1);}
  }}
  for(const id of Object.keys(branches))if(!usedBranches.has(id))throw Error('Unused branch selection');
  const decisions=[];for(const point of catalog.decisionPoints){const selected=[...chosen.values()].filter(x=>x.pointId===point.id);if(selected.length<point.selection.min||selected.length>point.selection.max)throw Error('Selection count mismatch '+point.id);if(point.mergeRule==='set_once_equal_or_conflict'&&selected.length>1)throw Error('Conflicting single-value merge');decisions.push(...selected);}

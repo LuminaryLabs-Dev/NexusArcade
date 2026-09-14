@@ -10,12 +10,18 @@ import {compileSceneRecipe} from './scene-recipe.mjs';
 import {rollSceneLayers} from './scene-layers.mjs';
 import {compilePlayableScene} from './scene-spec.mjs';
 import {contracts,queueSnapshot,recoverWriter} from './factory.mjs';
-import {inspectCatalog} from './catalog.mjs';
+import {planCatalogAddition,updateCatalog,resumeCatalogUpdate} from './catalog-update.mjs';
+import {inspectCatalog,rollConceptRoots} from './catalog.mjs';
 import {cleanupFailed} from './cleanup.mjs';
 import {compileCatalogBehavior,compileCatalogScene} from './catalog-compiler.mjs';
 const [command='list',...args]=process.argv.slice(2);const get=(key,fallback)=>{const i=args.indexOf('--'+key);return i<0?fallback:args[i+1];};
 const controller=new AbortController();process.on('SIGINT',()=>controller.abort());process.on('SIGTERM',()=>controller.abort());
-if(command==='factory-check'){const {queue,catalog,policy,profile,hash}=await contracts();const audit=inspectCatalog(catalog,{validationRules:policy.validationRules});console.log(JSON.stringify({contractHash:hash,version:policy.schemaVersion,goals:queue.goals.length,target:queue.goals.reduce((n,g)=>n+g.acceptedGameTarget,0),requiredRules:profile.acceptance.requiredRuleIds,unresolvedCalibrations:policy.calibrationDecisions.filter(c=>c.status==='UNRESOLVED').map(c=>c.id),catalog:audit},null,2));
+if(command==='roll-concepts'){
+ const file=get('list',null);if(!file)throw Error('Expected --list with optionIds, count and depth');const input=JSON.parse(await readFile(file,'utf8'));if(!input||Object.keys(input).some(k=>!['optionIds','count','depth'].includes(k)))throw Error('Invalid concept list');const {catalog}=await contracts();console.log(JSON.stringify(rollConceptRoots(catalog,{...input,seed:Number(get('seed',0))}),null,2));
+}else if(command==='catalog-update'){
+ if(args.includes('--resume'))console.log(JSON.stringify(await resumeCatalogUpdate(),null,2));
+ else{const file=get('catalog',null);if(!file)throw Error('Expected --catalog with the full proposed catalog');const next=JSON.parse(await readFile(file,'utf8'));if(args.includes('--apply'))console.log(JSON.stringify(await updateCatalog(next,{expectedHash:get('expected-hash',null)}),null,2));else{const plan=planCatalogAddition(await contracts(),next);console.log(JSON.stringify({from:plan.from,to:plan.to,additions:plan.additions,scope:plan.scope},null,2));}}
+}else if(command==='factory-check'){const {queue,catalog,policy,profile,hash}=await contracts();const audit=inspectCatalog(catalog,{validationRules:policy.validationRules});console.log(JSON.stringify({contractHash:hash,version:policy.schemaVersion,goals:queue.goals.length,target:queue.goals.reduce((n,g)=>n+g.acceptedGameTarget,0),requiredRules:profile.acceptance.requiredRuleIds,unresolvedCalibrations:policy.calibrationDecisions.filter(c=>c.status==='UNRESOLVED').map(c=>c.id),catalog:audit},null,2));
 }else if(command==='compile-behavior'||command==='compile-scene'){
  const file=get('profile',null);if(!file)throw Error('Expected --profile with a behavior-composition JSON file');
  const {catalog}=await contracts();console.log(JSON.stringify((command==='compile-scene'?compileCatalogScene:compileCatalogBehavior)(catalog,JSON.parse(await readFile(file,'utf8'))),null,2));

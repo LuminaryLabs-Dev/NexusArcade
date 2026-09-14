@@ -34,6 +34,18 @@
       "parameters": {},
       "supportedConstants": {},
       "witness": {"port": "completed", "expectation": "change"}
+    },
+    "concepts.exchange.routing": {
+      "capabilities": ["flowRouter"],
+      "parameters": {},
+      "supportedConstants": {},
+      "witness": {"port": "direct", "expectation": "change"}
+    },
+    "concepts.dependency.unlocking": {
+      "capabilities": ["all"],
+      "parameters": {},
+      "supportedConstants": {},
+      "witness": {"port": "complete", "expectation": "change"}
     }
   }
 }

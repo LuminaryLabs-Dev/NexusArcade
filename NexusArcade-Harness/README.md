@@ -221,8 +221,9 @@ that it changes their numeric behavior.
 their parameters. Ignored parameters, unsupported branches and unattributed
 behavior are errors. `kits/domain-composition.mjs` transforms spatial settings and
 compiles the existing typed graph. The registry currently binds redirection,
-continuous flow, one-target flow completion, ownership transfer, accumulation and
-transfer concept branches. Unmapped catalog options remain implementation gaps.
+continuous flow, one-target flow completion, ownership transfer, accumulation,
+stream routing and dependency-unlocking concept branches. Unmapped catalog
+options remain implementation gaps.
 
 The output is `BEHAVIOR_COMPILED`, with `eligible: false` and `fullGame: false`.
 It lists missing game decision points, required capabilities/rules and unverified
@@ -231,6 +232,42 @@ a normal run and a meaningful counterfactual before qualification. The eligible
 entry point additionally uses the existing catalog source/evidence gate; these
 development bindings do not bypass it. Generic presentation assembly,
 complete-game checks and factory admission still require integration.
+
+Independent concept roots can be rolled before choosing their interpretation:
+
+```sh
+node NexusArcade-Harness/cli.mjs roll-concepts --list /path/to/concept-list.json --seed 5
+```
+
+The list contains `optionIds`, `count`, and `depth`; for example, two roots from
+`concepts.growth`, `concepts.exchange`, and `concepts.dependency`, at depth 2.
+The result retains the input/catalog hashes, selected roots, available child
+interpretations and any unresolved depth boundaries. It never substitutes a
+supported root for a harder rolled root. These rolls still need matching to
+recipe fragments; they do not change the main Generate workflow yet.
+
+During the unfinished foundation, append planned catalog options without
+rewriting earlier planning evidence:
+
+```sh
+node NexusArcade-Harness/cli.mjs catalog-update --catalog /path/to/proposed-catalog.json
+node NexusArcade-Harness/cli.mjs catalog-update --catalog /path/to/proposed-catalog.json --expected-hash <reviewed-from-hash> --apply
+node NexusArcade-Harness/cli.mjs catalog-update --resume
+```
+
+The first command reports the exact additions and contract hashes. Apply requires
+an idle writer, no open idea windows, valid original phase evidence, no accepted
+history and no completed foundation Build/Review. It only appends unqualified
+options, interpretation alternatives and missing capabilities; existing settings,
+rules, ordering and implementation references cannot change. A receipt retains
+the original specification and queue snapshot. A pending journal blocks factory
+work until its catalog, example-profile hash and queue writes finish. Resume
+verifies known before/after contents and only recovers migration locks whose
+process is confirmed dead. Unexpected edits or unrelated locks stop recovery.
+Queue reads and transitions verify the receipt chain. Earlier checks keep their
+original hashes; nothing becomes eligible or accepted. Changes to existing
+capabilities, and migrations after accepted history exists, still require a
+separate dependency-scoped revalidation path.
 
 `compile-scene --profile /path/to/scene.json` connects compiled catalog behavior
 to the shared simulation. Its closed profile contains `version: 1`, `behavior`
