@@ -81,7 +81,7 @@ G03 independent review starts from
 It lists the current provisional candidates and the six required facets: concept
 causality, interaction novelty, visual novelty, presentation/audio, target-device
 performance and human comprehension. Complete one verdict and at least one hashed
-evidence reference for every facet, then submit the reviewer packet with:
+evidence reference marked `"independent": true` for every facet, then submit the reviewer packet with:
 
 ```sh
 node NexusArcade-Harness/cli.mjs candidate-review --file /path/to/completed-review.json
