@@ -1,0 +1,1308 @@
+{
+  "version": 1,
+  "seed": 5,
+  "concepts": {
+    "optionIds": [
+      "concepts.growth",
+      "concepts.exchange",
+      "concepts.dependency"
+    ],
+    "count": 2,
+    "depth": 2
+  },
+  "base": {
+    "version": 1,
+    "scene": {
+      "version": 1,
+      "behavior": {
+        "version": 1,
+        "seed": 21001,
+        "specificIntent": "Fill TARGET before WASTE fills. Move with WASD; use E or Space at nearby controls.",
+        "preparedInterpretation": "The independent concepts choose connected flow routes, intermediate storage and spatial control dependencies from reusable fragments.",
+        "decisions": [
+          {
+            "pointId": "interaction",
+            "optionId": "interaction.redirect",
+            "parameters": {
+              "reach": 2.5
+            }
+          },
+          {
+            "pointId": "intention",
+            "optionId": "intention.redirect-flow",
+            "parameters": {
+              "requiredTargets": 1
+            }
+          }
+        ],
+        "conceptBranches": [],
+        "domainInstances": [
+          {
+            "id": "controls",
+            "capabilityId": "controls",
+            "capabilityVersion": 1,
+            "settings": {},
+            "transform": {
+              "x": 0,
+              "y": 0,
+              "z": 0,
+              "yaw": 0
+            },
+            "sourceOptionIds": []
+          },
+          {
+            "id": "objective",
+            "capabilityId": "objective",
+            "capabilityVersion": 1,
+            "settings": {},
+            "transform": {
+              "x": 0,
+              "y": 0,
+              "z": 0,
+              "yaw": 0
+            },
+            "sourceOptionIds": []
+          }
+        ],
+        "connections": [],
+        "objective": "objective"
+      },
+      "movement": {
+        "adapter": "walk",
+        "settings": {
+          "speed": 6
+        },
+        "start": {
+          "x": 0,
+          "y": 0,
+          "z": 12
+        },
+        "heading": 0
+      },
+      "collision": {
+        "adapter": "world",
+        "world": {
+          "version": 1,
+          "halfExtent": 14,
+          "actorRadius": 0.4,
+          "solids": []
+        }
+      },
+      "session": {
+        "durationSeconds": 120,
+        "failurePorts": [
+          {
+            "instance": "resource-goal",
+            "port": "failed"
+          }
+        ]
+      }
+    },
+    "presentation": {
+      "version": 1,
+      "theme": "lagoon",
+      "camera": "overhead",
+      "instances": [],
+      "hud": [
+        "reservoir",
+        "waste"
+      ]
+    },
+    "replayReason": "Try the other route: balance setup travel against liquid lost, then improve your completion time.",
+    "validationPlan": {
+      "version": 1,
+      "steps": []
+    },
+    "guidance": []
+  },
+  "fragments": [
+    {
+      "id": "supply",
+      "when": {
+        "all": [],
+        "none": []
+      },
+      "choices": [
+        {
+          "id": "supply",
+          "options": [
+            {
+              "id": "rate-6",
+              "add": {
+                "decisions": [
+                  {
+                    "pointId": "connections",
+                    "optionId": "connections.continuous-flow",
+                    "parameters": {
+                      "rate": 6
+                    }
+                  }
+                ],
+                "conceptBranches": [],
+                "domainInstances": [
+                  {
+                    "id": "source",
+                    "capabilityId": "flowSource",
+                    "capabilityVersion": 1,
+                    "settings": {
+                      "rate": 6
+                    },
+                    "transform": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 9,
+                      "yaw": 0
+                    },
+                    "sourceOptionIds": [
+                      "connections.continuous-flow"
+                    ]
+                  }
+                ],
+                "connections": [],
+                "presenters": [
+                  {
+                    "id": "source",
+                    "label": "PUMP",
+                    "tone": "accent"
+                  }
+                ],
+                "steps": []
+              },
+              "children": []
+            },
+            {
+              "id": "rate-7",
+              "add": {
+                "decisions": [
+                  {
+                    "pointId": "connections",
+                    "optionId": "connections.continuous-flow",
+                    "parameters": {
+                      "rate": 7
+                    }
+                  }
+                ],
+                "conceptBranches": [],
+                "domainInstances": [
+                  {
+                    "id": "source",
+                    "capabilityId": "flowSource",
+                    "capabilityVersion": 1,
+                    "settings": {
+                      "rate": 7
+                    },
+                    "transform": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 9,
+                      "yaw": 0
+                    },
+                    "sourceOptionIds": [
+                      "connections.continuous-flow"
+                    ]
+                  }
+                ],
+                "connections": [],
+                "presenters": [
+                  {
+                    "id": "source",
+                    "label": "PUMP",
+                    "tone": "accent"
+                  }
+                ],
+                "steps": []
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "redirected-exchange",
+      "when": {
+        "all": [
+          "concepts.exchange"
+        ],
+        "none": []
+      },
+      "choices": [
+        {
+          "id": "exchange-router-choice",
+          "options": [
+            {
+              "id": "exchange-router",
+              "add": {
+                "decisions": [],
+                "conceptBranches": [
+                  "concepts.exchange.routing"
+                ],
+                "domainInstances": [
+                  {
+                    "id": "router",
+                    "capabilityId": "flowRouter",
+                    "capabilityVersion": 1,
+                    "settings": {},
+                    "transform": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 2,
+                      "yaw": 0
+                    },
+                    "sourceOptionIds": [
+                      "connections.continuous-flow",
+                      "concepts.exchange.routing"
+                    ]
+                  }
+                ],
+                "connections": [],
+                "presenters": [
+                  {
+                    "id": "router",
+                    "label": "SPLIT",
+                    "tone": "accent"
+                  }
+                ],
+                "steps": []
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "supporting-router",
+      "when": {
+        "all": [],
+        "none": [
+          "concepts.exchange"
+        ]
+      },
+      "choices": [
+        {
+          "id": "default-router-choice",
+          "options": [
+            {
+              "id": "default-router",
+              "add": {
+                "decisions": [],
+                "conceptBranches": [],
+                "domainInstances": [
+                  {
+                    "id": "router",
+                    "capabilityId": "flowRouter",
+                    "capabilityVersion": 1,
+                    "settings": {},
+                    "transform": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 2,
+                      "yaw": 0
+                    },
+                    "sourceOptionIds": [
+                      "connections.continuous-flow"
+                    ]
+                  }
+                ],
+                "connections": [],
+                "presenters": [
+                  {
+                    "id": "router",
+                    "label": "SPLIT",
+                    "tone": "accent"
+                  }
+                ],
+                "steps": []
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "direct-selection",
+      "when": {
+        "all": [],
+        "none": [
+          "concepts.dependency"
+        ]
+      },
+      "choices": [
+        {
+          "id": "direct-selection-choice",
+          "options": [
+            {
+              "id": "direct-selection",
+              "add": {
+                "decisions": [],
+                "conceptBranches": [],
+                "domainInstances": [],
+                "connections": [
+                  {
+                    "from": "controls",
+                    "out": "action",
+                    "to": "v0",
+                    "in": "action",
+                    "delay": 0
+                  }
+                ],
+                "presenters": [],
+                "steps": []
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "paired-permission",
+      "when": {
+        "all": [
+          "concepts.dependency"
+        ],
+        "none": []
+      },
+      "choices": [
+        {
+          "id": "paired-permission-choice",
+          "options": [
+            {
+              "id": "paired-permission",
+              "add": {
+                "decisions": [],
+                "conceptBranches": [
+                  "concepts.dependency.unlocking"
+                ],
+                "domainInstances": [
+                  {
+                    "id": "interlock-west",
+                    "capabilityId": "valve",
+                    "capabilityVersion": 1,
+                    "settings": {
+                      "id": "interlock-west",
+                      "position": {
+                        "x": -11,
+                        "z": 8
+                      },
+                      "initial": 1,
+                      "target": 0,
+                      "range": 2.5
+                    },
+                    "transform": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 0,
+                      "yaw": 0
+                    },
+                    "sourceOptionIds": [
+                      "interaction.redirect"
+                    ]
+                  },
+                  {
+                    "id": "interlock-east",
+                    "capabilityId": "valve",
+                    "capabilityVersion": 1,
+                    "settings": {
+                      "id": "interlock-east",
+                      "position": {
+                        "x": 11,
+                        "z": 10
+                      },
+                      "initial": 1,
+                      "target": 0,
+                      "range": 2.5
+                    },
+                    "transform": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 0,
+                      "yaw": 0
+                    },
+                    "sourceOptionIds": [
+                      "interaction.redirect"
+                    ]
+                  },
+                  {
+                    "id": "permission",
+                    "capabilityId": "all",
+                    "capabilityVersion": 1,
+                    "settings": {},
+                    "transform": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 0,
+                      "yaw": 0
+                    },
+                    "sourceOptionIds": [
+                      "concepts.dependency.unlocking"
+                    ]
+                  }
+                ],
+                "connections": [
+                  {
+                    "from": "controls",
+                    "out": "position",
+                    "to": "interlock-west",
+                    "in": "position",
+                    "delay": 0
+                  },
+                  {
+                    "from": "controls",
+                    "out": "action",
+                    "to": "interlock-west",
+                    "in": "action",
+                    "delay": 0
+                  },
+                  {
+                    "from": "interlock-west",
+                    "out": "aligned",
+                    "to": "permission",
+                    "in": "values",
+                    "delay": 0
+                  },
+                  {
+                    "from": "controls",
+                    "out": "position",
+                    "to": "interlock-east",
+                    "in": "position",
+                    "delay": 0
+                  },
+                  {
+                    "from": "controls",
+                    "out": "action",
+                    "to": "interlock-east",
+                    "in": "action",
+                    "delay": 0
+                  },
+                  {
+                    "from": "interlock-east",
+                    "out": "aligned",
+                    "to": "permission",
+                    "in": "values",
+                    "delay": 0
+                  },
+                  {
+                    "from": "controls",
+                    "out": "action",
+                    "to": "permission",
+                    "in": "values",
+                    "delay": 0
+                  },
+                  {
+                    "from": "permission",
+                    "out": "complete",
+                    "to": "v0",
+                    "in": "action",
+                    "delay": 0
+                  }
+                ],
+                "presenters": [
+                  {
+                    "id": "interlock-west",
+                    "label": "UNLOCK WEST",
+                    "tone": "accent"
+                  },
+                  {
+                    "id": "interlock-east",
+                    "label": "UNLOCK EAST",
+                    "tone": "accent"
+                  }
+                ],
+                "steps": [
+                  {
+                    "action": "move",
+                    "x": -11,
+                    "z": 10
+                  },
+                  {
+                    "action": "interact",
+                    "count": 3
+                  },
+                  {
+                    "action": "move",
+                    "x": 11,
+                    "z": 12
+                  },
+                  {
+                    "action": "interact",
+                    "count": 3
+                  }
+                ],
+                "guidance": [
+                  "Align both UNLOCK WEST and UNLOCK EAST with three turns each to enable SELECT."
+                ]
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "parallel-routes",
+      "when": {
+        "all": [],
+        "none": [
+          "concepts.growth"
+        ]
+      },
+      "choices": [
+        {
+          "id": "parallel-routes-choice",
+          "options": [
+            {
+              "id": "parallel-routes",
+              "add": {
+                "decisions": [],
+                "conceptBranches": [],
+                "domainInstances": [
+                  {
+                    "id": "v0",
+                    "capabilityId": "valve",
+                    "capabilityVersion": 1,
+                    "settings": {
+                      "id": "v0",
+                      "position": {
+                        "x": 0,
+                        "z": 5
+                      },
+                      "initial": 3,
+                      "target": 0,
+                      "range": 2.5
+                    },
+                    "transform": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 0,
+                      "yaw": 0
+                    },
+                    "sourceOptionIds": [
+                      "interaction.redirect"
+                    ]
+                  },
+                  {
+                    "id": "v1",
+                    "capabilityId": "valve",
+                    "capabilityVersion": 1,
+                    "settings": {
+                      "id": "v1",
+                      "position": {
+                        "x": -7,
+                        "z": 0
+                      },
+                      "initial": 1,
+                      "target": 0,
+                      "range": 2.5
+                    },
+                    "transform": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 0,
+                      "yaw": 0
+                    },
+                    "sourceOptionIds": [
+                      "interaction.redirect"
+                    ]
+                  },
+                  {
+                    "id": "v2",
+                    "capabilityId": "valve",
+                    "capabilityVersion": 1,
+                    "settings": {
+                      "id": "v2",
+                      "position": {
+                        "x": 10,
+                        "z": -11
+                      },
+                      "initial": 1,
+                      "target": 0,
+                      "range": 2.5
+                    },
+                    "transform": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 0,
+                      "yaw": 0
+                    },
+                    "sourceOptionIds": [
+                      "interaction.redirect"
+                    ]
+                  },
+                  {
+                    "id": "direct",
+                    "capabilityId": "flowLink",
+                    "capabilityVersion": 1,
+                    "settings": {
+                      "efficiency": 0.7
+                    },
+                    "transform": {
+                      "x": -5,
+                      "y": 0,
+                      "z": -3,
+                      "yaw": 0
+                    },
+                    "sourceOptionIds": [
+                      "connections.continuous-flow"
+                    ]
+                  },
+                  {
+                    "id": "efficient",
+                    "capabilityId": "flowLink",
+                    "capabilityVersion": 1,
+                    "settings": {
+                      "efficiency": 0.9
+                    },
+                    "transform": {
+                      "x": 5,
+                      "y": 0,
+                      "z": -3,
+                      "yaw": 0
+                    },
+                    "sourceOptionIds": [
+                      "connections.continuous-flow"
+                    ]
+                  },
+                  {
+                    "id": "reservoir",
+                    "capabilityId": "flowStore",
+                    "capabilityVersion": 1,
+                    "settings": {
+                      "capacity": 45
+                    },
+                    "transform": {
+                      "x": -5,
+                      "y": 0,
+                      "z": -8,
+                      "yaw": 0
+                    },
+                    "sourceOptionIds": [
+                      "connections.continuous-flow"
+                    ]
+                  },
+                  {
+                    "id": "waste",
+                    "capabilityId": "flowStore",
+                    "capabilityVersion": 1,
+                    "settings": {
+                      "capacity": 24
+                    },
+                    "transform": {
+                      "x": 5,
+                      "y": 0,
+                      "z": -8,
+                      "yaw": 0
+                    },
+                    "sourceOptionIds": [
+                      "connections.continuous-flow"
+                    ]
+                  },
+                  {
+                    "id": "resource-goal",
+                    "capabilityId": "flowGoal",
+                    "capabilityVersion": 1,
+                    "settings": {},
+                    "transform": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 0,
+                      "yaw": 0
+                    },
+                    "sourceOptionIds": [
+                      "intention.redirect-flow"
+                    ]
+                  }
+                ],
+                "connections": [
+                  {
+                    "from": "controls",
+                    "out": "position",
+                    "to": "v0",
+                    "in": "position",
+                    "delay": 0
+                  },
+                  {
+                    "from": "controls",
+                    "out": "position",
+                    "to": "v1",
+                    "in": "position",
+                    "delay": 0
+                  },
+                  {
+                    "from": "controls",
+                    "out": "action",
+                    "to": "v1",
+                    "in": "action",
+                    "delay": 0
+                  },
+                  {
+                    "from": "controls",
+                    "out": "position",
+                    "to": "v2",
+                    "in": "position",
+                    "delay": 0
+                  },
+                  {
+                    "from": "controls",
+                    "out": "action",
+                    "to": "v2",
+                    "in": "action",
+                    "delay": 0
+                  },
+                  {
+                    "from": "source",
+                    "out": "rate",
+                    "to": "router",
+                    "in": "rate",
+                    "delay": 0
+                  },
+                  {
+                    "from": "v0",
+                    "out": "rotation",
+                    "to": "router",
+                    "in": "rotation",
+                    "delay": 0
+                  },
+                  {
+                    "from": "router",
+                    "out": "direct",
+                    "to": "direct",
+                    "in": "rate",
+                    "delay": 0
+                  },
+                  {
+                    "from": "v1",
+                    "out": "aligned",
+                    "to": "direct",
+                    "in": "open",
+                    "delay": 0
+                  },
+                  {
+                    "from": "router",
+                    "out": "efficient",
+                    "to": "efficient",
+                    "in": "rate",
+                    "delay": 0
+                  },
+                  {
+                    "from": "v2",
+                    "out": "aligned",
+                    "to": "efficient",
+                    "in": "open",
+                    "delay": 0
+                  },
+                  {
+                    "from": "direct",
+                    "out": "rate",
+                    "to": "reservoir",
+                    "in": "rates",
+                    "delay": 0
+                  },
+                  {
+                    "from": "direct",
+                    "out": "loss",
+                    "to": "waste",
+                    "in": "rates",
+                    "delay": 0
+                  },
+                  {
+                    "from": "efficient",
+                    "out": "rate",
+                    "to": "reservoir",
+                    "in": "rates",
+                    "delay": 0
+                  },
+                  {
+                    "from": "efficient",
+                    "out": "loss",
+                    "to": "waste",
+                    "in": "rates",
+                    "delay": 0
+                  },
+                  {
+                    "from": "reservoir",
+                    "out": "complete",
+                    "to": "resource-goal",
+                    "in": "full",
+                    "delay": 0
+                  },
+                  {
+                    "from": "waste",
+                    "out": "available",
+                    "to": "resource-goal",
+                    "in": "safe",
+                    "delay": 0
+                  },
+                  {
+                    "from": "resource-goal",
+                    "out": "complete",
+                    "to": "objective",
+                    "in": "complete",
+                    "delay": 0
+                  }
+                ],
+                "presenters": [
+                  {
+                    "id": "v0",
+                    "label": "SELECT",
+                    "tone": "accent"
+                  },
+                  {
+                    "id": "v1",
+                    "label": "ROUTE A",
+                    "tone": "accent"
+                  },
+                  {
+                    "id": "v2",
+                    "label": "ROUTE B",
+                    "tone": "accent"
+                  },
+                  {
+                    "id": "direct",
+                    "label": "A",
+                    "tone": "accent"
+                  },
+                  {
+                    "id": "efficient",
+                    "label": "B",
+                    "tone": "accent"
+                  },
+                  {
+                    "id": "reservoir",
+                    "label": "TARGET",
+                    "tone": "primary"
+                  },
+                  {
+                    "id": "waste",
+                    "label": "WASTE",
+                    "tone": "danger"
+                  }
+                ],
+                "steps": [
+                  {
+                    "action": "move",
+                    "x": -7,
+                    "z": 2
+                  },
+                  {
+                    "action": "interact",
+                    "count": 3
+                  },
+                  {
+                    "action": "move",
+                    "x": 0,
+                    "z": 7
+                  },
+                  {
+                    "action": "interact",
+                    "count": 1
+                  },
+                  {
+                    "action": "wait",
+                    "seconds": 15
+                  }
+                ],
+                "guidance": [
+                  "Open ROUTE A or ROUTE B before choosing it with SELECT. ROUTE B wastes less liquid."
+                ]
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "staged-routes",
+      "when": {
+        "all": [
+          "concepts.growth"
+        ],
+        "none": []
+      },
+      "choices": [
+        {
+          "id": "staged-routes-choice",
+          "options": [
+            {
+              "id": "staged-routes",
+              "add": {
+                "decisions": [],
+                "conceptBranches": [
+                  "concepts.growth.accumulation"
+                ],
+                "domainInstances": [
+                  {
+                    "id": "v0",
+                    "capabilityId": "valve",
+                    "capabilityVersion": 1,
+                    "settings": {
+                      "id": "v0",
+                      "position": {
+                        "x": 0,
+                        "z": 5
+                      },
+                      "initial": 3,
+                      "target": 0,
+                      "range": 2.5
+                    },
+                    "transform": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 0,
+                      "yaw": 0
+                    },
+                    "sourceOptionIds": [
+                      "interaction.redirect"
+                    ]
+                  },
+                  {
+                    "id": "v2",
+                    "capabilityId": "valve",
+                    "capabilityVersion": 1,
+                    "settings": {
+                      "id": "v2",
+                      "position": {
+                        "x": 9,
+                        "z": 4
+                      },
+                      "initial": 1,
+                      "target": 0,
+                      "range": 2.5
+                    },
+                    "transform": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 0,
+                      "yaw": 0
+                    },
+                    "sourceOptionIds": [
+                      "interaction.redirect"
+                    ]
+                  },
+                  {
+                    "id": "direct",
+                    "capabilityId": "flowLink",
+                    "capabilityVersion": 1,
+                    "settings": {
+                      "efficiency": 0.9
+                    },
+                    "transform": {
+                      "x": -5,
+                      "y": 0,
+                      "z": -3,
+                      "yaw": 0
+                    },
+                    "sourceOptionIds": [
+                      "connections.continuous-flow"
+                    ]
+                  },
+                  {
+                    "id": "efficient",
+                    "capabilityId": "flowLink",
+                    "capabilityVersion": 1,
+                    "settings": {
+                      "efficiency": 0.9
+                    },
+                    "transform": {
+                      "x": 5,
+                      "y": 0,
+                      "z": -3,
+                      "yaw": 0
+                    },
+                    "sourceOptionIds": [
+                      "connections.continuous-flow"
+                    ]
+                  },
+                  {
+                    "id": "reservoir",
+                    "capabilityId": "flowStore",
+                    "capabilityVersion": 1,
+                    "settings": {
+                      "capacity": 20
+                    },
+                    "transform": {
+                      "x": -5,
+                      "y": 0,
+                      "z": -8,
+                      "yaw": 0
+                    },
+                    "sourceOptionIds": [
+                      "connections.continuous-flow"
+                    ]
+                  },
+                  {
+                    "id": "waste",
+                    "capabilityId": "flowStore",
+                    "capabilityVersion": 1,
+                    "settings": {
+                      "capacity": 12
+                    },
+                    "transform": {
+                      "x": 5,
+                      "y": 0,
+                      "z": -8,
+                      "yaw": 0
+                    },
+                    "sourceOptionIds": [
+                      "connections.continuous-flow"
+                    ]
+                  },
+                  {
+                    "id": "resource-goal",
+                    "capabilityId": "flowGoal",
+                    "capabilityVersion": 1,
+                    "settings": {},
+                    "transform": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 0,
+                      "yaw": 0
+                    },
+                    "sourceOptionIds": [
+                      "intention.redirect-flow"
+                    ]
+                  },
+                  {
+                    "id": "reserve",
+                    "capabilityId": "flowStore",
+                    "capabilityVersion": 1,
+                    "settings": {
+                      "capacity": 8
+                    },
+                    "sourceOptionIds": [
+                      "connections.continuous-flow",
+                      "concepts.growth.accumulation"
+                    ],
+                    "transform": {
+                      "x": -7,
+                      "y": 0,
+                      "z": -4,
+                      "yaw": 0
+                    }
+                  },
+                  {
+                    "id": "release-ready",
+                    "capabilityId": "all",
+                    "capabilityVersion": 1,
+                    "settings": {},
+                    "sourceOptionIds": [],
+                    "transform": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 0,
+                      "yaw": 0
+                    }
+                  }
+                ],
+                "connections": [
+                  {
+                    "from": "controls",
+                    "out": "position",
+                    "to": "v0",
+                    "in": "position",
+                    "delay": 0
+                  },
+                  {
+                    "from": "controls",
+                    "out": "position",
+                    "to": "v2",
+                    "in": "position",
+                    "delay": 0
+                  },
+                  {
+                    "from": "controls",
+                    "out": "action",
+                    "to": "v2",
+                    "in": "action",
+                    "delay": 0
+                  },
+                  {
+                    "from": "source",
+                    "out": "rate",
+                    "to": "router",
+                    "in": "rate",
+                    "delay": 0
+                  },
+                  {
+                    "from": "v0",
+                    "out": "rotation",
+                    "to": "router",
+                    "in": "rotation",
+                    "delay": 0
+                  },
+                  {
+                    "from": "router",
+                    "out": "direct",
+                    "to": "direct",
+                    "in": "rate",
+                    "delay": 0
+                  },
+                  {
+                    "from": "router",
+                    "out": "efficient",
+                    "to": "efficient",
+                    "in": "rate",
+                    "delay": 0
+                  },
+                  {
+                    "from": "direct",
+                    "out": "rate",
+                    "to": "reserve",
+                    "in": "rates",
+                    "delay": 0
+                  },
+                  {
+                    "from": "direct",
+                    "out": "loss",
+                    "to": "waste",
+                    "in": "rates",
+                    "delay": 0
+                  },
+                  {
+                    "from": "efficient",
+                    "out": "rate",
+                    "to": "reservoir",
+                    "in": "rates",
+                    "delay": 0
+                  },
+                  {
+                    "from": "efficient",
+                    "out": "loss",
+                    "to": "waste",
+                    "in": "rates",
+                    "delay": 0
+                  },
+                  {
+                    "from": "reservoir",
+                    "out": "complete",
+                    "to": "resource-goal",
+                    "in": "full",
+                    "delay": 0
+                  },
+                  {
+                    "from": "waste",
+                    "out": "available",
+                    "to": "resource-goal",
+                    "in": "safe",
+                    "delay": 0
+                  },
+                  {
+                    "from": "resource-goal",
+                    "out": "complete",
+                    "to": "objective",
+                    "in": "complete",
+                    "delay": 0
+                  },
+                  {
+                    "from": "v0",
+                    "out": "aligned",
+                    "to": "direct",
+                    "in": "open",
+                    "delay": 0
+                  },
+                  {
+                    "from": "reserve",
+                    "out": "complete",
+                    "to": "release-ready",
+                    "in": "values",
+                    "delay": 0
+                  },
+                  {
+                    "from": "v2",
+                    "out": "aligned",
+                    "to": "release-ready",
+                    "in": "values",
+                    "delay": 0
+                  },
+                  {
+                    "from": "release-ready",
+                    "out": "complete",
+                    "to": "efficient",
+                    "in": "open",
+                    "delay": 0
+                  }
+                ],
+                "presenters": [
+                  {
+                    "id": "v0",
+                    "label": "SELECT",
+                    "tone": "accent"
+                  },
+                  {
+                    "id": "v2",
+                    "label": "RELEASE",
+                    "tone": "accent"
+                  },
+                  {
+                    "id": "direct",
+                    "label": "A",
+                    "tone": "accent"
+                  },
+                  {
+                    "id": "efficient",
+                    "label": "B",
+                    "tone": "accent"
+                  },
+                  {
+                    "id": "reservoir",
+                    "label": "TARGET",
+                    "tone": "primary"
+                  },
+                  {
+                    "id": "waste",
+                    "label": "WASTE",
+                    "tone": "danger"
+                  },
+                  {
+                    "id": "reserve",
+                    "label": "RESERVE",
+                    "tone": "primary"
+                  }
+                ],
+                "steps": [
+                  {
+                    "action": "move",
+                    "x": 9,
+                    "z": 6
+                  },
+                  {
+                    "action": "interact",
+                    "count": 3
+                  },
+                  {
+                    "action": "move",
+                    "x": 0,
+                    "z": 7
+                  },
+                  {
+                    "action": "interact",
+                    "count": 1
+                  },
+                  {
+                    "action": "wait",
+                    "seconds": 2
+                  },
+                  {
+                    "action": "interact",
+                    "count": 1
+                  },
+                  {
+                    "action": "wait",
+                    "seconds": 6
+                  }
+                ],
+                "guidance": [
+                  "Set SELECT to A to fill RESERVE. Open RELEASE, then switch SELECT to B to fill TARGET."
+                ]
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

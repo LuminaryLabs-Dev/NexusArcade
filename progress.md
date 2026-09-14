@@ -328,3 +328,21 @@ open the interlock without accidentally starting fluid flow. Repaired player
 instructions explicitly include opening RELEASE.41 existing tests/build/browser
 boundary and package checks passed. G02 running; accepted0/1000; all33 goals and
 four authoritative specification identities/order preserved.
+
+
+Concept integration increment: default Generate now rolls independent roots and
+matches reusable fragments through the shared scene compiler. Coverage remains a
+narrow flow-system collection; configuration counts are not unique accepted games.
+Bounded model wording, full-frame visual facts and supplementary actor crops reject
+invented actions while resolving uncertain player visibility. Shared player markers
+and stable thumbnail sizing make Play visible and prevent card layout shifts.
+
+Two retained development previews: concept-mix-001d (991111ms, original retry clock)
+and game-1789357375595 (133844ms). Combined52 browser checks and7 arcade journey
+checks passed. Three failed launches were removed through harness cleanup, keeping
+diagnostic evidence.41 existing tests, build,17-module browser boundary and103-file
+package inspection passed. G02 checkpoint has105 verified evidence references.
+Editorial exclusion verified across5 direct cases; automatic generation excludes
+the historical delivery family. No generated artifacts manually changed.
+G02 remains running, accepted0/1000. Next: contrasting spatial, camera, interaction
+and presentation fragments, followed by full qualification; retain original33 goals.

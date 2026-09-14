@@ -31,9 +31,10 @@ ports, stable ordering, required objective contribution and explicit next-tick
 feedback. Generated pilots store graph data; the trusted NexusEngine adapter
 executes it. Shared scene-runtime adapters now own movement, collision and session
 outcomes. Generic scene presenters and immutable assembly now consume explicit
-catalog scene profiles; ordinary UI generation still uses the pilot path.
-The arcade uses this pilot path, with honest challenge choices instead of unused
-complexity controls. Renewable player reservations expire after 60 seconds; late
+catalog scene profiles. Default arcade generation now rolls independent concepts
+and matches data-only fragments through concept-recipe.mjs; Rally and flow pilot
+choices remain explicit alternatives. Do not imply this small flow-fragment
+collection covers the broader catalog. Renewable player reservations expire after 60 seconds; late
 renewals never reopen a closed session, and expired views require explicit reload.
 
 Transfer world geometry is shared by rendering, body-footprint collision and route
@@ -127,4 +128,18 @@ Never relabel old game or capability evidence with the new catalog hash.
 rollConceptRoots samples abstract roots before interpretation, retains all rolled
 roots and explicit expansion gaps, and does not filter for convenient mechanics.
 Root-pair coverage and development binding probes are not game novelty or
-eligibility. Main Generate integration and later capability migration remain open.
+eligibility. Later capability migration remains open.
+
+Concept recipes preserve the independent root roll before matching all/none
+conditions over reusable fragments. Missing witnesses fail compilation instead of
+rerolling roots. Keep source concept recipe, roll hashes, matched fragment IDs and
+compiled recipe hash with the idea. The local models choose supported editorial
+wording; image review returns bounded visibility/readability facts, with the
+harness deriving its verdict. This prevents invented prose from becoming
+player instructions or evidence; it does not prove the visual judgments correct.
+
+When full-frame player visibility is uncertain, the scene reviewer can collect an
+unmodified screenshot crop centered on the actual actor bounds. Keep both images,
+bounds and original/resolved facts; only uncertainty can be resolved this way,
+never an explicit failure. The shared YOU marker avoids control/actor overlap.
+Arcade cards bound instruction previews; full rules remain in the start overlay.

@@ -6,6 +6,7 @@ import {hash} from './model.mjs';
 import assert from 'node:assert/strict';
 import {generatePilot} from './pilot-run.mjs';
 import {generateScene} from './scene-run.mjs';
+import {compileConceptRecipe} from './concept-recipe.mjs';
 import {compileSceneRecipe} from './scene-recipe.mjs';
 import {rollSceneLayers} from './scene-layers.mjs';
 import {compilePlayableScene} from './scene-spec.mjs';
@@ -16,7 +17,11 @@ import {cleanupFailed} from './cleanup.mjs';
 import {compileCatalogBehavior,compileCatalogScene} from './catalog-compiler.mjs';
 const [command='list',...args]=process.argv.slice(2);const get=(key,fallback)=>{const i=args.indexOf('--'+key);return i<0?fallback:args[i+1];};
 const controller=new AbortController();process.on('SIGINT',()=>controller.abort());process.on('SIGTERM',()=>controller.abort());
-if(command==='roll-concepts'){
+if(command==='compile-concepts'||command==='scene-concepts'){
+ const file=get('recipe',null);if(!file)throw Error('Expected --recipe with a concept-fragment recipe');const conceptRecipe=JSON.parse(await readFile(file,'utf8'));if(get('seed',undefined)!==undefined)conceptRecipe.seed=Number(get('seed'));
+ if(command==='compile-concepts'){const {catalog}=await contracts();console.log(JSON.stringify(compileConceptRecipe(catalog,conceptRecipe),null,2));}
+ else{const s=await generateScene({id:safeId(get('id','concept-'+Date.now())),conceptRecipe,retryOf:get('retry-of',undefined),repairReason:get('repair-reason',undefined),signal:controller.signal,onProgress:p=>console.log(JSON.stringify(p))});console.log(JSON.stringify({id:s.id,status:s.status,preview:s.previewVerdict,error:s.error}));if(s.status==='FAIL'){process.exitCode=1;console.log(JSON.stringify({cleanup:await cleanupFailed(s.id,{apply:true})}));}}
+}else if(command==='roll-concepts'){
  const file=get('list',null);if(!file)throw Error('Expected --list with optionIds, count and depth');const input=JSON.parse(await readFile(file,'utf8'));if(!input||Object.keys(input).some(k=>!['optionIds','count','depth'].includes(k)))throw Error('Invalid concept list');const {catalog}=await contracts();console.log(JSON.stringify(rollConceptRoots(catalog,{...input,seed:Number(get('seed',0))}),null,2));
 }else if(command==='catalog-update'){
  if(args.includes('--resume'))console.log(JSON.stringify(await resumeCatalogUpdate(),null,2));

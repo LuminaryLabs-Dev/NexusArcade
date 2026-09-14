@@ -18,7 +18,7 @@ export function createSceneView(canvas,c){
  const sphere=(r,x,y,z,mat,parent)=>mesh(new THREE.SphereGeometry(r,12,8),mat,x,y,z,parent);
  const updates=[],labels=[],physical=[],entities=new Map(),observations=new Map(),pipes=[];let width=1100,height=780,actorBounds=null;
  function plate(text,x,y,z){const canvas=document.createElement('canvas');canvas.width=512;canvas.height=128;const ctx=canvas.getContext('2d'),texture=new THREE.CanvasTexture(canvas);texture.colorSpace=THREE.SRGBColorSpace;const sprite=new THREE.Sprite(new THREE.SpriteMaterial({map:texture,depthTest:true,sizeAttenuation:false}));sprite.position.set(x,y,z);sprite.center.set(.5,-.25);scene.add(sprite);let last;
-  const entry={sprite,x:0,y:0,width:160,height:40,text:'',set(value){if(last===value)return;last=value;entry.text=value;ctx.clearRect(0,0,512,128);ctx.fillStyle='#10212de8';ctx.fillRect(0,0,512,128);ctx.fillStyle='#f3ffff';ctx.font='bold 50px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(value,256,64,490);texture.needsUpdate=true;}};entry.set(text);labels.push(entry);return entry;
+  const entry={sprite,x:0,y:0,width:160,height:40,fontSize:50,text:'',set(value){if(last===value)return;last=value;entry.text=value;ctx.clearRect(0,0,512,128);ctx.fillStyle='#10212de8';ctx.fillRect(0,0,512,128);ctx.fillStyle='#f3ffff';ctx.font='bold '+entry.fontSize+'px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(value,256,64,490);texture.needsUpdate=true;}};entry.set(text);labels.push(entry);return entry;
  }
  const extent=runtime.collision.adapter==='world'?runtime.collision.world.halfExtent:70;box(extent*2,.5,extent*2,0,-.27,0,mats.ground);
  if(runtime.collision.adapter==='world'){
@@ -36,6 +36,7 @@ export function createSceneView(canvas,c){
  if(runtime.movement.adapter==='steering'){const v=runtime.collision.vehicle;box(v.width*.85,.55,v.length*.95,0,.55,0,mats.accent,actor);box(v.width*.65,.5,v.length*.45,0,1,0,mats.dark,actor);for(const x of [-v.width*.4,v.width*.4])for(const z of [-v.length*.32,v.length*.32]){const wheel=mesh(new THREE.CylinderGeometry(.3,.3,v.width*.2,12),mats.dark,x,.3,z,actor);wheel.rotation.z=Math.PI/2;}}
  else mesh(new THREE.CapsuleGeometry(runtime.collision.world.actorRadius,.7,4,12),mats.primary,0,.75,0,actor);
  actor.visible=p.camera!=='forward';
+ const playerTag=plate('',0,3.2,0);playerTag.width=96;playerTag.height=24;playerTag.fontSize=90;playerTag.set('YOU');playerTag.active=actor.visible;
  const builders={
   valve(n,node){const pos=node.position,mat=material(theme[node.tone],.5),wheel=mesh(new THREE.TorusGeometry(.7,.12,10,28),mat,pos.x,1.5,pos.z);wheel.rotation.x=-Math.PI/2;const needle=box(.12,.13,1.2,pos.x,1.65,pos.z,mats.accent),tag=plate(node.label,pos.x,2.65,pos.z),router=runtime.domainGraph.wires.some(w=>w.from===n.id&&w.out==='rotation'&&byId.get(w.to).capability==='flowRouter');
    observations.set(n.id,()=>({rotation:needle.rotation.y,label:tag.text,labelVisible:tag.sprite.visible}));
@@ -59,7 +60,7 @@ export function createSceneView(canvas,c){
  }
  const project=v=>{const p=v.clone().project(camera);return {x:(p.x+1)*width/2,y:(1-p.y)*height/2,z:p.z};};
  function render(s){
-  actor.position.set(s.player.x,0,s.player.z);actor.rotation.y=s.heading;
+  actor.position.set(s.player.x,0,s.player.z);actor.rotation.y=s.heading;playerTag.sprite.position.set(s.player.x,3.2,s.player.z);
   for(const {solid,body}of physical){const opened=solidOpen(solid,s.domainState);body.scale.y=opened?.025:1;body.position.y=opened?.025:solid.height/2;}
   for(const update of updates)update(s);
   for(const pipe of pipes){const value=byId.get(pipe.w.to).capability==='flowRouter'&&pipe.w.in==='rate'?s.domainState[pipe.w.to].intake:s.domainState[pipe.w.from][pipe.w.out];pipe.pulse.visible=value>0;pipe.mat.emissiveIntensity=value>0?.7:.01;if(value>0)pipe.pulse.position.copy(pipe.start).lerp(pipe.end,(s.elapsed*(1+value*.2)%pipe.length)/pipe.length);}
@@ -68,13 +69,18 @@ export function createSceneView(canvas,c){
   else{camera.position.set(s.player.x-Math.sin(heading)*cameraChoice.back,cameraChoice.height,s.player.z-Math.cos(heading)*cameraChoice.back);camera.lookAt(s.player.x+Math.sin(heading)*8,1,s.player.z+Math.cos(heading)*8);}
   camera.updateMatrixWorld();actorBounds=null;
   if(actor.visible){const b=new THREE.Box3().setFromObject(actor),corners=[];for(const x of [b.min.x,b.max.x])for(const y of [b.min.y,b.max.y])for(const z of [b.min.z,b.max.z])corners.push(project(new THREE.Vector3(x,y,z)));actorBounds={left:Math.min(...corners.map(p=>p.x))-8,right:Math.max(...corners.map(p=>p.x))+8,top:Math.min(...corners.map(p=>p.y))-8,bottom:Math.max(...corners.map(p=>p.y))+8};}
-  const used=[];for(const tag of [...labels].sort((a,b)=>a.sprite.position.distanceTo(actor.position)-b.sprite.position.distanceTo(actor.position))){const p=project(tag.sprite.position);p.y-=tag.height*.75;tag.x=p.x;tag.y=p.y;tag.sprite.scale.set(tag.width*2/(camera.projectionMatrix.elements[0]*width),tag.height*2/(camera.projectionMatrix.elements[5]*height),1);const box={left:p.x-tag.width/2,right:p.x+tag.width/2,top:p.y-tag.height/2,bottom:p.y+tag.height/2},overlap=b=>box.right>b.left&&box.left<b.right&&box.bottom>b.top&&box.top<b.bottom;
-   tag.sprite.visible=tag.active!==false&&p.z>=-1&&p.z<=1&&box.left>=8&&box.right<=width-8&&box.top>=88&&box.bottom<=height-90&&!(actorBounds&&overlap(actorBounds))&&!used.some(overlap);if(tag.sprite.visible)used.push(box);
+  const used=[];for(const tag of [...labels].sort((a,b)=>a===playerTag?1:b===playerTag?-1:a.sprite.position.distanceTo(actor.position)-b.sprite.position.distanceTo(actor.position))){
+   tag.sprite.scale.set(tag.width*2/(camera.projectionMatrix.elements[0]*width),tag.height*2/(camera.projectionMatrix.elements[5]*height),1);
+   const candidates=tag===playerTag?[new THREE.Vector3(s.player.x,3.2,s.player.z),new THREE.Vector3(s.player.x+3.5,1,s.player.z),new THREE.Vector3(s.player.x-3.5,1,s.player.z)]:[tag.sprite.position.clone()];
+   tag.sprite.visible=false;
+   for(const position of candidates){const point=project(position);point.y-=tag.height*.75;const box={left:point.x-tag.width/2,right:point.x+tag.width/2,top:point.y-tag.height/2,bottom:point.y+tag.height/2},overlap=b=>box.right>b.left&&box.left<b.right&&box.bottom>b.top&&box.top<b.bottom;
+    if(tag.active!==false&&point.z>=-1&&point.z<=1&&box.left>=8&&box.right<=width-8&&box.top>=88&&box.bottom<=height-90&&!(actorBounds&&overlap(actorBounds))&&!used.some(overlap)){tag.sprite.position.copy(position);tag.x=point.x;tag.y=point.y;tag.sprite.visible=true;used.push(box);break;}
+   }
   }
   renderer.render(scene,camera);
  }
  function resize(){width=innerWidth;height=innerHeight;renderer.setSize(width,height);camera.aspect=width/height;camera.updateProjectionMatrix();}
- const evidence=()=>({three:THREE.REVISION,triangles:renderer.info.render.triangles,drawCalls:renderer.info.render.calls,camera:p.camera,actorScreenBounds:actorBounds,domainViews:Object.fromEntries([...observations].map(([id,read])=>[id,read()])),presenters:p.nodes.map(n=>({id:n.id,capability:n.capability})),worldLabels:labels.map(t=>({text:t.text,x:t.x,y:t.y,width:t.width,height:t.height,visible:t.sprite.visible})),connections:pipes.length,appearance:{roughness:mats.wall.roughness,metalness:mats.wall.metalness,exposure:renderer.toneMappingExposure,fogType:scene.fog.type??(scene.fog.isFogExp2?'FogExp2':'Fog'),fogDensity:scene.fog.density??null}});
+ const evidence=()=>({three:THREE.REVISION,triangles:renderer.info.render.triangles,drawCalls:renderer.info.render.calls,camera:p.camera,actorScreenBounds:actorBounds,playerMarker:{visible:playerTag.sprite.visible,x:playerTag.x,y:playerTag.y,width:playerTag.width,height:playerTag.height},domainViews:Object.fromEntries([...observations].map(([id,read])=>[id,read()])),presenters:p.nodes.map(n=>({id:n.id,capability:n.capability})),worldLabels:labels.map(t=>({text:t.text,x:t.x,y:t.y,width:t.width,height:t.height,visible:t.sprite.visible})),connections:pipes.length,appearance:{roughness:mats.wall.roughness,metalness:mats.wall.metalness,exposure:renderer.toneMappingExposure,fogType:scene.fog.type??(scene.fog.isFogExp2?'FogExp2':'Fog'),fogDensity:scene.fog.density??null}});
  const dispose=()=>{environment?.dispose();scene.traverse(o=>{o.geometry?.dispose();for(const m of o.material?(Array.isArray(o.material)?o.material:[o.material]):[]){m.map?.dispose();m.dispose();}});renderer.dispose();};
  resize();return {render,resize,evidence,dispose};
 }

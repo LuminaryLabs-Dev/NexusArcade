@@ -113,9 +113,9 @@ protected. New failed CLI pilot runs invoke this cleanup automatically. Independ
 review may reject a passing development preview through `rejectPreview` with
 hashed evidence; this removes its card without pretending it passed factory review.
 
-The seeded pilot paths are available through `cli.mjs pilot` and the arcade Generate
-action. The library displays passing development previews automatically. Generic
-master-catalog integration remains foundation work.
+The seeded pilot paths remain available through `cli.mjs pilot`; Rally and flow
+are also explicit arcade choices. The default button uses concept fragments. The
+library displays passing development previews; full catalog coverage remains open.
 
 Improvement rejects equal-score revisions and regressions, restores the best
 configuration and its findings before proposing another change, and rejects
@@ -132,13 +132,12 @@ The three development pilots persist these graphs and execute them through a
 local NexusEngine service kit. Movement, world/presenter selection and profile
 mapping remain family-specific; this is not full master-catalog compilation.
 
-The arcade Generate action now uses the typed pilot path. Its advanced Challenge
-selector offers Surprise me, Rally racing, Cargo delivery and Flow puzzle; unused
-complexity settings are no longer shown. New results have a Show new games action.
+The arcade Generate action defaults to Concept mix. Its advanced selector also
+offers Rally racing and Flow puzzle; unused complexity settings are not shown. New results have a Show new games action.
 New player sessions renew from the arcade, expire after 60 seconds without renewal,
 and cannot be resurrected by late renewal requests. Expired views pause and require
 explicit reload. Older clients without leaseVersion 1 keep their original explicit
-Back behavior until refreshed. Failed server-generated pilots use protected cleanup.
+Back behavior until refreshed. Failed server-generated previews use protected cleanup.
 
 Transfer selects compatible room-door and cargo layouts from `pilot-options.json`.
 Delivery membership opens bound shortcut doors. `kits/spatial-world.mjs` supplies
@@ -154,9 +153,9 @@ changes, restart the server: new admission rejects a stale loaded generator.
 and schemas containing it fail before inference; responses containing it receive
 generic correction without echoing the term. New library entries are checked;
 historical titles using it are hidden and their playable endpoints are unavailable.
-Historical artifacts remain intact. Automatic rolls choose flow or racing, and
-the CLI defaults to racing. Transfer interactions remain explicitly selectable;
-renaming a template does not establish new gameplay or novelty.
+Historical artifacts remain intact. Automatic arcade rolls use concept fragments.
+The pilot CLI still defaults to racing and retains explicit historical adapter
+access. Renaming a template does not establish new gameplay or novelty.
 
 Flow generation combines two station layouts with two bounded process presets.
 The selector routes fluid through a short lossy branch, a longer efficient branch,
@@ -243,8 +242,9 @@ The list contains `optionIds`, `count`, and `depth`; for example, two roots from
 `concepts.growth`, `concepts.exchange`, and `concepts.dependency`, at depth 2.
 The result retains the input/catalog hashes, selected roots, available child
 interpretations and any unresolved depth boundaries. It never substitutes a
-supported root for a harder rolled root. These rolls still need matching to
-recipe fragments; they do not change the main Generate workflow yet.
+supported root for a harder rolled root. The default arcade button matches these rolls to the shared
+`concept-fragments.json` through `concept-recipe.mjs`. Its current coverage is a
+small flow-system collection; root pairs do not establish unique games.
 
 During the unfinished foundation, append planned catalog options without
 rewriting earlier planning evidence:
@@ -302,3 +302,37 @@ World labels are hidden when their screen rectangles overlap the vehicle's
 projected bounds. The route reviewer checks that exclusion after each driven
 simulation step. Image review still checks actual readability; numeric bounds
 alone cannot establish a clear composition.
+
+Concept recipes and bounded model output
+
+```sh
+node NexusArcade-Harness/cli.mjs compile-concepts --recipe NexusArcade-Harness/concept-fragments.json --seed 5
+node NexusArcade-Harness/cli.mjs scene-concepts --recipe NexusArcade-Harness/concept-fragments.json --seed 5 --id my-concept-preview
+```
+
+A concept recipe contains `version`, `seed`, `concepts` (`optionIds`, `count`,
+`depth`), a root-free `base`, and `fragments`. Each fragment has an `id`,
+`when: {all: [], none: []}` and ordinary recipe `choices`. The harness validates
+all fragments, rolls roots independently, matches conditions, then assembles the
+selected choices. The scene compiler requires executable witnesses for every
+rolled concept. Unsupported combinations fail without substituting easier roots.
+No fragment may override the roll. Source input and matched IDs are retained for
+reproduction; the model does not write executable scripts.
+
+Current fragments combine optional reserve staging, paired spatial permission
+controls, route selection and source rates. They demonstrate composition, not
+broad genre coverage or collection novelty. The default button uses this path;
+Rally and the earlier flow challenge remain in the advanced selector.
+
+`scene-model-contracts.mjs` restricts scene titles to supported choices and preserves
+the declared goal in model output. Image review returns geometry visibility, label
+readability and player visibility; uncertain facts fail the preview check. The
+harness derives the verdict instead of accepting free-form gameplay claims.
+A full-frame player uncertainty can request an additional unmodified crop from
+the actual actor screen bounds. The full image, crop, bounds, original facts and
+resolved facts remain recorded. Explicit failures are never overridden by the
+detail check. Independent image inspection and all factory gates remain required.
+
+The shared player marker identifies the avatar while avoiding actor and control
+labels. Arcade cards show three lines of instructions so Play stays prominent;
+the full instructions remain on the game start screen.

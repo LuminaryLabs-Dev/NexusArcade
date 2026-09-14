@@ -7,12 +7,7 @@ const exact=(x,keys)=>x&&typeof x==='object'&&!Array.isArray(x)&&Object.keys(x).
 const id=x=>typeof x==='string'&&/^[a-z][a-z0-9-]{0,39}$/.test(x);
 const fields=['decisions','conceptBranches','domainInstances','connections','presenters','steps'];
 
-// Data-only fragments add to one scene. The existing graph/scene compiler owns
-// port types, contribution, spatial support and all admission-independent guards.
-export function compileSceneRecipe(catalog,recipe){
- assertAllowedText(recipe);
- if(!exact(recipe,['version','seed','base','choices',...(Object.hasOwn(recipe??{},'lineage')?['lineage']:[])])||recipe.version!==1||!Number.isInteger(recipe.seed)||recipe.seed<0||recipe.seed>4294967295||!Array.isArray(recipe.choices)||!recipe.choices.length)throw Error('Invalid scene recipe');
- if(recipe.lineage!==undefined&&(!exact(recipe.lineage,['sourceIdeas','change'])||!Array.isArray(recipe.lineage.sourceIdeas)||!recipe.lineage.sourceIdeas.length||recipe.lineage.sourceIdeas.length>8||!recipe.lineage.sourceIdeas.every(id)||new Set(recipe.lineage.sourceIdeas).size!==recipe.lineage.sourceIdeas.length||typeof recipe.lineage.change!=='string'||recipe.lineage.change.trim().length<10||recipe.lineage.change.length>300))throw Error('Invalid recipe lineage');
+export function inspectRecipeChoices(choices){
  let total=0;const choiceIds=new Set();
  function inspect(choices,depth){
   if(depth>8&&choices.length)throw Error('Recipe expansion exceeds supported depth');
@@ -27,7 +22,16 @@ export function compileSceneRecipe(catalog,recipe){
    }
   }
  }
- inspect(recipe.choices,0);
+ inspect(choices,0);
+}
+
+// Data-only fragments add to one scene. The existing graph/scene compiler owns
+// port types, contribution, spatial support and all admission-independent guards.
+export function compileSceneRecipe(catalog,recipe){
+ assertAllowedText(recipe);
+ if(!exact(recipe,['version','seed','base','choices',...(Object.hasOwn(recipe??{},'lineage')?['lineage']:[])])||recipe.version!==1||!Number.isInteger(recipe.seed)||recipe.seed<0||recipe.seed>4294967295||!Array.isArray(recipe.choices)||!recipe.choices.length)throw Error('Invalid scene recipe');
+ if(recipe.lineage!==undefined&&(!exact(recipe.lineage,['sourceIdeas','change'])||!Array.isArray(recipe.lineage.sourceIdeas)||!recipe.lineage.sourceIdeas.length||recipe.lineage.sourceIdeas.length>8||!recipe.lineage.sourceIdeas.every(id)||new Set(recipe.lineage.sourceIdeas).size!==recipe.lineage.sourceIdeas.length||typeof recipe.lineage.change!=='string'||recipe.lineage.change.trim().length<10||recipe.lineage.change.length>300))throw Error('Invalid recipe lineage');
+ inspectRecipeChoices(recipe.choices);
  const profile=structuredClone(recipe.base),behavior=profile?.scene?.behavior;
  if(!behavior||!Array.isArray(behavior.decisions)||!Array.isArray(behavior.conceptBranches)||!Array.isArray(behavior.domainInstances)||!Array.isArray(behavior.connections)||!Array.isArray(profile.presentation?.instances)||!Array.isArray(profile.validationPlan?.steps))throw Error('Invalid recipe base');
  behavior.seed=recipe.seed;const rng=random(recipe.seed),trace=[];
