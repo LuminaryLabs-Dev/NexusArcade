@@ -63,8 +63,11 @@ export function compileDomainGraph(graph){
  const valves=graph.instances.filter(n=>n.capability==='valve');for(let a=0;a<valves.length;a++)for(let b=a+1;b<valves.length;b++)if(distance(valves[a].settings.position,valves[b].settings.position)<valves[a].settings.range+valves[b].settings.range)throw Error('Ambiguous overlapping valve interactions');
  return {graph:structuredClone(graph),order,incoming};
 }
-export function createDomainGraphKit(graph){
+export function createDomainGraphKit(graph,{freezeInstances=[]}={}){
  const compiled=compileDomainGraph(graph),byId=new Map(compiled.graph.instances.map(n=>[n.id,n]));
+ // Trusted diagnostic option, never a field in generated graph/composition data.
+ if(!Array.isArray(freezeInstances)||freezeInstances.length>64||new Set(freezeInstances).size!==freezeInstances.length||freezeInstances.some(id=>!byId.has(id)||['controls','objective'].includes(byId.get(id).capability)))throw Error('Invalid diagnostic freeze target');
+ const frozen=new Set(freezeInstances);
  return defineDomainServiceKit({id:'arcade-composed-behaviors',domain:'arcade-composition',domainPath:'n:arcade-composition',apiName:'composition',stability:'experimental',version:'0.1.0',provides:['n:arcade-composition'],createApi(){
   let states;const reset=()=>{states=Object.fromEntries([...byId].map(([id,n])=>[id,domainDefinitions[n.capability].initial(n.settings)]));};reset();
   return {reset,snapshot:()=>structuredClone(states),step(dt,external){
@@ -72,7 +75,7 @@ export function createDomainGraphKit(graph){
    external=structuredClone(external);const before=structuredClone(states),next={...states};
    for(const id of compiled.order){const n=byId.get(id),d=domainDefinitions[n.capability],inputs={};
     for(const [name,port] of Object.entries(d.inputs)){const values=compiled.incoming.get(id).filter(w=>w.in===name).map(w=>(w.delay?before:next)[w.from][w.out]);if(values.some(v=>!validValue(v,port.type)))throw Error('Invalid typed input '+id+'/'+name);inputs[name]=port.many?values:values[0];}
-    const result=d.step(before[id],n.settings,inputs,dt,external);for(const [name,type] of Object.entries(d.outputs))if(!validValue(result[name],type))throw Error('Invalid domain output '+id+'/'+name);next[id]=result;
+    const result=frozen.has(id)?d.initial(n.settings):d.step(before[id],n.settings,inputs,dt,external);for(const [name,type] of Object.entries(d.outputs))if(!validValue(result[name],type))throw Error('Invalid domain output '+id+'/'+name);next[id]=result;
    }
    states=next;return {complete:states[compiled.graph.objective].complete,states:structuredClone(states),events:compiled.order.flatMap(id=>states[id].events??[])};
   }};

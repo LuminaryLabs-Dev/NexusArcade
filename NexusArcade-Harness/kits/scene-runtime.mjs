@@ -42,7 +42,7 @@ export function validateSceneRuntime(scene){
 
 // Configured adapters and authoritative graph outputs own the session. There are
 // no game-family branches or executable callbacks supplied by generated data.
-export function createSceneEngine(config,{bestSeconds=null}={}){
+export function createSceneEngine(config,{bestSeconds=null,freezeInstances=[]}={}){
  const c=structuredClone(validateSceneRuntime(config)),motion=motions[c.movement.adapter],supportsMove=supports[c.collision.adapter];
  if(bestSeconds!==null&&(!Number.isFinite(bestSeconds)||bestSeconds<=0||bestSeconds>c.session.durationSeconds))throw Error('Invalid prior record');let best=bestSeconds,lastResult=null;
  const kit=defineDomainServiceKit({id:'arcade-scene-session',stability:'experimental',version:'0.1.0',domain:'arcade-scene',domainPath:'n:arcade-scene',apiName:'arcade',provides:['n:arcade-scene'],requires:['n:simulation:motion:locomotion','n:arcade-composition'],createApi({engine}){
@@ -65,7 +65,7 @@ export function createSceneEngine(config,{bestSeconds=null}={}){
    else if(elapsed>=c.session.durationSeconds){mode='lost';emit('lost','session');}
   }};
  }});
- const engine=createEngine({kits:[createSimulationKit(),createMotionKit(),createActionLocomotionKit({speed:motion.speed(c.movement.settings),groundDrag:0,groundAcceleration:100,start:c.movement.start}),createDomainGraphKit(c.domainGraph),kit]});
+ const engine=createEngine({kits:[createSimulationKit(),createMotionKit(),createActionLocomotionKit({speed:motion.speed(c.movement.settings),groundDrag:0,groundAcceleration:100,start:c.movement.start}),createDomainGraphKit(c.domainGraph,{freezeInstances}),kit]});
  const initial=engine.n.arcade.snapshot(),supported=c.collision.adapter==='roads'?vehicleSupported(c.collision.roads,initial.player,initial.heading,c.collision.vehicle):worldSupports(c.collision.world,initial.player,initial.domainState);
  if(!supported)throw Error('Player start is unsupported');return engine;
 }

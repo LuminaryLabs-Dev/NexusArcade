@@ -155,3 +155,9 @@ unmodified screenshot crop centered on the actual actor bounds. Keep both images
 bounds and original/resolved facts; only uncertainty can be resolved this way,
 never an explicit failure. The shared YOU marker avoids control/actor overlap.
 Arcade cards bound instruction previews; full rules remain in the start overlay.
+
+Concept witnesses receive input-driven preflight checks: observe state changes
+during winning play, then freeze each contributing domain at its initial outputs
+and require a demonstrated route to fail. Keep diagnostic freezing outside
+generated schemas. Domain-level dependence does not establish semantic concept
+quality or replace independent acceptance gates.

@@ -341,6 +341,14 @@ review execute every route and its omitted-interaction control. Browser checks
 also verify best-time comparisons and reload after the alternatives. These results
 demonstrate tested paths, not automatic proof of meaningful replayability.
 
+Scene generation passes compiled concept witnesses to runtime preflight. Each
+witness must change during successful play. Preflight then freezes each claimed
+domain at its initial outputs and repeats the demonstrated routes; at least one
+route must fail. A changing but redundant domain is rejected. This diagnostic
+option is unavailable in generated composition data. It establishes domain-level
+route dependence, not individual-port causality, semantic interpretation, visual
+quality, or full acceptance. Optional strategies need not affect every route.
+
 `scene-model-contracts.mjs` restricts scene titles to supported choices and preserves
 the declared goal in model output. Image review returns geometry visibility, label
 readability and player visibility; uncertain facts fail the preview check. The
