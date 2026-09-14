@@ -386,3 +386,19 @@ Using canonical TMPDIR=/private/tmp passed all 41 tests, build and browser bound
 Pack dry-run contained 103 files with no experiment artifacts or model weights.
 Next: exercise the resulting variant/root combinations through the generic scene
 runtime and player view before using them for another pilot admission.
+
+Runtime feasibility increment: added scene-preflight.mjs and connected it before
+scene inference, after admission, preserving the original deadline. Source identity
+includes the new checker. It drives movement and interaction through NexusEngine;
+it never teleports the player or edits generated games. Checks cover completion,
+restart/repeated timing, idle loss and omitted-interaction loss. The initial probe
+passed seeds 0–11. The final asynchronous version passed seeds 0, 2 and 5, plus
+expired deadline, unreachable destination and asynchronous cancellation probes.
+Detailed evidence with source hashes: NexusArcade-Experiments/campaigns/
+reliable-arcade-factory/goals/G02/scene-preflight-64f10797cdb6.json.
+Existing 41 tests, build and 17-module browser boundary passed with canonical
+TMPDIR=/private/tmp. Pack dry-run: 103 files, no experiment artifacts or weights.
+No model calls, new games or browser acceptance were claimed for this increment.
+Live queue: G01 complete, G02 running, G03 planned; accepted 0/1000.
+Next: current-source browser verification of the composed variants, then finish
+contrasting pilot capability coverage and the remaining G02 qualification gates.

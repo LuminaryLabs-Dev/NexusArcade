@@ -10,6 +10,8 @@ Prefer seeded list matching and combinations of existing supported capabilities 
 
 Concept variants use the versioned `concept-variant-v1` hash draw independently of root and fragment draws. Validate every listed variant against the selected composition before returning a recipe; reject repeated variant identities and patch paths. This checks compiler compatibility, not route playability or novelty. Source changes require fresh runtime evidence; historical seeds retain their immutable artifacts and source hashes.
 
+Generic scene generation performs input-driven runtime preflight before inference, inside the original idea deadline. Preserve its runtime/plan hashes and findings in SPINE. Cancellation yields between bounded simulation chunks. Preflight checks loop completion, repeatability and omitted-action controls; it cannot replace independent browser, image, replay or novelty evidence.
+
 Generated games are written only through the harness. Recurring defects must be fixed in shared kits, composition, assembly or review code; never patch experiment files by hand. Unsupported capabilities are explicit gaps, not descriptive promises.
 
 Keep compact spines with accepted decisions, the original roll, source/model identity, usage and evidence hashes. Shared immutable runtime snapshots avoid dependency copies per game. Do not accumulate raw chats, reasoning, model weights or videos. Compare structural gameplay signatures rather than names/colors. Separate automated runtime, visual model, performance, human and device evidence; AAA fidelity remains a target, not an automatic label.
