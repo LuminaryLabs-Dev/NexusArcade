@@ -12,6 +12,7 @@ import {rollSceneLayers} from './scene-layers.mjs';
 import {compilePlayableScene} from './scene-spec.mjs';
 import {contracts,queueSnapshot,recoverWriter} from './factory.mjs';
 import {writeCandidateIndex} from './candidate-index.mjs';
+import {recordCandidateReview} from './candidate-review.mjs';
 import {planCatalogAddition,updateCatalog,resumeCatalogUpdate} from './catalog-update.mjs';
 import {inspectCatalog,rollConceptRoots} from './catalog.mjs';
 import {cleanupFailed} from './cleanup.mjs';
@@ -43,6 +44,7 @@ if(command==='compile-concepts'||command==='scene-concepts'){
  else{const s=await generateScene({id:safeId(get('id','scene-'+Date.now())),profile,retryOf:get('retry-of',undefined),repairReason:get('repair-reason',undefined),signal:controller.signal,onProgress:p=>console.log(JSON.stringify(p))});console.log(JSON.stringify({id:s.id,status:s.status,preview:s.previewVerdict,error:s.error}));if(s.status==='FAIL'){process.exitCode=1;console.log(JSON.stringify({cleanup:await cleanupFailed(s.id,{apply:true})}));}}
 }else if(command==='cleanup-failed'){console.log(JSON.stringify(await cleanupFailed(safeId(get('id','')),{apply:args.includes('--apply')}),null,2));
 }else if(command==='queue'){console.log(JSON.stringify(await queueSnapshot(),null,2));
+}else if(command==='candidate-review'){const file=get('file',null);if(!file)throw Error('Expected --file with explicit reviewer verdicts');console.log(JSON.stringify(await recordCandidateReview(JSON.parse(await readFile(file,'utf8'))),null,2));
 }else if(command==='candidate-index'){const ids=(get('ids','').split(',').map(x=>x.trim()).filter(Boolean));console.log(JSON.stringify(await writeCandidateIndex(ids),null,2));
 }else if(command==='recover'){console.log(JSON.stringify(await recoverWriter()));
 }else if(command==='pilot'){const s=await generatePilot({id:safeId(get('id','pilot-'+Date.now())),kind:get('kind','rally'),retryOf:get('retry-of',undefined),seed:Number(get('seed',97000)),signal:controller.signal,onProgress:p=>console.log(JSON.stringify(p))});console.log(JSON.stringify({id:s.id,status:s.status,error:s.error,preview:s.previewVerdict,elapsedMs:s.elapsedMs}));if(s.status==='FAIL'){process.exitCode=1;try{console.log(JSON.stringify({cleanup:await cleanupFailed(s.id,{apply:true})}));}catch(e){console.log(JSON.stringify({cleanup:'RETAINED',reason:e.message}));}}
