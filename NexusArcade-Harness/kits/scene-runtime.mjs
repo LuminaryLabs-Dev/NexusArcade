@@ -53,8 +53,7 @@ export function createSceneEngine(config,{bestSeconds=null,freezeInstances=[]}={
   return {snapshot,reset,start(){if(mode==='title')mode='play';},pause(){if(mode==='play')mode='pause';else if(mode==='pause')mode='play';pressed=false;},skipIdle(dt){
    if(!finite(dt,0,420000))throw Error('Invalid idle interval');
    if(mode!=='play')return;
-   elapsed=Math.min(c.session.durationSeconds,elapsed+dt);
-   if(elapsed>=c.session.durationSeconds){mode='lost';emit('lost','session');}
+   let remaining=dt;while(remaining>0&&mode==='play'){const chunk=Math.min(.05,remaining);engine.tick(chunk);elapsed=Math.min(c.session.durationSeconds,elapsed+chunk);const result=N.composition.step(chunk,{position:{x:point().x,z:point().z},action:false});for(const event of result.events)emit(event.type,event.id);const failure=c.session.failurePorts.find(ref=>result.states[ref.instance][ref.port]===true);if(failure){mode='lost';emit('lost',failure.instance);}else if(result.complete){mode='won';lastResult={seconds:elapsed,previousBest:best,improvement:best===null?null:best-elapsed,personalBest:best===null||elapsed<best};best=best===null?elapsed:Math.min(best,elapsed);emit('won','session');}else if(elapsed>=c.session.durationSeconds){mode='lost';emit('lost','session');}remaining-=chunk;}
   },step(dt,input={}){
    if(!finite(dt,0,.051)||!input||typeof input!=='object'||Array.isArray(input)||Object.keys(input).some(k=>!['x','z','interact'].includes(k))||(Object.hasOwn(input,'x')&&!finite(input.x,-1,1))||(Object.hasOwn(input,'z')&&!finite(input.z,-1,1))||(input.interact!==undefined&&typeof input.interact!=='boolean'))throw Error('Invalid scene input');
    if(mode!=='play')return;engine.tick(dt);elapsed=Math.min(c.session.durationSeconds,elapsed+dt);
