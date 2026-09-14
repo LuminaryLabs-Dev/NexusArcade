@@ -1,40 +1,17 @@
-import {validateWorld,worldSupports} from './spatial-world.mjs';
-import {createDomainGraphKit} from './domain-graph.mjs';
-import {trackRoads,vehicleSweepSupported,rallyVehicle} from './track-layout.mjs';
-import {createEngine} from '../vendor/nexusengine/src/engine.js';
-import {defineDomainServiceKit} from '../vendor/nexusengine/src/domain-service-kit.js';
-import {createSimulationKit} from '../vendor/nexusengine/src/core-domains/simulation/kits/simulation-kit/index.js';
-import {createMotionKit} from '../vendor/nexusengine/src/core-domains/simulation/motion/kits/motion-kit/index.js';
-import {createActionLocomotionKit} from '../vendor/nexusengine/src/core-domains/simulation/motion/locomotion/kits/action-locomotion-kit/index.js';
-// Reusable local domain adapter: ownership/flow/steering are explicit state machines,
-// never scripts supplied by a generated game or rendering callback.
-export function createPilotEngine(c,{bestSeconds=null}={}){
- if(bestSeconds!==null&&(!Number.isFinite(bestSeconds)||bestSeconds<=0||bestSeconds>c.deadlineSeconds))throw Error('Invalid prior record');
- if(c.spatialWorld)validateWorld(c.spatialWorld,c.domainGraph);
- const road=c.track?trackRoads(c.track,c.shortcut):null,handling=c.handling??{maxSpeed:13,acceleration:8,braking:18,turnRate:1.7};
- let best=bestSeconds,lastResult=null;
- const kit=defineDomainServiceKit({id:'arcade-pilot-domains',stability:'experimental',version:'0.1.0',domain:'arcade-pilots',domainPath:'n:arcade-pilots',apiName:'arcade',provides:['n:arcade-pilots'],requires:['n:simulation:motion:locomotion','n:arcade-composition'],createApi({engine}){
- const N=engine.n;let mode='title',elapsed=0,carry=null,completed=[],rotation=c.nodes.map(n=>n.rotation??0),fill=0,heading=c.headingStart??0,speed=0,sequence=0,pressed=false,events=[];
- const emit=(type,id)=>{events.push({type,id,at:elapsed});events=events.slice(-32);};
- const point=()=>N.actionLocomotion.getState().position;
- const snapshot=()=>({kind:c.kind,mode,elapsed,player:point(),carry,completed:[...completed],rotation:[...rotation],fill,heading,speed,events:[...events],nodes:c.nodes,objective:c.goal,coordinates:'x right, y up, z south; metres',engine:'NexusEngine with typed local domain composition',domainState:N.composition.snapshot(),spatialWorld:c.spatialWorld??null,bestSeconds:best,lastResult,replay:c.replay??null});
- const reset=()=>{N.actionLocomotion.reset();N.composition.reset();mode='title';elapsed=0;carry=null;completed=[];rotation=c.nodes.map(n=>n.rotation??0);fill=0;heading=c.headingStart??0;speed=0;pressed=false;events=[];lastResult=null;};
- return {snapshot,reset,start(){if(mode==='title')mode='play';},pause(){if(mode==='play')mode='pause';else if(mode==='pause')mode='play';pressed=false;},step(dt,input={}){
- if(!Number.isFinite(dt)||dt<0||dt>.051)throw Error('Invalid domain tick');if(mode!=='play')return;engine.tick(dt);elapsed=Math.min(c.deadlineSeconds,elapsed+dt);
- let vx=input.x??0,vz=input.z??0;const before=point(),beforeHeading=heading;
- if(c.kind==='rally'){const throttle=Math.max(-1,Math.min(1,-vz));const acceleration=throttle>0?(speed<0?handling.braking:handling.acceleration):throttle<0?(speed>0?-handling.braking:-handling.acceleration*.6):-Math.sign(speed)*Math.min(3,Math.abs(speed)/Math.max(dt,1e-6));speed=Math.max(-handling.maxSpeed*.35,Math.min(handling.maxSpeed,speed+acceleration*dt));heading-=vx*Math.min(handling.turnRate,Math.abs(speed)*.25)*Math.sign(speed)*dt;vx=Math.sin(heading)*speed/handling.maxSpeed;vz=Math.cos(heading)*speed/handling.maxSpeed;}
- const result=N.actionLocomotion.step({operationId:'pilot-'+(++sequence),delta:dt,input:{x:vx,z:vz},contact:{grounded:true,groundHeight:0}}).result;const p=result.position;
- const supported=c.spatialWorld?worldSupports(c.spatialWorld,p,N.composition.snapshot()):c.kind==='rally'?vehicleSweepSupported(road,before,p,beforeHeading,heading,c.vehicle??rallyVehicle):Math.abs(p.x)<14&&Math.abs(p.z)<14&&!(c.kind==='transfer'&&Math.abs(p.x)>3&&Math.abs(p.x)<7&&Math.abs(p.z)<5);
- if(!supported){N.actionLocomotion.update({position:before,velocity:{x:0,y:0,z:0}});if(c.kind==='rally'){speed*=.7;heading=beforeHeading;}emit('collision','boundary');}
- if(sequence%16===0)N.actionLocomotion.update({operationReceipts:Object.fromEntries(Object.entries(N.actionLocomotion.getState().operationReceipts??{}).slice(-16))});
- const position=point(),edge=!!input.interact&&!pressed;pressed=!!input.interact;
- const composed=N.composition.step(dt,{position:{x:position.x,z:position.z},action:edge}),domainState=composed.states;
- carry=domainState.delivery?.carry??null;fill=domainState.reservoir?.fill??0;
- rotation=c.nodes.map(n=>domainState[n.id]?.rotation??0);
- completed=domainState.delivery?.completed??domainState.gates?.completed??(composed.complete?c.nodes.map(n=>n.id):[]);
- for(const e of composed.events)emit(e.type,e.id);
- if(composed.complete){mode='won';lastResult={seconds:elapsed,previousBest:best,improvement:best===null?null:best-elapsed,personalBest:best===null||elapsed<best};best=best===null?elapsed:Math.min(best,elapsed);emit('won','session');}else if(domainState['resource-goal']?.failed||elapsed>=c.deadlineSeconds){mode='lost';emit('lost',domainState['resource-goal']?.failed?'waste-capacity':'session');}
- }};
- }});
- return createEngine({kits:[createSimulationKit(),createMotionKit(),createActionLocomotionKit({speed:c.kind==='rally'?handling.maxSpeed:6,groundDrag:0,groundAcceleration:100,start:c.playerStart}),createDomainGraphKit(c.domainGraph),kit]});
+import {createSceneEngine} from './scene-runtime.mjs';
+import {trackRoads,rallyVehicle} from './track-layout.mjs';
+import {domainDefinitions} from './domain-graph.mjs';
+
+// Compatibility mapping for existing profiles. Gameplay runs only in the shared
+// scene session; this wrapper preserves the existing player/reviewer readouts.
+export function pilotRuntime(c){
+ const movement=c.track?{adapter:'steering',settings:Object.fromEntries(['maxSpeed','acceleration','braking','turnRate'].map(k=>[k,c.handling[k]])),start:c.playerStart,heading:c.headingStart??0}:{adapter:'walk',settings:{speed:6},start:c.playerStart,heading:c.headingStart??0};
+ const collision=c.spatialWorld?{adapter:'world',world:c.spatialWorld}:{adapter:'roads',roads:trackRoads(c.track,c.shortcut).map(r=>({...r,points:r.points.map(({x,z})=>({x,z}))})),vehicle:c.vehicle??rallyVehicle};
+ const failurePorts=c.domainGraph.instances.filter(n=>domainDefinitions[n.capability].outputs.failed==='boolean').map(n=>({instance:n.id,port:'failed'}));
+ return {version:1,domainGraph:c.domainGraph,movement,collision,session:{durationSeconds:c.deadlineSeconds,failurePorts}};
+}
+export function createPilotEngine(c,options){
+ const engine=createSceneEngine(pilotRuntime(c),options),snapshot=engine.n.arcade.snapshot;
+ engine.n.arcade.snapshot=()=>{const s=snapshot(),d=s.domainState;return {...s,kind:c.kind,carry:d.delivery?.carry??null,completed:d.delivery?.completed??d.gates?.completed??(d.objective.complete?c.nodes.map(n=>n.id):[]),rotation:c.nodes.map(n=>d[n.id]?.rotation??0),fill:d.reservoir?.fill??0,nodes:c.nodes,objective:c.goal,coordinates:'x right, y up, z south; metres',engine:'NexusEngine with typed local domain composition',spatialWorld:c.spatialWorld??null,replay:c.replay??null,events:s.events.map(e=>e.type==='lost'&&e.id==='resource-goal'?{...e,id:'waste-capacity'}:e)};};
+ return engine;
 }

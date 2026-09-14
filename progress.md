@@ -210,3 +210,34 @@ Next: use the compiler from the generic scene assembler, with list-selected
 instances and reusable movement/presentation adapters replacing family switches.
 Keep unmapped options and source/evidence migration explicit before eligibility.
 G02 remains running; all later goals and the1000-game campaign remain incomplete.
+
+Shared scene runtime increment: catalog behavior can now compile to explicit
+walk/world or steering/road configurations, with graph-owned success/failure,
+swept collision, input guards and detached snapshots. The pilot wrapper preserves
+existing readouts; generic Three.js presenters and catalog adapter bindings are
+still required. No new catalog capability is eligible.
+
+Validation:5400 exact old/new snapshots;144 Rally route/fault runs;24 flow runs;
+four catalog-driven movement/action runs including omitted-action failure;
+27 runtime guards plus6 road rejections and caller-mutation isolation. Existing41
+tests/build/browser boundary and103-file package inspection passed.
+
+One new development idea,scene-runtime-rally-001, retained its original25-minute
+clock across revisions. First attempt failed on a Resume click timeout and was
+cleaned. Revision001b passed32 automated checks but independent image review
+rejected its shortcut label covering the car roof; its launch was cleaned. Shared
+renderer now excludes the projected vehicle area and review checks every driven
+step. Revision001c passed33 browser checks/local-model review at18m07s. Retained
+runtime has483 verified files. It remains NEEDS_REVIEW and counts zero toward1000.
+
+Later supplied-client regression: headless Start click timed out; never left title.
+Headed inputs worked but reported404; missing favicon route fixed in the server.
+Final headed run has no console errors, exercises acceleration/steering/braking/
+reverse and leaves the vehicle on-road. Actual captures inspected. These later
+checks are post-deadline regression audits, not retrospective game qualification.
+Headless click stability remains an open diagnosis; bounded failure screenshots
+and UI-state capture were added and fault-injected without converting FAIL toPASS.
+
+Next: generic domain-driven Three.js presenters/assembly consumed by the existing
+harness, catalog bindings for movement/world/presentation, then frozen complete-game
+validation and repair integration. G02 running; G03–G33 planned; accepted0/1000.

@@ -29,7 +29,8 @@ Foundation acceptance parameters are frozen in execution-contract.json: keyboard
 Typed behavior graphs now live in kits/domain-graph.mjs with closed settings, typed
 ports, stable ordering, required objective contribution and explicit next-tick
 feedback. Generated pilots store graph data; the trusted NexusEngine adapter
-executes it. Family-specific movement/rendering still require further composition.
+executes it. Shared scene-runtime adapters now own movement, collision and session
+outcomes; family-specific rendering still requires further composition.
 The arcade uses this pilot path, with honest challenge choices instead of unused
 complexity controls. Renewable player reservations expire after 60 seconds; late
 renewals never reopen a closed session, and expired views require explicit reload.
@@ -48,7 +49,8 @@ Flow composition uses explicit source, router, lossy-link, storage and resource-
 domains. Rates are litres/second; volumes are litres. A rate port has one consumer;
 splitting requires an explicit router. Verify per-tick conservation, alternate
 routes, waste-capacity failure and reset through inputs. Renderer paths and station
-footprints come from shared layout data. World labels must have bounded pixel size;
+footprints come from shared layout data. World labels must have bounded pixel size
+and avoid the controllable actor's projected screen bounds;
 model approval alone cannot establish readability or override image-based rejection.
 
 Retain a claimed route tradeoff only with competing measured outcomes: flow's
@@ -74,3 +76,10 @@ provenance. Parameters must affect the declared behavior or match an explicitly
 supported constant; never silently ignore them. Concept branches require named
 state witnesses and later counterfactual evidence. Behavior compilation is separate
 from full-game assembly and capability eligibility; preserve both gates.
+
+Catalog scene compilation connects typed behavior to explicit walk/world or
+steering/road adapters. Session success comes from the graph objective; declared
+boolean failure outputs take precedence and cannot be silently omitted. Keep
+snapshot data detached, sweep the actor footprint, and reject unsupported spawn
+positions. Runtime adapter configuration is not proof of catalog eligibility.
+Existing pilots retain only a compatibility readout wrapper around this runtime.

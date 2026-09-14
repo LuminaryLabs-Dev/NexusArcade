@@ -229,5 +229,39 @@ It lists missing game decision points, required capabilities/rules and unverifie
 concept witnesses. A port changing is not automatically a proven concept: retain
 a normal run and a meaningful counterfactual before qualification. The eligible
 entry point additionally uses the existing catalog source/evidence gate; these
-development bindings do not bypass it. Generic scene assembly, presenters,
-movement, complete-game checks and factory admission still require integration.
+development bindings do not bypass it. Generic presentation assembly,
+complete-game checks and factory admission still require integration.
+
+`compile-scene --profile /path/to/scene.json` connects compiled catalog behavior
+to the shared simulation. Its closed profile contains `version: 1`, `behavior`
+(the profile above), `movement`, `collision`, and `session`. The result includes
+the validated `runtime` consumed by `createSceneEngine` in
+`kits/scene-runtime.mjs`. It reports `SCENE_RUNTIME_COMPILED`, never eligibility.
+The adapter settings are explicit development inputs; their catalog bindings
+and proof remain required before production selection.
+
+Movement is `walk` with `settings.speed` in metres/second, or `steering` with
+`maxSpeed`, `acceleration`, `braking`, and `turnRate` in metres/second,
+metres/second squared, and radians/second. Both declare a ground-plane `start`
+and initial `heading`. Walking pairs with shared solid-world collision; steering
+pairs with explicit road polylines and a vehicle footprint. Unknown settings,
+unsupported combinations and unsupported spawn positions reject. Swept collision
+checks the body between successive positions.
+
+The session declares `durationSeconds` and boolean `failurePorts`. Every domain
+with a `failed` output must bind it. A declared failure takes priority over a
+simultaneous success, and timeout ends an unfinished session. The shared API owns
+start, pause/resume, reset, input edges, bounded events, and per-session records.
+Snapshots are detached from authoritative state. Existing pilots use a small
+compatibility wrapper; their Three.js presenters still require conversion to
+generic domain-driven presentation. Runtime tests alone do not prove that step.
+
+When a browser review fails, it retains the last completed check and attempts a
+bounded screenshot/UI-state capture. Those diagnostics keep the failed verdict;
+they are not a substitute for completing the playthrough. Retry clocks remain
+anchored to the original idea.
+
+World labels are hidden when their screen rectangles overlap the vehicle's
+projected bounds. The route reviewer checks that exclusion after each driven
+simulation step. Image review still checks actual readability; numeric bounds
+alone cannot establish a clear composition.

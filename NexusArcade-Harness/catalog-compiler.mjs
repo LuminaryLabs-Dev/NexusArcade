@@ -4,6 +4,7 @@ import {inspectCatalog,resolveCatalog} from './catalog.mjs';
 import {compileDomainComposition} from './kits/domain-composition.mjs';
 import {domainDefinitions} from './kits/domain-graph.mjs';
 import {assertAllowedText} from './text-policy.mjs';
+import {validateSceneRuntime} from './kits/scene-runtime.mjs';
 
 const bindings=JSON.parse(await readFile(new URL('./domain-bindings.json',import.meta.url)));
 const exact=(x,keys)=>x&&typeof x==='object'&&!Array.isArray(x)&&Object.keys(x).length===keys.length&&keys.every(k=>Object.hasOwn(x,k));
@@ -81,4 +82,15 @@ export async function compileEligibleCatalogBehavior(catalog,profile,options){
  const byId=optionsById(catalog),branches={};for(const id of profile.conceptBranches){const entry=byId.get(id);if(!entry?.branch)throw Error('Unknown interpretation');(branches[entry.choice.id]??=[]).push(id);}
  const resolved=await resolveCatalog(catalog,profile.decisions,{...options,branches});
  return {...compileCatalogBehavior(catalog,profile),resolved};
+}
+
+// Runtime adapters are explicit development inputs until their catalog bindings
+// and evidence exist. Keep those gaps visible; this does not admit a game.
+export function compileCatalogScene(catalog,profile){
+ assertAllowedText(profile);
+ if(!exact(profile,['version','behavior','movement','collision','session'])||profile.version!==1)throw Error('Invalid catalog scene profile');
+ const behavior=compileCatalogBehavior(catalog,profile.behavior);
+ const runtime=structuredClone(validateSceneRuntime({version:1,domainGraph:behavior.graph,movement:profile.movement,collision:profile.collision,session:profile.session}));
+ return {...behavior,status:'SCENE_RUNTIME_COMPILED',sceneProfileHash:digest(profile),runtime,
+  remaining:'Movement, collision and session adapters are configured, not catalog-qualified. Presentation, spatial reachability, causal concepts, replay, novelty, device performance and factory admission remain unverified.'};
 }
