@@ -25,6 +25,7 @@ export async function reviewPilot(root,id,{signal}={}){
   }
  }
  const walkValve=async node=>{const candidates=[{x:node.x,z:node.z+2.3},{x:node.x,z:node.z-2.3},{x:node.x+2.3,z:node.z},{x:node.x-2.3,z:node.z},{x:node.x+1.7,z:node.z+1.7},{x:node.x-1.7,z:node.z+1.7},{x:node.x+1.7,z:node.z-1.7},{x:node.x-1.7,z:node.z-1.7}],initial=await state();if(process.env.NEXUS_REVIEW_TRACE==='1')console.error(`[review:${id}] valve route start ${node.id} ${JSON.stringify(initial.player)}`);let selected=null,last;for(const point of candidates){try{selected=routeInWorld(profile.spatialWorld,initial.player,point,{});break;}catch(e){last=e;if(process.env.NEXUS_REVIEW_TRACE==='1')console.error(`[review:${id}] valve candidate ${JSON.stringify(point)} rejected: ${e.message}`);}}if(!selected)throw last??Error('No reachable valve approach');if(process.env.NEXUS_REVIEW_TRACE==='1')console.error(`[review:${id}] valve route selected ${node.id} ${JSON.stringify(selected.points.at(-1))}`);await walkPath(selected,.8,.8);};
+ const leaveValve=async node=>{const s=await state(),dx=s.player.x-node.x,dz=s.player.z-node.z,code=Math.abs(dx)>Math.abs(dz)?(dx>=0?'KeyD':'KeyA'):(dz>=0?'KeyS':'KeyW');await input([code],300);};
  const playLoop=async(conservative=false,fault=false)=>{
  if(start.kind==='transfer'){
   await input(['KeyE']);check('empty space cannot pick up',(await state()).carry===null);
@@ -37,8 +38,8 @@ export async function reviewPilot(root,id,{signal}={}){
  }else if(start.kind==='conduit'){
   const selected=conservative?'efficient':'direct',index=conservative?2:1,n=start.nodes[index],selector=start.nodes[0];
   await tick(1000);check('off selector does not pump',(await state()).domainState.router.pumped===0);
-  await walkValve(n);for(let turns=0;(await state()).rotation[index]!==0;turns++){if(turns>=8)throw Error('Valve interaction did not reach target '+JSON.stringify({index,rotation:(await state()).rotation,player:(await state()).player}));await input(['KeyE']);await tick(50);}if(process.env.NEXUS_REVIEW_TRACE==='1')console.error(`[review:${id}] valve ${n.id} position ${JSON.stringify((await state()).player)}`);check('route valve opens '+selected,(await state()).domainState[n.id].aligned);
-  await walkValve(selector);for(let turns=0;(await state()).rotation[0]!==Number(conservative);turns++){if(turns>=8)throw Error('Selector interaction did not reach target '+JSON.stringify({rotation:(await state()).rotation,player:(await state()).player}));await input(['KeyE']);await tick(50);}await tick(4000);const flowing=await state();check('selected route carries flow '+selected,flowing.domainState[selected].rate>0&&flowing.domainState[selected==='direct'?'efficient':'direct'].rate===0);check('target and waste accumulate',flowing.fill>0&&flowing.domainState.waste.volume>0);
+  await walkValve(n);for(let turns=0;(await state()).rotation[index]!==0;turns++){if(turns>=8)throw Error('Valve interaction did not reach target '+JSON.stringify({index,rotation:(await state()).rotation,player:(await state()).player}));await input(['KeyE']);await tick(50);}if(process.env.NEXUS_REVIEW_TRACE==='1')console.error(`[review:${id}] valve ${n.id} position ${JSON.stringify((await state()).player)}`);check('route valve opens '+selected,(await state()).domainState[n.id].aligned);await leaveValve(n);
+  await walkValve(selector);for(let turns=0;(await state()).rotation[0]!==Number(conservative);turns++){if(turns>=8)throw Error('Selector interaction did not reach target '+JSON.stringify({rotation:(await state()).rotation,player:(await state()).player}));await input(['KeyE']);await tick(50);}await leaveValve(selector);await tick(4000);const flowing=await state();check('selected route carries flow '+selected,flowing.domainState[selected].rate>0&&flowing.domainState[selected==='direct'?'efficient':'direct'].rate===0);check('target and waste accumulate',flowing.fill>0&&flowing.domainState.waste.volume>0);
   const view=await p.evaluate(()=>__renderEvidence());check('world labels have bounded screen size',view.worldLabels.length===6&&view.worldLabels.every(l=>l.width<=260&&l.height<=70),view.worldLabels);if(!report.image){report.image=await p.screenshot();report.frame=flowing;}
   for(let i=0;i<200&&(await state()).mode==='play';i++)await tick(250);
   const result=await state(),d=result.domainState;check('fluid conserved '+selected,Math.abs(d.router.pumped-d.reservoir.volume-d.reservoir.overflow-d.waste.volume-d.waste.overflow)<1e-6);report.flowRuns??=[];report.flowRuns.push({route:selected,elapsed:result.elapsed,target:d.reservoir.volume,waste:d.waste.volume,pumped:d.router.pumped});
@@ -69,7 +70,7 @@ export async function reviewPilot(root,id,{signal}={}){
   for(const [selected,index] of [['direct',1],['efficient',2]]){
    await p.keyboard.press('KeyR');await tick(0);
    const turn=async(index,rotation)=>{const n=start.nodes[index];await walkValve(n);for(let i=0;(await state()).rotation[index]!==rotation;i++){if(i>=4)throw Error('Valve input did not reach requested state');await input(['KeyE'],50);await tick(50);}};
-   await turn(index,0);await turn(0,index-1);
+   await turn(index,0);await leaveValve(start.nodes[index]);await turn(0,index-1);await leaveValve(start.nodes[0]);
    const n=start.nodes[index];await walkValve(n);
    await input(['KeyE'],50);await tick(50);await tick(1500);
    for(let i=0;(await state()).mode==='play'&&(await state()).rotation[index]!==0;i++){if(i>=4)throw Error('Valve recovery input stalled');await input(['KeyE'],50);await tick(50);}
