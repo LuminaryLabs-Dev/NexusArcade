@@ -13,9 +13,9 @@ export const automaticPilotKinds=['conduit','rally'];
 const routeLength=points=>points.slice(1).reduce((total,p,i)=>total+Math.hypot(p.x-points[i].x,p.z-points[i].z),0);
 const conceptSeed=concepts=>concepts.reduce((hash,concept)=>{for(const ch of concept.id)hash=((hash^ch.charCodeAt(0))*16777619)>>>0;return hash;},2166136261)>>>0;
 
-export function pilotProfile(kind,seed){
+export function pilotProfile(kind,seed,{conceptIds=null}={}){
  if(!Number.isInteger(seed)||seed<0||seed>4294967295)throw Error('Invalid pilot seed');
- if(!pilotKinds.includes(kind))throw Error('Unknown pilot capability family');const rolled=rollConcepts(seed,2);
+ if(!pilotKinds.includes(kind))throw Error('Unknown pilot capability family');const baseRoll=rollConcepts(seed,2),rolled=conceptIds?{...baseRoll,concepts:conceptIds.map(id=>({id}))}:baseRoll;
  const concepts=rolled.concepts.map(x=>x.id),conceptInfluence=conceptSeed(rolled.concepts);const x={version:3,kind,seed,depth:2,concepts,conceptRoll:rolled,conceptBindings:rolled.concepts.map((concept,index)=>({conceptId:concept.id,decisionFamily:kind,slot:index,influence:conceptInfluence})),deadlineSeconds:300,title:kind,palette:'lagoon',goal:'',controls:'',playerStart:{x:0,y:0,z:0}};
  if(kind==='transfer')Object.assign(x,{goal:'Carry each energy cell into the matching numbered bay. One cell at a time.',controls:'WASD / arrows move · E pick up or deliver · Esc pause · R restart · F fullscreen',playerStart:{x:0,y:0,z:12},nodes:[{id:'c0',x:-10,z:-8,receiver:{x:10,z:9}},{id:'c1',x:10,z:-8,receiver:{x:-10,z:9}},{id:'c2',x:0,z:-10,receiver:{x:0,z:10}}],view:'overhead',world:'warehouse'});
  if(kind==='conduit'){
