@@ -15,12 +15,12 @@ export function worldSupports(w,p,states={},margin=0){
 export function routeInWorld(w,start,goal,states={}){
  const unit=.5,min=-Math.floor((w.halfExtent-w.actorRadius-.2)/unit),max=-min,key=(x,z)=>x+','+z;
  const sx=Math.round(start.x/unit),sz=Math.round(start.z/unit),gx=Math.round(goal.x/unit),gz=Math.round(goal.z/unit);
- const clearSegment=(a,b)=>{const count=Math.max(1,Math.ceil(Math.hypot(a.x-b.x,a.z-b.z)/.1));for(let i=0;i<=count;i++)if(!worldSupports(w,{x:a.x+(b.x-a.x)*i/count,z:a.z+(b.z-a.z)*i/count},states,.2))return false;return true;};
+ const clearSegment=(a,b)=>{const count=Math.max(1,Math.ceil(Math.hypot(a.x-b.x,a.z-b.z)/.1));for(let i=0;i<=count;i++)if(!worldSupports(w,{x:a.x+(b.x-a.x)*i/count,z:a.z+(b.z-a.z)*i/count},states,.05))return false;return true;};
  if(!clearSegment(start,{x:sx*unit,z:sz*unit})||!clearSegment({x:gx*unit,z:gz*unit},goal))throw Error('Route endpoint lacks clearance');
  const first=key(sx,sz),target=key(gx,gz),open=new Set([first]),cost=new Map([[first,0]]),prior=new Map(),positions=new Map([[first,[sx,sz]]]);
  while(open.size){let current,best=Infinity;for(const k of open){const [x,z]=positions.get(k),score=cost.get(k)+Math.abs(x-gx)+Math.abs(z-gz);if(score<best){best=score;current=k;}}open.delete(current);
   if(current===target){const points=[goal];while(current!==first){const [x,z]=positions.get(current);points.push({x:x*unit,z:z*unit});current=prior.get(current);}points.push(start);points.reverse();const simplified=[points[0]];for(let i=1;i<points.length-1;i++){const a=simplified.at(-1),b=points[i],c=points[i+1];if(Math.abs((b.x-a.x)*(c.z-b.z)-(b.z-a.z)*(c.x-b.x))>1e-8)simplified.push(b);}simplified.push(points.at(-1));return {points:simplified,distance:simplified.slice(1).reduce((n,p,i)=>n+Math.hypot(p.x-simplified[i].x,p.z-simplified[i].z),0)};}
-  const [x,z]=positions.get(current);for(const [dx,dz] of [[-1,0],[1,0],[0,-1],[0,1]]){const nx=x+dx,nz=z+dz,k=key(nx,nz);if(nx<min||nx>max||nz<min||nz>max||!worldSupports(w,{x:nx*unit,z:nz*unit},states,.2))continue;const next=cost.get(current)+1;if(next>=(cost.get(k)??Infinity))continue;cost.set(k,next);prior.set(k,current);positions.set(k,[nx,nz]);open.add(k);}
+  const [x,z]=positions.get(current);for(const [dx,dz] of [[-1,0],[1,0],[0,-1],[0,1]]){const nx=x+dx,nz=z+dz,k=key(nx,nz);if(nx<min||nx>max||nz<min||nz>max||!worldSupports(w,{x:nx*unit,z:nz*unit},states,.05))continue;const next=cost.get(current)+1;if(next>=(cost.get(k)??Infinity))continue;cost.set(k,next);prior.set(k,current);positions.set(k,[nx,nz]);open.add(k);}
  }
  throw Error('No traversable route');
 }
