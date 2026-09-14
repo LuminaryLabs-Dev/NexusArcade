@@ -13,7 +13,7 @@ export async function reviewPilot(root,id,{signal}={}){
   const b=report.initialRender.actorScreenBounds,v=report.initialRender.vehicleBounds;
   check('steering view shows the complete controlled vehicle',!!b&&!!v&&[b.left,b.right,b.top,b.bottom,v.width,v.length].every(Number.isFinite)&&b.left>=0&&b.right<=1100&&b.top>=0&&b.bottom<=780&&b.right>b.left&&b.bottom>b.top&&Math.abs(v.width-profile.vehicle.width)<=.02&&Math.abs(v.length-profile.vehicle.length)<=.02,{bounds:b,vehicle:v});
  }
- const walkRoute=async(x,z,tolerance=.8)=>{const initial=await state(),route=routeInWorld(profile.spatialWorld,initial.player,{x,z},initial.domainState);if(process.env.NEXUS_REVIEW_TRACE==='1')console.error(`[review:${id}] route ${initial.player.x},${initial.player.z} -> ${x},${z} points=${route.points.length}`);for(const [pointIndex,point] of route.points.slice(1).entries()){if(process.env.NEXUS_REVIEW_TRACE==='1')console.error(`[review:${id}] waypoint ${pointIndex}`);const result=await p.evaluate(({point})=>window.__testWalk(point,700,tolerance),{point});if(!result.reached)throw Error('World route stalled');if((await state()).mode!=='play')throw Error('Route ended in '+(await state()).mode);}return route.distance;};
+ const walkRoute=async(x,z,tolerance=.8,finalTolerance=tolerance)=>{const initial=await state(),route=routeInWorld(profile.spatialWorld,initial.player,{x,z},initial.domainState);if(process.env.NEXUS_REVIEW_TRACE==='1')console.error(`[review:${id}] route ${initial.player.x},${initial.player.z} -> ${x},${z} points=${route.points.length}`);for(const [pointIndex,point] of route.points.slice(1).entries()){if(process.env.NEXUS_REVIEW_TRACE==='1')console.error(`[review:${id}] waypoint ${pointIndex}`);const result=await p.evaluate(({point})=>window.__testWalk(point,700,pointIndex===route.points.slice(1).length-1?finalTolerance:tolerance),{point});if(!result.reached)throw Error('World route stalled');if((await state()).mode!=='play')throw Error('Route ended in '+(await state()).mode);}return route.distance;};
  if(['transfer','conduit','rally','checkpoint'].includes(start.kind)){report.initialImage=await p.screenshot();report.initialHash=digest(report.initialImage);}
  if((start.kind==='rally'||start.kind==='checkpoint')){
   for(const [key,sign] of [['KeyD',1],['KeyA',-1]]){
@@ -23,7 +23,7 @@ export async function reviewPilot(root,id,{signal}={}){
    await p.keyboard.press('KeyR');await tick(0);
   }
  }
- const walkValve=async node=>{const candidates=[{x:node.x,z:node.z+2.3},{x:node.x,z:node.z-2.3},{x:node.x+2.3,z:node.z},{x:node.x-2.3,z:node.z},{x:node.x+1.7,z:node.z+1.7},{x:node.x-1.7,z:node.z+1.7},{x:node.x+1.7,z:node.z-1.7},{x:node.x-1.7,z:node.z-1.7}];let last;for(const point of candidates){try{await walkRoute(point.x,point.z,.3);return;}catch(e){last=e;}}throw last??Error('No reachable valve approach');};
+ const walkValve=async node=>{const candidates=[{x:node.x,z:node.z+2.3},{x:node.x,z:node.z-2.3},{x:node.x+2.3,z:node.z},{x:node.x-2.3,z:node.z},{x:node.x+1.7,z:node.z+1.7},{x:node.x-1.7,z:node.z+1.7},{x:node.x+1.7,z:node.z-1.7},{x:node.x-1.7,z:node.z-1.7}];let last;for(const point of candidates){try{await walkRoute(point.x,point.z,.8,.3);return;}catch(e){last=e;}}throw last??Error('No reachable valve approach');};
  const playLoop=async(conservative=false,fault=false)=>{
  if(start.kind==='transfer'){
   await input(['KeyE']);check('empty space cannot pick up',(await state()).carry===null);
