@@ -3,13 +3,15 @@ import {readFileSync} from 'node:fs';
 import {random} from './domains.mjs';
 import {digest} from './factory.mjs';
 import {transferWorld,validateWorld} from './kits/spatial-world.mjs';
-import {trackFrame,trackGates,rallyVehicle} from './kits/track-layout.mjs';
+import {trackFrame,trackGates,rallyVehicle,rallyRoute} from './kits/track-layout.mjs';
 import {pilotDomainGraph,compileDomainGraph} from './kits/domain-graph.mjs';
 const options=JSON.parse(readFileSync(new URL('./pilot-options.json',import.meta.url),'utf8'));
 import {rollConcepts} from './composition.mjs';
 export const pilotKinds=['transfer','conduit','rally','checkpoint'];
 // Automatic rolls avoid the overused transfer template; its components remain reusable.
 export const automaticPilotKinds=['conduit','rally'];
+const routeLength=points=>points.slice(1).reduce((total,p,i)=>total+Math.hypot(p.x-points[i].x,p.z-points[i].z),0);
+
 export function pilotProfile(kind,seed){
  if(!Number.isInteger(seed)||seed<0||seed>4294967295)throw Error('Invalid pilot seed');
  if(!pilotKinds.includes(kind))throw Error('Unknown pilot capability family');const rolled=rollConcepts(seed,2);
@@ -20,7 +22,7 @@ export function pilotProfile(kind,seed){
   Object.assign(x,{goal:'Fill the blue tank before the waste tank fills. Open a route valve before starting the selector. The short route saves walking time but wastes more fluid; the long route leaves more room for mistakes. The selector cycles SHORT, LONG, BOTH, OFF; each route valve turns independently.',controls:'WASD / arrows move · E turn nearby valve · Esc pause · R restart · F fullscreen',playerStart:{x:0,y:0,z:12},nodes:flowNodes(flowLayout),flowLayout,flowProcess,spatialWorld:flowWorld(flowLayout),view:'first-person',world:'pump-room',selection:{catalogHash:digest(options),seed,layout:flowLayout.id,process:flowProcess.id,method:'seeded-compatible-list-selection'}});
  }
  if(kind==='rally'){
-  const rng=random(seed^0x714ac),pick=xs=>xs[Math.floor(rng()*xs.length)],track={...pick(options.rally.tracks),width:pick(options.rally.widths)},handling={...pick(options.rally.handling)},presentation={...pick(options.rally.presentation)},shortcut={...pick(options.rally.shortcuts.filter(s=>s.allowedTracks.includes(track.id)))},start=trackFrame(track,0);
+  const rng=random(seed^0x714ac),pick=xs=>xs[Math.floor(rng()*xs.length)],track={...pick(options.rally.tracks),width:pick(options.rally.widths)},handling={...pick(options.rally.handling)},presentation={...pick(options.rally.presentation)},const compatible=options.rally.shortcuts.filter(s=>s.allowedTracks.includes(track.id)),shortcuts=compatible.filter(s=>routeLength(rallyRoute(track,s,true))<routeLength(rallyRoute(track,s,false))*.98),shortcut={...pick(shortcuts.length?shortcuts:compatible)},start=trackFrame(track,0);
   Object.assign(x,{goal:'Clear every gate in order. Follow the wide road or take the narrow infield shortcut between its marked gates. The shortcut saves distance but requires precise steering. Brake before bends; hold brake to reverse if stuck. Beat your best lap.',controls:'W / ↑ accelerate · S / ↓ brake / reverse · A/D steer · Esc pause · R restart · F fullscreen',playerStart:{x:start.x,y:0,z:start.z},headingStart:start.heading,track,handling,presentation,shortcut,vehicle:{...rallyVehicle},nodes:trackGates(track,shortcut),view:'chase',world:'canyon-circuit',selection:{catalogHash:digest(options),seed,track:track.id,width:track.width,handling:handling.id,presentation:presentation.id,shortcut:shortcut.id,method:'seeded-compatible-list-selection'}});
  }
  if(kind==='checkpoint'){const rng=random(seed^0x2c71a),pick=xs=>xs[Math.floor(rng()*xs.length)],track={...pick(options.rally.tracks),width:pick(options.rally.widths)},handling={...pick(options.rally.handling)},presentation={...pick(options.rally.presentation)},shortcut={...pick(options.rally.shortcuts.filter(s=>s.allowedTracks.includes(track.id)))},start=trackFrame(track,0);Object.assign(x,{goal:'Reach every beacon in order before time runs out. Choose the safer outer line or the shorter inner line at each marked turn. Learn the route, then beat your best time.',controls:'W / ↑ accelerate · S / ↓ brake / reverse · A/D steer · Esc pause · R restart · F fullscreen',playerStart:{x:start.x,y:0,z:start.z},headingStart:start.heading,track,handling,presentation,shortcut,vehicle:{...rallyVehicle},nodes:trackGates(track,shortcut),view:'chase',world:'beacon-run',selection:{catalogHash:digest(options),seed,track:track.id,width:track.width,handling:handling.id,presentation:presentation.id,shortcut:shortcut.id,method:'seeded-compatible-list-selection'}});}
