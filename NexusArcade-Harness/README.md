@@ -87,6 +87,9 @@ evidence reference marked `"independent": true` for every facet, then submit the
 node NexusArcade-Harness/cli.mjs candidate-review --file /path/to/completed-review.json
 ```
 
+The comprehension facet must include `observerType: "human"`; the target-device
+facet must include a named `deviceProfile`.
+
 The validator checks candidate identity and source hashes and writes a G03 verdict;
 it never accepts a game or changes the collection by itself. Missing evidence,
 stale candidates or incomplete facets fail closed.
