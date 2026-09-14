@@ -13,7 +13,7 @@ export async function recordCandidateReview(input){
  const index=await loadJSON(path.join(campaign,'goals/G02/candidate-index.json'));
  if(index.version!==8||index.status!=='NEEDS_REVIEW')throw Error('Review requires current provisional candidate index');
  if(input.candidates.length!==index.candidates.length)throw Error('Review must cover every indexed candidate');
- const currentHash=await fingerprint();const ids=new Set();const reviews=[];
+ const currentHash=await fingerprint();if(input.sourceHash!==currentHash)throw Error('Review source is stale or missing');const ids=new Set();const reviews=[];
  for(const review of input.candidates){
   if(!review||typeof review.id!=='string'||ids.has(review.id))throw Error('Review candidate IDs must be unique');ids.add(review.id);
   const candidate=index.candidates.find(c=>c.id===review.id);if(!candidate)throw Error('Review candidate is absent from index: '+review.id);
