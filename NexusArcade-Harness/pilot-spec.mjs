@@ -7,9 +7,9 @@ import {trackFrame,trackGates,rallyVehicle} from './kits/track-layout.mjs';
 import {pilotDomainGraph,compileDomainGraph} from './kits/domain-graph.mjs';
 const options=JSON.parse(readFileSync(new URL('./pilot-options.json',import.meta.url),'utf8'));
 import {rollConcepts} from './composition.mjs';
-export const pilotKinds=['transfer','conduit','rally'];
+export const pilotKinds=['transfer','conduit','rally','checkpoint'];
 // Automatic rolls avoid the overused transfer template; its components remain reusable.
-export const automaticPilotKinds=['conduit','rally'];
+export const automaticPilotKinds=['conduit','rally','checkpoint'];
 export function pilotProfile(kind,seed){
  if(!Number.isInteger(seed)||seed<0||seed>4294967295)throw Error('Invalid pilot seed');
  if(!pilotKinds.includes(kind))throw Error('Unknown pilot capability family');const rolled=rollConcepts(seed,2);
@@ -23,9 +23,12 @@ export function pilotProfile(kind,seed){
   const rng=random(seed^0x714ac),pick=xs=>xs[Math.floor(rng()*xs.length)],track={...pick(options.rally.tracks),width:pick(options.rally.widths)},handling={...pick(options.rally.handling)},presentation={...pick(options.rally.presentation)},shortcut={...pick(options.rally.shortcuts.filter(s=>s.allowedTracks.includes(track.id)))},start=trackFrame(track,0);
   Object.assign(x,{goal:'Clear every gate in order. Follow the wide road or take the narrow infield shortcut between its marked gates. The shortcut saves distance but requires precise steering. Brake before bends; hold brake to reverse if stuck. Beat your best lap.',controls:'W / ↑ accelerate · S / ↓ brake / reverse · A/D steer · Esc pause · R restart · F fullscreen',playerStart:{x:start.x,y:0,z:start.z},headingStart:start.heading,track,handling,presentation,shortcut,vehicle:{...rallyVehicle},nodes:trackGates(track,shortcut),view:'chase',world:'canyon-circuit',selection:{catalogHash:digest(options),seed,track:track.id,width:track.width,handling:handling.id,presentation:presentation.id,shortcut:shortcut.id,method:'seeded-compatible-list-selection'}});
  }
+ if(kind==='checkpoint'){const rng=random(seed^0x2c71a),pick=xs=>xs[Math.floor(rng()*xs.length)],track={...pick(options.rally.tracks),width:pick(options.rally.widths)},handling={...pick(options.rally.handling)},presentation={...pick(options.rally.presentation)},shortcut={...pick(options.rally.shortcuts.filter(s=>s.allowedTracks.includes(track.id)))},start=trackFrame(track,0);Object.assign(x,{goal:'Reach every beacon in order before time runs out. Choose the safer outer line or the shorter inner line at each marked turn. Learn the route, then beat your best time.',controls:'W / ↑ accelerate · S / ↓ brake / reverse · A/D steer · Esc pause · R restart · F fullscreen',playerStart:{x:start.x,y:0,z:start.z},headingStart:start.heading,track,handling,presentation,shortcut,vehicle:{...rallyVehicle},nodes:trackGates(track,shortcut),view:'chase',world:'beacon-run',selection:{catalogHash:digest(options),seed,track:track.id,width:track.width,handling:handling.id,presentation:presentation.id,shortcut:shortcut.id,method:'seeded-compatible-list-selection'}});}
  if(kind==='transfer'){const rng=random(seed^0x51f15e),layout=structuredClone(options.transfer.layouts[Math.floor(rng()*options.transfer.layouts.length)]);x.transferLayout=layout;const cargoPool=options.transfer.cargoLayouts.filter(cargo=>layout.allowedCargo.includes(cargo.id));if(!cargoPool.length)throw Error('No compatible cargo layout');x.cargoLayout=structuredClone(cargoPool[Math.floor(rng()*cargoPool.length)]);x.nodes=structuredClone(x.cargoLayout.nodes);x.spatialWorld=transferWorld(layout);x.goal='Deliver all three cells to matching bays. Deliveries 1 and 2 open their numbered shortcut doors. Choose your delivery order and route.';x.selection={catalogHash:digest(options),seed,layout:layout.id,cargo:x.cargoLayout.id,method:'seeded-compatible-list-selection'};}
  x.replay={mechanism:'personal-best',reason:'Improve completion time under the same course and rules.',recordKey:digest({kind,nodes:x.nodes,spatialWorld:x.spatialWorld,track:x.track,handling:x.handling,shortcut:x.shortcut,vehicle:x.vehicle,deadlineSeconds:x.deadlineSeconds,fillSeconds:x.fillSeconds,flowProcess:x.flowProcess})};
  if(kind==='rally')x.replay.reason='Master the narrow shortcut to save time, or use the wider bend for more steering room.';
+ if(kind==='checkpoint')x.replay.reason='Learn the beacon order, choose cleaner lines, and beat your best completion time.';
+ if(kind==='checkpoint')x.replay.reason='Learn the beacon order, choose cleaner lines, and beat your best completion time.';
  if(kind==='transfer')x.replay.reason='Try a different delivery order and use the doors it opens to reduce travel time.';
  if(kind==='conduit')x.replay.reason='Try the faster setup to beat your time, or use the longer route to leave more waste capacity for mistakes.';
  x.domainGraph=pilotDomainGraph(x);return validatePilot(x);

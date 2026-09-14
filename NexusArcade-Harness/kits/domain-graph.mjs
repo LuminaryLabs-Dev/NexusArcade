@@ -89,7 +89,7 @@ export function pilotDomainGraph(c){
   add('reservoir','flowStore',{capacity:c.flowProcess.targetCapacity});add('waste','flowStore',{capacity:c.flowProcess.wasteCapacity});for(const id of ['direct','efficient']){wire(id,'rate','reservoir','rates');wire(id,'loss','waste','rates');}
   add('resource-goal','flowGoal',{});wire('reservoir','complete','resource-goal','full');wire('waste','available','resource-goal','safe');wire('resource-goal','complete','objective','complete');
  }
- else if(c.kind==='rally'){add('gates','checkpoints',{nodes:c.nodes.map(({id,x,z})=>({id,x,z})),range:2.7});wire('controls','position','gates','position');wire('gates','complete','objective','complete');}
+ else if(c.kind==='rally'||c.kind==='checkpoint'){add('gates','checkpoints',{nodes:c.nodes.map(({id,x,z})=>({id,x,z})),range:2.7});wire('controls','position','gates','position');wire('gates','complete','objective','complete');}
  else throw Error('Unknown pilot graph mapping');
  add('objective','objective',{});const graph={version:1,instances,wires,objective:'objective'};compileDomainGraph(graph);return graph;
 }

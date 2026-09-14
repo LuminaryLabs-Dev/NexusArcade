@@ -10,7 +10,7 @@ export async function reviewPilot(root,id,{signal}={}){
  report.initialRender=await p.evaluate(()=>__renderEvidence());check('Three.js gameplay geometry',report.initialRender.triangles>1000);const start=await state();
  const profile=await p.evaluate(()=>JSON.parse(document.getElementById('composition').textContent));
  const walkRoute=async(x,z)=>{const initial=await state(),route=routeInWorld(profile.spatialWorld,initial.player,{x,z},initial.domainState);for(const point of route.points.slice(1)){let reached=false;for(let i=0;i<700;i++){const s=await state(),dx=point.x-s.player.x,dz=point.z-s.player.z;if(Math.hypot(dx,dz)<.18){reached=true;break;}if(s.mode!=='play')throw Error('Route ended in '+s.mode);await input([Math.abs(dx)>.1?(dx>0?'KeyD':'KeyA'):null,Math.abs(dz)>.1?(dz>0?'KeyS':'KeyW'):null].filter(Boolean),50);}if(!reached)throw Error('World route stalled');}return route.distance;};
- if(['transfer','conduit','rally'].includes(start.kind)){report.initialImage=await p.screenshot();report.initialHash=digest(report.initialImage);}
+ if(['transfer','conduit','rally','checkpoint'].includes(start.kind)){report.initialImage=await p.screenshot();report.initialHash=digest(report.initialImage);}
  if(start.kind==='rally'){
   for(const [key,sign] of [['KeyD',1],['KeyA',-1]]){
    await input(['KeyW'],300);const before=await state(),right=(await p.evaluate(()=>__renderEvidence())).cameraRight;
@@ -49,7 +49,7 @@ export async function reviewPilot(root,id,{signal}={}){
    const next=await state(),last=next.events.at(-1);const view=await p.evaluate(()=>__renderEvidence());for(const label of view.worldLabels.filter(l=>l.visible)){const b=view.actorScreenBounds;if(!b||label.x+label.width/2>b.left&&label.x-label.width/2<b.right&&label.y+label.height/2>b.top&&label.y-label.height/2<b.bottom)throw Error('World label covers player vehicle');}distance+=Math.hypot(next.player.x-s.player.x,next.player.z-s.player.z);
    if(!vehicleSupported(roads,next.player,next.heading,profile.vehicle))throw Error('Vehicle body crossed road edge');
    if(last?.type==='collision'&&JSON.stringify(last)!==lastCollision){collisions++;if(recovery<=0){recovery=22;recoveryOrigin=next.player;}lastCollision=JSON.stringify(last);}
-   if(!roadContains(main,next.player)){offMainTicks++;if(!fault&&!conservative&&!report.image){report.image=await p.screenshot();report.frame=next;report.detailImage=await p.screenshot({clip:{x:120,y:440,width:860,height:280}});}}
+   if(!roadContains(main,next.player)){offMainTicks++;if(!fault&&!conservative&&!report.image){report.image=await p.screenshot();report.frame=next;if(start.kind==='rally')report.detailImage=await p.screenshot({clip:{x:120,y:440,width:860,height:280}});}}
    if(collisions>300)throw Error('Rally route cannot recover from collision');
   }
   const result=await state();check('full vehicle stays on composed road',result.mode==='won',{route:conservative?'wide':'shortcut',ticks,collisions});

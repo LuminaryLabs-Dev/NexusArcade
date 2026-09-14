@@ -354,3 +354,11 @@ one placement conflict was rejected and corrected. Existing 41 tests, build and
 browser-boundary checks pass. Supplied Playwright client captured a synchronized
 player screenshot/state from a retained preview. This is structural variation
 coverage, not yet a new game family or factory acceptance.
+
+Checkpoint family slice: exposed a separate seeded checkpoint family through the
+trusted steering, ordered-checkpoint and objective domains. Three profiles compiled
+and validated. Live generation found and fixed two shared review/runtime gaps:
+missing checkpoint palette data and an inappropriate racing detail crop. The repaired
+run game-1789372134833 reached NEEDS_REVIEW in 83.99s; supplied browser evidence
+showed play state, nine ordered beacons and replay metadata. It remains a
+development preview, not accepted factory output.
