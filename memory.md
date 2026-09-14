@@ -165,3 +165,6 @@ quality or replace independent acceptance gates.
 Replay qualification requires two independent route differences: a measurable
 timing delta and different planned interaction counts. Persist both route facts
 in the SPINE; timing alone cannot qualify a cosmetic or duplicated detour.
+Legacy pilot records use the objective-specific replay checks emitted by the
+browser runner (route tradeoff, shortcut mastery, or delivery-order change);
+unrecognized names remain conservatively unqualified.
