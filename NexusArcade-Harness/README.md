@@ -90,6 +90,8 @@ node NexusArcade-Harness/cli.mjs candidate-review --file /path/to/completed-revi
 The comprehension facet must include `observerType: "human"`; the target-device
 facet must include a named `deviceProfile`.
 
+Copy `NexusArcade-Harness/review-template.json` as the starting shape for a completed packet.
+
 The validator checks candidate identity and source hashes and writes a G03 verdict;
 it never accepts a game or changes the collection by itself. Missing evidence,
 stale candidates or incomplete facets fail closed.

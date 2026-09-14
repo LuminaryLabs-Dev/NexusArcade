@@ -1,0 +1,14 @@
+{
+  "reviewerId": "replace-with-reviewer-id",
+  "candidates": [
+    {
+      "id": "replace-with-indexed-candidate-id",
+      "conceptCausality": {"verdict": "NEEDS_REVIEW", "evidenceRefs": [{"path": "path/to/independent-evidence.json", "sha256": "sha256", "independent": true}]},
+      "interactionNovelty": {"verdict": "NEEDS_REVIEW", "evidenceRefs": [{"path": "path/to/independent-evidence.json", "sha256": "sha256", "independent": true}]},
+      "visualNovelty": {"verdict": "NEEDS_REVIEW", "evidenceRefs": [{"path": "path/to/independent-evidence.json", "sha256": "sha256", "independent": true}]},
+      "presentationAudio": {"verdict": "NEEDS_REVIEW", "evidenceRefs": [{"path": "path/to/independent-evidence.json", "sha256": "sha256", "independent": true}]},
+      "targetDevice": {"verdict": "NEEDS_REVIEW", "deviceProfile": "replace-with-device-and-viewport", "evidenceRefs": [{"path": "path/to/independent-evidence.json", "sha256": "sha256", "independent": true}]},
+      "comprehension": {"verdict": "NEEDS_REVIEW", "observerType": "human", "evidenceRefs": [{"path": "path/to/independent-evidence.json", "sha256": "sha256", "independent": true}]}
+    }
+  ]
+}
