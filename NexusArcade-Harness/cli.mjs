@@ -47,6 +47,7 @@ if(command==='compile-concepts'||command==='scene-concepts'){
 }else if(command==='g03-causality'){const {measureG03ConceptSensitivity}=await import('./g03-causality.mjs');console.log(JSON.stringify(await measureG03ConceptSensitivity(),null,2));
 }else if(command==='g03-comparison'){const {measureG03Comparison}=await import('./g03-comparison.mjs');console.log(JSON.stringify(await measureG03Comparison(),null,2));
 }else if(command==='g03-review-template'){const {writeG03ReviewTemplate}=await import('./g03-review-template.mjs');console.log(JSON.stringify(await writeG03ReviewTemplate(),null,2));
+}else if(command==='g03-review-request'){const {writeG03ReviewRequest}=await import('./g03-review-request.mjs');console.log(JSON.stringify(await writeG03ReviewRequest(),null,2));
 }else if(command==='g03-performance'){const {measureG03Performance}=await import('./g03-performance.mjs');console.log(JSON.stringify(await measureG03Performance(),null,2));
 }else if(command==='g03-presentation'){const {measureG03Presentation}=await import('./g03-presentation.mjs');console.log(JSON.stringify(await measureG03Presentation(),null,2));
 }else if(command==='g03-target-performance'){const {measureG03TargetPerformance}=await import('./g03-target-performance.mjs');console.log(JSON.stringify(await measureG03TargetPerformance(),null,2));
