@@ -241,3 +241,33 @@ and UI-state capture were added and fault-injected without converting FAIL toPAS
 Next: generic domain-driven Three.js presenters/assembly consumed by the existing
 harness, catalog bindings for movement/world/presentation, then frozen complete-game
 validation and repair integration. G02 running; G03–G33 planned; accepted0/1000.
+
+Generic catalog-scene increment: added scene-spec/scene-run, a domain-driven
+Three.js view/player, shared physical presenters and an input-plan browser review.
+Catalog profile compilation remains separate from eligibility and full acceptance.
+Two local Thinking1.2B/VL3B development ideas passed22 browser checks each within
+their original clocks. Independent images caught overwritten-label ghosting;
+shared canvas clearing and prefab callouts fixed it through harness revisions.
+CPU witnesses measured the direct route at17.05s/19.35L waste and the farther
+route at18.35s/5.61L waste. A staged reservoir loop wins at9.4s, while premature
+activation loses at5.65s. Eight positive/negative runs,10 invalid presentation
+cases and7 frozen intent/clock/rule guards are retained in G02 evidence.
+
+The supplied-client wrapper first failed module resolution before loading a game;
+its ESM dependency URL is now correct. Actual inputs then exposed a real defect:
+sub-tick taps disappeared between50ms updates. Shared input now queues presses,
+consumes each once, and clears pending input on pause/focus loss/restart. Both
+expired previews were rejected and their launches removed through rejectPreview
+and cleanupFailed. They are not accepted games. Two harness-built shared-regression
+fixtures pass22+22 full-loop checks, the exact formerly missed short taps, and10
+held-key/pause/restart/lifecycle checks. Actual client and full-page images were
+inspected. Persisted lifecycle events were synthetic; actual BFCache remains
+unverified. These later checks do not retrospectively qualify the expired ideas.
+
+Validation:41 existing tests, build,17-module browser boundary,103-file package
+inspection; immutable runtime manifests verified. README and repo memory now
+explain the generic scene commands and limitations. G02 work-state/evidence and
+execution packet are refreshed; original four-file contract hash and all33 goal
+IDs/order remain unchanged. Accepted0/1000. Next: bind catalog/seed choices into
+generic runtime/presentation and main Generate, then complete generic driving and
+other presenter checks, frozen acceptance and improvement integration.

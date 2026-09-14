@@ -1,0 +1,32 @@
+import {chromium} from 'playwright';
+import {readFile} from 'node:fs/promises';
+import path from 'node:path';
+import {serveFiles} from './review3d.mjs';
+import {digest} from './factory.mjs';
+import {validateScenePlan} from './scene-spec.mjs';
+import {routeInWorld,worldSupports} from './kits/spatial-world.mjs';
+export async function reviewScene(root,id,plan,{signal}={}){
+ const c=JSON.parse(await readFile(path.join(root,id,'composition.json')));validateScenePlan(plan,c.runtime);
+ const report={status:'FAIL',method:'Headed Chromium software WebGL; keyboard input-driven generic scene plan with omitted-action control',checks:[],errors:[]},server=await serveFiles(root);let browser,page,abort;
+ const check=(name,pass,observed)=>{report.checks.push({name,pass,observed});if(!pass)throw Error(name);};
+ try{
+  browser=await chromium.launch({headless:false,args:['--use-angle=swiftshader','--enable-unsafe-swiftshader']});abort=()=>browser.close().catch(()=>{});signal?.addEventListener('abort',abort,{once:true});signal?.throwIfAborted();page=await browser.newPage({viewport:{width:1100,height:780}});page.setDefaultTimeout(15000);page.on('pageerror',e=>report.errors.push(e.message));page.on('console',m=>{if(m.type()==='error')report.errors.push(m.text());});
+  const origin='http://127.0.0.1:'+server.address().port;await page.route('**/*',r=>r.request().url().startsWith(origin+'/')?r.continue():r.abort());await page.goto(origin+'/'+id+'/index.html');await page.waitForFunction(()=>!!window.render_game_to_text);await page.bringToFront();
+  const state=()=>page.evaluate(()=>JSON.parse(render_game_to_text())),tick=ms=>page.evaluate(ms=>advanceTime(ms),ms),input=async(keys,ms=50)=>{signal?.throwIfAborted();for(const key of keys)await page.keyboard.down(key);await tick(ms);for(const key of keys)await page.keyboard.up(key);};
+  await tick(0);check('title',(await state()).mode==='title');await page.click('#start');await tick(0);check('start',(await state()).mode==='play');
+  await page.keyboard.press('Escape');const paused=await state();await tick(1000);check('pause freezes session',(await state()).mode==='pause'&&(await state()).elapsed===paused.elapsed);await page.click('#start');await tick(0);
+  await page.evaluate(()=>dispatchEvent(new Event('blur')));await tick(500);check('blur pauses',(await state()).mode==='pause');await page.click('#start');await tick(0);check('explicit resume',(await state()).mode==='play');
+  const render=await page.evaluate(()=>__renderEvidence());check('all requested presenters instantiated',render.presenters.length===c.presentation.nodes.length);check('Three.js scene renders',render.triangles>1000);report.initialImage=await page.screenshot();report.initialHash=digest(report.initialImage);
+  async function walk(x,z){const s=await state(),world=c.runtime.collision.world,route=routeInWorld(world,s.player,{x,z},s.domainState);for(const waypoint of route.points.slice(1)){let reached=false;for(let i=0;i<700;i++){const s=await state(),dx=waypoint.x-s.player.x,dz=waypoint.z-s.player.z;if(Math.hypot(dx,dz)<.18){reached=true;break;}if(s.mode!=='play')throw Error('Session ended before planned movement');await input([Math.abs(dx)>.1?(dx>0?'KeyD':'KeyA'):null,Math.abs(dz)>.1?(dz>0?'KeyS':'KeyW'):null].filter(Boolean));const next=await state();if(!worldSupports(world,next.player,next.domainState))throw Error('Actor left valid world');}if(!reached)throw Error('Planned waypoint unreachable through movement');}}
+  async function run(omit=false){for(const step of plan.steps){if((await state()).mode!=='play')break;if(step.action==='move')await walk(step.x,step.z);if(step.action==='interact'&&!omit)for(let i=0;i<step.count;i++){await input(['KeyE']);await tick(50);}if(step.action==='wait'){for(let left=step.seconds;left>0&&(await state()).mode==='play';left-=.25){await tick(Math.min(.25,left)*1000);if(!report.image&&!omit){report.image=await page.screenshot();report.frame=await state();}}}}return state();}
+  const won=await run();check('complete input-driven loop',won.mode==='won');const actual=await page.evaluate(()=>__renderEvidence());
+  for(const [id,shown]of Object.entries(actual.domainViews)){const d=won.domainState[id];if(shown.rotation!==undefined)check('valve mesh follows domain '+id,Math.abs(shown.rotation-d.rotation*Math.PI/2)<1e-6);if(shown.fillHeight!==undefined)check('tank mesh follows domain '+id,Math.abs(shown.fillHeight-Math.max(.01,d.fill*2.75))<1e-6);}
+  report.runs=[{mode:won.mode,elapsed:won.elapsed,result:won.lastResult}];check('record saved',won.bestSeconds===won.elapsed);if(!report.image){report.image=await page.screenshot();report.frame=won;}
+  await page.keyboard.press('KeyR');await tick(0);check('restart clears progress',(await state()).elapsed===0);const second=await run();check('second complete loop',second.mode==='won');check('record compares same configuration',second.lastResult.previousBest===won.elapsed&&second.bestSeconds===Math.min(won.elapsed,second.elapsed));report.runs.push({mode:second.mode,elapsed:second.elapsed,result:second.lastResult});
+  await page.keyboard.press('KeyR');await tick(0);await tick((c.runtime.session.durationSeconds+1)*1000);check('idle cannot win',(await state()).mode==='lost');
+  if(plan.steps.some(s=>s.action==='interact')){await page.keyboard.press('KeyR');await tick(0);await run(true);await tick((c.runtime.session.durationSeconds+1)*1000);check('omitted interaction cannot win',(await state()).mode==='lost');}
+  await page.reload();await page.waitForFunction(()=>!!window.render_game_to_text);await tick(0);check('record survives reload',(await state()).bestSeconds===second.bestSeconds);check('reload requires explicit start',(await state()).mode==='title');
+  report.render=await page.evaluate(()=>__renderEvidence());check('no browser errors',report.errors.length===0);report.screenshotHash=digest(report.image);report.status='PASS';
+ }catch(e){report.errors.push(e.message);report.failure={afterCheck:report.checks.at(-1)?.name??'startup'};if(page&&!page.isClosed()&&!signal?.aborted)try{if(!report.image)report.image=await page.screenshot({timeout:2500});}catch(capture){report.failure.captureError=capture.message;}}
+ finally{if(abort)signal?.removeEventListener('abort',abort);await browser?.close();await new Promise(r=>server.close(r));}return report;
+}

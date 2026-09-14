@@ -18,7 +18,7 @@ Reliable Arcade Factory uses .agent/packets/2026-09-13_reliable-arcade-factory w
 
 The runtime now enforces a 25-minute original idea deadline, no cumulative token budget and no fixed improvement-pass quota. Per-request context/output limits remain necessary for 4K local models. Expiry fails the idea; a pilot retry preserves its predecessor's start/deadline. New players require explicit resume after pause/focus loss. Generation and foreground arcade play share an exclusive lease until contention measurements permit concurrency.
 
-Foundation implementation is partial: guarded leases/queue/evidence/index publication, bounded model-response repair, dependency-aware improvement, catalog validation and typed behavior compilation, paginated arcade and shared delivery/flow/steering pilot domains. G01 planning is complete. Full catalog-to-scene assembly and implementation of frozen concept/novelty/performance acceptance remain G02 work; subsequent goals remain incomplete. Historical PASS and new preview PASS do not meet factory acceptance. Never advertise 1,000 accepted games from files, names, palette changes or structural signatures alone.
+Foundation implementation is partial: guarded leases/queue/evidence/index publication, bounded model-response repair, dependency-aware improvement, catalog validation and typed behavior compilation, paginated arcade and shared delivery/flow/steering pilot domains. G01 planning is complete. Complete catalog coverage, production generation integration and frozen concept/novelty/performance acceptance remain G02 work; subsequent goals remain incomplete. Historical PASS and new preview PASS do not meet factory acceptance. Never advertise 1,000 accepted games from files, names, palette changes or structural signatures alone.
 
 Contract-6 preserves mandatory replay from the foundation and adds explicit replay, tradeoff, session and environment choices. Contract evidence identity covers all four JSON files, including the example profile and its canonical catalog hash. Per-game qualification must finish within the original deadline; paired batch review controls acceptance later and cannot extend repairs. Three consecutive recurring causes trigger shared diagnosis, not a campaign/pass quota. The qualification/review split and recurring-cause recovery are specified and still require runtime integration. User authorized incremental validated commits and ordinary pushes to origin main for this mission.
 
@@ -30,7 +30,8 @@ Typed behavior graphs now live in kits/domain-graph.mjs with closed settings, ty
 ports, stable ordering, required objective contribution and explicit next-tick
 feedback. Generated pilots store graph data; the trusted NexusEngine adapter
 executes it. Shared scene-runtime adapters now own movement, collision and session
-outcomes; family-specific rendering still requires further composition.
+outcomes. Generic scene presenters and immutable assembly now consume explicit
+catalog scene profiles; ordinary UI generation still uses the pilot path.
 The arcade uses this pilot path, with honest challenge choices instead of unused
 complexity controls. Renewable player reservations expire after 60 seconds; late
 renewals never reopen a closed session, and expired views require explicit reload.
@@ -83,3 +84,16 @@ boolean failure outputs take precedence and cannot be silently omitted. Keep
 snapshot data detached, sweep the actor footprint, and reject unsupported spawn
 positions. Runtime adapter configuration is not proof of catalog eligibility.
 Existing pilots retain only a compatibility readout wrapper around this runtime.
+
+
+Generic playable profiles use scene-spec.mjs plus scene-run.mjs; scene-player and
+kits/scene-view present typed domain state without a game-family switch. Physical
+prefab dimensions also create collision solids. Keep capability eligibility and
+full factory acceptance separate from rendered assembly. Walking flow compositions
+have browser loop evidence; other presenters, steering review plans, catalog
+sampling, integrated improvement and all frozen acceptance gates need further work.
+Profile repairs freeze seed, concept selections, specific intent and original clock;
+a changed profile requires an explicit reason. Post-deadline regression fixtures
+prove shared repairs only and never qualify the expired original idea. Buffer short
+interaction presses until simulation consumes them; clear buffered input on pause,
+focus loss and restart so it cannot spill into another session.

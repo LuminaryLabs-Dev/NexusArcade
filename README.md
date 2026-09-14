@@ -77,7 +77,7 @@ npm run build
 npm pack --dry-run
 ```
 
-## Local game generation (experimental)
+## Earlier standalone generator (experimental)
 
 `@luminarylabs/nexus-arcade/generation` is a separate Node-only factory. It uses
 an existing local LFM 350M service, strict decision schemas, seeded creative
@@ -99,3 +99,47 @@ Generated candidates are not certified arcade releases.
 See [the complete generation guide](generation/README.md),
 [architecture](generation/ARCHITECTURE.md), and
 [validation record](generation/VALIDATION.md).
+
+
+## Reliable Arcade Factory (active development)
+
+`NexusArcade-Harness/` owns the current local LM Studio workflow: LFM2.5
+Thinking 1.2B plans; LFM2.5 VL 3B writes bounded presentation choices and reviews
+actual images. Generated games contain data composed with pinned NexusEngine
+adapters and Three.js. Models do not write executable gameplay scripts.
+
+```sh
+node NexusArcade-Harness/cli.mjs factory-check
+node NexusArcade-Harness/server.mjs
+# Open http://127.0.0.1:4318
+node NexusArcade-Harness/cli.mjs assemble-scene --profile /absolute/path/scene.json
+node NexusArcade-Harness/cli.mjs scene --id unique-idea-id --profile /absolute/path/scene.json
+```
+
+A playable scene profile has five fields: `version: 1`, `scene`, `presentation`,
+`replayReason`, and `validationPlan`. The scene contains catalog behavior
+selections, domain instances and typed connections, movement/collision adapters,
+and session rules. Presentation selects a supported palette and camera, labels
+and tones for domain presenters, and up to four progress readouts. Validation
+steps use only bounded `move`, `interact`, and `wait` actions; the current browser
+plan supports walking compositions. See `scene-spec.mjs`, `catalog-compiler.mjs`
+and `kits/scene-presentation.mjs` for the closed contracts.
+
+The shared presenter builds physical prefabs and collision footprints from the
+same placement data. Actual domain state drives valve orientation, stored liquid,
+flow connections, progress, endings and records. Keyboard taps are retained until
+simulation consumes them; pause, focus loss and restart clear pending input.
+
+To repair a development idea, add `--retry-of prior-id --repair-reason "specific
+shared correction"` to `scene`. It retains the original 25-minute clock, seed,
+concept selections and required intent. Expired ideas cannot be repaired by
+renaming them. Fix shared source or profile input through the harness; never edit
+files in a generated game. `cleanup-failed --id failed-id --apply` removes only
+unreferenced failed launch files and preserves diagnostics/runtime dependencies.
+
+The arcade's ordinary Generate button still uses the earlier pilot path. Generic
+scene generation is an explicit development CLI path until catalog sampling,
+repair and full acceptance are integrated. A preview PASS is not acceptance:
+G02 foundation work remains open, later goals remain gated, and accepted count
+must come from the campaign index. Software WebGL checks, model observations,
+independent image inspection and target-device performance are separate evidence.
