@@ -185,6 +185,8 @@ active candidate index and evidence manifest. Its source hash and candidate IDs
 must match the current foundation revision; older request packets are obsolete.
 The model adapter also rejects any LM Studio context length above the frozen
 4K limit, alongside its loopback, identity, parameter, and vision checks.
+G03 PASS facets cannot rely exclusively on `REFERENCE_ONLY` evidence; cited
+JSON evidence must also match G03, the current source, and the active candidates.
 
 The workspace symlink guard permits macOS system aliases `/tmp` and `/var` while
 continuing to reject symlinks in requested workspace components. This keeps
