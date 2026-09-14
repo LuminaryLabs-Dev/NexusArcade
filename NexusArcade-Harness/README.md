@@ -92,6 +92,8 @@ causality, interaction novelty, visual novelty, presentation/audio, target-devic
 performance and human comprehension. Complete one verdict and at least one hashed
 evidence reference marked `"independent": true` for every facet, then submit the reviewer packet with:
 
+`REFERENCE_ONLY` artifacts may provide context but cannot support a `PASS` facet by themselves.
+
 ```sh
 node NexusArcade-Harness/cli.mjs candidate-review --file /path/to/completed-review.json
 ```
