@@ -9,7 +9,7 @@ const options=JSON.parse(readFileSync(new URL('./pilot-options.json',import.meta
 import {rollConcepts} from './composition.mjs';
 export const pilotKinds=['transfer','conduit','rally','checkpoint'];
 // Automatic rolls avoid the overused transfer template; its components remain reusable.
-export const automaticPilotKinds=['conduit','rally','checkpoint'];
+export const automaticPilotKinds=['conduit','rally'];
 export function pilotProfile(kind,seed){
  if(!Number.isInteger(seed)||seed<0||seed>4294967295)throw Error('Invalid pilot seed');
  if(!pilotKinds.includes(kind))throw Error('Unknown pilot capability family');const rolled=rollConcepts(seed,2);

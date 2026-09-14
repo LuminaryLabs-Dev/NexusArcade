@@ -9,6 +9,10 @@ export async function reviewPilot(root,id,{signal}={}){
  await p.keyboard.press('Escape');const paused=await state();await tick(180000);check('pause remains until explicit resume',(await state()).mode==='pause'&&(await state()).elapsed===paused.elapsed);await p.click('#start');await tick(0);check('explicit resume',(await state()).mode==='play');await p.evaluate(()=>dispatchEvent(new Event('blur')));await tick(1000);check('focus loss pauses',(await state()).mode==='pause');await p.click('#start');await tick(0);
  report.initialRender=await p.evaluate(()=>__renderEvidence());check('Three.js gameplay geometry',report.initialRender.triangles>1000);const start=await state();
  const profile=await p.evaluate(()=>JSON.parse(document.getElementById('composition').textContent));
+ if(profile.track){
+  const b=report.initialRender.actorScreenBounds,v=report.initialRender.vehicleBounds;
+  check('steering view shows the complete controlled vehicle',!!b&&!!v&&[b.left,b.right,b.top,b.bottom,v.width,v.length].every(Number.isFinite)&&b.left>=0&&b.right<=1100&&b.top>=0&&b.bottom<=780&&b.right>b.left&&b.bottom>b.top&&Math.abs(v.width-profile.vehicle.width)<=.02&&Math.abs(v.length-profile.vehicle.length)<=.02,{bounds:b,vehicle:v});
+ }
  const walkRoute=async(x,z)=>{const initial=await state(),route=routeInWorld(profile.spatialWorld,initial.player,{x,z},initial.domainState);for(const point of route.points.slice(1)){let reached=false;for(let i=0;i<700;i++){const s=await state(),dx=point.x-s.player.x,dz=point.z-s.player.z;if(Math.hypot(dx,dz)<.18){reached=true;break;}if(s.mode!=='play')throw Error('Route ended in '+s.mode);await input([Math.abs(dx)>.1?(dx>0?'KeyD':'KeyA'):null,Math.abs(dz)>.1?(dz>0?'KeyS':'KeyW'):null].filter(Boolean),50);}if(!reached)throw Error('World route stalled');}return route.distance;};
  if(['transfer','conduit','rally','checkpoint'].includes(start.kind)){report.initialImage=await p.screenshot();report.initialHash=digest(report.initialImage);}
  if(start.kind==='rally'){

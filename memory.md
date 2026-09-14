@@ -47,6 +47,8 @@ not establish factory novelty, concept coverage, presentation or device readines
 
 User editorial rule: the excluded occupation term in text-policy.mjs must never appear in assistant replies, model inputs/outputs, or player-facing copy. Reject it locally without repeating it in repair prompts. Do not recycle the same delivery template under a new name; automatic generation excludes the transfer family. Preserve historical artifacts, but hide disallowed titles and block their playable endpoints. Expand variety through reusable interactions and compatible concept lists.
 
+Checkpoint alias is not a verified distinct family: it reuses racing configuration and its historical player view skipped the vehicle/camera branches. Automatic admission excludes it. Track-profile reviews must verify visible complete vehicle bounds independently of family name; runtime progress alone cannot pass a broken player view.
+
 Flow composition uses explicit source, router, lossy-link, storage and resource-goal
 domains. Rates are litres/second; volumes are litres. A rate port has one consumer;
 splitting requires an explicit router. Verify per-tick conservation, alternate

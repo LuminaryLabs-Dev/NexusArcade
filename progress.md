@@ -362,3 +362,12 @@ missing checkpoint palette data and an inappropriate racing detail crop. The rep
 run game-1789372134833 reached NEEDS_REVIEW in 83.99s; supplied browser evidence
 showed play state, nine ordered beacons and replay metadata. It remains a
 development preview, not accepted factory output.
+
+Independent checkpoint audit correction: the prior preview PASS was invalid.
+The alias reused racing routes but skipped its camera and actor rendering branches.
+Actual input and image evidence showed a fixed ground-level view with no player;
+new reviewer gate rejects missing/offscreen controlled vehicle bounds for any track
+profile. Removed checkpoint from automatic admission. Rejected its retained preview
+through rejectPreview and cleaned only the failed launch through cleanupFailed.
+Specifications, diagnostic images and immutable runtime remain. This alias is not
+a second verified family. G02 remains open; accepted count remains zero.
