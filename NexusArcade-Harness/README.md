@@ -76,6 +76,21 @@ does not yet emit an executable game. Missing capability evidence blocks resolut
 never silently become accepted games. Batch admission remains gated by foundation
 implementation and review.
 
+G03 independent review starts from
+`NexusArcade-Experiments/campaigns/reliable-arcade-factory/goals/G03/review-request.json`.
+It lists the current provisional candidates and the six required facets: concept
+causality, interaction novelty, visual novelty, presentation/audio, target-device
+performance and human comprehension. Complete one verdict and at least one hashed
+evidence reference for every facet, then submit the reviewer packet with:
+
+```sh
+node NexusArcade-Harness/cli.mjs candidate-review --file /path/to/completed-review.json
+```
+
+The validator checks candidate identity and source hashes and writes a G03 verdict;
+it never accepts a game or changes the collection by itself. Missing evidence,
+stale candidates or incomplete facets fail closed.
+
 Each experiment retains compact decisions, model identities, timing, source hashes
 and check results in `spine.json`. Immutable runtime snapshots under
 `NexusArcade-Experiments/.runtime` avoid per-game dependency copies. Failed
