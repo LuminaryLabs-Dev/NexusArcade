@@ -105,3 +105,15 @@ luminous-standard surface parameters and directional-fog exposure/density in rea
 Three.js properties. Keep roll seed/lists/hash and resolved choices as provenance;
 configuration variety is not evidence of game or visual novelty. Record identity
 includes the full presentation configuration because visibility affects play.
+
+Gameplay recipes compose additive, data-only domain fragments through
+scene-recipe.mjs. Ordered choices roll independently from one seed; nested choices
+expand only for the selected parent. Matching catalog decisions merge, conflicting
+ones fail, and the ordinary scene compiler validates the resulting graph and
+physical presentation. No custom callbacks or generated scripts. Keep the recipe
+hash, selected ancestry trace and source recipe with each generated idea. Recipes
+are development inputs until their capability and full-game evidence qualify.
+Recipe fragments may append bounded player guidance alongside their graph parts;
+the assembled player shows those selected rules with the unchanged specific
+intent. Do not rely on model naming to explain a new required interaction. Recipe
+lineage names terminal source ideas; repairs still preserve the original clock.

@@ -157,3 +157,26 @@ bindings, and the renderer applies them to actual materials, exposure and fog.
 Unsupported layers are rejected. These changes do not establish distinct gameplay
 or visual novelty. Personal records include the full presentation configuration,
 so a visibility change cannot reuse a record set under different conditions.
+
+`compile-recipe --recipe /absolute/path/recipe.json` expands nested gameplay
+fragment lists into a playable profile. A recipe contains `version: 1`, `seed`,
+`base` (a scene profile with the common parts), and ordered `choices`. Each choice
+has an `id` and `options`; each option has an `id`, `add` and nested `children`.
+`add` contains lists of `decisions`, `conceptBranches`, `domainInstances`,
+`connections`, `presenters` and validation `steps`. The selected fragments append
+to the base in parent-before-child order. Matching decisions merge; conflicts fail.
+The existing compiler checks the resulting ports, graph contribution, positions,
+physical overlaps and validation plan. Stable IDs, bounded expansion and the
+recorded selection trace make a roll reproducible; they do not establish novelty.
+
+`scene-recipe --recipe /absolute/path/recipe.json --id new-idea-id` sends the
+compiled recipe through the same local-model, immutable assembly and review path
+as `scene`. Its SPINE keeps a compact recipe hash/selection trace and the original
+recipe is retained once in `recipe.json`. Use this development path while broader
+catalog coverage and the player-facing Generate integration are unfinished.
+Fragments may also append `guidance` strings: short player-facing rules specific
+to the selected behavior. These become the profile's optional `guidance` list and
+are shown with its unchanged goal. Keep them tied to implemented actions and
+consequences. An optional recipe `lineage` records `sourceIdeas` and a concrete
+`change`; generation verifies those sources are terminal development ideas.
+Repairs use `--retry-of` and `--repair-reason` and retain the original deadline.

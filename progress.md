@@ -296,3 +296,35 @@ admitted ideas or accepted games. G02 running; accepted0/1000.
 Next: extend implemented scene bindings to movement/camera/world semantics and
 combine seeded behavior fragments before wiring main Generate; preserve all frozen
 concept, replay, novelty, audio, hardware and improvement/qualification gates.
+
+Gameplay recipe increment: scene-recipe.mjs adds deterministic ordered/nested
+fragment choices to an existing scene profile, then reuses strict catalog/graph/
+spatial compilation. Recipes merge matching decisions, reject conflicts, preserve
+chosen ancestry and append selected player guidance. CLI compile-recipe and
+scene-recipe use the existing local models, immutable assembly, persistent deadline,
+review and cleanup path. Source recipes are retained with compact SPINE hash/trace.
+
+64 seeds covered8 supply/routing/nested-unlock configurations.20 runtime input runs
+proved positive loops, total interaction omission and specific unlock omission;
+11 malformed recipe cases rejected. Additional lineage, guidance, expansion-depth,
+choice-count and dual-generation-input guards passed. These counts are configuration
+coverage, not accepted or unique games. Current root concept expansion is still
+limited; full catalog/Generate integration and other acceptance gates remain open.
+
+Two new local-model development ideas add a real spatial selector prerequisite
+and record their derivation from earlier failed flow ideas. recipe-unlock-001
+passes23 browser checks at73.74s. recipe-unlock-002 passed automated review but was
+independently rejected: RELEASE label collided with SELECT and its required action
+was missing from composed guidance. Harness removed the failed launch. Shared
+fragment guidance and a recipe placement revision fix it. recipe-unlock-002b passes
+23 checks at356.06s under the same original clock. Actual initial/consequence images
+inspected; model PASS is not full presentation acceptance.
+
+Added a source-grounded overview check requiring each valve's label at the start.
+A harness-built old-layout fixture now fails that exact check; the corrected
+fixture passes24 full-loop checks. Source-specific evidence separates this later
+reviewer from each immutable preview runtime. Supplied-client movement/short taps
+open the interlock without accidentally starting fluid flow. Repaired player
+instructions explicitly include opening RELEASE.41 existing tests/build/browser
+boundary and package checks passed. G02 running; accepted0/1000; all33 goals and
+four authoritative specification identities/order preserved.

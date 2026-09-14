@@ -6,6 +6,7 @@ import {hash} from './model.mjs';
 import assert from 'node:assert/strict';
 import {generatePilot} from './pilot-run.mjs';
 import {generateScene} from './scene-run.mjs';
+import {compileSceneRecipe} from './scene-recipe.mjs';
 import {rollSceneLayers} from './scene-layers.mjs';
 import {compilePlayableScene} from './scene-spec.mjs';
 import {contracts,queueSnapshot,recoverWriter} from './factory.mjs';
@@ -18,6 +19,10 @@ if(command==='factory-check'){const {queue,catalog,policy,profile,hash}=await co
 }else if(command==='compile-behavior'||command==='compile-scene'){
  const file=get('profile',null);if(!file)throw Error('Expected --profile with a behavior-composition JSON file');
  const {catalog}=await contracts();console.log(JSON.stringify((command==='compile-scene'?compileCatalogScene:compileCatalogBehavior)(catalog,JSON.parse(await readFile(file,'utf8'))),null,2));
+}else if(command==='compile-recipe'||command==='scene-recipe'){
+ const file=get('recipe',null);if(!file)throw Error('Expected --recipe with a scene recipe');const recipe=JSON.parse(await readFile(file,'utf8'));
+ if(command==='compile-recipe'){const {catalog}=await contracts();console.log(JSON.stringify(compileSceneRecipe(catalog,recipe),null,2));}
+ else{const s=await generateScene({id:safeId(get('id','scene-'+Date.now())),recipe,retryOf:get('retry-of',undefined),repairReason:get('repair-reason',undefined),signal:controller.signal,onProgress:p=>console.log(JSON.stringify(p))});console.log(JSON.stringify({id:s.id,status:s.status,preview:s.previewVerdict,error:s.error}));if(s.status==='FAIL'){process.exitCode=1;console.log(JSON.stringify({cleanup:await cleanupFailed(s.id,{apply:true})}));}}
 }else if(command==='roll-scene-layers'){
  const file=get('lists',null);if(!file)throw Error('Expected --lists with supported scene-layer choices');const {catalog}=await contracts();console.log(JSON.stringify(rollSceneLayers(catalog,Number(get('seed',0)),JSON.parse(await readFile(file,'utf8'))),null,2));
 }else if(command==='assemble-scene'||command==='scene'){

@@ -38,7 +38,7 @@ export function createSceneView(canvas,c){
  actor.visible=p.camera!=='forward';
  const builders={
   valve(n,node){const pos=node.position,mat=material(theme[node.tone],.5),wheel=mesh(new THREE.TorusGeometry(.7,.12,10,28),mat,pos.x,1.5,pos.z);wheel.rotation.x=-Math.PI/2;const needle=box(.12,.13,1.2,pos.x,1.65,pos.z,mats.accent),tag=plate(node.label,pos.x,2.65,pos.z),router=runtime.domainGraph.wires.some(w=>w.from===n.id&&w.out==='rotation'&&byId.get(w.to).capability==='flowRouter');
-   observations.set(n.id,()=>({rotation:needle.rotation.y,label:tag.text}));
+   observations.set(n.id,()=>({rotation:needle.rotation.y,label:tag.text,labelVisible:tag.sprite.visible}));
    updates.push(s=>{const d=s.domainState[n.id];needle.rotation.y=d.rotation*Math.PI/2;mat.color.setHex(d.aligned?theme.primary:theme.accent);tag.set(node.label+' '+(router?['A','B','A+B','OFF'][d.rotation]:d.aligned?'OPEN':'CLOSED'));});
   },
   flowStore(n,node){const pos=node.position,fluid=box(1.82,.01,1.82,pos.x,.1,pos.z,material(theme[node.tone],.5));for(const x of [-.965,.965])for(const z of [-.965,.965])box(.07,3,.07,pos.x+x,1.5,pos.z+z,mats.wall);box(2,.12,2,pos.x,.05,pos.z,mats.dark);const tag=plate(node.label,pos.x,3.65,pos.z);
