@@ -26,17 +26,18 @@ export async function buildCandidateIndex(ids){
   if(s.replay?.qualifies!==true)throw Error('Candidate lacks qualified replay evidence: '+id);
   const roots=s.composition?.conceptRoll?.concepts??s.composition?.concepts;
   if(!Array.isArray(roots)||roots.length<3||new Set(roots).size!==roots.length)throw Error('Candidate lacks three preserved independent concept roots: '+id);
-  candidates.push({id,sourceHash:s.sourceHash,status:s.status,previewVerdict:s.previewVerdict,signature:s.signature,kind:s.composition?.kind??'scene',view:s.composition?.view??'unspecified',visualOrganization:visualOrganization(s.composition),conceptRoots:roots,replay:s.replay??null,acceptanceMissing:s.acceptance?.missing??[]});
+  candidates.push({id,sourceHash:s.sourceHash,status:s.status,previewVerdict:s.previewVerdict,signature:s.signature,kind:s.composition?.kind??'scene',view:s.composition?.view??'unspecified',visualOrganization:visualOrganization(s.composition),conceptIntent:s.plan?.intent??null,conceptRoots:roots,replay:s.replay??null,acceptanceMissing:s.acceptance?.missing??[]});
  }
  const sourceHashes=[...new Set(candidates.map(c=>c.sourceHash))],signatures=new Set(candidates.map(c=>c.signature));
  if(sourceHashes.length!==1)throw Error('Candidate sources are inconsistent');
  if(signatures.size!==candidates.length)throw Error('Candidate structural signatures are duplicated');
  if(sourceHashes[0]!==await fingerprint())throw Error('Candidate source hash is stale');
- const kinds=new Set(candidates.map(c=>c.kind)),views=new Set(candidates.map(c=>c.view)),visuals=new Set(candidates.map(c=>c.visualOrganization));
+ const kinds=new Set(candidates.map(c=>c.kind)),views=new Set(candidates.map(c=>c.view)),visuals=new Set(candidates.map(c=>c.visualOrganization)),intents=new Set(candidates.map(c=>c.conceptIntent));
  if(kinds.size<3)throw Error('Foundation candidates need three distinct pilot families');
  if(views.size<2)throw Error('Foundation candidates need at least two player views');
  if(visuals.size<3)throw Error('Foundation candidates need three distinct visual organizations');
- return {version:7,goalId:'G02',status:'NEEDS_REVIEW',purpose:'Current-source contrasting foundation candidates; provisional until independent review.',sourceHashes,sourceConsistent:sourceHashes.length===1,candidates,distinctSignatures:signatures.size===candidates.length,contrast:{families:[...kinds],views:[...views],visualOrganizations:[...visuals]},requiredReview:['independent concept contribution','comparative novelty rubric','presentation and audio','target-device performance','human comprehension'],created:Date.now()};
+ if(intents.size<3||candidates.some(c=>!c.conceptIntent))throw Error('Foundation candidates need three distinct concept intents');
+ return {version:8,goalId:'G02',status:'NEEDS_REVIEW',purpose:'Current-source contrasting foundation candidates; provisional until independent review.',sourceHashes,sourceConsistent:sourceHashes.length===1,candidates,distinctSignatures:signatures.size===candidates.length,contrast:{families:[...kinds],views:[...views],visualOrganizations:[...visuals],conceptIntents:[...intents]},requiredReview:['independent concept contribution','comparative novelty rubric','presentation and audio','target-device performance','human comprehension'],created:Date.now()};
 }
 
 export async function writeCandidateIndex(ids){
