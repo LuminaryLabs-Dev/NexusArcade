@@ -187,3 +187,7 @@ temporary test workspaces usable without weakening artifact-path protection.
 Review runners close all temporary HTTP connections before awaiting server
 shutdown, so interrupted or completed independent browser reviews do not leave
 orphaned Node processes that prevent durable handoff.
+
+`pilot-review` supports `NEXUS_REVIEW_HEADED=1` for diagnosing long-run browser
+instability while retaining the default headless mode. A browser-close during a
+review remains an interrupted evidence result and cannot become PASS.
