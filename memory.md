@@ -168,3 +168,13 @@ in the SPINE; timing alone cannot qualify a cosmetic or duplicated detour.
 Legacy pilot records use the objective-specific replay checks emitted by the
 browser runner (route tradeoff, shortcut mastery, or delivery-order change);
 unrecognized names remain conservatively unqualified.
+
+Foundation candidate admission now requires three normalized visual organizations
+and three distinct seed-selected concept intents in addition to distinct families,
+views and structural signatures. Pilot planning binds the model to the exact
+intent selected from the rolled concept branches. Image review is strictly
+image-only: objective prose and route strategy are excluded, and detail crops are
+judged only for content inside the crop. The independent-review validator requires
+explicitly independent evidence for every facet, a human observer for comprehension,
+and a named device profile for target-device results; it never changes acceptance
+by itself. G02 remains queued at `needs_review` until G03 adjudicates these facets.
