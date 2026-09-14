@@ -16,8 +16,8 @@
       "behavior": {
         "version": 1,
         "seed": 0,
-        "specificIntent": "Open WEST, cross its gate, open EAST, then reach EXIT. WASD to move; E or Space at controls.",
-        "preparedInterpretation": "Growth expands reachable space; dependency makes the second route require both controls. Physical gates separate the controls and exit.",
+        "specificIntent": "Open WEST, choose QUICK (3 presses) or DETOUR (1 press), then reach EXIT. WASD moves; E or Space activates.",
+        "preparedInterpretation": "Growth opens the first gate. Dependency requires WEST plus either middle control; a nearby multi-action route competes with a farther single-action route.",
         "decisions": [
           {
             "pointId": "interaction",
@@ -158,10 +158,40 @@
         "exit"
       ]
     },
-    "replayReason": "Learn the shortest route between controls and through the gates, then improve your saved completion time.",
+    "replayReason": "Try both routes: QUICK adds two presses but saves travel; DETOUR takes fewer presses. Learn which gives you a better time.",
     "validationPlan": {
       "version": 1,
-      "steps": []
+      "steps": [],
+      "alternatives": [
+        {
+          "id": "detour",
+          "steps": [
+            {
+              "action": "move",
+              "x": -6,
+              "z": 10
+            },
+            {
+              "action": "interact",
+              "count": 1
+            },
+            {
+              "action": "move",
+              "x": 10,
+              "z": 1.5
+            },
+            {
+              "action": "interact",
+              "count": 1
+            },
+            {
+              "action": "move",
+              "x": 0,
+              "z": -10
+            }
+          ]
+        }
+      ]
     }
   },
   "fragments": [
@@ -208,20 +238,20 @@
                       "yaw": 0
                     },
                     "sourceOptionIds": [
-                    "interaction.activate"
+                      "interaction.activate"
                     ]
                   },
                   {
-                    "id": "east",
+                    "id": "quick",
                     "capabilityId": "valve",
                     "capabilityVersion": 1,
                     "settings": {
-                      "id": "east",
+                      "id": "quick",
                       "position": {
-                        "x": 6,
+                        "x": -3,
                         "z": 0
                       },
-                      "initial": 3,
+                      "initial": 1,
                       "target": 0,
                       "range": 2.5
                     },
@@ -232,7 +262,7 @@
                       "yaw": 0
                     },
                     "sourceOptionIds": [
-                    "interaction.activate"
+                      "interaction.activate"
                     ]
                   },
                   {
@@ -285,6 +315,43 @@
                     "sourceOptionIds": [
                       "ending.reach-destination"
                     ]
+                  },
+                  {
+                    "id": "detour",
+                    "capabilityId": "valve",
+                    "capabilityVersion": 1,
+                    "settings": {
+                      "id": "detour",
+                      "position": {
+                        "x": 10,
+                        "z": 0
+                      },
+                      "initial": 3,
+                      "target": 0,
+                      "range": 2.5
+                    },
+                    "transform": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 0,
+                      "yaw": 0
+                    },
+                    "sourceOptionIds": [
+                      "interaction.activate"
+                    ]
+                  },
+                  {
+                    "id": "choice",
+                    "capabilityId": "any",
+                    "capabilityVersion": 1,
+                    "settings": {},
+                    "transform": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 0,
+                      "yaw": 0
+                    },
+                    "sourceOptionIds": []
                   }
                 ],
                 "connections": [
@@ -305,14 +372,14 @@
                   {
                     "from": "controls",
                     "out": "position",
-                    "to": "east",
+                    "to": "quick",
                     "in": "position",
                     "delay": 0
                   },
                   {
                     "from": "controls",
                     "out": "action",
-                    "to": "east",
+                    "to": "quick",
                     "in": "action",
                     "delay": 0
                   },
@@ -331,8 +398,8 @@
                     "delay": 0
                   },
                   {
-                    "from": "east",
-                    "out": "aligned",
+                    "from": "choice",
+                    "out": "complete",
                     "to": "both",
                     "in": "values",
                     "delay": 0
@@ -357,6 +424,34 @@
                     "to": "objective",
                     "in": "complete",
                     "delay": 0
+                  },
+                  {
+                    "from": "controls",
+                    "out": "position",
+                    "to": "detour",
+                    "in": "position",
+                    "delay": 0
+                  },
+                  {
+                    "from": "controls",
+                    "out": "action",
+                    "to": "detour",
+                    "in": "action",
+                    "delay": 0
+                  },
+                  {
+                    "from": "quick",
+                    "out": "aligned",
+                    "to": "choice",
+                    "in": "values",
+                    "delay": 0
+                  },
+                  {
+                    "from": "detour",
+                    "out": "aligned",
+                    "to": "choice",
+                    "in": "values",
+                    "delay": 0
                   }
                 ],
                 "presenters": [
@@ -366,14 +461,19 @@
                     "tone": "accent"
                   },
                   {
-                    "id": "east",
-                    "label": "EAST",
+                    "id": "quick",
+                    "label": "QUICK",
                     "tone": "accent"
                   },
                   {
                     "id": "exit",
                     "label": "EXIT",
                     "tone": "primary"
+                  },
+                  {
+                    "id": "detour",
+                    "label": "DETOUR",
+                    "tone": "accent"
                   }
                 ],
                 "steps": [
@@ -388,12 +488,12 @@
                   },
                   {
                     "action": "move",
-                  "x": 6,
-                  "z": 1.5
+                    "x": -3,
+                    "z": 1.5
                   },
                   {
                     "action": "interact",
-                    "count": 1
+                    "count": 3
                   },
                   {
                     "action": "move",

@@ -443,3 +443,21 @@ accepted. Existing 41 tests/build/browser boundary and six flow-runtime regressi
 checks pass. Pack dry-run has 103 files and no generated runtime material.
 Next: expand this reusable route composition with meaningful alternatives and
 progression, and finish G02 concept/replay/novelty/presentation/device qualification.
+
+Alternative-route increment: added the typed any aggregator and optional bounded
+validation-plan alternatives. Every alternative must finish and fail with its
+interactions omitted; browser record/reload checks use the best across all routes.
+Expanded access-fragments with QUICK (three presses, nearby) versus DETOUR (one
+press, farther) after WEST. New idea route-choice-1789377349235 records explicit
+lineage to the sequential access preview; it changes the composition and objective,
+not an expired retry allowance. Local Thinking1.2B/VL3B generation completed in
+74627ms. Runtime and browser verified QUICK at7.2s/four planned total presses and
+DETOUR at10.2s/two. Both browser route orders pass25 checks; a faster later route
+updates and persists its record. Supplied headed client image/state independently
+show DETOUR open, QUICK closed, enabled exit and player still outside (not won).
+OR truth table/unbound port and six alternative-plan guards pass; existing41 tests,
+build/browser boundary pass. Pack103 files excludes generated output. Verified118
+prior G02 refs and retained five new refs under its existing evidence folder.
+This remains one small development layout, not accepted replay/novelty proof.
+Next: deepen connected route consequences and integrate this evidence into the
+remaining G02 improvement/qualification requirements before admitting any batch.

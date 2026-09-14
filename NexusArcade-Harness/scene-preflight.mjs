@@ -28,7 +28,7 @@ export async function preflightScene(runtime,plan,{signal,deadlineAt=Date.now()+
    if(!reached)throw Error('Planned waypoint unreachable through movement');
   }
  };
- const run=async(omit=false)=>{for(const step of plan.steps){if(api.snapshot().mode!=='play')break;
+ const run=async(omit=false,steps=plan.steps)=>{for(const step of steps){if(api.snapshot().mode!=='play')break;
   if(step.action==='move')await walk(step.x,step.z);
   else if(step.action==='interact'&&!omit)for(let i=0;i<step.count;i++){await tick(.05,{interact:true});await tick(.05);}
   else if(step.action==='wait')await tick(step.seconds);
@@ -36,6 +36,11 @@ export async function preflightScene(runtime,plan,{signal,deadlineAt=Date.now()+
  try{
   api.start();const won=await run();check('planned inputs complete the loop',won.mode==='won');report.winSeconds=won.elapsed;
   api.reset();api.start();check('restart clears session',api.snapshot().elapsed===0);const again=await run();check('repeated loop completes',again.mode==='won');check('same inputs reproduce time',Math.abs(again.elapsed-won.elapsed)<1e-8);
+  report.routes=[{id:'primary',seconds:won.elapsed,plannedInteractions:plan.steps.filter(s=>s.action==='interact').reduce((n,s)=>n+s.count,0)}];
+  for(const route of plan.alternatives??[]){
+   api.reset();api.start();const result=await run(false,route.steps);check('alternative completes '+route.id,result.mode==='won');report.routes.push({id:route.id,seconds:result.elapsed,plannedInteractions:route.steps.filter(s=>s.action==='interact').reduce((n,s)=>n+s.count,0)});
+   if(route.steps.some(s=>s.action==='interact')){api.reset();api.start();try{await run(true,route.steps);}catch(e){if(e.message!=='No traversable route')throw e;}await tick(runtime.session.durationSeconds+.1);check('alternative requires interaction '+route.id,api.snapshot().mode==='lost');}
+  }
   api.reset();api.start();await tick(runtime.session.durationSeconds+.1);check('idle does not win',api.snapshot().mode==='lost');
   if(plan.steps.some(s=>s.action==='interact')){
    api.reset();api.start();try{await run(true);}catch(e){if(e.message!=='No traversable route')throw e;report.omittedRouteBlocked=true;}await tick(runtime.session.durationSeconds+.1);check('omitted interactions do not win',api.snapshot().mode==='lost');

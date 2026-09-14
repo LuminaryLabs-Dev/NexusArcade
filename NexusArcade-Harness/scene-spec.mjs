@@ -6,7 +6,15 @@ import {resolveSceneLayers} from './scene-layers.mjs';
 import {digest} from './factory.mjs';
 const exact=(x,keys)=>x&&typeof x==='object'&&!Array.isArray(x)&&Object.keys(x).length===keys.length&&keys.every(k=>Object.hasOwn(x,k));
 export function validateScenePlan(plan,runtime){
- if(!exact(plan,['version','steps'])||plan.version!==1||!Array.isArray(plan.steps)||!plan.steps.length||plan.steps.length>128)throw Error('Invalid scene validation plan');
+ if(!exact(plan,['version','steps',...(Object.hasOwn(plan??{},'alternatives')?['alternatives']:[])])||plan.version!==1||!Array.isArray(plan.steps)||!plan.steps.length||plan.steps.length>128)throw Error('Invalid scene validation plan');
+ if(plan.alternatives!==undefined){
+  if(!Array.isArray(plan.alternatives)||!plan.alternatives.length||plan.alternatives.length>4)throw Error('Invalid alternative routes');
+  const ids=new Set(),paths=new Set([digest(plan.steps)]);
+  for(const route of plan.alternatives){
+   if(!exact(route,['id','steps'])||typeof route.id!=='string'||!/^[a-z][a-z0-9-]{0,39}$/.test(route.id)||route.id==='primary'||ids.has(route.id)||paths.has(digest(route.steps)))throw Error('Duplicate or invalid alternative route');
+   ids.add(route.id);paths.add(digest(route.steps));validateScenePlan({version:1,steps:route.steps},runtime);
+  }
+ }
  let seconds=0;for(const s of plan.steps){
   if(s?.action==='move'){if(!exact(s,['action','x','z'])||runtime.movement.adapter!=='walk'||![s.x,s.z].every(n=>typeof n==='number'&&Number.isFinite(n)&&Math.abs(n)<=50))throw Error('Invalid planned movement');}
   else if(s?.action==='interact'){if(!exact(s,['action','count'])||!Number.isInteger(s.count)||s.count<1||s.count>4)throw Error('Invalid planned interaction');seconds+=s.count*.1;}

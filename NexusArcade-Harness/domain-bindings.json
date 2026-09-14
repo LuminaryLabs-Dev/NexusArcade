@@ -1,7 +1,7 @@
 {
   "version": 1,
   "scope": "Trusted behavior bindings only; no factory eligibility or full-game acceptance",
-  "infrastructure": ["controls", "objective", "all"],
+  "infrastructure": ["controls", "objective", "all", "any"],
   "options": {
     "interaction.activate": {
       "capabilities": ["valve"],

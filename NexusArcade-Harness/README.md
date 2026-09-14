@@ -324,14 +324,22 @@ controls, route selection and source rates. They demonstrate composition, not
 broad genre coverage or collection novelty. The default button uses this path;
 Rally and the earlier flow challenge remain in the advanced selector.
 
-`access-fragments.json` is a separate development composition: two controls open
-physical gates, and an enabled destination requires the player to enter its radius.
+`access-fragments.json` is a separate development composition: WEST opens access
+to QUICK (three presses, shorter travel) or DETOUR (one press, longer travel).
+Either middle control enables the final gate; the exit still requires player presence.
 It exercises growth as expanded reach and dependency as combined prerequisites.
 Inspect it with `node NexusArcade-Harness/cli.mjs compile-concepts --recipe NexusArcade-Harness/access-fragments.json`.
 It contains one room sequence, not a broad family catalog, and is not selected by
 the default button. Gate `openWhen` references must name boolean domain outputs;
 the same state drives collision and rendering. The scene writer preserves the
 catalog-selected palette. Runtime and image checks do not grant factory acceptance.
+
+Validation plans can add `alternatives: [{id, steps}]` alongside their primary
+`steps`. Up to four unique alternatives are allowed; nested plans, duplicate IDs,
+duplicate step lists and unsupported actions reject. Runtime preflight and browser
+review execute every route and its omitted-interaction control. Browser checks
+also verify best-time comparisons and reload after the alternatives. These results
+demonstrate tested paths, not automatic proof of meaningful replayability.
 
 `scene-model-contracts.mjs` restricts scene titles to supported choices and preserves
 the declared goal in model output. Image review returns geometry visibility, label
