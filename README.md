@@ -148,7 +148,9 @@ independent image inspection and target-device performance are separate evidence
 `candidate-index` writes the provisional G02 index only when every listed
 preview is `NEEDS_REVIEW` with a passing preview, source hash and structural
 signature. It rejects mixed source hashes and duplicate signatures; the index
-remains provisional until independent review closes its required gates.
+and requires qualified replay evidence for every candidate. It rejects mixed
+source hashes and duplicate signatures; the index remains provisional until
+independent review closes its required gates.
 
 To expand supported presentation choices before inference, use
 `node NexusArcade-Harness/cli.mjs roll-scene-layers --lists /absolute/path/lists.json --seed 12`.

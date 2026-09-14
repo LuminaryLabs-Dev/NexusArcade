@@ -9,6 +9,7 @@ export async function buildCandidateIndex(ids){
   const s=await loadJSON(path.join(storage,id,'spine.json'));
   if(s.id!==id||s.status!=='NEEDS_REVIEW'||s.previewVerdict!=='PASS')throw Error('Candidate is not a passing provisional preview: '+id);
   if(!s.sourceHash||!s.signature)throw Error('Candidate lacks source or structural identity: '+id);
+  if(s.replay?.qualifies!==true)throw Error('Candidate lacks qualified replay evidence: '+id);
   candidates.push({id,sourceHash:s.sourceHash,status:s.status,previewVerdict:s.previewVerdict,signature:s.signature,kind:s.composition?.kind??'scene',replay:s.replay??null,acceptanceMissing:s.acceptance?.missing??[]});
  }
  const sourceHashes=[...new Set(candidates.map(c=>c.sourceHash))],signatures=new Set(candidates.map(c=>c.signature));
