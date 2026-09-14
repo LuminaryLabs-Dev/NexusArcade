@@ -177,4 +177,5 @@ image-only: objective prose and route strategy are excluded, and detail crops ar
 judged only for content inside the crop. The independent-review validator requires
 explicitly independent evidence for every facet, a human observer for comprehension,
 and a named device profile for target-device results; it never changes acceptance
-by itself. G02 remains queued at `needs_review` until G03 adjudicates these facets.
+by itself. Placeholder reviewer identities, paths and device profiles are rejected.
+G02 remains queued at `needs_review` until G03 adjudicates these facets.
