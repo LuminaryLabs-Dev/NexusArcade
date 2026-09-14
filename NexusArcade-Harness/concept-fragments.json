@@ -1304,5 +1304,51 @@
         }
       ]
     }
+  ],
+  "variants": [
+    {
+      "id": "lagoon-grid",
+      "patches": [
+        { "path": "/presentation/theme", "value": "lagoon" },
+        { "path": "/scene/movement/start", "value": { "x": 0, "y": 0, "z": 12 } }
+      ],
+      "addSolids": [
+        { "id": "variant-pillar-north", "x": -4, "z": 4, "width": 1.2, "height": 2.4, "depth": 1.2 },
+        { "id": "variant-pillar-south", "x": 4, "z": -2, "width": 1.2, "height": 2.4, "depth": 1.2 }
+      ]
+    },
+    {
+      "id": "solar-crossing",
+      "patches": [
+        { "path": "/presentation/theme", "value": "solar" },
+        { "path": "/scene/movement/start", "value": { "x": -5, "y": 0, "z": 12 } }
+      ],
+      "addSolids": [
+        { "id": "variant-wall-east", "x": 10, "z": 1, "width": 1.2, "height": 2.2, "depth": 5 },
+        { "id": "variant-wall-west", "x": -10, "z": -1, "width": 1.2, "height": 2.2, "depth": 5 }
+      ]
+    },
+    {
+      "id": "violet-switchback",
+      "patches": [
+        { "path": "/presentation/theme", "value": "violet" },
+        { "path": "/scene/movement/start", "value": { "x": 5, "y": 0, "z": 12 } }
+      ],
+      "addSolids": [
+        { "id": "variant-block-center", "x": 0, "z": -1, "width": 4, "height": 2.6, "depth": 1.2 },
+        { "id": "variant-block-low", "x": -9, "z": -1, "width": 2, "height": 2.6, "depth": 1.2 }
+      ]
+    },
+    {
+      "id": "coral-channel",
+      "patches": [
+        { "path": "/presentation/theme", "value": "coral" },
+        { "path": "/scene/movement/start", "value": { "x": 0, "y": 0, "z": 12 } }
+      ],
+      "addSolids": [
+        { "id": "variant-channel-left", "x": -9, "z": 0, "width": 1.2, "height": 2.8, "depth": 5 },
+        { "id": "variant-channel-right", "x": 9, "z": 0, "width": 1.2, "height": 2.8, "depth": 5 }
+      ]
+    }
   ]
 }

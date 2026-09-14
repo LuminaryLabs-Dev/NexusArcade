@@ -346,3 +346,11 @@ Editorial exclusion verified across5 direct cases; automatic generation excludes
 the historical delivery family. No generated artifacts manually changed.
 G02 remains running, accepted0/1000. Next: contrasting spatial, camera, interaction
 and presentation fragments, followed by full qualification; retain original33 goals.
+
+Expansion slice: concept recipes now accept strict seeded variants. Four data-only
+variants alter world obstacles, starting position, palette and route geometry while
+remaining inside the trusted scene compiler. Five representative seeds compiled;
+one placement conflict was rejected and corrected. Existing 41 tests, build and
+browser-boundary checks pass. Supplied Playwright client captured a synchronized
+player screenshot/state from a retained preview. This is structural variation
+coverage, not yet a new game family or factory acceptance.

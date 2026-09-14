@@ -8,7 +8,8 @@ const exact=(x,keys)=>x&&typeof x==='object'&&!Array.isArray(x)&&Object.keys(x).
 // fail the composition; they never cause a new roll or a silent root swap.
 export function compileConceptRecipe(catalog,input){
  assertAllowedText(input);
- if(!exact(input,['version','seed','concepts','base','fragments',...(Object.hasOwn(input??{},'lineage')?['lineage']:[])])||input.version!==1||!exact(input.concepts,['optionIds','count','depth'])||!Array.isArray(input.fragments)||!input.fragments.length||input.fragments.length>64)throw Error('Invalid concept recipe');
+ if(!exact(input,['version','seed','concepts','base','fragments',...(Object.hasOwn(input??{},'variants')?['variants']:[]),...(Object.hasOwn(input??{},'lineage')?['lineage']:[])])||input.version!==1||!exact(input.concepts,['optionIds','count','depth'])||!Array.isArray(input.fragments)||!input.fragments.length||input.fragments.length>64)throw Error('Invalid concept recipe');
+ if(input.variants!==undefined&&(!Array.isArray(input.variants)||!input.variants.length||input.variants.length>32))throw Error('Invalid concept variants');
  const roll=rollConceptRoots(catalog,{...input.concepts,seed:input.seed}),selected=new Set(roll.decisions.map(d=>d.optionId)),ids=new Set();
  for(const f of input.fragments){
   if(!exact(f,['id','when','choices'])||typeof f.id!=='string'||!/^[a-z][a-z0-9-]{0,39}$/.test(f.id)||ids.has(f.id)||!exact(f.when,['all','none'])||!Array.isArray(f.choices)||!f.choices.length)throw Error('Invalid concept fragment');
@@ -25,7 +26,8 @@ export function compileConceptRecipe(catalog,input){
  behavior.decisions.push(...roll.decisions);
  const matched=input.fragments.filter(f=>f.when.all.every(id=>selected.has(id))&&f.when.none.every(id=>!selected.has(id)));
  if(!matched.length)throw Error('No supported fragments for rolled concepts');
- const recipe={version:1,seed:input.seed,base,choices:matched.flatMap(f=>f.choices),...(input.lineage?{lineage:structuredClone(input.lineage)}:{})};
+ const variants=input.variants??[],variant=variants.length?structuredClone(variants[Math.floor((input.seed>>>0)/Math.max(1,Math.floor(4294967296/variants.length)))%variants.length]):undefined;
+ const recipe={version:1,seed:input.seed,base,choices:matched.flatMap(f=>f.choices),...(variant?{variant}:{ } ),...(input.lineage?{lineage:structuredClone(input.lineage)}:{})};
  const compiled=compileSceneRecipe(catalog,recipe);
  return {...compiled,status:'CONCEPT_RECIPE_COMPILED',conceptRecipeHash:digest(input),conceptRoll:roll,matchedFragments:matched.map(f=>f.id),recipe};
 }

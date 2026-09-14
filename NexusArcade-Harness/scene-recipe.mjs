@@ -25,11 +25,30 @@ export function inspectRecipeChoices(choices){
  inspect(choices,0);
 }
 
+function applyVariant(profile, variant){
+ if(variant===undefined)return;
+ if(!exact(variant,['id','patches','addSolids'])||!id(variant.id)||!Array.isArray(variant.patches)||variant.patches.length>16||!Array.isArray(variant.addSolids)||variant.addSolids.length>16)throw Error('Invalid recipe variant');
+ const allowed=new Set(['/scene/movement/start','/presentation/theme','/presentation/camera','/replayReason']);
+ for(const patch of variant.patches){
+  if(!exact(patch,['path','value'])||!allowed.has(patch.path))throw Error('Unsupported recipe variant patch');
+  const keys=patch.path.split('/').slice(1);let obj=profile;
+  for(const key of keys.slice(0,-1)){if(!obj||typeof obj!=='object'||!Object.hasOwn(obj,key))throw Error('Unknown recipe variant path');obj=obj[key];}
+  obj[keys.at(-1)]=structuredClone(patch.value);
+ }
+ const solids=profile.scene?.collision?.world?.solids;
+ if(!Array.isArray(solids))throw Error('Recipe variants require world collision');
+ const ids=new Set(solids.map(s=>s.id));
+ for(const solid of variant.addSolids){
+  if(!exact(solid,['id','x','z','width','height','depth'])||!id(solid.id)||ids.has(solid.id)||![solid.x,solid.z,solid.width,solid.height,solid.depth].every(Number.isFinite)||solid.width<=0||solid.height<=0||solid.depth<=0)throw Error('Invalid variant solid');
+  ids.add(solid.id);solids.push(structuredClone(solid));
+ }
+}
+
 // Data-only fragments add to one scene. The existing graph/scene compiler owns
 // port types, contribution, spatial support and all admission-independent guards.
 export function compileSceneRecipe(catalog,recipe){
  assertAllowedText(recipe);
- if(!exact(recipe,['version','seed','base','choices',...(Object.hasOwn(recipe??{},'lineage')?['lineage']:[])])||recipe.version!==1||!Number.isInteger(recipe.seed)||recipe.seed<0||recipe.seed>4294967295||!Array.isArray(recipe.choices)||!recipe.choices.length)throw Error('Invalid scene recipe');
+ if(!exact(recipe,['version','seed','base','choices',...(Object.hasOwn(recipe??{},'variant')?['variant']:[]),...(Object.hasOwn(recipe??{},'lineage')?['lineage']:[])])||recipe.version!==1||!Number.isInteger(recipe.seed)||recipe.seed<0||recipe.seed>4294967295||!Array.isArray(recipe.choices)||!recipe.choices.length)throw Error('Invalid scene recipe');
  if(recipe.lineage!==undefined&&(!exact(recipe.lineage,['sourceIdeas','change'])||!Array.isArray(recipe.lineage.sourceIdeas)||!recipe.lineage.sourceIdeas.length||recipe.lineage.sourceIdeas.length>8||!recipe.lineage.sourceIdeas.every(id)||new Set(recipe.lineage.sourceIdeas).size!==recipe.lineage.sourceIdeas.length||typeof recipe.lineage.change!=='string'||recipe.lineage.change.trim().length<10||recipe.lineage.change.length>300))throw Error('Invalid recipe lineage');
  inspectRecipeChoices(recipe.choices);
  const profile=structuredClone(recipe.base),behavior=profile?.scene?.behavior;
@@ -44,6 +63,7 @@ export function compileSceneRecipe(catalog,recipe){
   expand(option.children,[...ancestry,choice.id+'/'+option.id]);
  }}
  expand(recipe.choices,[]);
+ applyVariant(profile,recipe.variant);
  const compiled=compilePlayableScene(catalog,profile);
  return {status:'RECIPE_COMPILED',eligible:false,seed:recipe.seed,recipeHash:digest(recipe),trace,profile,compiled,remaining:'Seeded behavior expansion is not proof of concept causality, replay, novelty, visual quality or factory acceptance.'};
 }
