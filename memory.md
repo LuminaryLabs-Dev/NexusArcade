@@ -161,3 +161,7 @@ during winning play, then freeze each contributing domain at its initial outputs
 and require a demonstrated route to fail. Keep diagnostic freezing outside
 generated schemas. Domain-level dependence does not establish semantic concept
 quality or replace independent acceptance gates.
+
+Replay qualification requires two independent route differences: a measurable
+timing delta and different planned interaction counts. Persist both route facts
+in the SPINE; timing alone cannot qualify a cosmetic or duplicated detour.
