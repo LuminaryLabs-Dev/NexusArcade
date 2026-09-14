@@ -82,7 +82,10 @@ export async function rejectSymlink(root) {
   let p = path.resolve(root);
   while (true) {
     try {
-      if ((await lstat(p)).isSymbolicLink())
+      // macOS exposes /tmp and /var as aliases into /private. They are OS
+      // aliases, not workspace redirects; continue checking every requested
+      // component below them for symlinks.
+      if (p !== "/tmp" && p !== "/var" && (await lstat(p)).isSymbolicLink())
         throw Error("Workspace symlink rejected");
     } catch (e) {
       if (e.code !== "ENOENT") throw e;

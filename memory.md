@@ -179,3 +179,7 @@ explicitly independent evidence for every facet, a human observer for comprehens
 and a named device profile for target-device results; it never changes acceptance
 by itself. Placeholder reviewer identities, paths and device profiles are rejected.
 G02 remains queued at `needs_review` until G03 adjudicates these facets.
+
+The workspace symlink guard permits macOS system aliases `/tmp` and `/var` while
+continuing to reject symlinks in requested workspace components. This keeps
+temporary test workspaces usable without weakening artifact-path protection.
