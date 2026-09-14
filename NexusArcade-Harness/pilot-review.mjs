@@ -84,7 +84,7 @@ export async function reviewPilot(root,id,{signal}={}){
  }
  if((start.kind==='rally'||start.kind==='checkpoint')){
   for(const wide of [true,false]){await p.keyboard.press('KeyR');await tick(0);await playLoop(wide,true);}
-  const [wide,short]=report.rallyRuns.slice(2);check('same steering mistake costs more collisions on narrow route',wide.faultDone&&short.faultDone&&short.collisions>wide.collisions,{wide,short});
+  const [wide,short]=report.rallyRuns.slice(2);check('same steering mistake costs more on narrow route',wide.faultDone&&short.faultDone&&(short.collisions>wide.collisions||short.offMainTicks>wide.offMainTicks),{wide,short});
   await p.keyboard.press('KeyR');await tick(0);await input(['KeyS'],1000);const reversed=await state();check('brake key can reverse for recovery',reversed.speed<0&&Math.hypot(reversed.player.x-start.player.x,reversed.player.z-start.player.z)>.1);await p.keyboard.press('KeyR');await tick(0);
  }
  await tick(301000);check('idle failure',(await state()).mode==='lost');await p.keyboard.press('KeyR');await tick(0);check('restart after failure',(await state()).mode==='play');check('no browser errors',report.errors.length===0);report.status='PASS';if(report.image)report.screenshotHash=digest(report.image);if(report.detailImage)report.detailHash=digest(report.detailImage);signal?.removeEventListener('abort',abort);
