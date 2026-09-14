@@ -145,7 +145,7 @@ G02 foundation work remains open, later goals remain gated, and accepted count
 must come from the campaign index. Software WebGL checks, model observations,
 independent image inspection and target-device performance are separate evidence.
 
-`candidate-index` writes version 5 of the provisional G02 index only when every listed
+`candidate-index` writes version 6 of the provisional G02 index only when every listed
 preview is `NEEDS_REVIEW` with a passing preview, source hash and structural
 signature. It rejects mixed source hashes and duplicate signatures; the index
 and requires qualified replay evidence for every candidate. It rejects mixed
