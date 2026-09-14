@@ -189,3 +189,24 @@ The old rally-route-002c record is already hash-referenced by replacement lineag
 retain it until a harness migration updates those references while preserving all
 diagnostic bytes. Do not edit the generated record manually or silently stale its
 evidence. No new admissions are needed before catalog/domain integration work.
+
+Catalog compiler increment: domain-bindings.json now connects six supported option
+or branch IDs to trusted domain types. The behavior compiler enforces source-option
+coverage, implemented parameters, concept-branch ancestry, explicit transforms,
+typed ports and objective contribution. CLI compile-behavior exposes this path.
+It preserves specificIntent/preparedInterpretation and reports missing full-game
+layers, required rules/capabilities and unverified concept witnesses. Eligibility
+remains false; the eligible entry point still rejects the current unproven catalog.
+
+Eight actual NexusEngine domain runs verify accumulation and ownership-transfer
+witnesses with omitted-action controls. A translated/rotated flow graph preserves
+completion at221 ticks; selecting a lower rate takes1292 ticks. Independent numeric
+coordinate checks verify the transform.24 invalid profiles reject, including
+unknown capabilities, ignored parameters, missing branches/ports, unsupported
+height and excluded editorial vocabulary. These are controlled domain inputs, not
+walking, rendered-scene, novelty or target-device proof. No new games admitted.
+
+Next: use the compiler from the generic scene assembler, with list-selected
+instances and reusable movement/presentation adapters replacing family switches.
+Keep unmapped options and source/evidence migration explicit before eligibility.
+G02 remains running; all later goals and the1000-game campaign remain incomplete.

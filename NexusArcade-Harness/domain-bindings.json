@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "scope": "Trusted behavior bindings only; no factory eligibility or full-game acceptance",
+  "infrastructure": ["controls", "objective", "all"],
+  "options": {
+    "interaction.redirect": {
+      "capabilities": ["valve"],
+      "parameters": {"reach": {"valve": "range"}},
+      "supportedConstants": {"interruptMode": "release"}
+    },
+    "interaction.carry": {
+      "capabilities": ["delivery"],
+      "parameters": {"reach": {"delivery": "range"}},
+      "supportedConstants": {"interruptMode": "release", "maxCarried": 1}
+    },
+    "connections.continuous-flow": {
+      "capabilities": ["flowSource", "flowRouter", "flowLink", "flowStore"],
+      "parameters": {"rate": {"flowSource": "rate"}},
+      "supportedConstants": {"priority": 0}
+    },
+    "intention.redirect-flow": {
+      "capabilities": ["flowGoal"],
+      "parameters": {},
+      "supportedConstants": {"requiredTargets": 1}
+    },
+    "concepts.growth.accumulation": {
+      "capabilities": ["flowStore"],
+      "parameters": {},
+      "supportedConstants": {},
+      "witness": {"port": "volume", "expectation": "increase"}
+    },
+    "concepts.exchange.transfer": {
+      "capabilities": ["delivery"],
+      "parameters": {},
+      "supportedConstants": {},
+      "witness": {"port": "completed", "expectation": "change"}
+    }
+  }
+}

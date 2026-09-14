@@ -202,3 +202,32 @@ correct controls. Shortcut signs reuse bounded 220-by-55-pixel world labels and
 hide outside the HUD-safe region. Independent image inspection remains necessary:
 the local image model can invent route rules or misread progress even when its
 verdict is PASS. Its observations do not establish gameplay correctness.
+
+Catalog behavior compilation is available with:
+
+```sh
+node NexusArcade-Harness/cli.mjs compile-behavior --profile /path/to/behavior.json
+```
+
+The profile keeps `specificIntent` and `preparedInterpretation` separate. It
+contains catalog decisions, chosen concept branches, domain instances and explicit
+connections. Each instance declares `capabilityId`, `capabilityVersion`, closed
+`settings`, a local-to-world `transform` (`x`, `y`, `z`, `yaw` in metres/radians),
+and `sourceOptionIds`. Current spatial domains support the ground plane; other
+heights are rejected. Logical domains retain placement metadata without claiming
+that it changes their numeric behavior.
+
+`domain-bindings.json` maps supported catalog options to trusted domain types and
+their parameters. Ignored parameters, unsupported branches and unattributed
+behavior are errors. `kits/domain-composition.mjs` transforms spatial settings and
+compiles the existing typed graph. The registry currently binds redirection,
+continuous flow, one-target flow completion, ownership transfer, accumulation and
+transfer concept branches. Unmapped catalog options remain implementation gaps.
+
+The output is `BEHAVIOR_COMPILED`, with `eligible: false` and `fullGame: false`.
+It lists missing game decision points, required capabilities/rules and unverified
+concept witnesses. A port changing is not automatically a proven concept: retain
+a normal run and a meaningful counterfactual before qualification. The eligible
+entry point additionally uses the existing catalog source/evidence gate; these
+development bindings do not bypass it. Generic scene assembly, presenters,
+movement, complete-game checks and factory admission still require integration.

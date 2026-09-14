@@ -40,7 +40,7 @@ export function compileDomainGraph(graph){
  graph=structuredClone(graph);
  if(!exact(graph,['version','instances','wires','objective'])||graph.version!==1||!Array.isArray(graph.instances)||graph.instances.length<2||graph.instances.length>128||!Array.isArray(graph.wires)||graph.wires.length>512)throw Error('Invalid domain graph');
  const byId=new Map(),incoming=new Map(),outgoing=new Map(),degrees=new Map();
- for(const n of graph.instances){const d=domainDefinitions[n.capability];if(!exact(n,['id','capability','version','settings'])||!id(n.id)||byId.has(n.id)||!d||n.version!==1||!d.settings(n.settings))throw Error('Unknown or invalid domain instance '+n.id);byId.set(n.id,n);incoming.set(n.id,[]);outgoing.set(n.id,[]);degrees.set(n.id,0);}
+ for(const n of graph.instances){const d=domainDefinitions[n.capability];if(!exact(n,['id','capability','version','settings'])||!id(n.id)||byId.has(n.id)||typeof n.capability!=='string'||!Object.hasOwn(domainDefinitions,n.capability)||!d||n.version!==1||!d.settings(n.settings))throw Error('Unknown or invalid domain instance '+n.id);byId.set(n.id,n);incoming.set(n.id,[]);outgoing.set(n.id,[]);degrees.set(n.id,0);}
  if(byId.get(graph.objective)?.capability!=='objective'||graph.instances.filter(n=>n.capability==='controls').length!==1||graph.instances.filter(n=>n.capability==='objective').length!==1)throw Error('Expected one controls source and one objective');
  const seen=new Set();for(const w of graph.wires){
   if(!exact(w,['from','out','to','in','delay'])||![0,1].includes(w.delay))throw Error('Invalid wire');

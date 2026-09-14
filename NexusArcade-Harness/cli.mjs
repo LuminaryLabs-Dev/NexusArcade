@@ -8,9 +8,13 @@ import {generatePilot} from './pilot-run.mjs';
 import {contracts,queueSnapshot,recoverWriter} from './factory.mjs';
 import {inspectCatalog} from './catalog.mjs';
 import {cleanupFailed} from './cleanup.mjs';
+import {compileCatalogBehavior} from './catalog-compiler.mjs';
 const [command='list',...args]=process.argv.slice(2);const get=(key,fallback)=>{const i=args.indexOf('--'+key);return i<0?fallback:args[i+1];};
 const controller=new AbortController();process.on('SIGINT',()=>controller.abort());process.on('SIGTERM',()=>controller.abort());
 if(command==='factory-check'){const {queue,catalog,policy,profile,hash}=await contracts();const audit=inspectCatalog(catalog,{validationRules:policy.validationRules});console.log(JSON.stringify({contractHash:hash,version:policy.schemaVersion,goals:queue.goals.length,target:queue.goals.reduce((n,g)=>n+g.acceptedGameTarget,0),requiredRules:profile.acceptance.requiredRuleIds,unresolvedCalibrations:policy.calibrationDecisions.filter(c=>c.status==='UNRESOLVED').map(c=>c.id),catalog:audit},null,2));
+}else if(command==='compile-behavior'){
+ const file=get('profile',null);if(!file)throw Error('Expected --profile with a behavior-composition JSON file');
+ const {catalog}=await contracts();console.log(JSON.stringify(compileCatalogBehavior(catalog,JSON.parse(await readFile(file,'utf8'))),null,2));
 }else if(command==='cleanup-failed'){console.log(JSON.stringify(await cleanupFailed(safeId(get('id','')),{apply:args.includes('--apply')}),null,2));
 }else if(command==='queue'){console.log(JSON.stringify(await queueSnapshot(),null,2));
 }else if(command==='recover'){console.log(JSON.stringify(await recoverWriter()));

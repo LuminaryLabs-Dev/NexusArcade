@@ -18,7 +18,7 @@ Reliable Arcade Factory uses .agent/packets/2026-09-13_reliable-arcade-factory w
 
 The runtime now enforces a 25-minute original idea deadline, no cumulative token budget and no fixed improvement-pass quota. Per-request context/output limits remain necessary for 4K local models. Expiry fails the idea; a pilot retry preserves its predecessor's start/deadline. New players require explicit resume after pause/focus loss. Generation and foreground arcade play share an exclusive lease until contention measurements permit concurrency.
 
-Foundation implementation is partial: guarded leases/queue/evidence/index publication, bounded model-response repair, dependency-aware improvement, catalog validation/intermediate resolution, paginated arcade and shared delivery/flow/steering pilot domains. G01 planning is complete. Catalog-to-executable composition and implementation of frozen concept/novelty/performance acceptance remain G02 work; subsequent goals remain incomplete. Historical PASS and new preview PASS do not meet factory acceptance. Never advertise 1,000 accepted games from files, names, palette changes or structural signatures alone.
+Foundation implementation is partial: guarded leases/queue/evidence/index publication, bounded model-response repair, dependency-aware improvement, catalog validation and typed behavior compilation, paginated arcade and shared delivery/flow/steering pilot domains. G01 planning is complete. Full catalog-to-scene assembly and implementation of frozen concept/novelty/performance acceptance remain G02 work; subsequent goals remain incomplete. Historical PASS and new preview PASS do not meet factory acceptance. Never advertise 1,000 accepted games from files, names, palette changes or structural signatures alone.
 
 Contract-6 preserves mandatory replay from the foundation and adds explicit replay, tradeoff, session and environment choices. Contract evidence identity covers all four JSON files, including the example profile and its canonical catalog hash. Per-game qualification must finish within the original deadline; paired batch review controls acceptance later and cannot extend repairs. Three consecutive recurring causes trigger shared diagnosis, not a campaign/pass quota. The qualification/review split and recurring-cause recovery are specified and still require runtime integration. User authorized incremental validated commits and ordinary pushes to origin main for this mission.
 
@@ -67,3 +67,10 @@ optional; do not let an invented route requirement become an acceptance rule.
 Validate steering against the actual camera-right vector, not just world heading.
 Reuse bounded world labels for route signs. Model image verdicts require grounded
 evidence; a PASS with invented rules or progress is not factory qualification.
+
+Catalog behavior lowering uses domain-bindings.json and kits/domain-composition.mjs.
+Instances retain capability/version, local settings, transform and source-option
+provenance. Parameters must affect the declared behavior or match an explicitly
+supported constant; never silently ignore them. Concept branches require named
+state witnesses and later counterfactual evidence. Behavior compilation is separate
+from full-game assembly and capability eligibility; preserve both gates.
