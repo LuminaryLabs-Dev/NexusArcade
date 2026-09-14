@@ -76,8 +76,8 @@ does not yet emit an executable game. Missing capability evidence blocks resolut
 never silently become accepted games. Batch admission remains gated by foundation
 implementation and review.
 
-G03 independent review starts from
-`NexusArcade-Experiments/campaigns/reliable-arcade-factory/goals/G03/review-request.json`.
+G03 independent review starts from the generated current packet at
+`NexusArcade-Experiments/campaigns/reliable-arcade-factory/goals/G03/review-request-current.json`.
 Refresh the current request from the active candidate index and evidence manifest
 before starting review:
 
