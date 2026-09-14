@@ -5,6 +5,17 @@ import {assertAllowedText} from './text-policy.mjs';
 import {resolveSceneLayers} from './scene-layers.mjs';
 import {digest} from './factory.mjs';
 const exact=(x,keys)=>x&&typeof x==='object'&&!Array.isArray(x)&&Object.keys(x).length===keys.length&&keys.every(k=>Object.hasOwn(x,k));
+// Gameplay identity ignores editorial labels and instance names so relabeling
+// or palette changes cannot evade duplicate detection.
+export function structuralSceneSignature(composition,validationPlan=composition?.validationPlan){
+ const r=composition?.runtime,g=r?.domainGraph;if(!r||!g)throw Error('Missing runtime for structural signature');
+ const nodes=[...g.instances].map((n,index)=>({index,capability:n.capability,settings:n.settings})).sort((a,b)=>JSON.stringify(a).localeCompare(JSON.stringify(b)));
+ const ordinal=new Map();for(const [i,n] of nodes.entries())ordinal.set(g.instances[n.index].id,{capability:n.capability,ordinal:i});
+ const wires=g.wires.map(w=>({from:ordinal.get(w.from),out:w.out,to:ordinal.get(w.to),in:w.in,delay:w.delay})).sort((a,b)=>JSON.stringify(a).localeCompare(JSON.stringify(b)));
+ const solids=(r.collision?.world?.solids??[]).map(s=>({x:s.x,z:s.z,width:s.width,height:s.height,depth:s.depth,openWhen:s.openWhen?{port:s.openWhen.port,target:ordinal.get(s.openWhen.instance)}:null})).sort((a,b)=>JSON.stringify(a).localeCompare(JSON.stringify(b)));
+ const routes=[validationPlan?.steps??[],...(validationPlan?.alternatives??[]).map(x=>x.steps)].map(steps=>steps.map(s=>s.action==='move'?{action:s.action,x:s.x,z:s.z}:s.action==='interact'?{action:s.action,count:s.count}:{action:s.action,seconds:s.seconds}));
+ return digest({movement:r.movement,graph:{nodes:nodes.map(({capability,settings})=>({capability,settings})),wires},solids,routes,camera:composition.presentation?.camera});
+}
 export function validateScenePlan(plan,runtime){
  if(!exact(plan,['version','steps',...(Object.hasOwn(plan??{},'alternatives')?['alternatives']:[])])||plan.version!==1||!Array.isArray(plan.steps)||!plan.steps.length||plan.steps.length>128)throw Error('Invalid scene validation plan');
  if(plan.alternatives!==undefined){

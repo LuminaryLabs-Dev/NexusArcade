@@ -361,3 +361,9 @@ detail check. Independent image inspection and all factory gates remain required
 The shared player marker identifies the avatar while avoiding actor and control
 labels. Arcade cards show three lines of instructions so Play stays prominent;
 the full instructions remain on the game start screen.
+
+Scene previews use a structural gameplay signature for identity. It canonicalizes
+domain capabilities and settings, typed connections, spatial solids, validation
+routes and camera while ignoring titles, labels and palette-only changes. This
+prevents relabeled or cosmetic variants from evading duplicate checks; visual and
+interaction novelty still require their independent review evidence.
