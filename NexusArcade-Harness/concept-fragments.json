@@ -1324,7 +1324,7 @@
         { "path": "/scene/movement/start", "value": { "x": -5, "y": 0, "z": 12 } }
       ],
       "addSolids": [
-        { "id": "variant-wall-east", "x": 10, "z": 1, "width": 1.2, "height": 2.2, "depth": 5 },
+        { "id": "variant-wall-east", "x": 10, "z": -1, "width": 1.2, "height": 2.2, "depth": 5 },
         { "id": "variant-wall-west", "x": -10, "z": -1, "width": 1.2, "height": 2.2, "depth": 5 }
       ]
     },

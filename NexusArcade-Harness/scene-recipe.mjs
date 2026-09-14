@@ -29,8 +29,10 @@ function applyVariant(profile, variant){
  if(variant===undefined)return;
  if(!exact(variant,['id','patches','addSolids'])||!id(variant.id)||!Array.isArray(variant.patches)||variant.patches.length>16||!Array.isArray(variant.addSolids)||variant.addSolids.length>16)throw Error('Invalid recipe variant');
  const allowed=new Set(['/scene/movement/start','/presentation/theme','/presentation/camera','/replayReason']);
+ const paths=new Set();
  for(const patch of variant.patches){
-  if(!exact(patch,['path','value'])||!allowed.has(patch.path))throw Error('Unsupported recipe variant patch');
+  if(!exact(patch,['path','value'])||!allowed.has(patch.path)||paths.has(patch.path))throw Error('Unsupported or repeated recipe variant patch');
+  paths.add(patch.path);
   const keys=patch.path.split('/').slice(1);let obj=profile;
   for(const key of keys.slice(0,-1)){if(!obj||typeof obj!=='object'||!Object.hasOwn(obj,key))throw Error('Unknown recipe variant path');obj=obj[key];}
   obj[keys.at(-1)]=structuredClone(patch.value);

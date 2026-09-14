@@ -26,8 +26,19 @@ export function compileConceptRecipe(catalog,input){
  behavior.decisions.push(...roll.decisions);
  const matched=input.fragments.filter(f=>f.when.all.every(id=>selected.has(id))&&f.when.none.every(id=>!selected.has(id)));
  if(!matched.length)throw Error('No supported fragments for rolled concepts');
- const variants=input.variants??[],variant=variants.length?structuredClone(variants[Math.floor((input.seed>>>0)/Math.max(1,Math.floor(4294967296/variants.length)))%variants.length]):undefined;
+ const variants=input.variants??[];
+ if(new Set(variants.map(v=>v?.id)).size!==variants.length)throw Error('Repeated concept variant identity');
+ // A separate, versioned draw leaves root and fragment selection unchanged.
+ // Validate every listed variant against this roll, not only the lucky draw.
+ const variantIndex=variants.length?Number.parseInt(digest({stream:'concept-variant-v1',seed:input.seed}).slice(0,8),16)%variants.length:null;
+ const variant=variantIndex===null?undefined:structuredClone(variants[variantIndex]);
  const recipe={version:1,seed:input.seed,base,choices:matched.flatMap(f=>f.choices),...(variant?{variant}:{ } ),...(input.lineage?{lineage:structuredClone(input.lineage)}:{})};
- const compiled=compileSceneRecipe(catalog,recipe);
+ let compiled;
+ if(variants.length){
+  for(let index=0;index<variants.length;index++){
+   const candidate=compileSceneRecipe(catalog,{...recipe,variant:structuredClone(variants[index])});
+   if(index===variantIndex)compiled=candidate;
+  }
+ }else compiled=compileSceneRecipe(catalog,recipe);
  return {...compiled,status:'CONCEPT_RECIPE_COMPILED',conceptRecipeHash:digest(input),conceptRoll:roll,matchedFragments:matched.map(f=>f.id),recipe};
 }

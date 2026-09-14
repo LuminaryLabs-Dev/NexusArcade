@@ -371,3 +371,18 @@ profile. Removed checkpoint from automatic admission. Rejected its retained prev
 through rejectPreview and cleaned only the failed launch through cleanupFailed.
 Specifications, diagnostic images and immutable runtime remain. This alias is not
 a second verified family. G02 remains open; accepted count remains zero.
+
+Seeded variant audit: replaced coarse seed quarters with an independent versioned
+hash draw. Every variant now compiles against the rolled composition, including
+unselected entries; duplicate variant identities and patch paths are rejected.
+This exposed an east wall overlapping the staged RELEASE control. Corrected the
+shared catalog position, without editing any generated game. A direct 128-seed
+probe compiled twice per seed with identical hashes, covered all three root pairs,
+and selected lagoon 25, violet 26, coral 41 and solar 36 times. Three adverse input
+probes passed. This is compiler evidence only; route playthrough, presentation and
+novelty remain unverified. G02 stays incomplete; no new ideas were admitted.
+Default npm test hit the existing macOS temporary-path symlink guard (five failures).
+Using canonical TMPDIR=/private/tmp passed all 41 tests, build and browser boundary.
+Pack dry-run contained 103 files with no experiment artifacts or model weights.
+Next: exercise the resulting variant/root combinations through the generic scene
+runtime and player view before using them for another pilot admission.
