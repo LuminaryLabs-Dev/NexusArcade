@@ -149,8 +149,9 @@ independent image inspection and target-device performance are separate evidence
 preview is `NEEDS_REVIEW` with a passing preview, source hash and structural
 signature. It rejects mixed source hashes and duplicate signatures; the index
 and requires qualified replay evidence for every candidate. It rejects mixed
-source hashes and duplicate signatures; the index remains provisional until
-independent review closes its required gates.
+source hashes, duplicate signatures, fewer than three pilot families, or a
+single player view; the index remains provisional until independent review
+closes its required gates.
 
 To expand supported presentation choices before inference, use
 `node NexusArcade-Harness/cli.mjs roll-scene-layers --lists /absolute/path/lists.json --seed 12`.
