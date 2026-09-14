@@ -44,6 +44,7 @@ if(command==='compile-concepts'||command==='scene-concepts'){
  else{const s=await generateScene({id:safeId(get('id','scene-'+Date.now())),profile,retryOf:get('retry-of',undefined),repairReason:get('repair-reason',undefined),signal:controller.signal,onProgress:p=>console.log(JSON.stringify(p))});console.log(JSON.stringify({id:s.id,status:s.status,preview:s.previewVerdict,error:s.error}));if(s.status==='FAIL'){process.exitCode=1;console.log(JSON.stringify({cleanup:await cleanupFailed(s.id,{apply:true})}));}}
 }else if(command==='cleanup-failed'){console.log(JSON.stringify(await cleanupFailed(safeId(get('id','')),{apply:args.includes('--apply')}),null,2));
 }else if(command==='queue'){console.log(JSON.stringify(await queueSnapshot(),null,2));
+}else if(command==='g03-review-template'){const {writeG03ReviewTemplate}=await import('./g03-review-template.mjs');console.log(JSON.stringify(await writeG03ReviewTemplate(),null,2));
 }else if(command==='g03-performance'){const {measureG03Performance}=await import('./g03-performance.mjs');console.log(JSON.stringify(await measureG03Performance(),null,2));
 }else if(command==='g03-evidence'){const {writeG03Evidence}=await import('./g03-evidence.mjs');console.log(JSON.stringify(await writeG03Evidence(),null,2));
 }else if(command==='candidate-review'){const file=get('file',null);if(!file)throw Error('Expected --file with explicit reviewer verdicts');console.log(JSON.stringify(await recordCandidateReview(JSON.parse(await readFile(file,'utf8'))),null,2));
