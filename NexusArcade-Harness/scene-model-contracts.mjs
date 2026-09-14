@@ -11,6 +11,8 @@ export function sceneTextContracts(composition){
  assertAllowedText({titles,goal:composition.goal});
  const planner=structuredClone(interpretationSchema(1));planner.properties.intent={type:'string',enum:[composition.goal]};
  const writer=structuredClone(editorialSchema);writer.properties.title={type:'string',enum:titles};writer.properties.tagline={type:'string',enum:[composition.goal]};
+ if(!writer.properties.palette.enum.includes(composition.presentation.theme))throw Error('Unsupported composed palette');
+ writer.properties.palette={type:'string',enum:[composition.presentation.theme]};
  return {planner,writer,titles};
 }
 

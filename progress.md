@@ -402,3 +402,20 @@ No model calls, new games or browser acceptance were claimed for this increment.
 Live queue: G01 complete, G02 running, G03 planned; accepted 0/1000.
 Next: current-source browser verification of the composed variants, then finish
 contrasting pilot capability coverage and the remaining G02 qualification gates.
+
+Current-source browser integration: concept-view-1789376127741 used a previously
+unseen runtime configuration, local Thinking1.2B and VL3B, runtime preflight and
+24 browser checks. Independent image review found the writer overrode the selected
+lagoon palette with violet. Constrained all five palette contracts; 20 mismatched
+selections reject. Rejected the first preview and revised through generateScene
+with retryOf, preserving the original admission and deadline. Revision
+concept-view-1789376127741-r1 passed in 210443ms total from original admission.
+Supplied headed Playwright client confirmed play/input and an actual visible player;
+independently inspected its capture and the full consequence frame. The failed
+launch was removed through cleanupFailed after a clean reference audit; diagnostics
+remain. G02 evidence updated and all 109 prior evidence references verified.
+Current review: campaigns/reliable-arcade-factory/goals/G02/current-variant-review.json
+under NexusArcade-Experiments. 41 existing tests/build/browser boundary pass; pack
+dry-run excludes runtime artifacts. No accepted games or new gameplay family claimed.
+Next: expand reusable interaction/spatial/presentation capabilities beyond this
+overhead flow-system family; use the proven preflight/browser path to verify them.
