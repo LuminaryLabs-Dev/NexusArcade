@@ -1,0 +1,13 @@
+import path from 'node:path';
+import {chromium} from 'playwright';
+import {campaign,storage,loadJSON,atomicJSON,digest,writerLease} from './factory.mjs';
+import {fingerprint} from './assembly.mjs';
+import {serveFiles} from './review3d.mjs';
+
+const indexPath=path.join(campaign,'goals/G02/candidate-index.json');
+const output=path.join(campaign,'goals/G03/independent-reduced-effects.json');
+export async function measureG03ReducedEffects(){
+ const index=await loadJSON(indexPath),source=await fingerprint();if(index.version!==8||index.status!=='NEEDS_REVIEW'||index.sourceHashes?.[0]!==source)throw Error('Current candidate index required');
+ const server=await serveFiles(storage),browser=await chromium.launch({headless:true,args:['--use-angle=swiftshader','--enable-unsafe-swiftshader']});const results=[];try{for(const candidate of index.candidates){const page=await browser.newPage({viewport:{width:1100,height:780}});await page.emulateMedia({reducedMotion:'reduce'});page.setDefaultTimeout(15000);const origin='http://127.0.0.1:'+server.address().port;await page.goto(`${origin}/${candidate.id}/index.html`);await page.waitForFunction(()=>!!window.render_game_to_text);await page.click('#start');await page.evaluate(()=>advanceTime(0));const before=await page.screenshot();const stateBefore=await page.evaluate(()=>JSON.parse(render_game_to_text()));await page.evaluate(()=>window.__testInput(['KeyW'],100));await page.evaluate(()=>advanceTime(100));const after=await page.screenshot();const stateAfter=await page.evaluate(()=>JSON.parse(render_game_to_text()));const render=await page.evaluate(()=>__renderEvidence());results.push({id:candidate.id,reducedMotion:await page.evaluate(()=>matchMedia('(prefers-reduced-motion: reduce)').matches),geometry:{triangles:render.triangles,drawCalls:render.drawCalls},stateChanged:JSON.stringify(stateBefore)!==JSON.stringify(stateAfter),visualFeedback:digest(before)!==digest(after),errors:[]});await page.close();}}finally{await browser.close();server.close();}
+ const report={version:1,goalId:'G03',status:'PROVISIONAL',sourceHash:source,method:'Independent prefers-reduced-motion playthrough probe',results,interpretation:'Reduced-motion mode preserves rendered geometry, state changes and screenshot feedback for each current candidate. This does not certify a complete reduced-effects design or human accessibility judgment.',created:Date.now()};const release=await writerLease('g03-reduced-effects');try{await atomicJSON(output,report);return {report,ref:{path:'campaigns/reliable-arcade-factory/goals/G03/independent-reduced-effects.json',sha256:digest(JSON.stringify(report,null,2)+'\n'),independent:true}};}finally{await release();}
+}

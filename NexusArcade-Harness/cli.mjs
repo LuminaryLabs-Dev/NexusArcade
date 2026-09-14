@@ -51,6 +51,7 @@ if(command==='compile-concepts'||command==='scene-concepts'){
 }else if(command==='g03-presentation'){const {measureG03Presentation}=await import('./g03-presentation.mjs');console.log(JSON.stringify(await measureG03Presentation(),null,2));
 }else if(command==='g03-target-performance'){const {measureG03TargetPerformance}=await import('./g03-target-performance.mjs');console.log(JSON.stringify(await measureG03TargetPerformance(),null,2));
 }else if(command==='g03-feedback'){const {measureG03Feedback}=await import('./g03-feedback.mjs');console.log(JSON.stringify(await measureG03Feedback(),null,2));
+}else if(command==='g03-reduced-effects'){const {measureG03ReducedEffects}=await import('./g03-reduced-effects.mjs');console.log(JSON.stringify(await measureG03ReducedEffects(),null,2));
 }else if(command==='g03-evidence'){const {writeG03Evidence}=await import('./g03-evidence.mjs');console.log(JSON.stringify(await writeG03Evidence(),null,2));
 }else if(command==='candidate-review'){const file=get('file',null);if(!file)throw Error('Expected --file with explicit reviewer verdicts');console.log(JSON.stringify(await recordCandidateReview(JSON.parse(await readFile(file,'utf8'))),null,2));
 }else if(command==='candidate-index'){const ids=(get('ids','').split(',').map(x=>x.trim()).filter(Boolean));console.log(JSON.stringify(await writeCandidateIndex(ids),null,2));
