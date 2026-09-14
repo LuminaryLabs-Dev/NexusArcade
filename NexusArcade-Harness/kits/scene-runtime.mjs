@@ -50,7 +50,12 @@ export function createSceneEngine(config,{bestSeconds=null,freezeInstances=[]}={
   const point=()=>N.actionLocomotion.getState().position,emit=(type,id)=>{events.push({type,id,at:elapsed});events=events.slice(-32);};
   const snapshot=()=>({mode,elapsed,player:point(),heading,speed,events:structuredClone(events),domainState:N.composition.snapshot(),bestSeconds:best,lastResult:structuredClone(lastResult)});
   const reset=()=>{N.actionLocomotion.reset();N.composition.reset();mode='title';elapsed=0;heading=c.movement.heading;speed=0;pressed=false;events=[];lastResult=null;};
-  return {snapshot,reset,start(){if(mode==='title')mode='play';},pause(){if(mode==='play')mode='pause';else if(mode==='pause')mode='play';pressed=false;},step(dt,input={}){
+  return {snapshot,reset,start(){if(mode==='title')mode='play';},pause(){if(mode==='play')mode='pause';else if(mode==='pause')mode='play';pressed=false;},skipIdle(dt){
+   if(!finite(dt,0,420000))throw Error('Invalid idle interval');
+   if(mode!=='play')return;
+   elapsed=Math.min(c.session.durationSeconds,elapsed+dt);
+   if(elapsed>=c.session.durationSeconds){mode='lost';emit('lost','session');}
+  },step(dt,input={}){
    if(!finite(dt,0,.051)||!input||typeof input!=='object'||Array.isArray(input)||Object.keys(input).some(k=>!['x','z','interact'].includes(k))||(Object.hasOwn(input,'x')&&!finite(input.x,-1,1))||(Object.hasOwn(input,'z')&&!finite(input.z,-1,1))||(input.interact!==undefined&&typeof input.interact!=='boolean'))throw Error('Invalid scene input');
    if(mode!=='play')return;engine.tick(dt);elapsed=Math.min(c.session.durationSeconds,elapsed+dt);
    const before=point(),beforeHeading=heading,next=motion.step({heading,speed},{x:input.x??0,z:input.z??0},dt,c.movement.settings);heading=next.heading;speed=next.speed;

@@ -191,3 +191,7 @@ orphaned Node processes that prevent durable handoff.
 `pilot-review` supports `NEXUS_REVIEW_HEADED=1` for diagnosing long-run browser
 instability while retaining the default headless mode. A browser-close during a
 review remains an interrupted evidence result and cannot become PASS.
+
+Pilot runtime exposes a bounded `skipIdle` path for deterministic timeout checks;
+the browser harness uses it only when no input is held, avoiding millions of
+empty simulation steps while preserving ordinary frame stepping.
