@@ -13,6 +13,8 @@ export async function buildCandidateIndex(ids){
   candidates.push({id,sourceHash:s.sourceHash,status:s.status,previewVerdict:s.previewVerdict,signature:s.signature,kind:s.composition?.kind??'scene',replay:s.replay??null,acceptanceMissing:s.acceptance?.missing??[]});
  }
  const sourceHashes=[...new Set(candidates.map(c=>c.sourceHash))],signatures=new Set(candidates.map(c=>c.signature));
+ if(sourceHashes.length!==1)throw Error('Candidate sources are inconsistent');
+ if(signatures.size!==candidates.length)throw Error('Candidate structural signatures are duplicated');
  return {version:4,goalId:'G02',status:'NEEDS_REVIEW',purpose:'Current-source contrasting foundation candidates; provisional until independent review.',sourceHashes,sourceConsistent:sourceHashes.length===1,candidates,distinctSignatures:signatures.size===candidates.length,requiredReview:['independent concept contribution','comparative novelty rubric','target-device performance','human comprehension'],created:Date.now()};
 }
 
