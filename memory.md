@@ -14,6 +14,8 @@ Generic scene generation performs input-driven runtime preflight before inferenc
 
 The scene writer preserves the composition-selected palette. Catalog selections own presentation configuration; bounded editorial tasks must not silently replace those selections. Palette changes alone remain insufficient novelty evidence.
 
+Spatial gates accept typed boolean domain outputs through openWhen; numeric or missing outputs are invalid. The destination domain requires current player presence and an enabled input, without latching a past visit. A growth/reach interpretation must bind its witness to a physical gate. These are reusable development capabilities, not catalog eligibility or accepted-game proof. Keep route geometry, visible gate state and exit state tied to the same authoritative domains.
+
 Generated games are written only through the harness. Recurring defects must be fixed in shared kits, composition, assembly or review code; never patch experiment files by hand. Unsupported capabilities are explicit gaps, not descriptive promises.
 
 Keep compact spines with accepted decisions, the original roll, source/model identity, usage and evidence hashes. Shared immutable runtime snapshots avoid dependency copies per game. Do not accumulate raw chats, reasoning, model weights or videos. Compare structural gameplay signatures rather than names/colors. Separate automated runtime, visual model, performance, human and device evidence; AAA fidelity remains a target, not an automatic label.

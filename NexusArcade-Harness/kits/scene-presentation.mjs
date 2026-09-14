@@ -8,7 +8,7 @@ export const themes={
  coral:{sky:0xd9c9bd,ground:0x77695f,wall:0xc2ae91,primary:0x75e8c7,accent:0xffa283,danger:0xfd615f}
 };
 export const cameras={overhead:{movement:'walk',fov:48,heightPerExtent:2.8,backPerExtent:.85},forward:{movement:'walk',fov:65,height:2.6,back:0},chase:{movement:'steering',fov:48,height:6,back:9}};
-export const presenters={valve:{body:[1.8,1.8,1.8]},flowSource:{body:[1.4,1.5,1.4]},flowRouter:{body:[.8,.4,.8]},flowLink:{},flowStore:{body:[2,3,2]},reservoir:{body:[2,3,2]},delivery:{},checkpoints:{}};
+export const presenters={valve:{body:[1.8,1.8,1.8]},flowSource:{body:[1.4,1.5,1.4]},flowRouter:{body:[.8,.4,.8]},flowLink:{},flowStore:{body:[2,3,2]},reservoir:{body:[2,3,2]},delivery:{},checkpoints:{},destination:{}};
 const exact=(x,keys)=>x&&typeof x==='object'&&!Array.isArray(x)&&Object.keys(x).length===keys.length&&keys.every(k=>Object.hasOwn(x,k));
 const label=x=>typeof x==='string'&&x.trim().length>0&&x.length<=32&&!/[\x00-\x1f]/.test(x);
 
@@ -20,11 +20,11 @@ export function compilePresentation(runtime,provenance,p){
  const graph=runtime.domainGraph,seen=new Set(),nodes=p.instances.map(x=>{
   const n=graph.instances.find(n=>n.id===x?.id),source=provenance.find(s=>s.id===x?.id);
   if(!exact(x,['id','label','tone'])||!n||!source||!Object.hasOwn(presenters,n.capability)||seen.has(x.id)||!label(x.label)||!['primary','accent','danger'].includes(x.tone))throw Error('Unsupported or duplicate presenter');seen.add(x.id);
-  const position=n.capability==='valve'?{x:n.settings.position.x,y:0,z:n.settings.position.z}:{x:source.transform.x,y:0,z:source.transform.z};
+  const position=['valve','destination'].includes(n.capability)?{x:n.settings.position.x,y:0,z:n.settings.position.z}:{x:source.transform.x,y:0,z:source.transform.z};
   return {...x,capability:n.capability,position,body:presenters[n.capability].body?[...presenters[n.capability].body]:null};
  });
  for(const n of graph.instances)if(Object.hasOwn(presenters,n.capability)&&!seen.has(n.id))throw Error('Missing presenter '+n.id);
- for(const id of p.hud){const n=nodes.find(n=>n.id===id);if(!n||!['flowStore','reservoir','delivery','checkpoints'].includes(n.capability))throw Error('Invalid progress readout');}
+ for(const id of p.hud){const n=nodes.find(n=>n.id===id);if(!n||!['flowStore','reservoir','delivery','checkpoints','destination'].includes(n.capability))throw Error('Invalid progress readout');}
  const out=structuredClone(runtime);
  for(const n of nodes.filter(n=>n.body)){
   if(out.collision.adapter!=='world')throw Error('Physical domain presenters require world collision');

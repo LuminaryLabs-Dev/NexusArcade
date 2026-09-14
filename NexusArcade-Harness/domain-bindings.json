@@ -3,6 +3,22 @@
   "scope": "Trusted behavior bindings only; no factory eligibility or full-game acceptance",
   "infrastructure": ["controls", "objective", "all"],
   "options": {
+    "interaction.activate": {
+      "capabilities": ["valve"],
+      "parameters": {"reach": {"valve": "range"}},
+      "supportedConstants": {"interruptMode": "release"}
+    },
+    "ending.reach-destination": {
+      "capabilities": ["destination"],
+      "parameters": {"exitRadius": {"destination": "range"}},
+      "supportedConstants": {}
+    },
+    "concepts.growth.reach": {
+      "capabilities": ["all"],
+      "parameters": {},
+      "supportedConstants": {},
+      "witness": {"port": "complete", "expectation": "change"}
+    },
     "interaction.redirect": {
       "capabilities": ["valve"],
       "parameters": {"reach": {"valve": "range"}},

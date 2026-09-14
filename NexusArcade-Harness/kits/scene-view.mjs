@@ -38,6 +38,7 @@ export function createSceneView(canvas,c){
  actor.visible=p.camera!=='forward';
  const playerTag=plate('',0,3.2,0);playerTag.width=96;playerTag.height=24;playerTag.fontSize=90;playerTag.set('YOU');playerTag.active=actor.visible;
  const builders={
+  destination(n,node){const pos=n.settings.position,mat=material(theme.accent,.3),ring=mesh(new THREE.TorusGeometry(n.settings.range,.14,12,48),mat,pos.x,.2,pos.z);ring.rotation.x=-Math.PI/2;const tag=plate(node.label,pos.x,2.8,pos.z);observations.set(n.id,()=>({enabled:mat.color.getHex()===theme.primary,label:tag.text,labelVisible:tag.sprite.visible}));updates.push(s=>{const d=s.domainState[n.id];mat.color.setHex(d.enabled?theme.primary:theme.accent);tag.set(node.label+' '+(d.complete?'REACHED':d.enabled?'OPEN':'LOCKED'));});},
   valve(n,node){const pos=node.position,mat=material(theme[node.tone],.5),wheel=mesh(new THREE.TorusGeometry(.7,.12,10,28),mat,pos.x,1.5,pos.z);wheel.rotation.x=-Math.PI/2;const needle=box(.12,.13,1.2,pos.x,1.65,pos.z,mats.accent),tag=plate(node.label,pos.x,2.65,pos.z),router=runtime.domainGraph.wires.some(w=>w.from===n.id&&w.out==='rotation'&&byId.get(w.to).capability==='flowRouter');
    observations.set(n.id,()=>({rotation:needle.rotation.y,label:tag.text,labelVisible:tag.sprite.visible}));
    updates.push(s=>{const d=s.domainState[n.id];needle.rotation.y=d.rotation*Math.PI/2;mat.color.setHex(d.aligned?theme.primary:theme.accent);tag.set(node.label+' '+(router?['A','B','A+B','OFF'][d.rotation]:d.aligned?'OPEN':'CLOSED'));});

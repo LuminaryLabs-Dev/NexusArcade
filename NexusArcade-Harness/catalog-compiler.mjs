@@ -91,6 +91,7 @@ export function compileCatalogScene(catalog,profile){
  if(!exact(profile,['version','behavior','movement','collision','session'])||profile.version!==1)throw Error('Invalid catalog scene profile');
  const behavior=compileCatalogBehavior(catalog,profile.behavior);
  const runtime=structuredClone(validateSceneRuntime({version:1,domainGraph:behavior.graph,movement:profile.movement,collision:profile.collision,session:profile.session}));
+ for(const witness of behavior.requiredWitnesses.filter(w=>w.branchId==='concepts.growth.reach'))if(runtime.collision.adapter!=='world'||!runtime.collision.world.solids.some(s=>s.openWhen?.instance===witness.instanceId&&s.openWhen.port===witness.port))throw Error('Reach interpretation requires a state-bound physical route');
  return {...behavior,status:'SCENE_RUNTIME_COMPILED',sceneProfileHash:digest(profile),runtime,
   remaining:'Movement, collision and session adapters are configured, not catalog-qualified. Presentation, spatial reachability, causal concepts, replay, novelty, device performance and factory admission remain unverified.'};
 }

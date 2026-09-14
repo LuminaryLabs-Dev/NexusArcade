@@ -1,0 +1,412 @@
+{
+  "version": 1,
+  "seed": 0,
+  "concepts": {
+    "optionIds": [
+      "concepts.growth",
+      "concepts.dependency"
+    ],
+    "count": 2,
+    "depth": 2
+  },
+  "base": {
+    "version": 1,
+    "scene": {
+      "version": 1,
+      "behavior": {
+        "version": 1,
+        "seed": 0,
+        "specificIntent": "Open WEST, cross its gate, open EAST, then reach EXIT. WASD to move; E or Space at controls.",
+        "preparedInterpretation": "Growth expands reachable space; dependency makes the second route require both controls. Physical gates separate the controls and exit.",
+        "decisions": [
+          {
+            "pointId": "interaction",
+            "optionId": "interaction.activate",
+            "parameters": {
+              "reach": 2.5
+            }
+          },
+          {
+            "pointId": "ending",
+            "optionId": "ending.reach-destination",
+            "parameters": {
+              "exitRadius": 1.5
+            }
+          }
+        ],
+        "conceptBranches": [],
+        "domainInstances": [
+          {
+            "id": "controls",
+            "capabilityId": "controls",
+            "capabilityVersion": 1,
+            "settings": {},
+            "transform": {
+              "x": 0,
+              "y": 0,
+              "z": 0,
+              "yaw": 0
+            },
+            "sourceOptionIds": []
+          },
+          {
+            "id": "objective",
+            "capabilityId": "objective",
+            "capabilityVersion": 1,
+            "settings": {},
+            "transform": {
+              "x": 0,
+              "y": 0,
+              "z": 0,
+              "yaw": 0
+            },
+            "sourceOptionIds": []
+          }
+        ],
+        "connections": [],
+        "objective": "objective"
+      },
+      "movement": {
+        "adapter": "walk",
+        "settings": {
+          "speed": 6
+        },
+        "start": {
+          "x": 0,
+          "y": 0,
+          "z": 12
+        },
+        "heading": 0
+      },
+      "collision": {
+        "adapter": "world",
+        "world": {
+          "version": 1,
+          "halfExtent": 14,
+          "actorRadius": 0.4,
+          "solids": [
+            {
+              "id": "wall-0-west",
+              "x": -8,
+              "z": 3,
+              "width": 12,
+              "height": 2.5,
+              "depth": 1
+            },
+            {
+              "id": "wall-0-east",
+              "x": 8,
+              "z": 3,
+              "width": 12,
+              "height": 2.5,
+              "depth": 1
+            },
+            {
+              "id": "gate-0",
+              "x": 0,
+              "z": 3,
+              "width": 4,
+              "height": 2.5,
+              "depth": 1,
+              "openWhen": {
+                "instance": "first",
+                "port": "complete"
+              }
+            },
+            {
+              "id": "wall-1-west",
+              "x": -8,
+              "z": -4,
+              "width": 12,
+              "height": 2.5,
+              "depth": 1
+            },
+            {
+              "id": "wall-1-east",
+              "x": 8,
+              "z": -4,
+              "width": 12,
+              "height": 2.5,
+              "depth": 1
+            },
+            {
+              "id": "gate-1",
+              "x": 0,
+              "z": -4,
+              "width": 4,
+              "height": 2.5,
+              "depth": 1,
+              "openWhen": {
+                "instance": "both",
+                "port": "complete"
+              }
+            }
+          ]
+        }
+      },
+      "session": {
+        "durationSeconds": 90,
+        "failurePorts": []
+      }
+    },
+    "presentation": {
+      "version": 1,
+      "theme": "solar",
+      "camera": "overhead",
+      "instances": [],
+      "hud": [
+        "exit"
+      ]
+    },
+    "replayReason": "Learn the shortest route between controls and through the gates, then improve your saved completion time.",
+    "validationPlan": {
+      "version": 1,
+      "steps": []
+    }
+  },
+  "fragments": [
+    {
+      "id": "route-access",
+      "when": {
+        "all": [
+          "concepts.growth",
+          "concepts.dependency"
+        ],
+        "none": []
+      },
+      "choices": [
+        {
+          "id": "connected-gates",
+          "options": [
+            {
+              "id": "sequential-access",
+              "add": {
+                "decisions": [],
+                "conceptBranches": [
+                  "concepts.growth.reach",
+                  "concepts.dependency.unlocking"
+                ],
+                "domainInstances": [
+                  {
+                    "id": "west",
+                    "capabilityId": "valve",
+                    "capabilityVersion": 1,
+                    "settings": {
+                      "id": "west",
+                      "position": {
+                        "x": -6,
+                        "z": 8
+                      },
+                      "initial": 3,
+                      "target": 0,
+                      "range": 2.5
+                    },
+                    "transform": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 0,
+                      "yaw": 0
+                    },
+                    "sourceOptionIds": [
+                    "interaction.activate"
+                    ]
+                  },
+                  {
+                    "id": "east",
+                    "capabilityId": "valve",
+                    "capabilityVersion": 1,
+                    "settings": {
+                      "id": "east",
+                      "position": {
+                        "x": 6,
+                        "z": 0
+                      },
+                      "initial": 3,
+                      "target": 0,
+                      "range": 2.5
+                    },
+                    "transform": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 0,
+                      "yaw": 0
+                    },
+                    "sourceOptionIds": [
+                    "interaction.activate"
+                    ]
+                  },
+                  {
+                    "id": "first",
+                    "capabilityId": "all",
+                    "capabilityVersion": 1,
+                    "settings": {},
+                    "transform": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 0,
+                      "yaw": 0
+                    },
+                    "sourceOptionIds": [
+                      "concepts.growth.reach"
+                    ]
+                  },
+                  {
+                    "id": "both",
+                    "capabilityId": "all",
+                    "capabilityVersion": 1,
+                    "settings": {},
+                    "transform": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 0,
+                      "yaw": 0
+                    },
+                    "sourceOptionIds": [
+                      "concepts.dependency.unlocking"
+                    ]
+                  },
+                  {
+                    "id": "exit",
+                    "capabilityId": "destination",
+                    "capabilityVersion": 1,
+                    "settings": {
+                      "position": {
+                        "x": 0,
+                        "z": -10
+                      },
+                      "range": 1.5
+                    },
+                    "transform": {
+                      "x": 0,
+                      "y": 0,
+                      "z": 0,
+                      "yaw": 0
+                    },
+                    "sourceOptionIds": [
+                      "ending.reach-destination"
+                    ]
+                  }
+                ],
+                "connections": [
+                  {
+                    "from": "controls",
+                    "out": "position",
+                    "to": "west",
+                    "in": "position",
+                    "delay": 0
+                  },
+                  {
+                    "from": "controls",
+                    "out": "action",
+                    "to": "west",
+                    "in": "action",
+                    "delay": 0
+                  },
+                  {
+                    "from": "controls",
+                    "out": "position",
+                    "to": "east",
+                    "in": "position",
+                    "delay": 0
+                  },
+                  {
+                    "from": "controls",
+                    "out": "action",
+                    "to": "east",
+                    "in": "action",
+                    "delay": 0
+                  },
+                  {
+                    "from": "west",
+                    "out": "aligned",
+                    "to": "first",
+                    "in": "values",
+                    "delay": 0
+                  },
+                  {
+                    "from": "first",
+                    "out": "complete",
+                    "to": "both",
+                    "in": "values",
+                    "delay": 0
+                  },
+                  {
+                    "from": "east",
+                    "out": "aligned",
+                    "to": "both",
+                    "in": "values",
+                    "delay": 0
+                  },
+                  {
+                    "from": "both",
+                    "out": "complete",
+                    "to": "exit",
+                    "in": "enabled",
+                    "delay": 0
+                  },
+                  {
+                    "from": "controls",
+                    "out": "position",
+                    "to": "exit",
+                    "in": "position",
+                    "delay": 0
+                  },
+                  {
+                    "from": "exit",
+                    "out": "complete",
+                    "to": "objective",
+                    "in": "complete",
+                    "delay": 0
+                  }
+                ],
+                "presenters": [
+                  {
+                    "id": "west",
+                    "label": "WEST",
+                    "tone": "accent"
+                  },
+                  {
+                    "id": "east",
+                    "label": "EAST",
+                    "tone": "accent"
+                  },
+                  {
+                    "id": "exit",
+                    "label": "EXIT",
+                    "tone": "primary"
+                  }
+                ],
+                "steps": [
+                  {
+                    "action": "move",
+                    "x": -6,
+                    "z": 10
+                  },
+                  {
+                    "action": "interact",
+                    "count": 1
+                  },
+                  {
+                    "action": "move",
+                  "x": 6,
+                  "z": 1.5
+                  },
+                  {
+                    "action": "interact",
+                    "count": 1
+                  },
+                  {
+                    "action": "move",
+                    "x": 0,
+                    "z": -10
+                  }
+                ]
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

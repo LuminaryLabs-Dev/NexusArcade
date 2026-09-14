@@ -20,6 +20,7 @@ export async function preflightScene(runtime,plan,{signal,deadlineAt=Date.now()+
    for(let i=0;i<700;i++){
     const s=api.snapshot(),dx=p.x-s.player.x,dz=p.z-s.player.z;
     if(Math.hypot(dx,dz)<.18){reached=true;break;}
+    if(s.mode==='won')return;
     if(s.mode!=='play')throw Error('Session ended before planned movement');
     await tick(.05,{x:Math.abs(dx)>.1?Math.sign(dx):0,z:Math.abs(dz)>.1?Math.sign(dz):0});
     const next=api.snapshot();if(!worldSupports(world,next.player,next.domainState))throw Error('Actor left supported world');
@@ -37,7 +38,7 @@ export async function preflightScene(runtime,plan,{signal,deadlineAt=Date.now()+
   api.reset();api.start();check('restart clears session',api.snapshot().elapsed===0);const again=await run();check('repeated loop completes',again.mode==='won');check('same inputs reproduce time',Math.abs(again.elapsed-won.elapsed)<1e-8);
   api.reset();api.start();await tick(runtime.session.durationSeconds+.1);check('idle does not win',api.snapshot().mode==='lost');
   if(plan.steps.some(s=>s.action==='interact')){
-   api.reset();api.start();await run(true);await tick(runtime.session.durationSeconds+.1);check('omitted interactions do not win',api.snapshot().mode==='lost');
+   api.reset();api.start();try{await run(true);}catch(e){if(e.message!=='No traversable route')throw e;report.omittedRouteBlocked=true;}await tick(runtime.session.durationSeconds+.1);check('omitted interactions do not win',api.snapshot().mode==='lost');
   }
   report.status='PASS';
  }catch(e){if(signal?.aborted)throw e;report.error=e.message;}

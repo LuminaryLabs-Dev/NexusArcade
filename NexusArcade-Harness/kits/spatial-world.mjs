@@ -1,9 +1,10 @@
 // Shared collision and navigation geometry. Renderers consume the same solids.
+import {domainDefinitions} from './domain-graph.mjs';
 const finite=(v,lo,hi)=>typeof v==='number'&&Number.isFinite(v)&&v>=lo&&v<=hi;
 export function validateWorld(w,graph){
  if(!w||w.version!==1||!finite(w.halfExtent,5,50)||!finite(w.actorRadius,.2,1)||!Array.isArray(w.solids)||w.solids.length>128)throw Error('Invalid spatial world');
  if(Object.keys(w).some(k=>!['version','halfExtent','actorRadius','solids'].includes(k)))throw Error('Unknown world setting');
- const ids=new Set();for(const b of w.solids){if(!/^[a-z][a-z0-9-]*$/.test(b.id)||ids.has(b.id)||Object.keys(b).some(k=>!['id','x','z','width','depth','height','openWhen','label'].includes(k))||!finite(b.x,-w.halfExtent,w.halfExtent)||!finite(b.z,-w.halfExtent,w.halfExtent)||!finite(b.width,.1,20)||!finite(b.depth,.1,20)||!finite(b.height,.1,10))throw Error('Invalid world solid');ids.add(b.id);if(b.label!==undefined&&(!Number.isInteger(b.label)||b.label<1||b.label>64))throw Error('Invalid solid label');if(b.openWhen){const n=graph.instances.find(n=>n.id===b.openWhen.instance);if(!n||n.capability!=='contains'||b.openWhen.port!=='active'||Object.keys(b.openWhen).length!==2)throw Error('Invalid door state binding');}}
+const ids=new Set();for(const b of w.solids){if(!/^[a-z][a-z0-9-]*$/.test(b.id)||ids.has(b.id)||Object.keys(b).some(k=>!['id','x','z','width','depth','height','openWhen','label'].includes(k))||!finite(b.x,-w.halfExtent,w.halfExtent)||!finite(b.z,-w.halfExtent,w.halfExtent)||!finite(b.width,.1,20)||!finite(b.depth,.1,20)||!finite(b.height,.1,10))throw Error('Invalid world solid');ids.add(b.id);if(b.label!==undefined&&(!Number.isInteger(b.label)||b.label<1||b.label>64))throw Error('Invalid solid label');if(b.openWhen){const n=graph.instances.find(n=>n.id===b.openWhen.instance);if(!n||domainDefinitions[n.capability]?.outputs[b.openWhen.port]!=='boolean'||Object.keys(b.openWhen).length!==2)throw Error('Invalid door state binding');}}
  return w;
 }
 export const solidOpen=(b,states)=>!!b.openWhen&&states[b.openWhen.instance]?.[b.openWhen.port]===true;

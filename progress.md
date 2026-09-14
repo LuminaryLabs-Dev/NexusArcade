@@ -419,3 +419,27 @@ under NexusArcade-Experiments. 41 existing tests/build/browser boundary pass; pa
 dry-run excludes runtime artifacts. No accepted games or new gameplay family claimed.
 Next: expand reusable interaction/spatial/presentation capabilities beyond this
 overhead flow-system family; use the proven preflight/browser path to verify them.
+
+Access composition increment: gates now accept typed boolean outputs; the new
+destination domain requires simultaneous permission and player presence. Added
+trusted activate/reach-destination/growth-reach bindings, a matching exit presenter
+and HUD, and access-fragments.json. It composes WEST -> first route -> EAST ->
+second route -> EXIT without fluid systems or generated scripts. Growth/reach
+claims without a physical state-bound gate reject. The development recipe has one
+explicit composition and two concept roots; it is not broad generation coverage.
+Direct guards verified exit permission/presence/boundary/non-latching, gate collision
+state, numeric-output rejection and missing spatial-witness rejection. Runtime
+preflight and browser review now recognize winning during an exit approach, and
+the omitted-action control recognizes a locked route while still requiring loss.
+Initial run access-view-1789376747571 produced a false model image PASS on a blurred
+completion overlay. Independently rejected it; shared reviewer now captures active
+interaction consequences. Retry access-view-1789376747571-r1 preserved the original
+deadline, passed 21 browser checks and local model review in 166970ms total.
+Supplied headed client verified both gates open, exit enabled, player outside and
+game still in play; images independently inspected. Failed launch removed through
+cleanupFailed after reference audit, diagnostics retained. All 114 existing G02
+evidence refs verified; added four current refs, now 118. G02 remains running, 0
+accepted. Existing 41 tests/build/browser boundary and six flow-runtime regression
+checks pass. Pack dry-run has 103 files and no generated runtime material.
+Next: expand this reusable route composition with meaningful alternatives and
+progression, and finish G02 concept/replay/novelty/presentation/device qualification.
