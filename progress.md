@@ -271,3 +271,28 @@ execution packet are refreshed; original four-file contract hash and all33 goal
 IDs/order remain unchanged. Accepted0/1000. Next: bind catalog/seed choices into
 generic runtime/presentation and main Generate, then complete generic driving and
 other presenter checks, frozen acceptance and improvement integration.
+
+Seeded scene-layer increment: actual catalog inspection showed advertised
+movement/view/world parameters still lack complete consuming implementations.
+Main Generate was therefore not switched to a misleading broadened path. Added
+scene-layers.mjs and roll-scene-layers CLI: closed option/value lists are fully
+validated, then deterministically sampled. Optional profile.layers consumes
+materials.luminous-standard roughness/metalness and lighting.directional-fog
+exposure/fogDensity in actual Three.js state. Unimplemented options, unused
+parameters and incomplete lists fail locally. Compilation/SPINE retain resolved
+choices and binding/catalog hashes; the roll result retains seed/list provenance.
+
+500 reproducible seeds cover81 distinct settings, not81 distinct games;15 invalid
+cases reject. Actual renderer-property checks match two extremes and full loop
+passes22 browser checks; supplied client short tap produces liquid consequences.
+Initial images exposed nearly black metallic bodies without reflections. A shared
+64px-per-face procedural environment restores visible bodies; actual revised
+initial/consequence/client images inspected. Readability/novelty/full presentation
+remain factory gates. Personal record identity now includes full presentation so
+visibility changes do not mix records.41 existing tests/build/17-module browser
+boundary and103-file package inspection pass. No new test files, model runs,
+admitted ideas or accepted games. G02 running; accepted0/1000.
+
+Next: extend implemented scene bindings to movement/camera/world semantics and
+combine seeded behavior fragments before wiring main Generate; preserve all frozen
+concept, replay, novelty, audio, hardware and improvement/qualification gates.

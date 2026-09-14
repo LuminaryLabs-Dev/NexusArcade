@@ -143,3 +143,17 @@ repair and full acceptance are integrated. A preview PASS is not acceptance:
 G02 foundation work remains open, later goals remain gated, and accepted count
 must come from the campaign index. Software WebGL checks, model observations,
 independent image inspection and target-device performance are separate evidence.
+
+To expand supported presentation choices before inference, use
+`node NexusArcade-Harness/cli.mjs roll-scene-layers --lists /absolute/path/lists.json --seed 12`.
+Each list contains `pointId` and `options`; each option contains `optionId` and
+`parameters`, whose values are nonempty lists of allowed choices. Currently
+supported bindings are `materials.luminous-standard` (`roughness`, `metalness`)
+and `lighting.directional-fog` (`exposure`, `fogDensity`). Every supplied value is
+validated against the master catalog, including values the seed does not select.
+Retain the returned seed, lists and hashes; place its `resolved` list in a playable
+profile's optional `layers` field. Compilation stores the resolved settings and
+bindings, and the renderer applies them to actual materials, exposure and fog.
+Unsupported layers are rejected. These changes do not establish distinct gameplay
+or visual novelty. Personal records include the full presentation configuration,
+so a visibility change cannot reuse a record set under different conditions.

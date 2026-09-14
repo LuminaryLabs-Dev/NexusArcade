@@ -97,3 +97,11 @@ a changed profile requires an explicit reason. Post-deadline regression fixtures
 prove shared repairs only and never qualify the expired original idea. Buffer short
 interaction presses until simulation consumes them; clear buffered input on pause,
 focus loss and restart so it cannot spill into another session.
+
+Scene presentation layers resolve through scene-layers.mjs against the existing
+master catalog. Seeded option/value lists are validated in full before sampling;
+unsupported choices and unconsumed parameters are errors. Initial bindings consume
+luminous-standard surface parameters and directional-fog exposure/density in real
+Three.js properties. Keep roll seed/lists/hash and resolved choices as provenance;
+configuration variety is not evidence of game or visual novelty. Record identity
+includes the full presentation configuration because visibility affects play.

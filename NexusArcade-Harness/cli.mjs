@@ -6,6 +6,7 @@ import {hash} from './model.mjs';
 import assert from 'node:assert/strict';
 import {generatePilot} from './pilot-run.mjs';
 import {generateScene} from './scene-run.mjs';
+import {rollSceneLayers} from './scene-layers.mjs';
 import {compilePlayableScene} from './scene-spec.mjs';
 import {contracts,queueSnapshot,recoverWriter} from './factory.mjs';
 import {inspectCatalog} from './catalog.mjs';
@@ -17,6 +18,8 @@ if(command==='factory-check'){const {queue,catalog,policy,profile,hash}=await co
 }else if(command==='compile-behavior'||command==='compile-scene'){
  const file=get('profile',null);if(!file)throw Error('Expected --profile with a behavior-composition JSON file');
  const {catalog}=await contracts();console.log(JSON.stringify((command==='compile-scene'?compileCatalogScene:compileCatalogBehavior)(catalog,JSON.parse(await readFile(file,'utf8'))),null,2));
+}else if(command==='roll-scene-layers'){
+ const file=get('lists',null);if(!file)throw Error('Expected --lists with supported scene-layer choices');const {catalog}=await contracts();console.log(JSON.stringify(rollSceneLayers(catalog,Number(get('seed',0)),JSON.parse(await readFile(file,'utf8'))),null,2));
 }else if(command==='assemble-scene'||command==='scene'){
  const file=get('profile',null);if(!file)throw Error('Expected --profile with a playable scene profile');const profile=JSON.parse(await readFile(file,'utf8'));
  if(command==='assemble-scene'){const {catalog}=await contracts();console.log(JSON.stringify(compilePlayableScene(catalog,profile),null,2));}

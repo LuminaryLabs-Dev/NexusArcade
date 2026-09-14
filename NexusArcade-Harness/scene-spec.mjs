@@ -2,6 +2,7 @@ import {compileCatalogScene} from './catalog-compiler.mjs';
 import {compilePresentation} from './kits/scene-presentation.mjs';
 import {createSceneEngine} from './kits/scene-runtime.mjs';
 import {assertAllowedText} from './text-policy.mjs';
+import {resolveSceneLayers} from './scene-layers.mjs';
 import {digest} from './factory.mjs';
 const exact=(x,keys)=>x&&typeof x==='object'&&!Array.isArray(x)&&Object.keys(x).length===keys.length&&keys.every(k=>Object.hasOwn(x,k));
 export function validateScenePlan(plan,runtime){
@@ -16,10 +17,11 @@ export function validateScenePlan(plan,runtime){
 }
 export function compilePlayableScene(catalog,profile,{title='Connected Systems',theme}={}){
  assertAllowedText({profile,title,theme});
- if(!exact(profile,['version','scene','presentation','replayReason','validationPlan'])||profile.version!==1||typeof profile.replayReason!=='string'||profile.replayReason.trim().length<10||profile.replayReason.length>300||typeof title!=='string'||title.trim().length<3||title.length>80||theme!==undefined&&(typeof theme!=='string'||!theme))throw Error('Invalid playable scene profile');
+ if(!exact(profile,['version','scene','presentation','replayReason','validationPlan',...(Object.hasOwn(profile??{},'layers')?['layers']:[])])||profile.version!==1||typeof profile.replayReason!=='string'||profile.replayReason.trim().length<10||profile.replayReason.length>300||typeof title!=='string'||title.trim().length<3||title.length>80||theme!==undefined&&(typeof theme!=='string'||!theme))throw Error('Invalid playable scene profile');
  const compiled=compileCatalogScene(catalog,profile.scene),view=compilePresentation(compiled.runtime,compiled.provenance,{...profile.presentation,...(theme?{theme}:{})});
+ const layers=resolveSceneLayers(catalog,profile.layers??[]);Object.assign(view.presentation,layers.settings);
  createSceneEngine(view.runtime);validateScenePlan(profile.validationPlan,view.runtime);
  const steering=view.runtime.movement.adapter==='steering',controls=(steering?'W / ↑ accelerate · S / ↓ brake and reverse · A/D steer':'WASD / arrows move · E / Space interact')+' · Esc pause · R restart · F fullscreen';
- const composition={version:4,title,goal:compiled.specificIntent,controls,concepts:profile.scene.behavior.decisions.filter(d=>d.pointId==='concepts').map(d=>d.optionId.split('.').at(-1)),replay:{reason:profile.replayReason,recordKey:digest({runtime:view.runtime,camera:view.presentation.camera})},...view};
- return {status:'SCENE_ASSEMBLABLE',eligible:false,fullGame:false,composition,validationPlan:structuredClone(profile.validationPlan),compilation:compiled,profileHash:digest(profile),remaining:'Rendered assembly is a development capability. Catalog coverage, independent concept/replay/novelty/presentation/device qualification and factory admission remain required.'};
+ const composition={version:4,title,goal:compiled.specificIntent,controls,concepts:profile.scene.behavior.decisions.filter(d=>d.pointId==='concepts').map(d=>d.optionId.split('.').at(-1)),replay:{reason:profile.replayReason,recordKey:digest({runtime:view.runtime,presentation:view.presentation})},...view};
+ return {status:'SCENE_ASSEMBLABLE',eligible:false,fullGame:false,composition,validationPlan:structuredClone(profile.validationPlan),compilation:{...compiled,sceneLayers:layers,unresolvedGamePoints:compiled.unresolvedGamePoints.filter(id=>!layers.resolved.some(l=>l.pointId===id)),requiredCapabilities:[...new Set([...compiled.requiredCapabilities,...layers.requiredCapabilities])],requiredRules:[...new Set([...compiled.requiredRules,...layers.requiredRules])]},profileHash:digest(profile),remaining:'Rendered assembly is a development capability. Catalog coverage, independent concept/replay/novelty/presentation/device qualification and factory admission remain required.'};
 }

@@ -4,10 +4,14 @@ import {solidOpen} from './spatial-world.mjs';
 
 export function createSceneView(canvas,c){
  const runtime=c.runtime,p=c.presentation,theme=themes[p.theme],cameraChoice=cameras[p.camera],byId=new Map(runtime.domainGraph.instances.map(n=>[n.id,n]));
- const renderer=new THREE.WebGLRenderer({canvas,antialias:true,preserveDrawingBuffer:true});renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.toneMapping=THREE.ACESFilmicToneMapping;
- const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(cameraChoice.fov,1,.1,300);scene.background=new THREE.Color(theme.sky);scene.fog=new THREE.Fog(theme.sky,65,160);
+ const renderer=new THREE.WebGLRenderer({canvas,antialias:true,preserveDrawingBuffer:true});renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=p.illumination?.exposure??1;
+ const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(cameraChoice.fov,1,.1,300);scene.background=new THREE.Color(theme.sky);scene.fog=p.illumination?new THREE.FogExp2(theme.sky,p.illumination.fogDensity):new THREE.Fog(theme.sky,65,160);
+ // A small procedural reflection environment keeps metallic surfaces readable.
+ // It is shared presentation code, not a generated game asset or model output.
+ let environment;
+ if(p.surface){const faces=Array.from({length:6},(_,i)=>{const face=document.createElement('canvas');face.width=face.height=64;const ctx=face.getContext('2d'),gradient=ctx.createLinearGradient(0,0,0,64);gradient.addColorStop(0,i===3?'#899baa':'#eff8ff');gradient.addColorStop(.4,'#b4cbd4');gradient.addColorStop(1,i===2?'#cddfe9':'#506577');ctx.fillStyle=gradient;ctx.fillRect(0,0,64,64);return face;});environment=new THREE.CubeTexture(faces);environment.colorSpace=THREE.SRGBColorSpace;environment.needsUpdate=true;scene.environment=environment;}
  scene.add(new THREE.HemisphereLight(0xffffff,0x293443,2));const sun=new THREE.DirectionalLight(0xffe5bf,3);sun.position.set(-20,35,15);sun.castShadow=true;sun.shadow.mapSize.set(1024,1024);sun.shadow.normalBias=.05;Object.assign(sun.shadow.camera,{left:-50,right:50,top:50,bottom:-50});scene.add(sun);
- const material=(color,glow=0)=>new THREE.MeshStandardMaterial({color,roughness:.65,metalness:.15,emissive:color,emissiveIntensity:glow});
+ const material=(color,glow=0)=>new THREE.MeshStandardMaterial({color,roughness:p.surface?.roughness??.65,metalness:p.surface?.metalness??.15,emissive:color,emissiveIntensity:glow});
  const mats={ground:material(theme.ground),wall:material(theme.wall),primary:material(theme.primary,.35),accent:material(theme.accent,.35),danger:material(theme.danger,.25),dark:material(0x182d36)};
  const mesh=(geometry,mat,x,y,z,parent=scene)=>{const m=new THREE.Mesh(geometry,mat);m.position.set(x,y,z);m.castShadow=true;m.receiveShadow=true;parent.add(m);return m;};
  const box=(w,h,d,x,y,z,mat=mats.wall,parent)=>mesh(new THREE.BoxGeometry(w,h,d),mat,x,y,z,parent);
@@ -70,7 +74,7 @@ export function createSceneView(canvas,c){
   renderer.render(scene,camera);
  }
  function resize(){width=innerWidth;height=innerHeight;renderer.setSize(width,height);camera.aspect=width/height;camera.updateProjectionMatrix();}
- const evidence=()=>({three:THREE.REVISION,triangles:renderer.info.render.triangles,drawCalls:renderer.info.render.calls,camera:p.camera,actorScreenBounds:actorBounds,domainViews:Object.fromEntries([...observations].map(([id,read])=>[id,read()])),presenters:p.nodes.map(n=>({id:n.id,capability:n.capability})),worldLabels:labels.map(t=>({text:t.text,x:t.x,y:t.y,width:t.width,height:t.height,visible:t.sprite.visible})),connections:pipes.length});
- const dispose=()=>{scene.traverse(o=>{o.geometry?.dispose();for(const m of o.material?(Array.isArray(o.material)?o.material:[o.material]):[]){m.map?.dispose();m.dispose();}});renderer.dispose();};
+ const evidence=()=>({three:THREE.REVISION,triangles:renderer.info.render.triangles,drawCalls:renderer.info.render.calls,camera:p.camera,actorScreenBounds:actorBounds,domainViews:Object.fromEntries([...observations].map(([id,read])=>[id,read()])),presenters:p.nodes.map(n=>({id:n.id,capability:n.capability})),worldLabels:labels.map(t=>({text:t.text,x:t.x,y:t.y,width:t.width,height:t.height,visible:t.sprite.visible})),connections:pipes.length,appearance:{roughness:mats.wall.roughness,metalness:mats.wall.metalness,exposure:renderer.toneMappingExposure,fogType:scene.fog.type??(scene.fog.isFogExp2?'FogExp2':'Fog'),fogDensity:scene.fog.density??null}});
+ const dispose=()=>{environment?.dispose();scene.traverse(o=>{o.geometry?.dispose();for(const m of o.material?(Array.isArray(o.material)?o.material:[o.material]):[]){m.map?.dispose();m.dispose();}});renderer.dispose();};
  resize();return {render,resize,evidence,dispose};
 }
