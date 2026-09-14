@@ -78,6 +78,15 @@ implementation and review.
 
 G03 independent review starts from
 `NexusArcade-Experiments/campaigns/reliable-arcade-factory/goals/G03/review-request.json`.
+Refresh the current request from the active candidate index and evidence manifest
+before starting review:
+
+```sh
+node NexusArcade-Harness/cli.mjs g03-review-request
+```
+
+The generated `review-request-current.json` is the authoritative packet for the
+current source revision; an older request must not be used.
 It lists the current provisional candidates and the six required facets: concept
 causality, interaction novelty, visual novelty, presentation/audio, target-device
 performance and human comprehension. Complete one verdict and at least one hashed
