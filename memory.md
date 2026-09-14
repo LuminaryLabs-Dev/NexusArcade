@@ -183,3 +183,7 @@ G02 remains queued at `needs_review` until G03 adjudicates these facets.
 The workspace symlink guard permits macOS system aliases `/tmp` and `/var` while
 continuing to reject symlinks in requested workspace components. This keeps
 temporary test workspaces usable without weakening artifact-path protection.
+
+Review runners close all temporary HTTP connections before awaiting server
+shutdown, so interrupted or completed independent browser reviews do not leave
+orphaned Node processes that prevent durable handoff.

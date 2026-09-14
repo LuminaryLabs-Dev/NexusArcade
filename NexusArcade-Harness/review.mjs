@@ -56,7 +56,7 @@ export async function reviewGame(file,{signal}={}) {
     check('no browser errors',result.errors.length===0);
     signal?.removeEventListener('abort',abort);
   }catch(e){result.errors.push(e.message);check('review completed',false,e.message);}
-  finally{await browser?.close();await new Promise(r=>server.close(r));}
+  finally{await browser?.close();server.closeAllConnections?.();await new Promise(r=>server.close(r));}
   result.status=result.checks.length&&result.checks.every(c=>c.passed)&&!result.errors.length?'PASS':'FAIL';return result;
 }
 function dist(a,b){return Math.hypot(a.x-b.x,a.y-b.y);}

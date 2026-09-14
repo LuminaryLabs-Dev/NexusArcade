@@ -41,5 +41,5 @@ export async function reviewScene(root,id,plan,{signal}={}){
   await page.reload();await page.waitForFunction(()=>!!window.render_game_to_text);await tick(0);check('record survives reload',(await state()).bestSeconds===expectedBest);check('reload requires explicit start',(await state()).mode==='title');
   report.render=await page.evaluate(()=>__renderEvidence());checkLabelBounds(report.render,'ending');check('no browser errors',report.errors.length===0);report.screenshotHash=digest(report.image);report.status='PASS';
  }catch(e){report.errors.push(e.message);report.failure={afterCheck:report.checks.at(-1)?.name??'startup'};if(page&&!page.isClosed()&&!signal?.aborted)try{if(!report.image)report.image=await page.screenshot({timeout:2500});}catch(capture){report.failure.captureError=capture.message;}}
- finally{if(abort)signal?.removeEventListener('abort',abort);await browser?.close();await new Promise(r=>server.close(r));}return report;
+ finally{if(abort)signal?.removeEventListener('abort',abort);await browser?.close();server.closeAllConnections?.();await new Promise(r=>server.close(r));}return report;
 }

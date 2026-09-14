@@ -92,5 +92,5 @@ export async function reviewPilot(root,id,{signal}={}){
     report.failure.ui=await p.evaluate(()=>{const overlay=document.getElementById('overlay'),button=document.getElementById('start'),rect=button?.getBoundingClientRect();return {visibility:document.visibilityState,focused:document.hasFocus(),overlayHidden:overlay?.hidden,button:button?{text:button.textContent,disabled:button.disabled,rect:{x:rect.x,y:rect.y,width:rect.width,height:rect.height}}:null,state:window.render_game_to_text?JSON.parse(window.render_game_to_text()):null};});
    })(),new Promise((_,reject)=>{timer=setTimeout(()=>reject(Error('Failure capture timed out')),3000);})]);
   }catch(capture){report.failure.captureError=capture.message;}finally{clearTimeout(timer);}}
- }finally{if(abort)signal?.removeEventListener('abort',abort);await browser?.close();await new Promise(r=>server.close(r));}return report;
+ }finally{if(abort)signal?.removeEventListener('abort',abort);await browser?.close();server.closeAllConnections?.();await new Promise(r=>server.close(r));}return report;
 }
