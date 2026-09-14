@@ -152,6 +152,8 @@ and requires qualified replay evidence for every candidate. It rejects mixed
 source hashes, duplicate signatures, fewer than three pilot families, or a
 single player view; the index remains provisional until independent review
 closes its required gates.
+Each candidate must also preserve three distinct independent concept roots in
+its composition record.
 
 To expand supported presentation choices before inference, use
 `node NexusArcade-Harness/cli.mjs roll-scene-layers --lists /absolute/path/lists.json --seed 12`.
