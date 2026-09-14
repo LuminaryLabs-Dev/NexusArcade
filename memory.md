@@ -203,3 +203,8 @@ review remains an interrupted evidence result and cannot become PASS.
 Pilot runtime exposes a bounded `skipIdle` path for deterministic timeout checks;
 the browser harness uses it only when no input is held, avoiding millions of
 empty simulation steps while preserving ordinary frame stepping.
+
+G02 build handoff is now regenerated from the current candidate index with
+source-bound artifact hashes and explicit build check receipts. G03 readiness is
+generated from the current review request, keeping independent review separate
+from build completion while allowing the queue to advance through its controller.
