@@ -45,6 +45,7 @@ if(command==='compile-concepts'||command==='scene-concepts'){
 }else if(command==='cleanup-failed'){console.log(JSON.stringify(await cleanupFailed(safeId(get('id','')),{apply:args.includes('--apply')}),null,2));
 }else if(command==='queue'){console.log(JSON.stringify(await queueSnapshot(),null,2));
 }else if(command==='g03-causality'){const {measureG03ConceptSensitivity}=await import('./g03-causality.mjs');console.log(JSON.stringify(await measureG03ConceptSensitivity(),null,2));
+}else if(command==='g03-comparison'){const {measureG03Comparison}=await import('./g03-comparison.mjs');console.log(JSON.stringify(await measureG03Comparison(),null,2));
 }else if(command==='g03-review-template'){const {writeG03ReviewTemplate}=await import('./g03-review-template.mjs');console.log(JSON.stringify(await writeG03ReviewTemplate(),null,2));
 }else if(command==='g03-performance'){const {measureG03Performance}=await import('./g03-performance.mjs');console.log(JSON.stringify(await measureG03Performance(),null,2));
 }else if(command==='g03-evidence'){const {writeG03Evidence}=await import('./g03-evidence.mjs');console.log(JSON.stringify(await writeG03Evidence(),null,2));
