@@ -10,3 +10,12 @@ lfm-local/
 playwright-report/
 test-results/
 NexusArcade-Experiments/
+
+# Local, restorable development archive payload
+.agent/archives/built-unproven/NexusArcade-Experiments/
+
+# Compressed local archive shards and transient packing state
+.agent/archives/built-unproven/archive/*.pending
+.agent/archives/built-unproven/model-inputs.json
+.agent/archives/built-unproven/packing-checkpoint.json
+.agent/archives/built-unproven/summaries/model-checkpoint.json

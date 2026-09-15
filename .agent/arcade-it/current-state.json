@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "mission": "NexusArcade \u2014 Reliable Arcade Factory",
+  "repository": {
+    "name": "NexusArcade",
+    "root": "/Users/angelberger/Documents/GitHub/NexusArcade",
+    "branch": "codex/arcade-spine-harness",
+    "head": "dd17931ed835f23a5c9d94da864544cccf4deabd"
+  },
+  "authoritativeSources": [
+    {
+      "path": ".agent/packets/2026-09-13_reliable-arcade-factory/goal-queue.json",
+      "sha256": "444ff5f833275b2816db35bee28c4c285aae76fce1dab726a23ad473113bcd89"
+    },
+    {
+      "path": ".agent/packets/2026-09-13_reliable-arcade-factory/execution-contract.json",
+      "sha256": "9aa0b753f19ecf25b0e0eb564bb29942785572a540139eeb32d63af457f5c73c"
+    },
+    {
+      "path": "NexusArcade-Experiments/campaigns/reliable-arcade-factory/factory-queue.json",
+      "sha256": "a8c8577fcb454e285b9bb4e95991b1e3b7e9391086ba3f6a88ae35e5533103e0"
+    },
+    {
+      "path": ".agent/archives/built-unproven/manifest.json",
+      "sha256": "e2391e539b8107281324a6b6202ac7bd54af55a20ea3a008b04518246fec34c8"
+    }
+  ],
+  "campaign": {
+    "goalCount": 33,
+    "cycles": 11,
+    "sequence": "Plan \u2192 Build \u2192 Review",
+    "status": "IN_PROGRESS",
+    "latestObservedGoalStates": {
+      "G01": "blocked",
+      "G02": "blocked",
+      "G03": "blocked",
+      "G04": "planned"
+    },
+    "nextGoal": "G01",
+    "nextPhase": "plan evidence revalidation"
+  },
+  "checkpoint": {
+    "status": "BLOCKED_REVALIDATION_REQUIRED",
+    "reason": "Archiving generated-game storage invalidated the recorded readiness of G01\u2013G03; queue marks those goals blocked with archive-revalidation findings.",
+    "nextAction": "Inspect the archived G01 plan packet and its three frozen checks; verify its source and contract references against current repository state. Record findings, then resume G01 only through the queue controller. Do not start G02/G03 or later goals until their owning dependencies are valid.",
+    "blockers": [
+      {
+        "id": "archive-revalidation",
+        "goals": [
+          "G01",
+          "G02",
+          "G03"
+        ],
+        "evidencePaths": [
+          ".agent/archives/built-unproven/archive/originals.tar.gz.part-001",
+          ".agent/archives/built-unproven/archive/originals.tar.gz.part-002"
+        ]
+      }
+    ]
+  },
+  "constraints": {
+    "gameRuntime": "Three.js with implemented NexusEngine domains or explicit reusable adapters",
+    "generatedGameEdits": "Harness-only; never manually edit generated games",
+    "models": {
+      "planner": "Local LFM2.5 Thinking 1.2B",
+      "writer": "Local LFM2.5 VL 3B",
+      "cloudInference": false,
+      "maximumParametersBillions": 3
+    },
+    "ideaDeadlineMinutes": 25,
+    "deadlineScope": "Per admitted idea only",
+    "catalogPreference": "Expand supported catalog choices and combinations before inventing new capabilities",
+    "archiveEvidence": "Historical summaries are hypotheses until reproduced and independently validated",
+    "acceptance": "Evidence-based; preserve frozen rules, deadlines, and goal order"
+  },
+  "lastReconciled": "2026-09-15T20:13:07.345186+00:00"
+}

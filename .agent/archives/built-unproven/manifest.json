@@ -1,0 +1,132 @@
+{
+  "formatVersion": 2,
+  "title": "Built Unproven Archive",
+  "created": "2026-09-14T23:02:44.601406+00:00",
+  "originals": {
+    "format": "concatenated gzip tar stream; parts are not individual tar files",
+    "parts": [
+      {
+        "path": "archive/originals.tar.gz.part-001",
+        "bytes": 50000000,
+        "sha256": "ec1b23bb4bb804484aa6dae11c63cffce25cfac95bbc3caf93aa972e9c99e24f"
+      },
+      {
+        "path": "archive/originals.tar.gz.part-002",
+        "bytes": 45574352,
+        "sha256": "a65b4bde0587ca40c6b6898f3a4415f296c36f6ecadbc46d9d17539d67963fe6"
+      }
+    ],
+    "streamSha256": "2ff7b652e781def97746973b09ac57b57d24cd4e8deab1e1b84af05c59129e72",
+    "originalFiles": 64640,
+    "originalBytes": 503851907,
+    "verification": "PASS: full extraction and every original SHA-256 matched",
+    "restore": "Verify ordered part hashes, concatenate in listed order, extract into an empty directory. Full original inventory is original-metadata/manifest.json. Never overwrite active storage.",
+    "created": "2026-09-14T23:00:54.956901+00:00"
+  },
+  "records": [
+    {
+      "path": "records/part-001.jsonl",
+      "bytes": 22858693,
+      "sha256": "86ca0775f7b43f97028452722e3db42449a2db4e3b40803c695a427e6c0d4cb1"
+    }
+  ],
+  "summaries": [
+    {
+      "path": "summaries/part-001.jsonl",
+      "bytes": 46450,
+      "sha256": "658f6d27377bafcda4b6589dcdb0bbaa0e8f91ecd8dd9de82504fa465c6ecac8"
+    }
+  ],
+  "experiments": 367,
+  "families": 10,
+  "lessons": 12,
+  "modelCalls": 12,
+  "modelCallErrorsRetained": 1,
+  "referenceAudit": {
+    "valid": 480,
+    "missing": 410,
+    "mismatch": 18
+  },
+  "verification": {
+    "fullRestoration": "PASS",
+    "everyOriginalHash": "PASS",
+    "experimentCoverage": "PASS",
+    "completeJSONLLines": "PASS",
+    "campaignUnchanged": "PASS",
+    "activeLibraryEmpty": "PASS"
+  },
+  "previousCleanup": {
+    "at": "2026-09-14T19:51:37.719312+00:00",
+    "method": "Hard-link identical runtime files with matching mode, ownership and extended attributes; original relative paths preserved",
+    "filesBefore": 64640,
+    "filesAfter": 64640,
+    "runtimeVersions": 129,
+    "duplicateFilesLinked": 61926,
+    "duplicateLogicalBytesShared": 384418979,
+    "before": {
+      "uniqueInodes": 64640,
+      "allocatedBytes": 703143936
+    },
+    "after": {
+      "uniqueInodes": 2714,
+      "allocatedBytes": 126427136
+    },
+    "allocatedBytesSaved": 576716800,
+    "temporaryCandidates": [],
+    "temporaryFilesRemoved": 0,
+    "temporaryDisposition": "No temporary candidates found; no unique evidence deleted.",
+    "verification": "PASS: every original path and SHA-256 preserved; campaign controls unchanged",
+    "referenceAudit": {
+      "missing": 410,
+      "valid": 480,
+      "mismatch": 18
+    },
+    "newBrokenReferences": 0,
+    "activeLibrary": {
+      "total": 0,
+      "accepted": 0,
+      "status": "verified"
+    }
+  },
+  "limits": {
+    "targetShardBytes": 50000000,
+    "maxFileBytesExclusive": 100000000
+  },
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 3176,
+      "sha256": "0c1385d7a756817e34676606838712fd005c21168f05c95876a53d77004d5bbe"
+    },
+    {
+      "path": "final-brief.md",
+      "bytes": 11527,
+      "sha256": "04d3c8295b0ec65f96a69d95bddf299248214f136c858245c5b809f2e69452c4"
+    },
+    {
+      "path": "lessons.jsonl",
+      "bytes": 42984,
+      "sha256": "1131405b77cb603e6faf48091661079648e4fe1660233c3c0df0a94f9bfbbb3c"
+    },
+    {
+      "path": "archive/originals.tar.gz.part-001",
+      "bytes": 50000000,
+      "sha256": "ec1b23bb4bb804484aa6dae11c63cffce25cfac95bbc3caf93aa972e9c99e24f"
+    },
+    {
+      "path": "archive/originals.tar.gz.part-002",
+      "bytes": 45574352,
+      "sha256": "a65b4bde0587ca40c6b6898f3a4415f296c36f6ecadbc46d9d17539d67963fe6"
+    },
+    {
+      "path": "records/part-001.jsonl",
+      "bytes": 22858693,
+      "sha256": "86ca0775f7b43f97028452722e3db42449a2db4e3b40803c695a427e6c0d4cb1"
+    },
+    {
+      "path": "summaries/part-001.jsonl",
+      "bytes": 46450,
+      "sha256": "658f6d27377bafcda4b6589dcdb0bbaa0e8f91ecd8dd9de82504fa465c6ecac8"
+    }
+  ]
+}
