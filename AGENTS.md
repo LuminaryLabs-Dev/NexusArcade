@@ -11,5 +11,7 @@ This repository owns the arcade installer and the local generation factory.
 - Run `npm test` and inspect `npm pack --dry-run --json` before release.
 - Report live LFM, deterministic tests, browser evidence, and physical-device results separately.
 - Treat `BUILT_UNVALIDATED` and `BLOCKED` as incomplete acceptance; never promote them by changing a label.
+- For Gemini-generated browser-game conversions, route through [`.agent/skills/gemini-to-nexus-arcade-it/SKILL.md`](.agent/skills/gemini-to-nexus-arcade-it/SKILL.md). Baseline the exact original first; require one authoritative Nexus owner per mutable truth; keep gameplay model-free; use generic Harness extensions rather than game-specific shared primitives; and require deterministic, causal, browser, and parity proof before PASS.
+- The Gemini conversion route does not authorize changes to `LuminaryLabs-Dev/NexusEngine`; a genuine Core gap requires a separate explicit repository/action authorization.
 - Changes to other Luminary repositories require their own explicit task scope.
 - A GitHub write requires user authorization and a statement naming repository and action.
