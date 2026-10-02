@@ -1,7 +1,7 @@
 import { assertSafeRelativePath } from "./paths.mjs";
 
 export const CDN_ORIGIN = "https://cdn.jsdelivr.net";
-export const REGISTRY_REPOSITORY = "LuminaryLabs-Dev/NexusArcade-Prototypes";
+export const REGISTRY_REPOSITORY = "LuminaryLabs-Dev/NexusArcade-Games";
 export const DEFAULT_LATEST_URL = `${CDN_ORIGIN}/gh/${REGISTRY_REPOSITORY}@main/registry/latest.json`;
 export const DEFAULT_ALLOWED_GAME_REPOSITORIES = Object.freeze([
   REGISTRY_REPOSITORY,

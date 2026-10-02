@@ -14,7 +14,7 @@ async function fixture() {
       version: "1.0.0",
       entry: "index.html",
       offlineReady: true,
-      source: { repository: "LuminaryLabs-Dev/NexusArcade-Prototypes", ref: "a".repeat(40), basePath: "prototypes/fixture" },
+      source: { repository: "LuminaryLabs-Dev/NexusArcade-Games", ref: "a".repeat(40), basePath: "games/fixture/build" },
       files: [
         { path: "index.html", bytes: files[0].byteLength, sha256: await sha256(files[0]) },
         { path: "style.css", bytes: files[1].byteLength, sha256: await sha256(files[1]) },

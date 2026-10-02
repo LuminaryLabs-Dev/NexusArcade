@@ -14,7 +14,7 @@ test("catalog client follows the moving pointer once and switches to its pinned 
   assert.equal(catalog.games.length, 1);
   assert.deepEqual(seen, [
     DEFAULT_LATEST_URL,
-    "https://cdn.jsdelivr.net/gh/LuminaryLabs-Dev/NexusArcade-Prototypes@registry-v0.1.0/registry/index.json",
+    "https://cdn.jsdelivr.net/gh/LuminaryLabs-Dev/NexusArcade-Games@registry-v0.1.0/registry/index.json",
   ]);
 });
 
@@ -41,7 +41,7 @@ test("a pinned registry bypasses the moving pointer for rollback", async () => {
     },
   });
   await client.load();
-  assert.deepEqual(seen, ["https://cdn.jsdelivr.net/gh/LuminaryLabs-Dev/NexusArcade-Prototypes@registry-v0.1.0/registry/index.json"]);
+  assert.deepEqual(seen, ["https://cdn.jsdelivr.net/gh/LuminaryLabs-Dev/NexusArcade-Games@registry-v0.1.0/registry/index.json"]);
 });
 
 test("an exact registry commit SHA is accepted as an immutable ref", async () => {

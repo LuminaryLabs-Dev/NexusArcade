@@ -11,7 +11,7 @@ test("paths and repositories stay inside the allowlist", () => {
   assert.equal(assertLatestUrl(DEFAULT_LATEST_URL), DEFAULT_LATEST_URL);
   assert.throws(() => assertLatestUrl("https://example.com/registry/latest.json"), /exactly/);
   assert.throws(() => buildCdnUrl({ repository: "attacker/games", ref: "a".repeat(40), basePath: "games" }, "index.html"), /not allowed/);
-  assert.throws(() => buildCdnUrl({ repository: "LuminaryLabs-Dev/NexusArcade-Prototypes", ref: "main", basePath: "games" }, "index.html"), /full commit SHA/);
+  assert.throws(() => buildCdnUrl({ repository: "LuminaryLabs-Dev/NexusArcade-Games", ref: "main", basePath: "games" }, "index.html"), /full commit SHA/);
   assert.equal(
     buildCdnUrl({ repository: "LuminaryLabs-Publish/TheLongHaul", ref: "a".repeat(40), basePath: "." }, "index.html"),
     `https://cdn.jsdelivr.net/gh/LuminaryLabs-Publish/TheLongHaul@${"a".repeat(40)}/index.html`,
