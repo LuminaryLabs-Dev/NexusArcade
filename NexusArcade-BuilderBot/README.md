@@ -162,3 +162,29 @@ npm test
 ```
 
 The deterministic tests cover environment parsing/writing, safe existing-`.env` behavior, Discord validation logic, request persistence, request IDs, and wizard behavior.
+
+## Local agent handoff
+
+BuilderBot exposes exactly two local stdio methods for build agents:
+
+```text
+get_request(requestId)
+submit_result(requestId, result)
+```
+
+Run:
+
+```bash
+npm run agent:stdio
+```
+
+The protocol is newline-delimited JSON. Example:
+
+```json
+{"id":1,"method":"get_request","params":{"requestId":"NAB-000123"}}
+```
+
+`submit_result` accepts only a full `NexusArcade-Harness` PASS result. A successful submission marks the ticket `READY`, persists the immutable game/build/public URL result, and attempts to notify the Discord requester. Discord delivery failure is recorded separately and does not rewrite the validated result.
+
+This tool surface deliberately does not build games, execute shell commands, deploy, or hold GitHub credentials.
+

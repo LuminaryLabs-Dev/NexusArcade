@@ -398,3 +398,32 @@ domain capabilities and settings, typed connections, spatial solids, validation
 routes and camera while ignoring titles, labels and palette-only changes. This
 prevents relabeled or cosmetic variants from evading duplicate checks; visual and
 interaction novelty still require their independent review evidence.
+
+## BuilderBot ticket execution
+
+Discord tickets are now a first-class Harness input.
+
+`ticket-contract.mjs` maps a `NAB-######` request to the authoritative `NexusArcade-Games` layout:
+
+```text
+games/<slug>/source
+games/<slug>/build
+games/<slug>/install
+```
+
+`ticket-package-verify.mjs` verifies the completed package against the immutable install manifest and registry. It requires the existing game-repository test and browser gates to have genuinely passed, verifies every manifest file by byte length and SHA-256, and produces the normalized result consumed by BuilderBot `submit_result`.
+
+The Harness does not infer success from model text. A ticket cannot be returned as ready unless every required gate is `PASS`:
+
+```text
+source
+build
+install
+registry
+tests
+browser
+publicUrl
+```
+
+The stable public result URL is `https://luminarylabs.dev/arcade/<slug>/`.
+

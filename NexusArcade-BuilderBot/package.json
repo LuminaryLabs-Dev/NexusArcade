@@ -3,14 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "setup": "node scripts/setup.mjs",
     "setup:temp": "node scripts/setup.mjs --temporary",
     "dev": "node scripts/dev.mjs",
     "start": "node src/index.mjs",
     "register-commands": "node scripts/register-commands.mjs",
-    "test": "node --test tests/*.test.mjs"
+    "test": "node --test tests/*.test.mjs",
+    "agent:stdio": "node scripts/agent-stdio.mjs"
   },
   "dependencies": {
     "discord.js": "14.22.1"
