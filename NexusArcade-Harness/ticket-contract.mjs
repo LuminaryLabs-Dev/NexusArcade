@@ -42,7 +42,8 @@ export function createTicketExecution(request, { slug, gameId = request?.gameId 
       publicUrl: publicArcadeUrl(safeSlug),
     },
     requiredGates: [...REQUIRED_GATES],
-    readyForImplementation: request.type === "UPDATE_GAME" || Boolean(safeGameId),
+    readyForImplementation: true,
+    requiresGameIdAllocation: request.type === "NEW_GAME" && !safeGameId,
   };
 }
 

@@ -9,13 +9,21 @@ const request = {
   profile: { identity: { title: "Neon Salvage", gameId: null } },
 };
 
-test("ticket contract maps one NAB request to NexusArcade-Games", () => {
+test("new tickets can enter implementation before permanent ID allocation", () => {
+  const pending = createTicketExecution(request, { slug: "neon-salvage" });
+  assert.equal(pending.readyForImplementation, true);
+  assert.equal(pending.requiresGameIdAllocation, true);
+  assert.equal(pending.target.gameId, null);
+});
+
+test("ticket contract maps an allocated NAB request to NexusArcade-Games", () => {
   const execution = createTicketExecution(request, { slug: "neon-salvage", gameId: "NXA-000013" });
   assert.equal(execution.target.source, "games/neon-salvage/source");
   assert.equal(execution.target.build, "games/neon-salvage/build");
   assert.equal(execution.target.install, "games/neon-salvage/install");
   assert.equal(execution.target.publicUrl, "https://luminarylabs.dev/arcade/neon-salvage/");
   assert.equal(execution.readyForImplementation, true);
+  assert.equal(execution.requiresGameIdAllocation, false);
 });
 
 test("completion refuses skipped harness gates", () => {
