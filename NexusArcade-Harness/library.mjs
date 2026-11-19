@@ -11,7 +11,7 @@ export async function rejectPreview(id,{reason,evidenceRefs}){
   for(const ref of evidenceRefs)await verifyEvidence(ref);
   if((await acceptedIndex()).games.some(g=>g.id===id))throw Error('Use factory revocation for accepted history');
   const spineFile=path.join(storage,id,'spine.json'),s=await loadJSON(spineFile);
-  if(s.id!==id||!['development','foundation-pilot'].includes(s.purpose)||!['NEEDS_REVIEW','FAIL'].includes(s.status))throw Error('Not a terminal development preview');
+  if(s.id!==id||!['development','foundation-pilot','random-game-scaffold-preview'].includes(s.purpose)||!['NEEDS_REVIEW','FAIL'].includes(s.status))throw Error('Not a terminal development preview');
   s.externalReview={verdict:'FAIL',reason,evidenceRefs,at:Date.now()};s.status='FAIL';s.previewVerdict='FAIL';s.error=reason;
   const index=await loadJSON(file,{version:1,revision:0,games:[]});
   // Remove discoverability first; interruption cannot leave a failed playable card.

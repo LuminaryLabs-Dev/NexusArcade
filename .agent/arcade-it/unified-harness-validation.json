@@ -1,0 +1,29 @@
+{
+  "id": "unified-local-reviewed",
+  "title": "Conduit Tank Fill",
+  "status": "NEEDS_REVIEW",
+  "built": true,
+  "playtested": true,
+  "browserChecks": 39,
+  "allBrowserChecksPass": true,
+  "modelEndpoint": "http://127.0.0.1:1234",
+  "model": "agents-a1-4b-fable-preview-heretic",
+  "reasoningEffort": "none",
+  "ideaElapsedMs": 1422804,
+  "finalAttemptMs": 102024,
+  "originalDeadlinePreserved": true,
+  "sourceHash": "77c56952ef06267585a89ba6ce254aa4850720df1342d4677b9cba27350ffe3c",
+  "runtimeFilesVerified": 486,
+  "artifactHash": "aceece699c2ada4523fb147bf58cd82ecf65dba9a10b1071df7f8eb560262189",
+  "visualReview": {
+    "status": "INCOMPLETE",
+    "reason": "No vision model configured"
+  },
+  "acceptance": {
+    "verdict": "NEEDS_REVIEW",
+    "missing": [
+      "independent novelty and device review",
+      "visual review"
+    ]
+  }
+}

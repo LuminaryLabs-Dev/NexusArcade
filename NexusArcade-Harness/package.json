@@ -3,7 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "scripts": {"start":"node server.mjs", "batch":"node cli.mjs batch", "verify":"node cli.mjs verify"},
-  "engines": {"node": ">=22"},
-  "dependencies": {"playwright":"1.58.2"}
+  "scripts": {
+    "start": "node server.mjs",
+    "batch": "node cli.mjs batch",
+    "verify": "node cli.mjs verify",
+    "scaffold-check": "node cli.mjs scaffold-check",
+    "roller-check": "node cli.mjs roller-check",
+    "compose-profile": "node cli.mjs compose-profile",
+    "make-game": "node cli.mjs make-game"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "playwright": "1.58.2"
+  }
 }

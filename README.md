@@ -2,6 +2,7 @@
 
 For the local domain-roll experiment UI, see [NexusArcade-Harness](NexusArcade-Harness/README.md).
 Its ignored game outputs and evidence live in `NexusArcade-Experiments/`.
+The default generator rolls a seed-locked full-game scaffold, recursively fills named gaps with local models, and builds only combinations covered by validated runtime adapters.
 The installer and legacy generation entry points below remain available.
 
 `@luminarylabs/nexus-arcade` is the shared installer for the public Nexus Arcade catalog. It reads a small, versioned registry and installs integrity-pinned browser games through jsDelivr.
@@ -103,9 +104,9 @@ See [the complete generation guide](generation/README.md),
 
 ## Reliable Arcade Factory (active development)
 
-`NexusArcade-Harness/` owns the current local LM Studio workflow: LFM2.5
-Thinking 1.2B plans; LFM2.5 VL 3B writes bounded presentation choices and reviews
-actual images. Generated games contain data composed with pinned NexusEngine
+`NexusArcade-Harness/` owns one configurable LM Studio workflow. The default
+uses localhost Agents A1 for interpretation and writing. Optional vision is
+configured separately; text-only runs leave visual review incomplete. Generated games contain data composed with pinned NexusEngine
 adapters and Three.js. Models do not write executable gameplay scripts.
 
 ```sh

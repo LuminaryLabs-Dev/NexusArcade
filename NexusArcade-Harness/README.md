@@ -145,7 +145,7 @@ review may reject a passing development preview through `rejectPreview` with
 hashed evidence; this removes its card without pretending it passed factory review.
 
 The seeded pilot paths remain available through `cli.mjs pilot`; Rally and flow
-are also explicit arcade choices. The default button uses concept fragments. The
+are also explicit arcade choices. The default button now creates a complete seed-locked game scaffold; see the Recursive scaffold generation section. The
 library displays passing development previews; full catalog coverage remains open.
 
 Improvement rejects equal-score revisions and regressions, restores the best
@@ -163,8 +163,8 @@ The three development pilots persist these graphs and execute them through a
 local NexusEngine service kit. Movement, world/presenter selection and profile
 mapping remain family-specific; this is not full master-catalog compilation.
 
-The arcade Generate action defaults to Concept mix. Its advanced selector also
-offers Rally racing and Flow puzzle; unused complexity settings are not shown. New results have a Show new games action.
+The arcade Generate action defaults to Random game scaffold. Its advanced selector also
+offers Rally racing and Flow puzzle. New results have a Show new games action.
 New player sessions renew from the arcade, expire after 60 seconds without renewal,
 and cannot be resurrected by late renewal requests. Expired views pause and require
 explicit reload. Older clients without leaseVersion 1 keep their original explicit
@@ -184,7 +184,7 @@ changes, restart the server: new admission rejects a stale loaded generator.
 and schemas containing it fail before inference; responses containing it receive
 generic correction without echoing the term. New library entries are checked;
 historical titles using it are hidden and their playable endpoints are unavailable.
-Historical artifacts remain intact. Automatic arcade rolls use concept fragments.
+Historical artifacts remain intact. Automatic rolls preserve their full initial scaffold and record targeted gap rolls.
 The pilot CLI still defaults to racing and retains explicit historical adapter
 access. Renaming a template does not establish new gameplay or novelty.
 
@@ -398,3 +398,20 @@ domain capabilities and settings, typed connections, spatial solids, validation
 routes and camera while ignoring titles, labels and palette-only changes. This
 prevents relabeled or cosmetic variants from evading duplicate checks; visual and
 interaction novelty still require their independent review evidence.
+
+
+## Unified game generation
+
+`npm run make-game -- --id my-game` uses one pipeline: roll, interpret, resolve required gaps, build, browser playtest, preview. The arcade's **Roll a new game** action uses the same runner. No idea is required. `smart-build` is a compatibility alias, not a separate model client.
+
+`model-config.json` contains endpoint, exact loaded model ID, context/output allowances, request timeout, optional reasoning effort, persistent principles and an optional separate vision configuration. Override it with `--config /absolute/file.json` or `NEXUS_MODEL_CONFIG`. The current configuration uses only localhost Agents A1. Model size is not restricted. Identity, loaded context, JSON structure and optional vision capability are checked; unavailable vision remains INCOMPLETE.
+
+The v2 Roller catalog contains actual flow-control and driving presets. The compiler applies rolled layouts, process settings, handling, track width, palettes and movement speed to the shared NexusEngine runtime. Placeholder numbered branches were removed. Complexity caps recursion; it does not manufacture deeper choices. Required truncated branches and unsupported adapters block assembly. Two supported runtime families do not establish thousands of distinct games.
+
+Optional `--guidance /absolute/guidance.json` reads an array of short instructions at every model request. Each call records the guidance hash it received. Editing that file affects subsequent calls, never a request already in flight. Locked gameplay selections cannot change through prose. Conflicting requests require a new roll or an explicitly revised profile; they must not become unimplemented claims in the game instructions.
+
+SPINE stores the complete rolled profile, configuration, model receipts, interpretation, compiled domain graph and separate browser/visual outcomes. Built and browser-playtested previews remain NEEDS_REVIEW until independent acceptance checks pass. Normal keyboard/frame checks are recorded separately from accelerated deterministic completion/failure/replay diagnostics.
+
+`npm run roller-check` checks deterministic profiles, expansion, serialization and hashing. Historical scaffold commands remain diagnostics; they do not describe the new default builder.
+
+The current Agents A1 configuration uses `reasoningEffort: "none"`, verified on localhost with zero reasoning tokens. This keeps small structured requests bounded. `--retry-of ID` retains that original start/deadline and profile; specify the same seed, family and complexity. Expired ideas cannot be reopened.

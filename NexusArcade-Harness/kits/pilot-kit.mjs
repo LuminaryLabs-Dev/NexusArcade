@@ -5,7 +5,7 @@ import {domainDefinitions} from './domain-graph.mjs';
 // Compatibility mapping for existing profiles. Gameplay runs only in the shared
 // scene session; this wrapper preserves the existing player/reviewer readouts.
 export function pilotRuntime(c){
- const movement=c.track?{adapter:'steering',settings:Object.fromEntries(['maxSpeed','acceleration','braking','turnRate'].map(k=>[k,c.handling[k]])),start:c.playerStart,heading:c.headingStart??0}:{adapter:'walk',settings:{speed:6},start:c.playerStart,heading:c.headingStart??0};
+ const movement=c.track?{adapter:'steering',settings:Object.fromEntries(['maxSpeed','acceleration','braking','turnRate'].map(k=>[k,c.handling[k]])),start:c.playerStart,heading:c.headingStart??0}:{adapter:'walk',settings:{speed:c.walkSpeed??6},start:c.playerStart,heading:c.headingStart??0};
  const collision=c.spatialWorld?{adapter:'world',world:c.spatialWorld}:{adapter:'roads',roads:trackRoads(c.track,c.shortcut).map(r=>({...r,points:r.points.map(({x,z})=>({x,z}))})),vehicle:c.vehicle??rallyVehicle};
  const failurePorts=c.domainGraph.instances.filter(n=>domainDefinitions[n.capability].outputs.failed==='boolean').map(n=>({instance:n.id,port:'failed'}));
  return {version:1,domainGraph:c.domainGraph,movement,collision,session:{durationSeconds:c.deadlineSeconds,failurePorts}};

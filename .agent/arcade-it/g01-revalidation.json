@@ -1,0 +1,206 @@
+{
+  "schemaVersion": 1,
+  "goalId": "G01",
+  "status": "BLOCKED_REVALIDATION_REQUIRED",
+  "createdAt": "2026-09-16T20:04:07.503641+00:00",
+  "archive": {
+    "manifestPath": ".agent/archives/built-unproven/manifest.json",
+    "parts": [
+      {
+        "path": "archive/originals.tar.gz.part-001",
+        "bytes": 50000000,
+        "sha256": "ec1b23bb4bb804484aa6dae11c63cffce25cfac95bbc3caf93aa972e9c99e24f",
+        "matchesManifest": true
+      },
+      {
+        "path": "archive/originals.tar.gz.part-002",
+        "bytes": 45574352,
+        "sha256": "a65b4bde0587ca40c6b6898f3a4415f296c36f6ecadbc46d9d17539d67963fe6",
+        "matchesManifest": true
+      }
+    ],
+    "streamBytes": 95574352,
+    "streamSha256": "2ff7b652e781def97746973b09ac57b57d24cd4e8deab1e1b84af05c59129e72",
+    "streamMatchesManifest": true,
+    "archivedPacketPath": "NexusArcade-Experiments/campaigns/reliable-arcade-factory/goals/G01/execution-packet.json",
+    "archivedPacketPresent": true
+  },
+  "sourceBaseline": {
+    "matching": [
+      "compiler",
+      "controller",
+      "kit",
+      "improvement"
+    ],
+    "stale": [
+      "models",
+      "renderer",
+      "browser",
+      "assembly",
+      "cli",
+      "server",
+      "ui",
+      "factory",
+      "catalog",
+      "pilotDomains",
+      "pilotRenderer",
+      "pilotGeneration",
+      "pilotReview",
+      "library"
+    ],
+    "missing": [],
+    "comparison": {
+      "compiler": {
+        "status": "MATCH",
+        "path": "NexusArcade-Harness/composition.mjs",
+        "archivedSha256": "a35c4c4e6e5aa4aff51f302b7bd8b83c62690ef7930f91c311504f11ddb5045a",
+        "currentSha256": "a35c4c4e6e5aa4aff51f302b7bd8b83c62690ef7930f91c311504f11ddb5045a"
+      },
+      "controller": {
+        "status": "MATCH",
+        "path": "NexusArcade-Harness/harness.mjs",
+        "archivedSha256": "4a9cf1d03e6fe226ccc30dadf0bb3929c16e87873d4d46abf275cd4f6bafb9b9",
+        "currentSha256": "4a9cf1d03e6fe226ccc30dadf0bb3929c16e87873d4d46abf275cd4f6bafb9b9"
+      },
+      "models": {
+        "status": "STALE",
+        "path": "NexusArcade-Harness/model.mjs",
+        "archivedSha256": "eca8345dab0c05ada9478be1beb38cda78446df5f8d127c92896368e98b11664",
+        "currentSha256": "2f1c32550a063cedd87ee8d7be30a83a2fc18276758072fe731819ad9f4c9c0c"
+      },
+      "kit": {
+        "status": "MATCH",
+        "path": "NexusArcade-Harness/kits/scene-kit.mjs",
+        "archivedSha256": "8c063e11189abbf62b49431efc471a5fae8fb77f149cdbf5bb0073893f379ab2",
+        "currentSha256": "8c063e11189abbf62b49431efc471a5fae8fb77f149cdbf5bb0073893f379ab2"
+      },
+      "renderer": {
+        "status": "STALE",
+        "path": "NexusArcade-Harness/player.mjs",
+        "archivedSha256": "a6a663642313ca89f274618c916ce711160e42a24ac9f23b12834ed2c14c5c3a",
+        "currentSha256": "0d3eaac60d2a458902b6bcab96a2ad836a45587d4da0bb429b4a87bc4f031e5f"
+      },
+      "browser": {
+        "status": "STALE",
+        "path": "NexusArcade-Harness/review3d.mjs",
+        "archivedSha256": "d43dfc2e00a7be59591732e24aba8bb1557fbe8ee6d598b8bf4f6f20c1cb7810",
+        "currentSha256": "bbd7d0a39d192570bd1772eb3d0776475567a5933eb00e4ad863a3fab9dbcc89"
+      },
+      "assembly": {
+        "status": "STALE",
+        "path": "NexusArcade-Harness/assembly.mjs",
+        "archivedSha256": "54f87dc4f385eeec562d173c3a8ecc865a72c56cd15c589521136341bab70cca",
+        "currentSha256": "0d9d8bd81a5fbfdf96330f8bc6b036c20935a8d9a176acac84a5cb551b2f3646"
+      },
+      "cli": {
+        "status": "STALE",
+        "path": "NexusArcade-Harness/cli.mjs",
+        "archivedSha256": "08dd7089e1b731ad281d44e552d5b17e5db65ff7984d65e0fa6d80674639739b",
+        "currentSha256": "f8ae5511a1ad6276e85db33aa2acafd2165801873a198930811822b2891018c0"
+      },
+      "server": {
+        "status": "STALE",
+        "path": "NexusArcade-Harness/server.mjs",
+        "archivedSha256": "fc97cff227e8d78748033f4d291d5f00692c7d0c6a06dc12b335acb7161d7a2c",
+        "currentSha256": "89f0e3336da7f7836af91cc724d6effaeb2b0ac4c6218460e80afd708cb368c9"
+      },
+      "ui": {
+        "status": "STALE",
+        "path": "NexusArcade-Harness/ui.html",
+        "archivedSha256": "eb106eb21b7a8abee8b0b24cdf41188cb154bf2cb36dd5838b0062febb6c0d34",
+        "currentSha256": "fece21d71149666735a0dba727baa557d176cda6de2efb6e9e44ac8ee3412763"
+      },
+      "factory": {
+        "status": "STALE",
+        "path": "NexusArcade-Harness/factory.mjs",
+        "archivedSha256": "6aa0f20c99a3b766234021d6d08a87c7d61a2bea64eb7bcf3ce6de239159dd6e",
+        "currentSha256": "22cca093b78c765cdc71ff22df68e0f364b5dfb4f1ad1aff5803d171a13a7f5f"
+      },
+      "improvement": {
+        "status": "MATCH",
+        "path": "NexusArcade-Harness/improvement.mjs",
+        "archivedSha256": "bf2231bc6d66966621dcab097a94c2ae050940ebcda1abb31ba9ec32de7fb28d",
+        "currentSha256": "bf2231bc6d66966621dcab097a94c2ae050940ebcda1abb31ba9ec32de7fb28d"
+      },
+      "catalog": {
+        "status": "STALE",
+        "path": "NexusArcade-Harness/catalog.mjs",
+        "archivedSha256": "76e5f899153df403b9d2c9aee5e4d8cf841f384dd8decaf7406a9a1ae0b310fe",
+        "currentSha256": "9c54d48407a794d37a56b53b5d9193e7aa83d2bcc93f06a0a0b469dab0b8d349"
+      },
+      "pilotDomains": {
+        "status": "STALE",
+        "path": "NexusArcade-Harness/kits/pilot-kit.mjs",
+        "archivedSha256": "6e2e295677c2cbd10845bc4a98b1bae945c1f6f3166ffd0b8c0aaa5662b6f8a2",
+        "currentSha256": "533ee55e28be295b1b0b48a6f70401b8632eb6605fbef3472659b2662f4140f3"
+      },
+      "pilotRenderer": {
+        "status": "STALE",
+        "path": "NexusArcade-Harness/pilot-player.mjs",
+        "archivedSha256": "98d72c73c501dd94cb6ef50b838623d3ad7375f066079f5ee1faa672fb18a11e",
+        "currentSha256": "dd2883a2d0e03920655fc7f8cb37b762529f850f549781aa2bd9eacfe60444b9"
+      },
+      "pilotGeneration": {
+        "status": "STALE",
+        "path": "NexusArcade-Harness/pilot-run.mjs",
+        "archivedSha256": "be9cd5cd6248012b43bb0aab767f9f1d74d527bd3ae1f3c4126746babc5dffb4",
+        "currentSha256": "fa61ecbbe5379981214fa8cccbc4cbe44f2fff09e846ab3ad234cf4117e4586a"
+      },
+      "pilotReview": {
+        "status": "STALE",
+        "path": "NexusArcade-Harness/pilot-review.mjs",
+        "archivedSha256": "4bd66bc6413432b167f79e72202da4aa931ed1ce25fe73ef7c1b28ee9ff3b2c7",
+        "currentSha256": "3226cec6574c7a093caec050ed415220fb55dbfdc364c63362de78c6c1bf915b"
+      },
+      "library": {
+        "status": "STALE",
+        "path": "NexusArcade-Harness/library.mjs",
+        "archivedSha256": "5d32e287642efc7cbbc4f48b586bafb78af317a50c95e26f3a0f9a2000ef42ae",
+        "currentSha256": "90b3d039fb2b8eaab53884bf62201fe9f852803afbddd3db45e34c01e02d5cd8"
+      }
+    }
+  },
+  "pairProfile": {
+    "status": "FROZEN_DESIGN",
+    "shape": [
+      "seed",
+      "selections",
+      "pairs",
+      "gaps"
+    ],
+    "pairRules": [
+      "genre-form",
+      "concept-action",
+      "action-goal",
+      "space-action",
+      "pressure-action",
+      "progression-goal",
+      "replay-action",
+      "presentation-space"
+    ],
+    "matching": "Existing provides/requires tags and link options; unresolved relationships remain explicit gaps.",
+    "modelBoundary": "Models interpret and connect resolved pairs; they cannot claim missing engine behavior."
+  },
+  "checks": [
+    {
+      "id": "G01.plan-decisions",
+      "status": "BLOCKED",
+      "reason": "Archived source baselines are stale for the current harness revision."
+    },
+    {
+      "id": "G01.plan-traceability",
+      "status": "BLOCKED",
+      "reason": "Execution packet references prior source hashes and must be regenerated."
+    },
+    {
+      "id": "G01.plan-independent-review",
+      "status": "BLOCKED",
+      "reason": "Prior review artifacts remain historical until matched to current source and rubric."
+    }
+  ],
+  "finding": {
+    "id": "source-baseline-stale",
+    "reason": "The archived G01 packet is present and intact, but its source hashes do not match the current working tree. Regenerate the packet from the current revision before advancing the queue."
+  },
+  "nextAction": "Regenerate the G01 execution packet and three design records from the current source; keep G02/G03 and later goals blocked until the queue guards pass."
+}

@@ -1,0 +1,419 @@
+{
+  "version": 2,
+  "scope": "Implemented pilot domain presets. Earlier broad placeholder variants were not runtime support.",
+  "families": {
+    "conduit": {
+      "runtime": "conduit",
+      "domains": [
+        {
+          "id": "movement",
+          "options": [
+            {
+              "id": "walk",
+              "provides": [],
+              "requires": [],
+              "adapters": [],
+              "bindings": {},
+              "children": [
+                {
+                  "id": "pace",
+                  "provides": [],
+                  "requires": [],
+                  "adapters": [],
+                  "bindings": {},
+                  "parameters": {
+                    "walkSpeed": [
+                      4,
+                      6
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "space",
+          "options": [
+            {
+              "id": "near-switch",
+              "provides": [],
+              "requires": [],
+              "adapters": [
+                "flowLayout"
+              ],
+              "bindings": {
+                "flowLayout": "near-switch"
+              }
+            },
+            {
+              "id": "offset-switch",
+              "provides": [],
+              "requires": [],
+              "adapters": [
+                "flowLayout"
+              ],
+              "bindings": {
+                "flowLayout": "offset-switch"
+              }
+            }
+          ]
+        },
+        {
+          "id": "interaction",
+          "options": [
+            {
+              "id": "compact-load",
+              "provides": [],
+              "requires": [],
+              "adapters": [
+                "flowProcess"
+              ],
+              "bindings": {
+                "flowProcess": "compact-load"
+              }
+            },
+            {
+              "id": "larger-load",
+              "provides": [],
+              "requires": [],
+              "adapters": [
+                "flowProcess"
+              ],
+              "bindings": {
+                "flowProcess": "larger-load"
+              }
+            }
+          ]
+        },
+        {
+          "id": "presentation",
+          "options": [
+            {
+              "id": "lagoon",
+              "provides": [],
+              "requires": [],
+              "adapters": [
+                "palette"
+              ],
+              "bindings": {
+                "palette": "lagoon"
+              }
+            },
+            {
+              "id": "solar",
+              "provides": [],
+              "requires": [],
+              "adapters": [
+                "palette"
+              ],
+              "bindings": {
+                "palette": "solar"
+              }
+            },
+            {
+              "id": "violet",
+              "provides": [],
+              "requires": [],
+              "adapters": [
+                "palette"
+              ],
+              "bindings": {
+                "palette": "violet"
+              }
+            },
+            {
+              "id": "glacier",
+              "provides": [],
+              "requires": [],
+              "adapters": [
+                "palette"
+              ],
+              "bindings": {
+                "palette": "glacier"
+              }
+            },
+            {
+              "id": "coral",
+              "provides": [],
+              "requires": [],
+              "adapters": [
+                "palette"
+              ],
+              "bindings": {
+                "palette": "coral"
+              }
+            }
+          ]
+        }
+      ],
+      "adapters": [
+        "flowLayout",
+        "flowProcess",
+        "walkSpeed",
+        "palette"
+      ],
+      "connections": []
+    },
+    "rally": {
+      "runtime": "rally",
+      "domains": [
+        {
+          "id": "movement",
+          "options": [
+            {
+              "id": "balanced",
+              "provides": [],
+              "requires": [],
+              "adapters": [
+                "handling"
+              ],
+              "bindings": {
+                "handling": "balanced"
+              }
+            },
+            {
+              "id": "agile",
+              "provides": [],
+              "requires": [],
+              "adapters": [
+                "handling"
+              ],
+              "bindings": {
+                "handling": "agile"
+              }
+            },
+            {
+              "id": "fast-tourer",
+              "provides": [],
+              "requires": [],
+              "adapters": [
+                "handling"
+              ],
+              "bindings": {
+                "handling": "fast-tourer"
+              }
+            }
+          ]
+        },
+        {
+          "id": "space",
+          "options": [
+            {
+              "id": "long-oval",
+              "provides": [],
+              "requires": [],
+              "adapters": [
+                "track"
+              ],
+              "bindings": {
+                "track": "long-oval"
+              },
+              "children": [
+                {
+                  "id": "road-width",
+                  "provides": [],
+                  "requires": [],
+                  "adapters": [],
+                  "bindings": {},
+                  "parameters": {
+                    "width": [
+                      6,
+                      7.5
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "id": "flowing-triangle",
+              "provides": [],
+              "requires": [],
+              "adapters": [
+                "track"
+              ],
+              "bindings": {
+                "track": "flowing-triangle"
+              },
+              "children": [
+                {
+                  "id": "road-width",
+                  "provides": [],
+                  "requires": [],
+                  "adapters": [],
+                  "bindings": {},
+                  "parameters": {
+                    "width": [
+                      6,
+                      7.5
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "id": "technical-clover",
+              "provides": [],
+              "requires": [],
+              "adapters": [
+                "track"
+              ],
+              "bindings": {
+                "track": "technical-clover"
+              },
+              "children": [
+                {
+                  "id": "road-width",
+                  "provides": [],
+                  "requires": [],
+                  "adapters": [],
+                  "bindings": {},
+                  "parameters": {
+                    "width": [
+                      6,
+                      7.5
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "interaction",
+          "options": [
+            {
+              "id": "south-cut",
+              "provides": [],
+              "requires": [],
+              "adapters": [
+                "shortcut"
+              ],
+              "bindings": {
+                "shortcut": "south-cut"
+              }
+            },
+            {
+              "id": "north-cut",
+              "provides": [],
+              "requires": [],
+              "adapters": [
+                "shortcut"
+              ],
+              "bindings": {
+                "shortcut": "north-cut"
+              }
+            }
+          ]
+        },
+        {
+          "id": "landscape",
+          "options": [
+            {
+              "id": "sandstone",
+              "provides": [],
+              "requires": [],
+              "adapters": [
+                "presentation"
+              ],
+              "bindings": {
+                "presentation": "sandstone"
+              }
+            },
+            {
+              "id": "alpine",
+              "provides": [],
+              "requires": [],
+              "adapters": [
+                "presentation"
+              ],
+              "bindings": {
+                "presentation": "alpine"
+              }
+            },
+            {
+              "id": "basalt",
+              "provides": [],
+              "requires": [],
+              "adapters": [
+                "presentation"
+              ],
+              "bindings": {
+                "presentation": "basalt"
+              }
+            }
+          ]
+        },
+        {
+          "id": "presentation",
+          "options": [
+            {
+              "id": "lagoon",
+              "provides": [],
+              "requires": [],
+              "adapters": [
+                "palette"
+              ],
+              "bindings": {
+                "palette": "lagoon"
+              }
+            },
+            {
+              "id": "solar",
+              "provides": [],
+              "requires": [],
+              "adapters": [
+                "palette"
+              ],
+              "bindings": {
+                "palette": "solar"
+              }
+            },
+            {
+              "id": "violet",
+              "provides": [],
+              "requires": [],
+              "adapters": [
+                "palette"
+              ],
+              "bindings": {
+                "palette": "violet"
+              }
+            },
+            {
+              "id": "glacier",
+              "provides": [],
+              "requires": [],
+              "adapters": [
+                "palette"
+              ],
+              "bindings": {
+                "palette": "glacier"
+              }
+            },
+            {
+              "id": "coral",
+              "provides": [],
+              "requires": [],
+              "adapters": [
+                "palette"
+              ],
+              "bindings": {
+                "palette": "coral"
+              }
+            }
+          ]
+        }
+      ],
+      "adapters": [
+        "handling",
+        "track",
+        "width",
+        "shortcut",
+        "presentation",
+        "palette"
+      ],
+      "connections": []
+    }
+  }
+}

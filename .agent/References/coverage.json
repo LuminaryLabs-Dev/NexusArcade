@@ -1,0 +1,2594 @@
+{
+  "status": "in-progress",
+  "date": "2026-09-24",
+  "priorGoalTurn": "Pass122: independently verified Next Ledge wrapper, current Engine exports/kit installer, and pinned cargo kit API shape. API-compatible kit seam is plausible; session remains local authority and cargo does not gate terminal outcomes. A05 active; no tests/runtime.",
+  "thisTurn": "Pass143: A14–A18 reconciled and packet-integrity checks passed. One expired Drive cursor remains unavailable; exact-title search and explicit access limits bound the result.",
+  "accounts": [
+    {
+      "owner": "thecrimsondeveloper",
+      "installationId": 142303110,
+      "selection": "all",
+      "count": 129,
+      "enumeration": "terminal short page observed; tool page_offset behaves as page number despite documentation"
+    },
+    {
+      "owner": "LuminaryLabs-Agents",
+      "installationId": 139710441,
+      "selection": "all",
+      "count": 24,
+      "enumeration": "terminal short page observed; tool page_offset behaves as page number despite documentation"
+    },
+    {
+      "owner": "angelberger09",
+      "installationId": 140010895,
+      "selection": "selected",
+      "count": 2,
+      "enumeration": "terminal short page observed; tool page_offset behaves as page number despite documentation"
+    },
+    {
+      "owner": "LuminaryLabs-Dev",
+      "installationId": 142258383,
+      "selection": "all",
+      "count": 195,
+      "enumeration": "terminal short page observed; tool page_offset behaves as page number despite documentation"
+    },
+    {
+      "owner": "Aldervon-Systems",
+      "installationId": 142410816,
+      "selection": "selected",
+      "count": 1,
+      "enumeration": "terminal short page observed; tool page_offset behaves as page number despite documentation"
+    },
+    {
+      "owner": "LuminaryLabs-Publish",
+      "installationId": 142700432,
+      "selection": "all",
+      "count": 15,
+      "enumeration": "terminal short page observed; tool page_offset behaves as page number despite documentation"
+    },
+    {
+      "owner": "CharlieDoesDev",
+      "installationId": 142735336,
+      "selection": "all",
+      "count": 13,
+      "enumeration": "terminal short page observed; tool page_offset behaves as page number despite documentation"
+    },
+    {
+      "owner": "Charlies-World",
+      "installationId": 142735870,
+      "selection": "selected",
+      "count": 4,
+      "enumeration": "terminal short page observed; tool page_offset behaves as page number despite documentation"
+    },
+    {
+      "owner": "SoftStrangeStudio",
+      "installationId": 147467549,
+      "selection": "all",
+      "count": 9,
+      "enumeration": "terminal short page observed; tool page_offset behaves as page number despite documentation"
+    }
+  ],
+  "counts": {
+    "repositories": 392,
+    "rootReadable": 363,
+    "emptyConfirmed": 20,
+    "blocked451": 1,
+    "unavailable404": 8,
+    "keywordQueries": 1452,
+    "queriesPerReadableRepository": [
+      "NexusEngine",
+      "NexusRealtime",
+      "three",
+      "ECS"
+    ],
+    "sourceDocumentsRead": 4928,
+    "driveReferences": 359,
+    "driveDocumentsRead": 147,
+    "agentsPublishClassifiedReadable": 32,
+    "classifiedRepositories": 392,
+    "metadataOnlyRootTrees": 42,
+    "recursiveTreesRead": 348,
+    "unityManifestsReadThisPass": 111,
+    "driveSpreadsheetsRead": 15,
+    "officialKitImplementationsInspected": 23,
+    "privateGameConfigurationsRead": 100,
+    "privateUniqueGameScriptsInspected": 21,
+    "canonicalExperimentEntriesInspected": 16,
+    "canonicalExperimentScriptModulesScreened": 150,
+    "readinessDomainImplementationsInspected": 22,
+    "portfolioEntrypointsRead": 84,
+    "portfolioConfigurationsRead": 61,
+    "liteMainScriptGroupsInspected": 5,
+    "additionalSourceVersionsRead": 26,
+    "nestedCollections": 33,
+    "driveTextFilesRead": 21,
+    "drivePartialDocumentsRead": 1,
+    "canonicalExperimentEntrypointsReconciledThroughPass121": 16,
+    "cavalryReadinessFamiliesClassifiedThroughPass123": 3,
+    "metadataOnlyDriveReferencesCurrent": 68,
+    "partialDriveReferencesCurrent": 1,
+    "collectionEvidenceRecords": 33
+  },
+  "limits": [
+    "Keyword hits are candidate pointers, not usage or gameplay proof; results capped at four per repository/query.",
+    "Search indexing omissions confirmed in Experiments and LittleReef; direct tree/file reads take precedence.",
+    "Readable-root screening and scoped inventory classification are complete; deep source/branch inspection remains incomplete.",
+    "One repository is blocked by GitHub 451; eight listed dependency repositories return 404. Twenty empty repositories return 409.",
+    "Sandbox `.agent` history was split into saved trees; V1/V2 and KitSandboxer subtrees enumerate fully, while `.agent/offload/packets` stays recursively truncated. Recursive parent/child totals conflict; see collections.jsonl:a08SandboxPass135.",
+    "Selected installations expose only selected repositories.",
+    "No games, tests, models, deployments or browsers executed."
+  ],
+  "drive": {
+    "completeTitleFilter": "trashed = false and (name contains 'NexusEngine' or name contains 'Nexus Engine' or name contains 'Realtime' or name contains 'Real-Time' or name contains 'ECS' or name contains 'Three.js')",
+    "titleMatches": 26,
+    "hasMore": false,
+    "remaining": "68 metadata-only references carry per-file dispositions; 106 folder pointers retain their separate status; one partial historical document is bounded. Relevant current source-of-truth docs were read and linked by Drive file/revision ID.",
+    "listedFolders": [
+      "1fGUVOjCS1Dmjjt3Od71RnYQx9p5boadX",
+      "1vcP0SBoHk7ROD8jdV11jn1Egx_b8SQPd",
+      "10KiGt38WyyDrsHNDk7kpfmbHDR9qS-89",
+      "19J1plNpLEDN-6xHqXCSwFUZIJ7ROc8_i",
+      "1Gsiroo9nJVhYaDKoQYHd8rT-ceCvQgzL",
+      "1IJsF34pmmNW5IGoQcCZSiYA_wtxsnlKA",
+      "1ZD2zLl2PA90bsHzZ0R0DHmerVuH-vodN",
+      "1l8evdK7DbuHVGwm0QPGaOOLQDOrSHMVU",
+      "1hZDHI7oIYMRIHl50gVvXMrWNeUuwIBCJ",
+      "1i0_3Ght1oYnhLCkyrVnqiBfLnhsVjzNf",
+      "1tlzDrcLOQ1lAeJuQ5XhtmRimfh58wyiz",
+      "1w4DcIrEJalx86QpBZ1q_h1vK3QZhx1s3",
+      "1EAhXzrJfzygHd1YjQ-DrnwGN0Xl-ezTM",
+      "1PAPd8RU_e4ECn64XU8iyff-dO_B35W3G",
+      "1JLBUy2IcIvLVypaoCuUnGbp47iycHL_W",
+      "1xksK8qSvKQ4DqHTOB0Qg1tgakN5woufW",
+      "1q_21lUNWObtJNd7hNKwD8O7XSXTD7e6j",
+      "1q4P4K6vqHMXsZzL1uRur0uF1IknsaoY4",
+      "190i3YDEktdOHr0o6o5-W1nKkXKzUePka",
+      "18GPWzBk5eXXgp15JItDtF_MRKgRft9nK",
+      "1i2hAWyn2uAtOTTNsLJciqlltzdMXn0PD",
+      "1xgeIQRXJ_iB3mJY5ZUWRchforbCztTxn",
+      "1miSmP8ynKJbn2nIKW_FEKDDvO5OJsuay",
+      "1kZFE_-OXvDF3_I73njxEHjZN2y7DkP-4",
+      "1KzJgbDJElKc41Z8cJM1Wk1qQ5gO_YjG2",
+      "1FB086CQSuZrsV18ehefDfPGc9TZIwFOd",
+      "1Pzi5MH7XSSfF_q_E6__hkx_FkUIfdJeO",
+      "13UR1ipEQ2vVra0OLPWz3tXIqsCNKf3_X",
+      "1XAwc8lWmG9B_vruPFB1v3sjpFjPTIHWB",
+      "1Ixen9JkcgufYukrGktCO6lGk0qYvdAzl",
+      "1jf35c_5Co2fuoN9QP4m9fa5g2azuIqFv",
+      "1OBdjgeRC8bytVEhD4KxEZm2tZkW0f8Vu",
+      "1SX847MkspWlZGSkGvVF-02CgQQ_7PXzW",
+      "1Bt2H6JOuAnN3lHj4ArJKc0nEgIO4M-1d",
+      "1gqa8gVtB1xCBqbWZIxMrlKQ-m_THvGqj",
+      "1tUmDxxk9JII1hGT1o6EEN4pStzXLYRyQ",
+      "1lbav0wlLP6dzKpMp2Mlx6bJHOhSPqCrl",
+      "1WldHmA8pXY9wW64M1pfYYRN_DhtmMkbn",
+      "1LZERsMk9xbLovHHY3cfzWKOFFfIVa5tf",
+      "1RPIWsZljTNQJ6jBsvA2KJ7Ixel7sgVyo",
+      "1_nnAWxNs5EOVTPTq5SRs489TxIME1hAI",
+      "1fsLokP9OsXoW5UsEloJ2NmiTEojrO85U",
+      "1ACqw2jAfDA01NlY4BM5y6afXoVBaVLEf",
+      "1D06IkThVCr7n3MIJdKHREKMNHl-yBsTE",
+      "1h5hsgVy1hycpWcjFK8WA7pURyGQ_Xrq_",
+      "15C2_Ns8gIJvSIXBBG6XT5uruJYaJdPbD",
+      "1a4tmQqrzKnPfBH1y5djJLyVglC74F96Z",
+      "1aHhm5w5BZfw9YxQyYeFH83EuqxEeP3hF",
+      "1tw-DpVifXna0KTzJWX5od6Sr-Ht0KhQM",
+      "1s8czNJNn6ozUqVqPPK1kEiGxuoPhE_Gx",
+      "1ywGzAP7_bMCqsYEHbSvYYXqMi8HEdetg",
+      "1iswMJAkayRHIH4aGModDk9h4aF9cYgPC",
+      "1kbGxAWd5fqpyf71vy-eHaPKKIhJQ-XhK",
+      "1f_U9bR3h1aKCruYRXzhIXO-6BW2rmx7E",
+      "1nxyflUF5cqNrjhBP56p6gCG1yPn62RsW",
+      "1O90zc2pqoxUKEbLlcuwbNTV2Qt6VG-rm",
+      "1HfDQY8y9C4r5FGUJFZO1_Qyffh9rQVvV",
+      "19dN7c9xRVpxcTFTP6RXlqBMZtylrHs_t",
+      "1zBf2XIdgpD3YAjau9lGNM3dqQdJPPNcX",
+      "14wezd7AzRcLTki_L9s3oqaVPjtu4nKai",
+      "1J_vc9gxon34WWOvOvk7sHztHdmupnuGc",
+      "1PTsDeX2U26C8h4bFiDiNjJEEum7ZCyiU",
+      "1vb4bTpIK5AQAd2CO2GEt86x7DS4SPYPZ",
+      "14HXy5x181d-MC8pJi2Zag4OUQkR-EMn5",
+      "1Uymsma606IP_K2uwnbrUDh7Hj8XGGA3n",
+      "1YkxdB7lmekD2FJsFN3NYyHnHWyyky3yj",
+      "1UDSBuYiyLKs83c2UMyM6MIGgIdypOPg_",
+      "1z_qCRrxkKLuWNEsNHCVYcWjA0YmOGU_m",
+      "1eo5B7rUTzHedpvrlofdHy5rQ0XkLs5aJ",
+      "14a6nVvDjzkgq7pnGLud-ZSZVf5Hcw07E",
+      "1jr39mJfe7PZHPdBxF7vnrvCoQGe6rOWe",
+      "1HwxCWJc6_egthS2A6GY4osMhW3gjFVvn",
+      "1x9RWl8eQtNiGlEatnsclG1EmSlZpPsUb",
+      "1kIiTn1wQ-9C3vy-cLottCjAIGISlePZ8",
+      "1kL0trhPZk8fckIZ1_Zn7GoTVxx91BwfF",
+      "1h5Eh-jFiAL26tDe5kjhJrS3y1bGDvOLB",
+      "1AkeLVu2mHaywE6sAb_0-KwAxHOcyyeT1",
+      "1wmvmR0ldWVI9pBlY6a9zxm6VdAtwngWm",
+      "1FDI9RBLbgsLSLbdO61rx0ovyG3--xtHJ",
+      "1aWMV-0XZ6bAoe6_BNfXqxHnkKI8oUeL9",
+      "1T4kLZ2-Z9wbxIPZAoz4dDkCDP8XJMsZa",
+      "1Xn8Uvud9hlRZ1DoW7CG8QF-_Hq3dArEJ",
+      "1L3xKmeZunDIwQBfHLGsijosgAWZQlXEt",
+      "1Xq09YCbJSc6JKgCF_gwIDqt58vdmlvp_",
+      "1hpE8UhRMkZPCPjh9OURvKBjALjnR1dVw",
+      "19_Tw_sU0o6oLFB1BQoPGHktNM4VALC3_",
+      "161Ta12PlTJj9h8LjpBg0XRfAXTfz4jGv",
+      "1K9JcX9N8lF1zAmnC1YWDADaNZy6dgFOc",
+      "1_sJYF55kB6-kjtBAIPd-Aj3uDhe_61f7",
+      "17jkmrUQRucJr135l_ekCCibvDi_gHCym",
+      "1mHSg4TxYnXAMvNWH9TE53EDdKPIOuGns",
+      "1m-zqLnBcwAQbtUodSibCe5rU3s-e--_k",
+      "1zdZcUqdXn5IYod5D7ZMHRpEVHANZhstf",
+      "1twxthBwdx3rCW1rA0tRviJzI3qA87kKj",
+      "1Ukbv3NRAPScTnDxAPRkQe0QZmuCiiZ2k",
+      "1yK5Hhm5qZ9M5YvzGBLMmKDDO2mljqtWq",
+      "1V6f0Ei7kVDjpJAPaWNctY1qYacZuOp_c",
+      "1HgvrQ3P0XbK84zJA6Wdf1X--TbGyzYTt",
+      "1FMJiZztfqrsxlubpHgQsK1ZYF57nUNud",
+      "18Mh09i0yWHjMg5KlWiSDVxJGgsbhGJEi",
+      "1YNdSTWHZ2rvzEhsTTih26jfKJCevLnC8",
+      "1A-3Q268iZRKMemr6925nafu5GxMm0l0I",
+      "1ahhaTDw6OoVzA_mJi01ZSTaMp0q-M0Cz",
+      "1nOs_33pcu2UWaOnjhEXMxbwkpyWbQa8A",
+      "1NHPFho2i5M8TgPvdH3nnmTmbuliOB5Dd",
+      "1PNKlLPznqXdxs4Z8y1IPYWgpNYaPgEJW",
+      "1QTfhm60QNQPqvtAimYRwKnLs4M-47SDJ",
+      "1pnW1-CApSNrlibbKRVwqSqyh1eB3CJpS",
+      "1bxByZCln9krFBuZIJjgBlKMQR2wcVboA",
+      "16iRlZZ26taG8hhbU2pRVGH35TUx7yo3O",
+      "1gOqNMc2T-2Nj2JPCKPU6qi63xmolXDXG",
+      "1RkU--GDF4EhH7B6_D7Y_ynQkzyxO3qLq",
+      "13u8f3b8OkhleA-tCLYCXKkVIj6rvYudU",
+      "1Qj6vFa05vtN5pZ4ViaNGXGTm7C2iDNs9",
+      "1ozhT4thu-4k1e09wF76kgvMYBrlQyPn8",
+      "1PJ2YxN0FYNYWaev7G7INdPZEBf1XSjns",
+      "100a4s0kWONdCu3cL81XEwqxw5jyFrNDx",
+      "11lOgV6gFt-YYhlGwRf90F7ufzJFryyKn",
+      "1QPY9-N08G3LLMUSVHT_A3F-UrNZTt_WF",
+      "1-oLvVgXmoy-Vd8gWvel9sjDpohTJuytT",
+      "1YjsSzBdhxXyeBqMUPTxtJwWIowDYKi55",
+      "1Sl59p14kniEm3U40lEaa26qcsT8GVxam",
+      "1iHIPTe3SIR0pM05TZPP12vxvxMvntZtF",
+      "1pHbiy4STXgGoyqb5Am5qFoMvEcnvXTzq",
+      "1gfm6maGUebVI7a7B6_8Tu2JUBL4za2JP",
+      "1jbJPIel-TAZy4xDE0LkP_pfnAs_NF21E",
+      "1HUIuG4KAA7KqN-C52ZMFUOpu-nZGqjfi",
+      "1bInDMEcJpj8_EvqXukrcb96t3RTlXiYK",
+      "1VySrnDN0gSJ87iKsR7-vY7F_hOesP0zy",
+      "1H1p8TpB5NLZEVrT2lZLYI0hRw79BCBVc",
+      "1QkElbsv7bneF7DxfJk8-_ABAnbXCG-Lt"
+    ],
+    "pass12Queries": [
+      "HorrorCorridor",
+      "LOD"
+    ],
+    "pass13Queries": {
+      "TheLongHaul": "bounded result: trackers only",
+      "Long Haul": "broad50-result page; unrelated matches excluded; pagination remains incomplete"
+    },
+    "pass14Queries": {
+      "Riftwarden": "no document results; not absence proof",
+      "Aether Threads": "no document results; not absence proof"
+    },
+    "pass14FolderSweep": {
+      "foldersListed": 51,
+      "emptyDirectListings": 30,
+      "childPointers": 75,
+      "newNativeDocsRead": 5,
+      "limit": "top_k100 per folder; no result reached cap; newly found child folders remain pending"
+    },
+    "pass15FolderSweep": {
+      "listed": 49,
+      "empty": 27,
+      "imagesGroupedRatherThanIndividuallyIndexed": 31,
+      "limit": "top_k100; no listing reached cap. Frozen baseline contents remain unread unless individually recorded."
+    },
+    "pass16Queries": {
+      "NexusPrototypes": "two maintenance trackers, no confirmed matching design doc",
+      "Bird Explorer": "broad4matches; Handoff read and matched to RhymeStudyGuide source, not Bird Explorer",
+      "Orb Runner": "no results; not absence proof"
+    },
+    "pass17Queries": {
+      "NexusAgent": "3 pages,128 returned entries,terminal page reached; duplicate and unrelated professional metadata excluded",
+      "BonsaiPro": "9 search results; technical source audit prioritized",
+      "LiquidUniversal": "28 search results;11 relevant text files read across6 folders"
+    },
+    "pass18Queries": {
+      "Horror Corridor": "16 results, terminal result; six technical documents read; unrelated entries excluded"
+    },
+    "pass20Queries": {
+      "NexusWorld": "seven metadata hits, terminal page; separate NexusWorldGen/upkeep records; no exact native-prototype correspondence established"
+    },
+    "pass21Queries": {
+      "NexusBuilder": "6 metadata hits; exact Step Skeleton confirmed empty",
+      "RustInfiniteScroll3DMenu": "no results; not absence proof",
+      "WorldChase": "no results; not absence proof",
+      "World Chase": "22 metadata hits; no exact correspondence established"
+    },
+    "pass22Queries": {
+      "StoryEngine": "no document hits; not absence proof",
+      "NexusEngine2D": "no document hits; not absence proof"
+    },
+    "pass23Queries": {
+      "OneButtonDrift": "no document hits; not absence proof",
+      "PostProcessing": "15 metadata hits;3 relevant proposed NexusEngine visual-roadmap docs read; exact native prototype correspondence not established"
+    },
+    "pass24_25Queries": {
+      "VoxelWorld": "no document hits; not absence proof",
+      "UnitBuilding": "no document hits; not absence proof"
+    },
+    "pass26Queries": {
+      "BreathingWalls": "no document hits; not absence proof"
+    },
+    "pass27_28Queries": {
+      "ColorSyncArena,ArcadeQuest,NexusPygame,CloudHopper": "no exact document hits; not absence proof",
+      "Color Sync": "16 broad metadata hits, terminal page; exact correspondence not established",
+      "Depth of Discovery": "30 broad metadata hits, further page available; unrelated results not treated as prototype documentation"
+    },
+    "pass29_32Queries": {
+      "ParticleSandbox,VoxelSandbox,AntColony": "no document hits; not absence proof",
+      "PBRMaterials": "one unrelated digital-twin metadata result; exact correspondence not established",
+      "0.0.8 package": "four previously indexed native documents read; all proposed/unassessed"
+    },
+    "pass33_35Queries": {
+      "SkeletalAnimation,CascadedShadows,ModelMaze,FlappyBird": "no document hits; not absence proof",
+      "0.0.7 package": "four previously indexed native documents read; proposed/unassessed"
+    },
+    "pass36_39Queries": {
+      "EmergentAgents,RealityWorkshop,Skyhook": "no document hits; not absence proof",
+      "OpenXR": "terminal second page; broad unrelated results and duplicates excluded; no exact prototype correspondence established",
+      "0.0.6 package": "four indexed native documents read; proposed/unassessed"
+    },
+    "pass40_41Queries": {
+      "LMStudioCodeGen,NexusStageManager": "no document hits; not absence proof",
+      "historical0.0.5snapshots": "two indexed documents read; superseded/dated evidence, no current capability proof"
+    },
+    "pass42Queries": {
+      "NexusBuilder-Lite,StepEngine": "no exact document results; not absence proof",
+      "Idea Engine": "two broad pages (30+50 entries); duplicates/unrelated excluded; further pagination pending"
+    },
+    "pass43Queries": {
+      "AgenticRebuilder,AutoSelfExpansion": "no document results; not absence proof",
+      "NexusBrain": "two upkeep metadata matches; no exact technical document correspondence"
+    },
+    "pass46_48Queries": {
+      "WebLLM": "two meeting-note metadata results; no confirmed exact correspondence",
+      "LargeSpeciesTrainer,ConverterEngine": "no document results; not absence proof"
+    },
+    "pass49Queries": {
+      "Idea Engine": "Third broad page inspected for relevant metadata; preservation tracker and product-loop guide read, Game Development Guide revision already indexed. Further pagination remains."
+    },
+    "pass51_53Queries": {
+      "AudioNavigator,IdeaBuilder,NexusAgentThreeJsShowcase": "No exact document results; not absence proof"
+    },
+    "pass54_57Queries": {
+      "SimTicker,BlueprintPulse,ShadowOffset,NeuralNest": "No exact document results; not absence proof",
+      "Repository Documentation Guide": "10Q6NVP_ylZsUasE4JRW97xNrHE3M97yS-L45BE9tq6Y"
+    },
+    "pass58Queries": {
+      "Blueprint": {
+        "metadataResults": 26,
+        "relevantLeads": 6,
+        "newReferences": 2,
+        "pagination": "No next_page_token returned",
+        "scope": "No content conclusion from keyword metadata; unrelated matches excluded."
+      }
+    },
+    "pass59_61Queries": {
+      "Unity_Demo": {
+        "results": 2,
+        "readDocument": "1Ey7Yp2qJkelpqZBtNj3AYKhS3VrWCurSxNP79pVX_L8",
+        "unreadTranscript": "1-lhSB8lu3pIUWc4i85q0HqrFtMSRBE16",
+        "limit": "Keyword discovery not exact product match; no next page token returned."
+      }
+    },
+    "pass63Queries": {
+      "ThroughputApi": {
+        "results": 0
+      },
+      "NexusResearcher": {
+        "results": 0
+      },
+      "Throughput": {
+        "metadataResults": 48,
+        "hasMore": false,
+        "scope": "broad matches; no direct product documentation identified by titles; not body-read"
+      },
+      "Nexus Researcher": {
+        "metadataResults": 50,
+        "hasMore": true,
+        "scope": "broad marketing/research noise; first page only; superseded for exact-title discovery"
+      },
+      "titleFilter": {
+        "filter": "trashed = false and (name contains 'Throughput' or name contains 'NexusResearcher' or name contains 'Nexus Researcher')",
+        "results": 0,
+        "hasMore": false
+      }
+    },
+    "passes67Through68Searches": {
+      "Constellation": {
+        "metadataResults": 1,
+        "confirmedLink": false
+      },
+      "ConstellationAppBasic title": {
+        "metadataResults": 0
+      },
+      "Acronym": {
+        "metadataResults": 2,
+        "confirmedLink": false
+      },
+      "Acronym title": {
+        "metadataResults": 0
+      },
+      "GrantHarvestDesk": {
+        "metadataResults": 0
+      },
+      "limit": "No new document bodies read; keyword matches do not establish project correspondence. One invalid Drive filter corrected and retried successfully."
+    },
+    "pass69Searches": {
+      "Grant Harvest": {
+        "metadataResults": 4,
+        "nativeBodiesRead": 2,
+        "bodyCopiesIdentical": true,
+        "confirmedProjectMatches": 0
+      },
+      "limit": "Meeting copies are excluded-search-hit records; other2spreadsheet metadata hits not read or linked."
+    },
+    "pass72Queries": {
+      "UniverseSim": "0 document results; no correspondence established, not absence proof",
+      "VoxelFable": "0 document results; no correspondence established, not absence proof",
+      "RustVortex": "0 document results; no correspondence established, not absence proof"
+    },
+    "pass73Reconciliation": {
+      "rereadIds": [
+        "1hZn6cB5g1KJKkOayuX7G9OGiYGWjcoANdJ3hpWv9kxo",
+        "1DGna5BkLfgm4a8zrbhIkjLluaTY23rHSb1TIs0Rzmyw"
+      ],
+      "scope": "single authority and immutable provider guidance compared to Actor/Agent implementation; not capability proof"
+    },
+    "nexusEngineBroadSearchContinuation": {
+      "query": "Nexus Engine",
+      "item_type": "document",
+      "topn": 50,
+      "pagesRead": 6,
+      "uniqueResultsAcrossThreePages": 136,
+      "page3Count": 50,
+      "nextPageToken": "~!!~AAfjczeyPy8M6pTMJ6oaDF-glaVFhDzqHWgjG9aUckYc2oq0CRupZfhuDYxz1t74S4k1gjcLmaTpJCPzd6aWcqNxiwtx6dN6e7LikQGAephk_3vAYPnFa4rZQvjT-qqI2Aofc95iftVFdxCjiHCJYxYCDkR3nT2gwNU5W9bH5_V8sUbmhMb2eFkDeQjfeh7h3FEe5sxLjhf_CDhY8lsG1x62fcHjHfi9gOcyzup_qtAS93Vx9CZCxoFXvl3ImH_mcxpANn7mDpCvHWtUVXtS4Ujv_5JhxSbhmIqZ5QZbZVG1ngUpPAnEm85Lfik-9yXMD9VoK5bam1GB1t617bsnq5pMnJ31Ql3Lx9YnWgg_JShaYiADRytxo2pR_o4tBC1wnJRh0U1fEwuutJDcwcMfYRJ4E83b1o94oLwoxqF3-IvG3EMFLYGv43lAw_TblwYkrxkYcZqx3FAiuAUf-vrY6KvLA34OubQShCvc4kiMb9ChQuVXEgtf1kGS-c1iFRJoJJcUS9TYKk_tpOJpK5Y-B51BnjQXTSU5ap_V4oQfN_XwiCYWzyLnqzTvPJeU_fGFdQfOIietI1NAtJdbt_ZIU-_wa2VSiPfx412D61GX8NavQwn1djbcPcF75ugepUE2fssUK80ULM0qWkfHpUgcalSMRGJnNLNCSQ==",
+      "scope": "Page6metadata inspected;7Canopy native design specs read;6additional technical/project handoff leads retained if new. Unrelated business/professional/newsletter results excluded from capability inference. Continue page7.",
+      "page4Count": 50,
+      "uniquePage4Ids": 50,
+      "page5Count": 50,
+      "uniquePage5Ids": 50,
+      "page6Count": 50,
+      "uniquePage6Ids": 50,
+      "resumeAttempt": {
+        "date": "2026-09-24",
+        "result": "HTTP 400 Invalid Value",
+        "interpretation": "Persisted page token expired or is no longer accepted; page-seven results unavailable. This is not a zero-results finding."
+      }
+    },
+    "pass86Reads": {
+      "nativeIds": [
+        "1UzL3zJoJFDonj0haHDmtA2ReOrzdHU2VXmzit8v5MiU",
+        "1hSsTIt1tQjULj7UMvIrUOfd_MXPwYJGOo9C9tGMj4Is"
+      ],
+      "spreadsheetId": "1dCMfpYOEcNmUHb1tUzVRpcZ5_OK_3qxriZxPRZ5VJIA",
+      "scope": "Full native doc text and all metadata-bounded sheet tab values; formatting/formulas/comments unreviewed. Wrong-MIME Docs404 corrected with Sheets, not access blocked."
+    },
+    "pass89Reads": {
+      "ids": [
+        "1dQpH9sPsh5U49qNjp5veGu9oCJOVK2F5njWHtYDDpUk",
+        "1PVFBUFbZwyQFo6daVcyqI23jFr-rfytZmYUS5m0AfWc",
+        "1gRwZRvGAKcP5AXQ6WYL2ZKpjRgwTsRQ1ylU3LGnjIUU",
+        "1eQgBsNsafuHQAzXd392uFsQqWx7NUkipn-JpKkI-zOU",
+        "1Qiu5E-rHGVQ3cToOq5wE5MlXU65WcN3AfKpbDiGz478",
+        "1WG4p6lOqVCEHIgPxWZo968EVB_0EvGMUrZ1iauAuTE4",
+        "1cixVzVGzo03218kQ0qBGvdq1qUnUuSio7VgBfobaSHQ"
+      ],
+      "scope": "Canopy design outlines, not implemented capabilities"
+    }
+  },
+  "next": "Audit complete at the requested connector-only scope. Any future run should resume only if a fresh Drive cursor/source is supplied; do not repeat the frozen 392-repository inventory.",
+  "aliases": [
+    {
+      "alias": "LuminaryLabs-Dev/NexusRealtime",
+      "repository": "LuminaryLabs-Dev/NexusEngine",
+      "id": 1264035892,
+      "evidence": "GitHub301 target repository ID equals canonical GET repository ID"
+    },
+    {
+      "alias": "LuminaryLabs-Agents/NexusRealtime-ProtoKits",
+      "repository": "LuminaryLabs-Agents/NexusEngine-ProtoKits",
+      "id": 1266731854,
+      "evidence": "GitHub301 target repository ID equals canonical GET repository ID"
+    },
+    {
+      "alias": "LuminaryLabs-Agents/NexusRealtime-Experiments",
+      "repository": "LuminaryLabs-Agents/NexusEngine-Experiments",
+      "id": 1266703650,
+      "evidence": "GitHub301 target repository ID equals canonical GET repository ID"
+    },
+    {
+      "alias": "LuminaryLabs-Dev/NexusRealitime-Kits",
+      "repository": "LuminaryLabs-Dev/NexusEngine-Kits",
+      "id": 1282733112,
+      "evidence": "GitHub301 target repository ID equals canonical GET repository ID"
+    }
+  ],
+  "recursiveTreeTruncations": [
+    {
+      "repository": "thecrimsondeveloper/LL_AssetPacks",
+      "entries": 41254
+    },
+    {
+      "repository": "LuminaryLabs-Agents/NexusRealtime-Sandbox",
+      "entries": 37280,
+      "treeSha": "cc8f1b80388c24804245f15db5db5fee80e0a9ab",
+      "reportedEntries": [
+        37280,
+        38617
+      ],
+      "disposition": "split subtrees recorded in collections.jsonl:a08SandboxPass135; offload/packets descendants unresolved; totals conflict"
+    }
+  ],
+  "resolvedHeads": {
+    "LuminaryLabs-Dev/NexusEngine": "a74e8689d1a71c0b42236c009f0f4c46e9b89387",
+    "LuminaryLabs-Dev/NexusArcade-Private": "1c602f3a93bf299521ffb6c3e4b9d47f81d89823",
+    "LuminaryLabs-Agents/NexusEngine-Experiments": "b05957890f514356d2ce42e2510bbba6f424e3c9",
+    "LuminaryLabs-Dev/NexusAgent": "1458aead98aab5714a72f89e41deb62d91a593e3",
+    "thecrimsondeveloper/Portfolio@development": "629a8bb14c86862e8c6f0f98a18b35a331282605",
+    "thecrimsondeveloper/Website": "e7c6d1b5ead504011f81cf8b289cf4019d8f1a11",
+    "LuminaryLabs-Dev/Website": "ab143e20a85d5bc84d937fb16908df967a438604",
+    "LuminaryLabs-Dev/MuseumMultiverse-TheLostPages": "a0cc7c38038e7a2e1c16cd9f426bc11ca63cc5e0",
+    "LuminaryLabs-Dev/NexusWorldGen": "72d6c9f2325d162ba986ca828095d9abbd99fe71",
+    "LuminaryLabs-Agents/NexusEngine-LOD-Showcase": "6dd62aa7998f57dad64f37096058be61e6489d26",
+    "LuminaryLabs-Publish/ZombieOrchard": "8e7212f0ec9961c3289b6a58316cde7a9e7df417",
+    "LuminaryLabs-Publish/HorrorCorridor": "f2888fb831149993858bdc8bfe6ce6874481d514",
+    "LuminaryLabs-Publish/TheLongHaul": "bed3b4daf4277f313d22fd979d299830336bf289",
+    "LuminaryLabs-Dev/NexusCentral": "eac58b1ecd0b7ae069115831a4fe9d5256a855ae",
+    "LuminaryLabs-Dev/NexusBuilder": "862ce82513c9aa1a020e9e2677c1fef32c626231",
+    "SoftStrangeStudio/LittleReef": "b53dc72440be466b01e1f76b54ab84dc64ded587",
+    "LuminaryLabs-Dev/NexusPrototypes": "17d9744a12395a0b04fcc1565f64878b1775b1bf",
+    "LuminaryLabs-Dev/RhymeStudyGuide": "993cbb0a45a87da7f7051e40249823bd6bfc2451",
+    "thecrimsondeveloper/escape-the-coop": "2f9ddfdd361553c614b6860083d409d3c5fc530a"
+  },
+  "additionalBranchReads": [
+    {
+      "repository": "thecrimsondeveloper/Portfolio",
+      "branch": "ChatHub-Output",
+      "commit": "32f4c6201286177c5bf7b6104c13522333763530",
+      "tree": "18df32cd8ac817435fd356f539fde63f6b9ec174"
+    },
+    {
+      "repository": "LuminaryLabs-Dev/NexusEngine",
+      "branch": "0.0.4",
+      "commit": "16aee598c06efcb7b511e4827ee3f7e23ce3549b",
+      "recursiveEntries": 2456,
+      "truncated": false,
+      "scope": "package and root entry; full transitive implementation not audited"
+    },
+    {
+      "repository": "LuminaryLabs-Dev/NexusSkyServer",
+      "branch": "main",
+      "commit": "705a5e5a433fa2ec20b30f6efa6fbf54979c3a45",
+      "recursiveEntries": 34,
+      "truncated": false,
+      "scope": "pass79 all source read"
+    },
+    {
+      "repository": "LuminaryLabs-Dev/MedicalResearch",
+      "branch": "main",
+      "commit": "a915c094d6cbd47680fda7f4f98035bc3cbd5c62",
+      "recursiveEntries": 112,
+      "truncated": false,
+      "scope": "pass79 complete tree,3documentation/data files read; unrelated research workspace"
+    }
+  ],
+  "resolvedContentTrees": {
+    "thecrimsondeveloper/Website": "830e0ced6d74afa116c143d43e55fdd2995a6e6b",
+    "LuminaryLabs-Dev/Website": "31720db6fe634cfe5c4bbe1658bfc025e9907834",
+    "LuminaryLabs-Dev/MuseumMultiverse-TheLostPages": "8ca0143de51ccd5db1a7a791b441ca7ff0b9181d",
+    "LuminaryLabs-Dev/NexusWorldGen": "3829ba2449e97912a0d12879553817204d72b55b",
+    "LuminaryLabs-Agents/NexusEngine-LOD-Showcase": "44291a4b7629c384833595ec1f28522cf491600e",
+    "LuminaryLabs-Publish/ZombieOrchard": "c6f5ed530b47e570cecd77cea4bf2048f9631bad",
+    "LuminaryLabs-Publish/HorrorCorridor": "7457d1f30d5e4043f84b98817de51e5ede05cbd7",
+    "LuminaryLabs-Publish/TheLongHaul": "29a3056c68770d3c23c4850d6c8f0ea4ca2bd416",
+    "LuminaryLabs-Dev/NexusCentral": "7e25783cc5546c6803350d15b43ea315753562d7",
+    "LuminaryLabs-Dev/NexusBuilder": "1f12680381785a40ba9e74bc4c6ff6b1b5f6dad4",
+    "SoftStrangeStudio/LittleReef": "fdaa5e9d707145131aa6d91e301bbf11d85d5e4a",
+    "LuminaryLabs-Dev/NexusPrototypes": "000ea9cc00af4f43a0c25c10c08e9fc4dc890320",
+    "LuminaryLabs-Dev/RhymeStudyGuide": "1710b1785ab54b02ac4166184b0c84a50fd24b4b",
+    "LuminaryLabs-Dev/NexusAgent": "3e5da9bf125d43a21d3e01b2d14459c9c9aafe91",
+    "thecrimsondeveloper/escape-the-coop": "fb7205eb019167a182f9601a81d859fa188cb840"
+  },
+  "pinnedDependencyReads": [
+    {
+      "consumer": "LuminaryLabs-Dev/MuseumMultiverse-TheLostPages",
+      "repository": "LuminaryLabs-Dev/NexusEngine",
+      "commit": "55b7f33f6d008b2e3b120e370f09b96ed73105e9",
+      "tree": "f0d90557ad9f859d8db38cde299f65d0b454ee05",
+      "sourceFiles": 12,
+      "scope": "AR/gameplay facades,objective/interaction counters and DSK API installation; no runtime execution"
+    },
+    {
+      "consumer": "LuminaryLabs-Publish/TheLongHaul",
+      "repository": "LuminaryLabs-Dev/NexusEngine",
+      "commit": "b941c9b2995e3449c6987908657753e2cf2df242",
+      "tree": "879a2add755d87b6cc34da1aeb161866c353b3f6",
+      "sourceFiles": 28,
+      "exports": {
+        "createEngine": "src/engine.js",
+        "defineDomainServiceKit": "src/domain-service-kit.js",
+        "createCoreSceneKit": "src/core-kits/core-scene-kit/index.js",
+        "createCoreWorldDomain": "src/core-domains/core-world-domain/world-domain.js",
+        "createUniformGridPartition": "src/core-domains/core-world-domain/partitions/uniform-grid-partition-kit/index.js",
+        "createQuadtreePartition": "src/core-domains/core-world-domain/partitions/quadtree-partition-kit/index.js",
+        "createFlatWorldSurface": "src/core-domains/core-world-domain/surfaces/flat-world-surface-kit/index.js",
+        "createCurvedHorizonSurface": "src/core-domains/core-world-domain/surfaces/curved-horizon-surface-kit/index.js",
+        "defineWorldEffectProvider": "src/core-domains/core-world-domain/kits/world-effect-provider-kit/index.js",
+        "createCoreInputKit": "src/core-kits/core-input-kit/index.js",
+        "createCoreDataKit": "src/core-kits/core-data-kit/index.js",
+        "createCoreSimulationKit": "src/core-kits/core-simulation-kit/index.js",
+        "createCoreCameraKit": "src/core-kits/core-camera-kit/index.js",
+        "createCoreGraphicsKit": "src/core-kits/core-graphics-kit/index.js",
+        "createCoreTransactionLedgerKit": "src/core-kits/core-transaction-ledger-kit/index.js",
+        "createWorldPatchPreparationController": "src/core-domains/core-world-domain/preparation/world-patch-preparation-controller.js",
+        "createSemanticWorldFeatureKit": "src/core-domains/core-world-domain/subdomains/world-feature-domain/kits/semantic-feature-kit/index.js",
+        "createDataSchema": "src/core-kits/core-data-kit/schema.js",
+        "defineResource": "src/ecs.js",
+        "defineEvent": "src/ecs.js"
+      },
+      "scope": "20selected APIs mapped; phased provider, patch preparation, camera, graphics and sync-ledger boundaries inspected; no execution"
+    },
+    {
+      "consumer": "LuminaryLabs-Agents/NexusEngine-Experiments",
+      "consumerPath": "experiments/_shared/scoped-domain-three-composer.js",
+      "repository": "LuminaryLabs-Agents/NexusEngine-ProtoKits",
+      "ref": "a4d6a59f10df0c9967eeb72bf1552ce78e4972f6",
+      "tree": "863da61e3b362525c122997e11c5cbabffec36a5",
+      "requestedRef": "0.0.2",
+      "scope": "All13direct imported kit files plus2test definitions and their mock harness read;13modules have no further imports. CDN delivery and real engine installation untested."
+    },
+    {
+      "consumer": "LuminaryLabs-Agents/NexusEngine-Experiments/experiments/next-ledge",
+      "repository": "LuminaryLabs-Agents/NexusEngine-ProtoKits",
+      "commit": "04d34f049f58ae359cf71d43466c429dac2a6d08",
+      "recursiveEntries": 1735,
+      "truncated": false,
+      "sourceFiles": 9,
+      "scope": "Pass87 seven implementations and two tests; rest of historical tree not fully audited."
+    }
+  ],
+  "pass14Validation": {
+    "connectorReceipts": 25,
+    "matchedPinnedTreeBlobs": 25,
+    "newPrimaryReceipts": 23,
+    "scope": "static source ownership only"
+  },
+  "releaseIdentityCheck": {
+    "repository": "LuminaryLabs-Dev/NexusEngine",
+    "date": "2026-09-21",
+    "releaseCollection": "empty array",
+    "tagRefs": "empty array",
+    "endpoints": [
+      "https://api.github.com/repos/LuminaryLabs-Dev/NexusEngine/releases?per_page=100",
+      "https://api.github.com/repos/LuminaryLabs-Dev/NexusEngine/git/matching-refs/tags/"
+    ],
+    "limit": "No GitHub release/tag identity exposed; does not rule out artifacts in other registries. Direct tags endpoint rejected; matching-refs used.",
+    "numericBranchFollowup": {
+      "0.0.4": "16aee598c06efcb7b511e4827ee3f7e23ce3549b",
+      "0.0.5": "404",
+      "packageVersion": "0.0.4",
+      "limit": "branch/source identity only; tag/release artifact and immutable proof remain unverified"
+    },
+    "recheckedDate": "2026-09-22",
+    "currentBranchNames": [
+      "0.0.1",
+      "0.0.2",
+      "0.0.3",
+      "0.0.4",
+      "main"
+    ]
+  },
+  "pass15Validation": {
+    "sourceReceipts": 33,
+    "matchedPinnedTreeBlobs": 33,
+    "newPrimaryReceipts": 31,
+    "nativeDocumentReads": 8,
+    "driveTextFileReads": 5
+  },
+  "pass16Validation": {
+    "sourceReceipts": 67,
+    "matchedPinnedTreeBlobs": 67,
+    "newPrimaryReceipts": 67,
+    "nativeDocumentReads": 1,
+    "scope": "static source ownership and historical evidence; no game/test execution"
+  },
+  "pass17Validation": {
+    "sourceReceipts": 53,
+    "matchedPinnedTreeBlobs": 53,
+    "newPrimaryReceipts": 53,
+    "newDriveReferences": 11,
+    "driveTextFilesRead": 11,
+    "nativeDocumentRereads": 1,
+    "foldersListed": 6,
+    "scope": "static source, source-defined checks and historical report comparison; no execution"
+  },
+  "pass18Validation": {
+    "sourceReceipts": 25,
+    "matchedPinnedTreeBlobs": 25,
+    "newPrimaryReceipts": 25,
+    "nativeDocumentReads": 10,
+    "newDriveReferences": 0,
+    "scope": "source inspection only; no execution"
+  },
+  "pass19Validation": {
+    "sourceReceipts": 28,
+    "matchedPinnedTreeBlobs": 28,
+    "newPrimaryReceipts": 25,
+    "newAdditionalVersionReceipts": 3,
+    "selectedApiDeclarationsMapped": 20,
+    "immediateImportTargetsMissing": 0,
+    "scope": "selected export/service source audit, not complete transitive load or runtime proof"
+  },
+  "pass20Validation": {
+    "sourceReceipts": 18,
+    "matchedPinnedTreeBlobs": 18,
+    "newPrimaryReceipts": 18,
+    "scope": "native nested ECS prototype static ownership; no compile/test execution"
+  },
+  "pass21Validation": {
+    "sourceReceipts": 61,
+    "matchedPinnedTreeBlobs": 61,
+    "newPrimaryReceipts": 61,
+    "emptyNativeDocumentsConfirmed": 1,
+    "scope": "static active source and historical claim comparison; no execution"
+  },
+  "pass22Validation": {
+    "sourceReceipts": 20,
+    "matchedPinnedTreeBlobs": 20,
+    "newPrimaryReceipts": 20,
+    "scope": "selected runtime/entry and tree absence inspection; no execution"
+  },
+  "pass23Validation": {
+    "sourceReceipts": 14,
+    "matchedPinnedTreeBlobs": 14,
+    "newPrimaryReceipts": 14,
+    "nativeDocumentsRead": 3,
+    "scope": "source and historical log/roadmap review; no execution"
+  },
+  "pass24Validation": {
+    "sourceReceipts": 15,
+    "matchedPinnedTreeBlobs": 15,
+    "scope": "source-only ownership and gaps; no execution"
+  },
+  "pass25Validation": {
+    "sourceReceipts": 27,
+    "matchedPinnedTreeBlobs": 27,
+    "scope": "source-only ownership and gaps; no execution"
+  },
+  "pass26Validation": {
+    "sourceReceipts": 19,
+    "treeBlobMatches": 19,
+    "runtimeExecuted": false
+  },
+  "pass27Validation": {
+    "sourceReceipts": 28,
+    "treeBlobMatches": 28,
+    "runtimeExecuted": false
+  },
+  "pass28Validation": {
+    "sourceReceipts": 6,
+    "treeBlobMatches": 6,
+    "driveDocsRead": 2,
+    "runtimeExecuted": false
+  },
+  "passes24Through28Readback": {
+    "receiptsChecked": 95,
+    "treeBlobMatches": 95,
+    "persistedRefAndHashMatches": 95,
+    "primarySourceKeysUnique": true,
+    "driveIdsUnique": true,
+    "packetJsonParsed": true,
+    "date": "2026-09-21"
+  },
+  "pass29Validation": {
+    "sourceReceipts": 22,
+    "treeBlobMatches": 22,
+    "runtimeExecuted": false
+  },
+  "pass30Validation": {
+    "sourceReceipts": 19,
+    "treeBlobMatches": 19,
+    "runtimeExecuted": false
+  },
+  "pass31Validation": {
+    "sourceReceipts": 24,
+    "treeBlobMatches": 24,
+    "runtimeExecuted": false
+  },
+  "pass32Validation": {
+    "sourceReceipts": 19,
+    "treeBlobMatches": 19,
+    "runtimeExecuted": false
+  },
+  "passes29Through32Readback": {
+    "receiptsChecked": 84,
+    "persistedRefAndHashMatches": 84,
+    "documentRevisionsMatched": 4,
+    "primarySourceKeysUnique": true,
+    "driveIdsUnique": true,
+    "date": "2026-09-21"
+  },
+  "pass33Validation": {
+    "sourceReceipts": 36,
+    "treeBlobMatches": 36,
+    "runtimeExecuted": false
+  },
+  "pass34Validation": {
+    "sourceReceipts": 16,
+    "treeBlobMatches": 16,
+    "runtimeExecuted": false
+  },
+  "pass35Validation": {
+    "sourceReceipts": 28,
+    "treeBlobMatches": 28,
+    "runtimeExecuted": false,
+    "driveDocsRead": 4
+  },
+  "passes33Through35Readback": {
+    "receiptsChecked": 80,
+    "persistedRefAndHashMatches": 80,
+    "documentRevisionsMatched": 4,
+    "nestedAuditsMatched": 5,
+    "primarySourceKeysUnique": true,
+    "driveIdsUnique": true,
+    "date": "2026-09-21"
+  },
+  "pass36Validation": {
+    "sourceReceipts": 16,
+    "treeBlobMatches": 16,
+    "runtimeExecuted": false
+  },
+  "pass37Validation": {
+    "sourceReceipts": 13,
+    "treeBlobMatches": 13,
+    "runtimeExecuted": false
+  },
+  "pass38Validation": {
+    "sourceReceipts": 8,
+    "treeBlobMatches": 8,
+    "runtimeExecuted": false
+  },
+  "pass39Validation": {
+    "sourceReceipts": 11,
+    "treeBlobMatches": 11,
+    "runtimeExecuted": false,
+    "driveDocsRead": 4
+  },
+  "passes36Through39Readback": {
+    "receiptsChecked": 48,
+    "persistedRefAndHashMatches": 48,
+    "documentRevisionsMatched": 4,
+    "nestedAuditsMatched": 4,
+    "primarySourceKeysUnique": true,
+    "driveIdsUnique": true,
+    "date": "2026-09-21"
+  },
+  "pass40Validation": {
+    "sourceReceipts": 31,
+    "treeBlobMatches": 31,
+    "runtimeExecuted": false
+  },
+  "pass41Validation": {
+    "sourceReceipts": 17,
+    "treeBlobMatches": 17,
+    "runtimeExecuted": false,
+    "driveDocsRead": 2
+  },
+  "passes40Through41Readback": {
+    "receiptsChecked": 48,
+    "persistedRefAndHashMatches": 48,
+    "documentRevisionsMatched": 2,
+    "nestedAuditsMatched": 2,
+    "primarySourceKeysUnique": true,
+    "driveIdsUnique": true,
+    "date": "2026-09-21"
+  },
+  "pass42Validation": {
+    "sourceReceipts": 17,
+    "treeBlobMatches": 17,
+    "nativeDocumentsRead": 1,
+    "nativeDocumentsPartiallyRead": 1,
+    "runtimeExecuted": false,
+    "newPrimaryReceipts": 16
+  },
+  "pass43Validation": {
+    "sourceReceipts": 23,
+    "treeBlobMatches": 23,
+    "runtimeExecuted": false
+  },
+  "pass44Validation": {
+    "sourceReceipts": 10,
+    "treeBlobMatches": 10,
+    "runtimeExecuted": false
+  },
+  "pass45Validation": {
+    "sourceReceipts": 14,
+    "treeBlobMatches": 14,
+    "runtimeExecuted": false
+  },
+  "passes42Through45Readback": {
+    "receiptsChecked": 64,
+    "persistedRefAndHashMatches": 64,
+    "documentRevisionsMatched": 2,
+    "nestedAuditsMatched": 4,
+    "primarySourceKeysUnique": true,
+    "driveIdsUnique": true,
+    "date": "2026-09-21"
+  },
+  "pass46Validation": {
+    "sourceReceipts": 15,
+    "treeBlobMatches": 15,
+    "runtimeExecuted": false
+  },
+  "pass47Validation": {
+    "sourceReceipts": 21,
+    "treeBlobMatches": 21,
+    "runtimeExecuted": false
+  },
+  "pass48Validation": {
+    "sourceReceipts": 17,
+    "treeBlobMatches": 17,
+    "runtimeExecuted": false
+  },
+  "pass49Validation": {
+    "sourceReceipts": 7,
+    "treeBlobMatches": 7,
+    "nativeDocumentsRead": 2,
+    "runtimeExecuted": false
+  },
+  "passes46Through49Readback": {
+    "receiptsChecked": 60,
+    "persistedRefAndHashMatches": 60,
+    "documentRevisionsMatched": 2,
+    "primarySourceKeysUnique": true,
+    "driveIdsUnique": true,
+    "date": "2026-09-21"
+  },
+  "pass50Validation": {
+    "sourceReceipts": 25,
+    "treeBlobMatches": 25,
+    "runtimeExecuted": false
+  },
+  "pass50Readback": {
+    "receiptsChecked": 25,
+    "persistedRefAndHashMatches": 25,
+    "nestedAuditsMatched": 1,
+    "packetJsonParsed": true,
+    "date": "2026-09-21"
+  },
+  "pass51Validation": {
+    "sourceReceipts": 27,
+    "treeBlobMatches": 27,
+    "runtimeExecuted": false
+  },
+  "pass52Validation": {
+    "sourceReceipts": 6,
+    "treeBlobMatches": 6,
+    "runtimeExecuted": false
+  },
+  "pass53Validation": {
+    "sourceReceipts": 14,
+    "treeBlobMatches": 14,
+    "runtimeExecuted": false
+  },
+  "passes51Through53Readback": {
+    "receiptsChecked": 47,
+    "persistedRefAndHashMatches": 47,
+    "nestedAuditsMatched": 4,
+    "primaryKeysUnique": true,
+    "driveIdsUnique": true,
+    "packetJsonParsed": true,
+    "date": "2026-09-21"
+  },
+  "pass54Validation": {
+    "sourceReceipts": 19,
+    "treeBlobMatches": 19,
+    "runtimeExecuted": false
+  },
+  "pass55Validation": {
+    "sourceReceipts": 18,
+    "treeBlobMatches": 18,
+    "runtimeExecuted": false
+  },
+  "pass56Validation": {
+    "sourceReceipts": 26,
+    "treeBlobMatches": 26,
+    "runtimeExecuted": false
+  },
+  "pass57Validation": {
+    "sourceReceipts": 10,
+    "treeBlobMatches": 10,
+    "runtimeExecuted": false,
+    "nativeDocumentsRead": 1
+  },
+  "passes54Through57Readback": {
+    "receiptsChecked": 73,
+    "persistedRefAndHashMatches": 73,
+    "nestedAuditsMatched": 9,
+    "documentRevisionsMatched": 1,
+    "primaryKeysUnique": true,
+    "driveIdsUnique": true,
+    "packetJsonParsed": true,
+    "date": "2026-09-21"
+  },
+  "pass58Validation": {
+    "sourceReceipts": 31,
+    "treeBlobMatches": 31,
+    "runtimeExecuted": false
+  },
+  "pass58Readback": {
+    "receiptsChecked": 31,
+    "persistedRefAndHashMatches": 31,
+    "nestedAuditsMatched": 1,
+    "driveLeadIdsMatched": 6,
+    "primaryKeysUnique": true,
+    "driveIdsUnique": true,
+    "packetJsonParsed": true,
+    "date": "2026-09-21"
+  },
+  "pass59Validation": {
+    "sourceReceipts": 20,
+    "treeBlobMatches": 20,
+    "runtimeExecuted": false
+  },
+  "pass60Validation": {
+    "sourceReceipts": 13,
+    "treeBlobMatches": 13,
+    "runtimeExecuted": false
+  },
+  "pass61Validation": {
+    "sourceReceipts": 18,
+    "treeBlobMatches": 18,
+    "runtimeExecuted": false,
+    "nativeDocumentsRead": 1,
+    "newPrimaryReceipts": 17
+  },
+  "passes59Through61Readback": {
+    "receiptsChecked": 51,
+    "persistedRefAndHashMatches": 51,
+    "nestedAuditsMatched": 3,
+    "documentRevisionsMatched": 1,
+    "primaryKeysUnique": true,
+    "driveIdsUnique": true,
+    "packetJsonParsed": true,
+    "date": "2026-09-21"
+  },
+  "pass62Validation": {
+    "sourceReceipts": 20,
+    "treeBlobMatches": 20,
+    "newPrimaryReceipts": 20,
+    "historicalArtifactsStructurallyInspected": 3,
+    "runtimeExecuted": false
+  },
+  "pass62Readback": {
+    "receiptsChecked": 20,
+    "persistedRefAndHashMatches": 20,
+    "nestedAuditsMatched": 1,
+    "primaryKeysUnique": true,
+    "driveIdsUnique": true,
+    "packetJsonParsed": true,
+    "date": "2026-09-21"
+  },
+  "pass63Validation": {
+    "sourceReceipts": 14,
+    "treeBlobMatches": 14,
+    "newPrimaryReceipts": 14,
+    "runtimeExecuted": false
+  },
+  "passes62Through63Readback": {
+    "receiptsChecked": 34,
+    "persistedRefAndHashMatches": 34,
+    "nestedAuditsMatched": 2,
+    "primaryKeysUnique": true,
+    "driveIdsUnique": true,
+    "packetJsonParsed": true,
+    "date": "2026-09-21"
+  },
+  "pass64Validation": {
+    "sourceReceipts": 17,
+    "treeBlobMatches": 17,
+    "runtimeExecuted": false
+  },
+  "pass65Validation": {
+    "sourceReceipts": 20,
+    "treeBlobMatches": 20,
+    "runtimeExecuted": false
+  },
+  "pass66Validation": {
+    "sourceReceipts": 15,
+    "treeBlobMatches": 15,
+    "newPrimaryReceipts": 15,
+    "runtimeExecuted": false
+  },
+  "passes64Through66Readback": {
+    "receiptsChecked": 52,
+    "persistedRefAndHashMatches": 52,
+    "sourceClosurePathsMatched": 42,
+    "nestedAuditsMatched": 2,
+    "primaryKeysUnique": true,
+    "driveIdsUnique": true,
+    "packetJsonParsed": true,
+    "date": "2026-09-21"
+  },
+  "pass67Validation": {
+    "sourceReceipts": 21,
+    "treeBlobMatches": 21,
+    "runtimeExecuted": false,
+    "scope": "20 full files; one lock structurally inspected"
+  },
+  "pass68Validation": {
+    "sourceReceipts": 71,
+    "treeBlobMatches": 71,
+    "runtimeExecuted": false,
+    "scope": "66 C#/XAML/project/default-config files and5selected docs"
+  },
+  "passes67Through68Readback": {
+    "receiptsChecked": 92,
+    "persistedRefAndHashMatches": 92,
+    "nestedAuditsMatched": 2,
+    "primaryKeysUnique": true,
+    "driveIdsUnique": true,
+    "packetJsonParsed": true,
+    "date": "2026-09-21"
+  },
+  "pass69Validation": {
+    "sourceReceipts": 39,
+    "treeBlobMatches": 39,
+    "completeImplementationPaths": 22,
+    "historicalCsvJsonRepresentatives": 12,
+    "coveredIdenticalOutputPaths": 45,
+    "nativeDocumentsRead": 2,
+    "runtimeExecuted": false
+  },
+  "pass69Readback": {
+    "receiptsChecked": 39,
+    "persistedRefAndHashMatches": 39,
+    "sourceClosurePathsMatched": 22,
+    "documentRevisionsMatched": 2,
+    "nestedAuditsMatched": 1,
+    "primaryKeysUnique": true,
+    "driveIdsUnique": true,
+    "packetJsonParsed": true,
+    "date": "2026-09-21"
+  },
+  "pass70Validation": {
+    "sourceReceipts": 44,
+    "treeBlobMatches": 44,
+    "runtimeExecuted": false
+  },
+  "pass71Validation": {
+    "sourceReceipts": 53,
+    "treeBlobMatches": 53,
+    "exactDuplicateStageDocuments": 5,
+    "runtimeExecuted": false
+  },
+  "pass72Validation": {
+    "sourceReceipts": 45,
+    "treeBlobMatches": 45,
+    "implementationSourcePaths": 33,
+    "runtimeExecuted": false
+  },
+  "passes70Through72Readback": {
+    "receiptsChecked": 142,
+    "persistedRefAndHashMatches": 142,
+    "sourceClosurePathsMatched": 33,
+    "nestedAuditsMatched": 3,
+    "primaryKeysUnique": true,
+    "driveIdsUnique": true,
+    "packetJsonParsed": true,
+    "date": "2026-09-21"
+  },
+  "pass73Validation": {
+    "sourceReceipts": 35,
+    "fullTextReads": 34,
+    "structuralExportHelperReads": 1,
+    "treeBlobMatches": 35,
+    "nativeDocumentsReread": 2,
+    "runtimeExecuted": false
+  },
+  "pass74Validation": {
+    "sourceReceipts": 5,
+    "treeBlobMatches": 5,
+    "missingLegacyEngineImportPaths": 4,
+    "runtimeExecuted": false
+  },
+  "passes73Through74Readback": {
+    "receiptsChecked": 40,
+    "persistedRefAndHashMatches": 40,
+    "sourceAuditsMatched": 2,
+    "documentRevisionsMatched": 2,
+    "primaryKeysUnique": true,
+    "driveIdsUnique": true,
+    "packetJsonParsed": true,
+    "date": "2026-09-21"
+  },
+  "pass75Validation": {
+    "sourceReceipts": 80,
+    "treeBlobMatches": 80,
+    "fullInteractionSubtreeFiles": 77,
+    "runtimeExecuted": false
+  },
+  "pass76Validation": {
+    "sourceReceipts": 11,
+    "treeBlobMatches": 11,
+    "nativeDocumentsRead": 4,
+    "runtimeExecuted": false
+  },
+  "passes75Through76Readback": {
+    "receiptsChecked": 91,
+    "persistedRefAndHashMatches": 91,
+    "sourceAuditsMatched": 2,
+    "documentRevisionsMatched": 4,
+    "primaryKeysUnique": true,
+    "driveIdsUnique": true,
+    "packetJsonParsed": true,
+    "date": "2026-09-21"
+  },
+  "pass77Validation": {
+    "sourceReceipts": 12,
+    "treeBlobMatches": 12,
+    "runtimeExecuted": false
+  },
+  "remainingAudit": {
+    "file": "remaining-audit.md",
+    "masterItems": 18,
+    "metadataOnlyRepositories": 0,
+    "historicalRootsWithoutRecursiveTreeRecord": 0,
+    "metadataOnlyDriveReferences": 92,
+    "scope": "Fixed 18 areas; A01-A13 complete at documented connector/source evidence boundaries, 5 remain.",
+    "closedRootBranchScreens": 33,
+    "pendingMasterItems": 5,
+    "currentItem": "A14",
+    "workflow": "Fixed 18 areas: broad inventory -> merge coherent source groups -> gpt-6-luna architectural classification -> targeted verification -> reconcile and close. Avoid exhaustive per-file micro-audits and rereading settled evidence. No source bodies persisted.",
+    "currentSourceSubscopesCompleted": [
+      "actor",
+      "agent",
+      "asset",
+      "authoring",
+      "build",
+      "composition",
+      "compute",
+      "diagnostics",
+      "foundation",
+      "host",
+      "interaction",
+      "mcp",
+      "network",
+      "object",
+      "physics",
+      "policy",
+      "presentation",
+      "render",
+      "runtime",
+      "simulation",
+      "spatial",
+      "world"
+    ],
+    "remainingCurrentEngineSourceCodePaths": 0,
+    "runtimeSourceProgress": {
+      "remaining": 0,
+      "completedPass": 95,
+      "scope": "All pinned Runtime source-code paths have receipts; consumer integration remains distinct."
+    },
+    "objectSourceProgress": {
+      "newlyRead": 21,
+      "remaining": 0,
+      "completedPass": 97,
+      "completedScope": "All pinned Object source paths have receipts; provider/renderer/proof-consumer reconciliation is distinct."
+    },
+    "proofConsumerFollowups": {
+      "owner": "A02",
+      "paths": [
+        "tests/core-domains/core-graphics-domain-smoke.mjs",
+        "tests/helpers/public-package-surface.mjs"
+      ],
+      "status": "Complete source reconciliation in111: Graphics and Surface proof plus full428-target generated public-package helper reviewed. Helper targets exist and match package JavaScript export targets; helper bypasses package public entry points. No runtime/import execution.",
+      "graphicsReadRanges": [
+        [
+          1,
+          3675
+        ]
+      ],
+      "graphicsBlobSha": "c0978c8cce910905c7ec0449f9173a4fc198a587",
+      "graphicsFullRead": true,
+      "completedPass": 111,
+      "publicHelperFullRead": true,
+      "publicHelperTargetCount": 428,
+      "publicHelperMissingTargets": []
+    },
+    "authoringSourceProgress": {
+      "newlyRead": 47,
+      "totalRead": 113,
+      "remaining": 0,
+      "completedPass": 100,
+      "completedScope": "All pinned Authoring source paths read across98-100; six earlier tests and fixture reconciled. Source closure is distinct from runtime and consumer validation."
+    },
+    "buildSourceProgress": {
+      "newlyRead": 149,
+      "totalRead": 294,
+      "remaining": 0,
+      "completedPass": 102,
+      "completedScope": "All Build JS/MJS/TS sources plus4native C/header sources and CLI/proof script.11Build tests and8fixtures source-reviewed, not executed. Native packages do not establish game playback."
+    },
+    "physicsSourceProgress": {
+      "newlyRead": 81,
+      "totalRead": 306,
+      "remaining": 0,
+      "completedPass": 105,
+      "checkedSubscopes": [
+        "root",
+        "contracts",
+        "lifecycle",
+        "world",
+        "body",
+        "material",
+        "shape",
+        "collider",
+        "constraints",
+        "detection"
+      ],
+      "notes": "All pinned canonical Physics source-code paths read across103-105. Constraints and Detection proof sources reconciled. Record/solver separation, layer mismatch and dependency integration limits explicit. No runtime or tests executed."
+    },
+    "simulationSourceProgress": {
+      "newlyRead": 55,
+      "totalRead": 146,
+      "remaining": 0,
+      "completedPass": 111,
+      "checkedSubscopes": [
+        "root and restored manifests",
+        "core simulation services and resolution",
+        "motion and articulation",
+        "physics bridge",
+        "adapters",
+        "economy",
+        "operations",
+        "progression",
+        "hazard",
+        "pursuit",
+        "recovery",
+        "all4restored proof-source tests"
+      ],
+      "notes": "All pinned Simulation source-code paths read. New direct proof sources and shared helper reconciled. Reset/snapshot resolution omission, cooldown loss, IK unequal-length limits, provider/consumer boundaries and prior timing/atomicity findings explicit. No execution."
+    },
+    "renderSourceProgress": {
+      "newlyRead": 73,
+      "totalRead": 316,
+      "remaining": 0,
+      "completedPass": 109,
+      "checkedSubscopes": [
+        "root",
+        "contracts",
+        "device",
+        "lifecycle",
+        "camera",
+        "resource",
+        "surface",
+        "buffer",
+        "texture",
+        "shader",
+        "material"
+      ],
+      "notes": "All pinned Render source paths read. Shared Graphics proof fully source-reviewed. Provider compilation, GPU binding and execution remain external; current-state/receipt limitations explicit. No tests or runtime executed."
+    },
+    "worldSourceProgress": {
+      "totalSurveyed": 120,
+      "detailedSourceReads": 52,
+      "groupedArchitectureSurveyFiles": 68,
+      "remaining": 0,
+      "completedPass": 113,
+      "notes": "Luna grouped survey reconciled with4key source excerpts. Source architecture closure does not prove renderer/provider execution."
+    },
+    "currentEngineSourceClosure": {
+      "pass": 113,
+      "ref": "a74e8689d1a71c0b42236c009f0f4c46e9b89387",
+      "inventoryPaths": 1642,
+      "unrecorded": 0,
+      "blobMismatches": 0,
+      "method": "Prior detailed source evidence plus68grouped Luna source surveys and1generated mirror classification; generator and core index reconciled.21domains mapped; package/runtime/host/provider boundaries explicit.",
+      "duplicateByteIdenticalGroups": 0,
+      "generatedMirrorChapterCount": 22,
+      "runtimeExecuted": false,
+      "testsRun": false
+    },
+    "engineHistoryClosure": {
+      "pass": 114,
+      "branchIdentities": [
+        {
+          "branch": "0.0.1",
+          "ref": "168ccaf4b25c6ce9c9e0c1464a1920c91274ee27",
+          "packageVersion": "0.1.0",
+          "sourceFiles": 80,
+          "treeEntries": 108,
+          "truncated": false,
+          "exportKeys": 1,
+          "missingLiteralExportTargets": [],
+          "rootModuleExports": 79
+        },
+        {
+          "branch": "0.0.2",
+          "ref": "35e60fc65d24d66c1607d5c17813c7c96624d25f",
+          "packageVersion": "0.1.0",
+          "sourceFiles": 81,
+          "treeEntries": 508,
+          "truncated": false,
+          "exportKeys": 1,
+          "missingLiteralExportTargets": [],
+          "rootModuleExports": 80
+        },
+        {
+          "branch": "0.0.3",
+          "ref": "f7b414da925c02effc928d9773a6e4ecafc3c465",
+          "packageVersion": "0.0.3",
+          "sourceFiles": 179,
+          "treeEntries": 732,
+          "truncated": false,
+          "exportKeys": 7,
+          "missingLiteralExportTargets": [],
+          "rootModuleExports": 106
+        },
+        {
+          "branch": "0.0.4",
+          "ref": "16aee598c06efcb7b511e4827ee3f7e23ce3549b",
+          "packageVersion": "0.0.4",
+          "sourceFiles": 1031,
+          "treeEntries": 2456,
+          "truncated": false,
+          "exportKeys": 205,
+          "missingLiteralExportTargets": [],
+          "rootModuleExports": null
+        }
+      ],
+      "scope": "Relevant branch/API epochs, aliases, migration ownership and known pinned consumer identities mapped. Not exhaustive git history or proof consumers have migrated. Consumer audits remainA05/A11;Unity/native variants remainA13.",
+      "releases": 0,
+      "tags": 0
+    },
+    "sharedKitClosure": {
+      "pass": 115,
+      "officialCatalogEntries": 140,
+      "entryFilesPresent": 45,
+      "statuses": {
+        "migration-placeholder": 95,
+        "official": 23,
+        "scaffolded": 8,
+        "candidate": 14
+      },
+      "protoFolders": 530,
+      "frozenSourceFiles": 905,
+      "classifiedItems": 3698,
+      "scope": "Inventory, source ownership, representative implementations, concrete dependency targets and version/import boundaries mapped. Game-specific consumer reconciliation remainsA05/A11; no blanket runtime compatibility or promotion claim."
+    },
+    "sandboxHistoryDisposition": {
+      "completedPass": 135,
+      "rootCommit": "5a06ee1d85c75fd55c798a87be61e81947aaa3e3",
+      "scopedRoleMapComplete": true,
+      "deepPacketArtifactsExhaustive": false,
+      "reason": "offload/packets recursive tree remains truncated and aggregate counts conflict"
+    },
+    "nextAction": "A13: screen ten historical Unity roots and truncated asset source trees with bounded branch/tree receipts."
+  },
+  "pass77Readback": {
+    "receiptsChecked": 12,
+    "persistedRefAndHashMatches": 12,
+    "nestedAuditsMatched": 1,
+    "masterChecklistItems": 18,
+    "knownPendingCountsVerified": true,
+    "packetJsonParsed": true,
+    "date": "2026-09-21"
+  },
+  "pass78Validation": {
+    "sourceReceipts": 16,
+    "treeBlobMatches": 16,
+    "directImportTargetsResolved": 13,
+    "nativeDocumentsRead": 4,
+    "runtimeExecuted": false
+  },
+  "pass78Readback": {
+    "receiptsChecked": 16,
+    "persistedRefAndHashMatches": 16,
+    "dependencySourceAuditMatched": true,
+    "documentRevisionsMatched": 4,
+    "masterChecklistItems": 18,
+    "packetJsonParsed": true,
+    "primaryKeysUnique": true,
+    "driveIdsUnique": true,
+    "date": "2026-09-21"
+  },
+  "pass79Validation": {
+    "date": "2026-09-21",
+    "sourceReceiptsRead": 56,
+    "newPrimaryReceipts": 54,
+    "additionalVersionReceipts": 2,
+    "defaultTreesRefreshed": 33,
+    "currentBranchesListed": 35,
+    "additionalTreesInspected": 2,
+    "sourceFreeDefaultTrees": 33,
+    "scopedCurrentBranchRepositories": 33,
+    "skyServerMainFilesRead": 28,
+    "testsRun": false,
+    "runtimeExecuted": false,
+    "checklistCorrection": "33metadata-only rows were already root-screened.31have only source-free current branches; SkyServer main has inference code and MedicalResearch main has unrelated research records.",
+    "legacyCountBoundary": "counts.metadataOnlyRootTrees=42 is retained as an older snapshot with different scope; it is not a current uninspected backlog."
+  },
+  "pass79Readback": {
+    "receiptsChecked": 56,
+    "persistedRefAndHashMatches": 56,
+    "rootBranchRecordsMatched": 33,
+    "skyHarnessAuditMatched": true,
+    "masterChecklistItems": 18,
+    "pendingMasterItems": 17,
+    "packetJsonParsed": true,
+    "primaryKeysUnique": true,
+    "date": "2026-09-21"
+  },
+  "pass80Validation": {
+    "date": "2026-09-21",
+    "pinnedSourceFilesRead": 22,
+    "newPrimaryReceipts": 22,
+    "nativeDriveDocsRead": 8,
+    "newDriveDocs": 6,
+    "promotedDriveDocs": 2,
+    "newMetadataLeads": 7,
+    "page4Results": 50,
+    "allReceiptsTreeBlobMatched": true,
+    "tickerPlannedFilesAbsent": true,
+    "testsRun": false,
+    "modelsRun": false,
+    "boundary": "Core/chain and workflow definitions scoped; full workflow engine and59otherLiquidPro files remain; documentary design/packaging claims not runtime evidence."
+  },
+  "pass80Readback": {
+    "date": "2026-09-21",
+    "sourceRefsAndHashesMatched": 22,
+    "driveRevisionsAndSummariesMatched": 8,
+    "liquidProAuditMatched": true,
+    "page5CursorMatched": true,
+    "unreadDriveChecklistMatched": 101,
+    "pendingMasterItems": 17,
+    "allPacketJsonParsed": true,
+    "uniquePrimaryKeys": true,
+    "runtimeExecuted": false
+  },
+  "pass81Validation": {
+    "date": "2026-09-21",
+    "pinnedFilesRead": 22,
+    "newPrimaryReceipts": 22,
+    "chainAndWorkflowFilesSourceClosed": 27,
+    "definitionFiles": 22,
+    "referenceFieldsChecked": 80,
+    "missingReferences": 0,
+    "shippedWorkflowCycles": 0,
+    "smartReplyDeclaredMaximumCalls": 28,
+    "liquidProUnrecordedFiles": 37,
+    "runtimeExecuted": false,
+    "testsRun": false,
+    "scope": "Static inspection and JSON arithmetic, not live model or gameplay evidence."
+  },
+  "pass81Readback": {
+    "date": "2026-09-21",
+    "newSourceRefsAndHashesMatched": 22,
+    "wholeChainWorkflowScopeMatched": 27,
+    "workflowAuditMatched": true,
+    "pendingMasterItems": 17,
+    "packetJsonParsed": true,
+    "uniquePrimaryKeys": true,
+    "noRuntimeExecution": true
+  },
+  "pass82Validation": {
+    "date": "2026-09-21",
+    "pinnedFilesRead": 5,
+    "newPrimaryReceipts": 5,
+    "treeBlobMatches": 5,
+    "nativeDriveDocsRead": 3,
+    "newMetadataLeads": 15,
+    "page5Results": 50,
+    "liquidProUnrecordedFiles": 32,
+    "reportedArtifactDirectoryAbsent": true,
+    "testsRun": false,
+    "modelsRun": false,
+    "runtimeExecuted": false,
+    "scope": "Full source/document reads; historical report metrics not independently reproduced."
+  },
+  "pass82Readback": {
+    "date": "2026-09-21",
+    "sourceRefsAndHashesMatched": 5,
+    "driveRevisionsMatched": 3,
+    "newLeadIdsMatched": 15,
+    "pendingMasterItems": 17,
+    "packetJsonParsed": true,
+    "uniquePrimaryKeys": true,
+    "runtimeExecuted": false
+  },
+  "pass83Validation": {
+    "date": "2026-09-21",
+    "pinnedFilesRead": 11,
+    "treeBlobMatches": 11,
+    "liquidProUnrecordedFiles": 21,
+    "aliasesConfirmed": "packet/cumulative custom and extra-long pairs use same runner",
+    "runtimeExecuted": false,
+    "testsRun": false
+  },
+  "pass84Validation": {
+    "date": "2026-09-21",
+    "pinnedFilesRead": 12,
+    "treeBlobMatches": 12,
+    "hostFiles": 4,
+    "hostStaticTest": 1,
+    "kitDocsImplementationsTests": 6,
+    "miniRuntimeHelper": 1,
+    "localFallbackVendorPaths": 0,
+    "runtimeExecuted": false,
+    "testsRun": false
+  },
+  "passes83Through84Readback": {
+    "date": "2026-09-21",
+    "sourceRefsAndHashesMatched": 23,
+    "nestedAuditsMatched": 3,
+    "pendingMasterItems": 17,
+    "remainingLiquidProFiles": 21,
+    "packetJsonParsed": true,
+    "uniquePrimaryKeys": true,
+    "runtimeExecuted": false
+  },
+  "pass85Validation": {
+    "date": "2026-09-21",
+    "pinnedFilesRead": 14,
+    "treeBlobMatches": 14,
+    "publicExportClosureRead": true,
+    "surfaceForwarding": "subscriber-emitted events survive to next tick; miniature test helper differs",
+    "runtimeExecuted": false,
+    "testsRun": false
+  },
+  "pass86Validation": {
+    "date": "2026-09-21",
+    "pinnedFilesRead": 5,
+    "treeBlobMatches": 5,
+    "nativeDocumentsRead": 2,
+    "sheetTabsRead": 5,
+    "sheetTailRowsEmpty": true,
+    "sourceScope": "Base session and host input/loop, not full active cargo-wrapper closure",
+    "runtimeExecuted": false,
+    "testsRun": false
+  },
+  "passes85Through86Readback": {
+    "date": "2026-09-21",
+    "sourceRefsAndHashesMatched": 19,
+    "nativeRevisionsMatched": 2,
+    "spreadsheetTabsMatched": 5,
+    "blankTailRanges": 5,
+    "packetJsonParsed": true,
+    "uniquePrimaryKeys": true,
+    "primarySourceReceipts": 3004,
+    "metadataOnlyDriveReferences": 113,
+    "pendingMasterItems": 17,
+    "runtimeExecuted": false
+  },
+  "pass87Validation": {
+    "date": "2026-09-21",
+    "pinnedFilesRead": 14,
+    "treeBlobMatches": 14,
+    "kitImplementations": 7,
+    "kitTestsRead": 2,
+    "gameAdaptersWrappers": 5,
+    "historicalKitTreeEntries": 1735,
+    "truncated": false,
+    "newPrimary": 13,
+    "upgradedReceipts": 1,
+    "newVersions": 0,
+    "runtimeExecuted": false,
+    "testsRun": false
+  },
+  "pass87Readback": {
+    "date": "2026-09-21",
+    "sourceRefsAndHashesMatched": 14,
+    "primarySourceReceipts": 3017,
+    "pendingMasterItems": 17,
+    "metadataOnlyDriveReferences": 113,
+    "packetJsonParsed": true,
+    "uniquePrimaryKeys": true,
+    "runtimeExecuted": false
+  },
+  "pass88Validation": {
+    "date": "2026-09-21",
+    "pinnedFilesRead": 13,
+    "treeBlobMatches": 13,
+    "gamePresentationFiles": 8,
+    "legacyKitFilesAndTests": 5,
+    "newPrimary": 13,
+    "upgradedReceipts": 0,
+    "newVersions": 0,
+    "runtimeExecuted": false,
+    "testsRun": false
+  },
+  "pass88Readback": {
+    "date": "2026-09-21",
+    "sourceRefsAndHashesMatched": 13,
+    "primarySourceReceipts": 3030,
+    "pendingMasterItems": 17,
+    "metadataOnlyDriveReferences": 113,
+    "packetJsonParsed": true,
+    "uniquePrimaryKeys": true,
+    "runtimeExecuted": false
+  },
+  "pass89Validation": {
+    "date": "2026-09-21",
+    "pinnedFilesRead": 21,
+    "treeBlobMatches": 21,
+    "newPrimary": 21,
+    "nativeDocsRead": 7,
+    "newDriveReferences": 10,
+    "promotedDriveReferences": 0,
+    "runtimeExecuted": false,
+    "testsRun": false
+  },
+  "pass89Readback": {
+    "date": "2026-09-21",
+    "sourceRefsAndHashesMatched": 21,
+    "primarySourceReceipts": 3051,
+    "pendingMasterItems": 17,
+    "metadataOnlyDriveReferences": 116,
+    "packetJsonParsed": true,
+    "uniquePrimaryKeys": true,
+    "runtimeExecuted": false
+  },
+  "pass90Validation": {
+    "date": "2026-09-21",
+    "pinnedFilesRead": 14,
+    "treeBlobMatches": 14,
+    "newPrimary": 12,
+    "upgradedReceipts": 2,
+    "newVersions": 0,
+    "descriptorBuckets": 17,
+    "runtimeExecuted": false,
+    "testsRun": false
+  },
+  "pass90Readback": {
+    "date": "2026-09-21",
+    "sourceRefsAndHashesMatched": 14,
+    "primarySourceReceipts": 3063,
+    "packetJsonParsed": true,
+    "uniquePrimaryKeys": true,
+    "pendingMasterItems": 17,
+    "runtimeExecuted": false
+  },
+  "pass91Validation": {
+    "date": "2026-09-21",
+    "pinnedFilesRead": 5,
+    "treeBlobMatches": 5,
+    "newPrimary": 5,
+    "upgradedReceipts": 0,
+    "newVersions": 0,
+    "runtimeExecuted": false,
+    "testsRun": false
+  },
+  "pass91Readback": {
+    "date": "2026-09-21",
+    "jsonlParse": "passed",
+    "uniquePrimarySources": 3068,
+    "repositories": 392,
+    "driveReferences": 358,
+    "pinnedReceiptMatches": 5,
+    "runtimeExecuted": false
+  },
+  "pass92Validation": {
+    "date": "2026-09-21",
+    "pinnedFilesRead": 32,
+    "treeBlobMatches": 32,
+    "newPrimary": 31,
+    "upgradedReceipts": 1,
+    "newVersions": 0,
+    "runtimeExecuted": false,
+    "testsRun": false
+  },
+  "pass92Readback": {
+    "jsonlParse": "passed",
+    "uniquePrimarySources": 3099,
+    "pinnedReceiptMatches": 32,
+    "masterRemaining": 17,
+    "completedSourceSubscopes": 4
+  },
+  "pass93Validation": {
+    "date": "2026-09-21",
+    "pinnedFilesRead": 51,
+    "treeBlobMatches": 51,
+    "newPrimary": 51,
+    "upgradedReceipts": 0,
+    "newVersions": 0,
+    "runtimeExecuted": false,
+    "testsRun": false
+  },
+  "pass93Readback": {
+    "jsonlParse": "passed",
+    "uniquePrimarySources": 3150,
+    "pinnedReceiptMatches": 51,
+    "masterRemaining": 17,
+    "completedSourceSubscopes": 7,
+    "remainingCurrentEngineSourceCodePaths": 1450
+  },
+  "pass94Validation": {
+    "date": "2026-09-21",
+    "pinnedFilesRead": 27,
+    "treeBlobMatches": 27,
+    "newPrimary": 27,
+    "upgradedReceipts": 0,
+    "newVersions": 0,
+    "runtimeExecuted": false,
+    "testsRun": false
+  },
+  "pass94Readback": {
+    "jsonlParse": "passed",
+    "uniquePrimarySources": 3177,
+    "pinnedReceiptMatches": 27,
+    "remainingRuntimeSourceFiles": 5,
+    "remainingCurrentEngineSourceCodePaths": 1427,
+    "remainingMaster": 17
+  },
+  "pass95Validation": {
+    "date": "2026-09-21",
+    "pinnedFilesRead": 50,
+    "treeBlobMatches": 50,
+    "newPrimary": 49,
+    "upgradedReceipts": 1,
+    "newVersions": 0,
+    "runtimeExecuted": false,
+    "testsRun": false,
+    "countCorrection": "Pass94 Simulation test receipt was missing from its aggregate subtraction. Actual before1426, not1427; Simulation remaining144, not145."
+  },
+  "pass95Readback": {
+    "jsonlParse": "passed",
+    "uniquePrimarySources": 3226,
+    "pinnedReceiptMatches": 50,
+    "remainingCurrentEngineSourceCodePaths": 1384,
+    "remainingMaster": 17,
+    "completedSourceSubscopes": 10,
+    "packetFiles": 10
+  },
+  "pass96Validation": {
+    "date": "2026-09-21",
+    "pinnedFilesRead": 80,
+    "treeBlobMatches": 80,
+    "newPrimary": 80,
+    "upgradedReceipts": 0,
+    "newVersions": 0,
+    "presentationSources": 54,
+    "objectSources": 14,
+    "runtimeExecuted": false,
+    "testsRun": false
+  },
+  "pass96Readback": {
+    "jsonlParse": "passed",
+    "uniquePrimarySources": 3306,
+    "pinnedReceiptMatches": 80,
+    "remainingCurrentEngineSourceCodePaths": 1316,
+    "remainingObjectSourcePaths": 21,
+    "remainingPresentationSourcePaths": 0,
+    "remainingMaster": 17,
+    "completedSourceSubscopes": 11,
+    "packetFiles": 10
+  },
+  "pass97Validation": {
+    "date": "2026-09-21",
+    "pinnedFilesRead": 26,
+    "treeBlobMatches": 26,
+    "newPrimary": 26,
+    "upgradedReceipts": 0,
+    "newVersions": 0,
+    "objectSources": 21,
+    "testSources": 5,
+    "runtimeExecuted": false,
+    "testsRun": false
+  },
+  "pass98Validation": {
+    "date": "2026-09-21",
+    "pinnedFilesRead": 31,
+    "treeBlobMatches": 31,
+    "newPrimary": 31,
+    "upgradedReceipts": 0,
+    "newVersions": 0,
+    "authoringSources": 24,
+    "testAndFixtureSources": 7,
+    "runtimeExecuted": false,
+    "testsRun": false
+  },
+  "pass99Validation": {
+    "date": "2026-09-22",
+    "pinnedFilesRead": 42,
+    "treeBlobMatches": 42,
+    "newPrimary": 42,
+    "upgradedReceipts": 0,
+    "newVersions": 0,
+    "authoringSources": 42,
+    "testReconciliation": "Six test sources read98; relevant existing Object/Graphics descriptors rechecked without duplicate receipts.",
+    "runtimeExecuted": false,
+    "testsRun": false
+  },
+  "pass100Validation": {
+    "date": "2026-09-22",
+    "pinnedFilesRead": 47,
+    "treeBlobMatches": 47,
+    "newPrimary": 47,
+    "authoringSourceTotal": 113,
+    "authoringSourceRemaining": 0,
+    "testReconciliation": "Prior six Authoring tests and publishing source, not executed.",
+    "runtimeExecuted": false,
+    "testsRun": false
+  },
+  "pass101Validation": {
+    "date": "2026-09-22",
+    "pinnedFilesRead": 146,
+    "treeBlobMatches": 146,
+    "newPrimary": 146,
+    "buildCodeRead": 145,
+    "buildCodeRemaining": 149,
+    "sourceQueueRemaining": 1037,
+    "runtimeExecuted": false,
+    "testsRun": false
+  },
+  "pass102Validation": {
+    "date": "2026-09-22",
+    "pinnedFilesRead": 155,
+    "treeBlobMatches": 155,
+    "newPrimary": 155,
+    "buildCodeNew": 149,
+    "buildCodeTotal": 294,
+    "buildCodeRemaining": 0,
+    "nativeAdditional": 4,
+    "entrypointsAdditional": 2,
+    "sourceQueueRemaining": 888,
+    "runtimeExecuted": false,
+    "testsRun": false
+  },
+  "pass103Validation": {
+    "date": "2026-09-22",
+    "pinnedFilesRead": 94,
+    "treeBlobMatches": 94,
+    "newPrimary": 91,
+    "sameBlobReconciled": 3,
+    "physicsCodeNew": 72,
+    "physicsCodeRemaining": 234,
+    "simulationCodeNew": 15,
+    "simulationCodeRemaining": 129,
+    "testSourcesRead": 4,
+    "sourceQueueRemaining": 801,
+    "runtimeExecuted": false,
+    "testsRun": false
+  },
+  "pass104Validation": {
+    "date": "2026-09-22",
+    "pinnedFilesRead": 156,
+    "treeBlobMatches": 156,
+    "newPrimary": 156,
+    "physicsCodeNew": 153,
+    "physicsCodeTotal": 225,
+    "physicsCodeRemaining": 81,
+    "testSourcesRead": 3,
+    "sourceQueueRemaining": 648,
+    "runtimeExecuted": false,
+    "testsRun": false
+  },
+  "pass105Validation": {
+    "date": "2026-09-22",
+    "pinnedFilesRead": 87,
+    "treeBlobMatches": 87,
+    "newPrimary": 87,
+    "physicsCodeNew": 81,
+    "physicsCodeTotal": 306,
+    "physicsCodeRemaining": 0,
+    "testAndFixtureSourcesRead": 6,
+    "sourceQueueRemaining": 567,
+    "runtimeExecuted": false,
+    "testsRun": false
+  },
+  "pass106Validation": {
+    "date": "2026-09-22",
+    "newPinnedSourceFilesRead": 109,
+    "newTreeBlobMatches": 109,
+    "sameBlobFullReconciliations": 2,
+    "partialGraphicsProofLines": [
+      1,
+      1524
+    ],
+    "partialProofCountedAsFullRead": false,
+    "renderSourceRead": 109,
+    "renderSourceRemaining": 207,
+    "sourceQueueRemaining": 458,
+    "runtimeExecuted": false,
+    "testsRun": false
+  },
+  "pass107Validation": {
+    "date": "2026-09-22",
+    "newPinnedSourceFilesRead": 68,
+    "newTreeBlobMatches": 68,
+    "partialGraphicsProofLines": [
+      1,
+      1848
+    ],
+    "partialProofCountedAsFullRead": false,
+    "renderSourceRead": 176,
+    "renderSourceRemaining": 140,
+    "sourceQueueRemaining": 391,
+    "runtimeExecuted": false,
+    "testsRun": false
+  },
+  "pass108Validation": {
+    "date": "2026-09-22",
+    "newPinnedSourceFilesRead": 67,
+    "newTreeBlobMatches": 67,
+    "partialGraphicsProofLines": [
+      1,
+      2897
+    ],
+    "partialProofCountedAsFullRead": false,
+    "renderSourceRead": 243,
+    "renderSourceRemaining": 73,
+    "sourceQueueRemaining": 324,
+    "runtimeExecuted": false,
+    "testsRun": false
+  },
+  "pass109Validation": {
+    "date": "2026-09-22",
+    "newPinnedSourceFilesRead": 74,
+    "newTreeBlobMatches": 74,
+    "graphicsProofFullRead": true,
+    "renderSourceRead": 316,
+    "renderSourceRemaining": 0,
+    "sourceQueueRemaining": 251,
+    "runtimeExecuted": false,
+    "testsRun": false
+  },
+  "pass110Validation": {
+    "date": "2026-09-22",
+    "newPinnedSourceFilesRead": 74,
+    "newTreeBlobMatches": 74,
+    "sameBlobProofsReconciled": 2,
+    "sourceQueueRemaining": 177,
+    "simulationSourceRemaining": 55,
+    "runtimeExecuted": false,
+    "testsRun": false
+  },
+  "previousGoalTurnClassification": "Progress: pass120 independently matched current Engine main to its exports, corrected three attempted consumer classifications, and found a QA gate that cannot reject invalid presets.",
+  "pass111Validation": {
+    "date": "2026-09-22",
+    "newPinnedSourceFilesRead": 61,
+    "newTreeBlobMatches": 61,
+    "sameBlobSourcesReconciled": 3,
+    "sourceQueueRemaining": 121,
+    "simulationSourceRemaining": 0,
+    "publicHelperTargetsVerified": 428,
+    "runtimeExecuted": false,
+    "testsRun": false
+  },
+  "pass112Validation": {
+    "newPinnedSourceFilesRead": 52,
+    "newTreeBlobMatches": 52,
+    "sourceQueueRemaining": 69,
+    "worldSourceRemaining": 68,
+    "runtimeExecuted": false,
+    "testsRun": false
+  },
+  "pass113Validation": {
+    "newPrimaryReceipts": 70,
+    "additionalVersionReceipts": 1,
+    "lunaGroupedSourceFiles": 68,
+    "engineInventory": 1642,
+    "remaining": 0,
+    "blobMismatches": 0,
+    "coreExportTargets": 23,
+    "generatedGuideSourcePaths": 22,
+    "masterCompleted": 2,
+    "masterPending": 16,
+    "runtimeExecuted": false,
+    "testsRun": false
+  },
+  "pass114Validation": {
+    "new": 18,
+    "version": 6,
+    "same": 3,
+    "historicalBranchesCompared": 4,
+    "branchListingCount": 5,
+    "identicalMovedSourceFiles": 420,
+    "masterCompleted": 3,
+    "masterPending": 15,
+    "runtimeExecuted": false,
+    "testsRun": false
+  },
+  "pass115Validation": {
+    "new": 45,
+    "version": 1,
+    "same": 2,
+    "catalogEntries": 140,
+    "presentEntries": 45,
+    "protoFolders": 530,
+    "frozenFilePaths": 905,
+    "dispositionItems": 3698,
+    "duplicateDispositionIds": 0,
+    "missingSourcePaths": 0,
+    "masterCompleted": 4,
+    "masterPending": 14,
+    "runtimeExecuted": false,
+    "testsRun": false
+  },
+  "pass116Validation": {
+    "candidateSourceReceipts": 30,
+    "newPrimaryReceipts": 30,
+    "matchedPinnedTreeBlobs": 30,
+    "nextLedgeReadinessFamilies": 8,
+    "nextLedgeEntryKitAndSmokeSources": 24,
+    "cavalryNewSourceReads": 6,
+    "runtimeExecuted": false,
+    "testsRun": false,
+    "scope": "Grouped Next Ledge readiness survey and Cavalry route/state-owner reconciliation; source inspection only."
+  },
+  "pass117Validation": {
+    "candidateSourceReceipts": 27,
+    "newPrimaryReceipts": 22,
+    "matchedPinnedTreeBlobs": 27,
+    "newScriptModules": 11,
+    "aaaBatchProfiles": 100,
+    "uniqueKitStackLabels": 26,
+    "profilesWithGenericStack": 75,
+    "runtimeExecuted": false,
+    "testsRun": false,
+    "scope": "Grouped static classification of AAA profiles, shared host and route wrappers; no runtime claims."
+  },
+  "pass118Validation": {
+    "date": "2026-09-23",
+    "consumerBlob": "2516c9dfff55568d38886dda75a57711b01dc65e",
+    "engineIndexBlob": "6cbdd4f224cf3cd7a4feb6f976ddc9fd627ba8d1",
+    "engineModuleBlob": "3fcb74243a30d084595df6136b0f11e61cb1efb1",
+    "legacyDirectFactoriesCompared": 12,
+    "presentInPinnedEngineRootExports": 0,
+    "protoKitsAlias": "LuminaryLabs-Agents/NexusRealtime-ProtoKits@0.0.1",
+    "aliasResolution": "GitHub repository URL returned moved-permanently response to repository ID 1266731854; repository search returned no result; connector rejected ID endpoint and requested source-file read. Canonical identity remains unresolved.",
+    "newPrimaryReceipts": 0,
+    "sameBlobReconciliations": 3,
+    "runtimeExecuted": false,
+    "testsRun": false,
+    "scope": "Consumer import compatibility check; static connector source only."
+  },
+  "pass119Validation": {
+    "date": "2026-09-23",
+    "newDriveReferences": 1,
+    "currentDocumentsRead": 3,
+    "documents": [
+      "GoldRush-TeamMaster",
+      "GoldRush-ChatHandoff",
+      "GoldRush-AssetMaster"
+    ],
+    "decisionMasterRevision": "ANLCKQktBPsF4Pypjvi9Bw7jhOL35d2hShWRC_QXy4dFnAd0dEciLjSeBrAPdkKIKleEfooh-KrNKNOd6BDhqz1rXShjS91FfZtPm3rfkLhS",
+    "taskTrackerModified": "2026-08-27T00:31:17.656Z",
+    "task": "GR-TASK-008",
+    "taskStatus": "Ready",
+    "reconciliation": "DEC-007 is still present in the older DecisionMaster. Newer TeamMaster, ChatHandoff, and AssetMaster state parallel specialist lanes and no required prototype-geometry handoff to Xander. TaskTracker explicitly requires a numbered superseding decision and readback; its status remains Ready, not Done.",
+    "limitation": "Drive readback establishes document direction/status, not that the decision was updated or implemented.",
+    "testsRun": false,
+    "runtimeExecuted": false
+  },
+  "pass120Validation": {
+    "date": "2026-09-23",
+    "newPrimaryReceipts": 1,
+    "verifiedEngineMainCommit": "a74e8689d1a71c0b42236c009f0f4c46e9b89387",
+    "currentEngineRootAndConstructorExportsChecked": [
+      "src/index.js",
+      "src/engine.js",
+      "src/ecs.js",
+      "src/core-domains/composition/index.js"
+    ],
+    "consumersCallingMissingCreateRealtimeGame": [
+      "Fogline Relay",
+      "Signal Bastion",
+      "The Open Above"
+    ],
+    "additionalFinding": "Signal Bastion lines 304-306 set validation.valid=true in both ternary branches and do not invoke a validation method or inspect a result.",
+    "ownershipCorrections": [
+      "Fogline local semantic kit is scheduled through attempted Nexus host; not compatible with inspected main.",
+      "Hellscape owns its own local runtime; Engine import is metadata only.",
+      "Sora is a launch gateway to Open Above, not another independent game."
+    ],
+    "sourceEvidence": "repositories.jsonl:experimentCurrentMainCompatibilityAudit; sources.jsonl:pass120 fogline urls.js receipt and previously recorded exact experiment/Engine source blobs.",
+    "testsRun": false,
+    "runtimeExecuted": false
+  },
+  "priorGoalTurnClassification": "Progress: A05 closed at a static connector-evidence boundary with unknown runtime/CDN behavior preserved as limitations. A06 is now the active fixed area.",
+  "pass124Validation": {
+    "date": "2026-09-23",
+    "pinnedRef": "b05957890f514356d2ce42e2510bbba6f424e3c9",
+    "sourceFilesRead": 16,
+    "newPrimaryReceipts": 7,
+    "existingReceiptEnriched": 1,
+    "currentSourceReceipts": 4793,
+    "campaignFamilies": 3,
+    "smokeSourcesRead": 6,
+    "routeCampaigns": {
+      "app": 41,
+      "experimentEntry": 38,
+      "cutoverManifest": 38,
+      "domainPlan": 36
+    },
+    "staleAssertion": "campaign-040-frontier-beacon-chain build-stamp assertion is absent from the campaign-041 app entry; inferred from source text, not executed",
+    "testsRun": false,
+    "runtimeExecuted": false
+  },
+  "pass124Readback": {
+    "jsonlAndJsonParsed": true,
+    "uniquePrimarySourceKeys": true,
+    "sourceReceipts": 4793,
+    "evidenceScope": "connector source reads only; no browser, CDN or tests"
+  },
+  "pass125Validation": {
+    "date": "2026-09-23",
+    "pinnedRef": "b05957890f514356d2ce42e2510bbba6f424e3c9",
+    "groupedFiles": 5,
+    "existingReceiptsReused": 5,
+    "newPrimaryReceipts": 0,
+    "classification": "local campaign state plus direct pointer/action mutation; not NexusEngine-owned or Three.js-based",
+    "objectiveWireConcern": "checkEnd is not called by active overlay/action path and marks complete when all territories are owned by any faction",
+    "testsRun": false,
+    "runtimeExecuted": false
+  },
+  "pass125Readback": {
+    "jsonlAndJsonParsed": true,
+    "sourceReceipts": 4793,
+    "uniquePrimarySourceKeys": true,
+    "evidenceScope": "connector source reads; no test, CDN or browser execution"
+  },
+  "pass126Validation": {
+    "date": "2026-09-23",
+    "experimentRef": "b05957890f514356d2ce42e2510bbba6f424e3c9",
+    "engineMainRef": "a74e8689d1a71c0b42236c009f0f4c46e9b89387",
+    "sourceFilesRead": 11,
+    "newPrimaryReceipts": 3,
+    "existingPrimaryReceiptsReused": 7,
+    "existingPrimaryReceiptsEnriched": 1,
+    "currentSourceReceipts": 4796,
+    "consumerCalls": [
+      "Fogline Relay",
+      "Signal Bastion",
+      "The Open Above"
+    ],
+    "pinnedApi": "src/index.js re-exports src/engine.js:createEngine; no createRealtimeGame export observed",
+    "docDrift": "API_SURFACE_0.0.3.md lists createRealtimeGame; release metadata is 0.0.4",
+    "runtimeReference": "all three consumers use mutable Engine @main CDN URLs; current GitHub main resolves to the pinned source commit",
+    "testsRun": false,
+    "cdnFetched": false,
+    "runtimeExecuted": false,
+    "driveDocumentsReRead": 1,
+    "uniqueDriveDocumentsRead": 118
+  },
+  "pass126Readback": {
+    "jsonlAndJsonParsed": true,
+    "uniquePrimarySourceKeys": true,
+    "sourceReceipts": 4796,
+    "evidenceScope": "pinned connector source reads plus GitHub main commit metadata; no CDN resolution, tests, or browser execution",
+    "driveJsonlParsed": true
+  },
+  "pass127Validation": {
+    "date": "2026-09-24",
+    "canonicalRepositoryId": 1266731854,
+    "exactOldNameSearchResults": 0,
+    "manifestsCompared": 2,
+    "tag": "0.0.1",
+    "oldPackageName": "@luminarylabs/nexusrealtime-protokits",
+    "currentPackageName": "@luminarylabs/nexusengine-protokits",
+    "newPrimaryReceipts": 3,
+    "currentSourceReceipts": 4799,
+    "historicalConsumerImportsChecked": 1,
+    "requestedNestedRefAvailableInAccessibleCanonicalRepo": false,
+    "cdnFetched": false,
+    "testsRun": false,
+    "runtimeExecuted": false,
+    "scope": "Current identity reconciled; historical nested target remains unresolved."
+  },
+  "pass127Readback": {
+    "jsonlAndJsonParsed": true,
+    "uniquePrimarySourceKeys": true,
+    "sourceReceipts": 4799,
+    "inventoryCountsUnchanged": true,
+    "conclusion": "Current alias resolved; migration continuity and CDN delivery remain open."
+  },
+  "pass128Validation": {
+    "date": "2026-09-24",
+    "experimentRef": "b05957890f514356d2ce42e2510bbba6f424e3c9",
+    "groupedFamilies": 7,
+    "primaryModulesReRead": 7,
+    "existingReceiptsReused": 7,
+    "legacyEnginePathsChecked": 4,
+    "pathsPresentAtPinnedEngine": 0,
+    "runtimeExecuted": false,
+    "testsRun": false,
+    "cdnFetched": false,
+    "scope": "Representative grouped ownership audit; A05 remains open."
+  },
+  "pass128Readback": {
+    "jsonlAndJsonParsed": true,
+    "uniquePrimarySourceKeys": true,
+    "sourceReceipts": 4799,
+    "masterAreasComplete": 4,
+    "masterAreasPending": 14,
+    "inventoryCountsUnchanged": true,
+    "evidenceScope": "Pinned connector source only; no runtime/CDN/tests."
+  },
+  "pass129Validation": {
+    "date": "2026-09-24",
+    "experimentRef": "b05957890f514356d2ce42e2510bbba6f424e3c9",
+    "primaryFilesReRead": 4,
+    "objectiveHelper": "checkEnd requires all territories to have an owner (not specifically player-owned); no inspected active selection/combat/world-action path invokes it",
+    "baseGameplayFilesWithEngineOrGameHostCalls": 0,
+    "newSourceReceipts": 0,
+    "existingReceiptsReused": 4,
+    "testsRun": false,
+    "runtimeExecuted": false,
+    "scope": "Static objective/state-owner inspection; no behavior fix or browser proof."
+  },
+  "pass129Readback": {
+    "jsonlAndJsonParsed": true,
+    "uniquePrimarySourceKeys": true,
+    "sourceReceipts": 4799,
+    "repositoryCount": 392,
+    "driveReferences": 359,
+    "masterAreasComplete": 4,
+    "masterAreasPending": 14,
+    "evidenceScope": "Connector source only; A05 remains open."
+  },
+  "pass130Validation": {
+    "date": "2026-09-24",
+    "experimentRef": "b05957890f514356d2ce42e2510bbba6f424e3c9",
+    "engineRef": "a74e8689d1a71c0b42236c009f0f4c46e9b89387",
+    "primaryFilesReRead": 6,
+    "nestedCreateRealtimeGameCall": true,
+    "wrapperFallbacksCoverNestedCall": false,
+    "currentEngineExportsCreateEngine": true,
+    "existingSourceReceiptsReused": 5,
+    "newSourceReceipts": 0,
+    "testsRun": false,
+    "runtimeExecuted": false,
+    "cdnFetched": false,
+    "scope": "Static nested dependency/API compatibility check; no runtime failure claim."
+  },
+  "pass130Readback": {
+    "jsonlAndJsonParsed": true,
+    "uniquePrimarySourceKeys": true,
+    "sourceReceipts": 4799,
+    "repositoryCount": 392,
+    "driveReferences": 359,
+    "masterAreasComplete": 4,
+    "masterAreasPending": 14,
+    "evidenceScope": "Pinned connector source only."
+  },
+  "pass131Validation": {
+    "date": "2026-09-24",
+    "pinnedRepositories": {
+      "LuminaryLabs-Dev/NexusBuilder": "862ce82513c9aa1a020e9e2677c1fef32c626231",
+      "LuminaryLabs-Dev/NexusFactory": "e26a5a80eb85a0102ad728d7552f23b72a9e22f1",
+      "LuminaryLabs-Dev/NexusFactory-Kits": "cf3a220e81dad914c04b77308f422d23c8c91793",
+      "LuminaryLabs-Dev/NexusFactory-Studio": "6d37fe078ec8db8c6e58d35903a39e8672a81b97"
+    },
+    "newPrimaryReceipts": 6,
+    "primaryExistingReceiptsRechecked": 5,
+    "currentSourceReceipts": 4805,
+    "treeInventoryChecks": {
+      "NexusFactoryStudio": {
+        "entries": 54,
+        "truncated": false
+      },
+      "NexusFactoryKits": {
+        "entries": 432,
+        "truncated": false
+      },
+      "NexusFactory": {
+        "entries": 24282,
+        "truncated": false
+      }
+    },
+    "synthesis": "gpt-6-luna grouped review; primary checked output/validation/runtime handoff sources",
+    "testsRun": false,
+    "runtimeExecuted": false,
+    "browserRun": false,
+    "sourceReposChanged": false,
+    "scope": "Selected builder implementations; A06 remains open, no end-to-end game handoff demonstrated."
+  },
+  "pass131Readback": {
+    "jsonlAndJsonParsed": true,
+    "uniquePrimarySourceKeys": true,
+    "sourceReceipts": 4805,
+    "repositoryCount": 392,
+    "collections": 21,
+    "driveReferences": 359,
+    "driveDocumentsRead": 118,
+    "masterAreasComplete": 4,
+    "masterAreasPending": 14,
+    "evidenceScope": "Static connector reads only; no generation, tests, browser or runtime."
+  },
+  "pass132Validation": {
+    "date": "2026-09-24",
+    "area": "A05",
+    "disposition": "complete-static-source-scope",
+    "sourceReceipts": 4805,
+    "evidenceRefs": [
+      "Pass116-121 canonical route and ownership audits",
+      "Pass118 Zombie Orchard legacy factory comparison",
+      "Pass120/126 current Engine consumer API comparisons",
+      "Pass122 Next Ledge current API shape",
+      "Pass127 ProtoKits current alias/package identity",
+      "Pass128 seven-family ownership reconciliation",
+      "Pass129 Cavalry objective and local-state ownership",
+      "Pass130 Next Ledge nested constructor mismatch"
+    ],
+    "unresolvedItems": [
+      "Mutable @main CDN/runtime resolution and actual browser/API compatibility.",
+      "Zombie Orchard historical subref zombie-orchard-protokits is not present in accessible canonical repository; historical CDN/cache availability is unknown.",
+      "Search/index limits mean the list is scoped to recorded relevant consumers, not a mathematical proof of no further consumers.",
+      "No tests, generation, builds, or browser playthroughs; this audit was explicitly connector-only."
+    ],
+    "masterAreasComplete": 5,
+    "masterAreasPending": 13,
+    "testsRun": false,
+    "runtimeExecuted": false,
+    "browserRun": false,
+    "scope": "Connector-only audit boundary; no source-repository edits."
+  },
+  "pass132Readback": {
+    "jsonlAndJsonParsed": true,
+    "uniquePrimarySourceKeys": true,
+    "sourceReceipts": 4805,
+    "repositories": 392,
+    "collections": 21,
+    "driveReferences": 359,
+    "driveDocumentsRead": 118,
+    "masterItems": 18,
+    "completed": 5,
+    "pending": 13,
+    "currentItem": "A06"
+  },
+  "pass135Validation": {
+    "sourceReceiptsAdded": 49,
+    "treeSubscopesRecorded": 12,
+    "repoBaseline392Preserved": true,
+    "a08ClosedAtScopedBoundary": true,
+    "deepPacketHistoryUnresolved": true,
+    "validation": "Pending JSONL uniqueness/parse/readback checks."
+  },
+  "pass136Validation": {
+    "privateCommit": "1c602f3a93bf299521ffb6c3e4b9d47f81d89823",
+    "privateGameInventoryReused": {
+      "buildFolders": 100,
+      "mirrors": 100,
+      "exactMirrors": 99,
+      "uniqueScriptBlobs": 21,
+      "threeEntries": 14
+    },
+    "vendoredIndexBlob": "7bb76a62579f4440ccc9525eecd48637b9fdf6a3",
+    "staticMissingImportFamilies": 7,
+    "threeJsVersions": [
+      "r128",
+      "0.161.0",
+      "0.184.0"
+    ],
+    "execution": "not performed",
+    "scope": "Pinned source/import-map review only; no build, tests, provider, browser, deployed/cache inspection or gameplay."
+  },
+  "pass137Validation": {
+    "builderTree": "LuminaryLabs-Dev/NexusBuilder@862ce82513c9aa1a020e9e2677c1fef32c626231",
+    "treeEntries": 4694,
+    "newSourceReceipts": 0,
+    "reusedPasses": [
+      40,
+      42,
+      58,
+      131
+    ],
+    "execution": "not performed",
+    "status": "historical/staged reports classified; missing log remains unavailable"
+  },
+  "pass138Validation": {
+    "publishedSnapshotsPinned": 14,
+    "relatedCurrentSourcesPinned": 2,
+    "longHaulEngineLock": "8a60167fc945109408851c586a9355b1147438d5",
+    "prehistoricLiveUrl": "main",
+    "deploymentInspection": "not performed",
+    "execution": "not performed"
+  },
+  "pass139Validation": {
+    "pinnedFactoryGroups": 10,
+    "additionalGroupedSources": 24,
+    "factoryRuns": "none",
+    "gameAssetImports": "none",
+    "scope": "Pinned source and manifest review only."
+  },
+  "pass140Validation": {
+    "pinnedUnityRoots": 10,
+    "completeRootTrees": 10,
+    "truncatedAssetPackTrees": 1,
+    "assetPackTreeEntries": 41254,
+    "unityVersionsPinned": 13,
+    "manifestAndPackageFilesPinned": 15,
+    "sourceRowsUnique": true,
+    "repositoryBaseline392Preserved": true,
+    "gpt6LunaSynthesis": "grouped classification received",
+    "buildsTestsBrowserOrRuntime": "not performed",
+    "credentialValuesPersisted": false,
+    "scope": "Connector-only static review. LL_AssetPacks descendants remain incomplete."
+  },
+  "pass141Validation": {
+    "littleReefDocsRead": 15,
+    "littleReefDocsSynthesizedBy": "gpt-6-luna",
+    "nexusWorldGenTrackerTabsRead": 5,
+    "trackerStatus": "34/36 marked complete; 2 blocked per tracker; not source-verified",
+    "runtimeExecuted": false,
+    "driveDocsReadCount": 132,
+    "driveSpreadsheetReadCount": 11,
+    "currentMetadataOnlyDriveReferences": 92,
+    "partialDriveReferences": 1
+  },
+  "pass142Validation": {
+    "date": "2026-09-24",
+    "areasAdvanced": [
+      "A14",
+      "A15"
+    ],
+    "remainingMetadataOnly": 68,
+    "partialReferences": 1,
+    "driveReferences": 359,
+    "driveDocumentsRead": 147,
+    "driveSpreadsheetsRead": 15,
+    "worldGenCurrentCommit": "72d6c9f2325d162ba986ca828095d9abbd99fe71",
+    "worldGenCurrentDeployRun": "33285987471",
+    "worldGenPriorDeployRun": "33285598780",
+    "gpt6LunaBatches": [
+      "GoldRush",
+      "PrehistoricRush",
+      "NexusEngine0.0.10/RAWG reports"
+    ],
+    "testsOrRuntimeExecuted": false,
+    "sourceRepositoriesChanged": false,
+    "scope": "Connector-only reads; only reference packet changed."
+  },
+  "pass143Validation": {
+    "date": "2026-09-24",
+    "areasComplete": [
+      "A14",
+      "A15",
+      "A16",
+      "A17",
+      "A18"
+    ],
+    "repositoryBaseline": 392,
+    "driveReferences": 359,
+    "uniqueRepositoryIds": 392,
+    "uniqueSourceKeys": 4928,
+    "uniqueDriveIds": 359,
+    "metadataOnlyWithDisposition": 68,
+    "partialReferenceWithDisposition": 1,
+    "folderPointers": 106,
+    "persistedSearchCursor": "resumed attempt rejected HTTP 400 Invalid Value; unavailable page recorded as limitation",
+    "aliasesReconciled": 4,
+    "accessLimitsPreserved": {
+      "blocked451": 1,
+      "unavailable404": 8,
+      "emptyRepositories": 20,
+      "selectedRepositoryVisibility": true,
+      "truncatedAssetPackEntries": 41254
+    },
+    "jsonAndJsonlParse": "passed",
+    "credentialPatternScan": "no credential-like token patterns found in reference packet",
+    "runtimeOrTests": "not run by design; connector-only scope",
+    "sourceRepositoriesChanged": false,
+    "collectionEvidenceRecords": 33,
+    "nestedCollections": 33,
+    "malformedBlobShaCorrected": {
+      "count": 1,
+      "repository": "LuminaryLabs-Dev/LuminaryLabs",
+      "path": "repo-ledger/LuminaryLabs-Agents/NexusRealtime-ProtoKits.md",
+      "verifiedBlobSha": "e8a744066fe86df498654839762bdd6bd22eeea9",
+      "verification": "GitHub file fetch at commit a5116f8fb8cddc1a1af5e65661be2f76e239260f"
+    }
+  }
+}
